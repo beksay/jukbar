@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/templates/layouts/private.xhtml">
+
+    <ui:define name="title">#{msgs.news}</ui:define>
+
+    <ui:define name="top-content">
+        <div class="breadcrumb">
+            <h:outputText value="#{msgs.news}" styleClass="breadcrumb-item"/> 
+            <i class="fa fa-angle-right"/>
+        </div>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="form" class="form-light" prependId="false">
+        	<p:growl/>
+            
+            <h:panelGrid columns="2">
+            
+	            <h:outputLabel value="#{msgs.date}" for="date"/>
+                <p:calendar value="#{newsController.news.dateNews}" id="date"
+                            required="true" showOn="button"
+                            requiredMessage="#{msgs.date} - #{errs.thisFieldIsRequired}"
+                            disabledWeekends="true" pattern="dd-MM-yyyy HH:mm" stepMinute="5"/>
+                
+                <h:outputLabel value="#{msgs.newsTitle}" for="title"/>
+                <p:inputTextarea value="#{newsController.news.title}" id="title" cols="80" rows="1"/>
+                
+				<h:outputLabel value="#{msgs.description}" for="contentext"/>
+                <p:inputTextarea id="contentext" value="#{newsController.news.content}" cols="80" rows="10"/>                
+                
+                <h:outputLabel value="#{msgs.publish}"/>
+                <p:selectBooleanCheckbox value="#{newsController.news.active}" />
+                
+            </h:panelGrid>
+            
+            <h:commandButton id="savebtn" value="#{msgs.save}" action="#{newsController.save}" styleClass="btn btn-green f-lft" style="display:none"/>
+               
+        </h:form><br/>
+        
+        <h:outputLabel value="#{msgs.image}"/>
+        <h:panelGrid columns="2" id="image">
+    		<h:form>
+				<p:fileUpload mode="advanced" fileUploadListener="#{newsController.handleFileUploadImage}"
+                       update="messages image" sizeLimit="10000000" fileLimit="1" auto="true"
+                       fileLimitMessage="#{msgs.fileLimitMessage}" dragDropSupport="true"
+                       allowTypes="/(\.|\/)(gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG)$/" 
+                       uploadLabel="#{msgs.upload}" cancelLabel="#{msgs.cancel}" label="#{msgs.choose}"/>
+         		<p:growl id="messages" showDetail="true"/>
+     		</h:form>
+     	
+	     	<h:form>
+	     		<h:outputLabel value="#{newsController.image.name}"/>
+	            <h:commandLink action="#{newsController.removeImage()}" immediate="true" alt="#{msgs.delete}" rendered="#{newsController.image.name ne null}"> <i class="fa fa-lg fa-trash"/> </h:commandLink>
+	      	</h:form>
+     	</h:panelGrid>
+     	
+     	<h:form>
+           <h:panelGroup>
+               <h:commandButton value="#{msgs.save}"   type="button" onclick="document.getElementById('savebtn').click();" styleClass="btn btn-green"/>
+               <h:commandButton value="#{msgs.cancel}" action="#{newsController.cancel}" immediate="true" styleClass="btn m-lft"/>
+           </h:panelGroup>
+        </h:form>        
+        
+    </ui:define>
+</ui:composition>

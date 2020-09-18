@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+	    <div class="container">
+			<div class="jukForm">
+				<h:form>
+					<div class="row">
+					    <div class="col-12" style="text-align: center;">
+							<H4>#{msgs.myProfile} (#{loginUtil.currentUser.person.firstName})</H4>
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.email}" />
+		    		        <h:inputText value="#{profileController.user.email}" disabled="#{profileController.editProfile==false}"/>
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.status}" />
+    		        	    <h:inputText value="#{enums[profileController.user.status]}" disabled="true"/>
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.firstname}" />
+	    		        	<h:inputText value="#{profileController.person.firstName}" disabled="#{profileController.editProfile==false}"/>
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.myAccount}" />
+		    		        <h:inputText value="#{profileController.person.account}" disabled="true"/>
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.lastname}" />
+	    		        	<h:inputText value="#{profileController.person.lastName}" disabled="#{profileController.editProfile==false}"/>
+						</div>
+						<div class="col-6 mt-3">
+							<p:commandButton ajax="false" action="#{passwordChanger.change()}" value="#{msgs.changePassword}" icon="fas fa-key"/>
+							<h:outputLabel style="width:20px;display:inline-block"/>
+							<p:commandButton value="#{msgs.logout}" action="#{userController.logout()}" icon="fas fa-sign-out-alt"/>
+						</div>
+						<div class="col-6">
+							 <h:outputLabel value="#{msgs.birthDate}" for="birthDate"/>
+			                 <p:calendar id="birthDate" value="#{profileController.person.birthDate}" disabled="#{profileController.editProfile==false}"
+			                 yearRange="1950:2030" navigator="true" pattern="yyyy-MM-dd" />
+						</div>
+						<div class="col-6">
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.myPhone}" />
+	    		        	<h:inputText value="#{profileController.person.phone}" disabled="#{profileController.editProfile==false}"/>
+						</div>
+						<div class="col-6">
+						</div>
+						<div class="col-6 mt-3">
+							<p:commandButton ajax="false" icon="fas fa-edit" action="#{profileController.change()}" value="#{msgs.editProfile}" rendered="#{profileController.editProfile ==false}"/>	
+							<p:commandButton ajax="false" icon="fas fa-save" action="#{profileController.save()}" rendered="#{profileController.editProfile}" value="#{msgs.save}" />					
+							<h:outputLabel style="width:20px;display:inline-block"/>
+							<p:commandButton ajax="false" icon="fas fa-window-close" action="#{profileController.cancel()}" rendered="#{profileController.editProfile}" value="#{msgs.cancel}" />
+						</div>
+						
+					</div>
+				</h:form>
+			</div>
+		</div>				
+	</ui:define>
+</ui:composition>

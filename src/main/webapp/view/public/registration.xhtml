@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+
+    <ui:define name="content">
+		
+		<div class="full-height p-padding login-page">					
+			    
+			<div class="logo-block">
+				<h1 class="title">#{msgs.driverRegistration}</h1>
+			</div>
+			
+			<h:panelGroup id="messages">
+				<p:growl  />
+			</h:panelGroup>
+			    
+			<h:form id="login-form"  >
+				<h:outputText value="email" styleClass="label"/>
+				<h:inputText value="#{registrationAction.user.email}" style="position:relative;" 
+				         id="email" validator="#{emailValidator.validate}"
+				         required="true" requiredMessage="#{msgs.email} - #{msgs.isReq}" >
+				    <f:ajax render="email-error @this" event="blur" />
+				</h:inputText>				
+				<p:watermark value="#{msgs.email}" for="email"/>
+				<h:message for="email-error" display="icon" style="color:red;" />
+				
+				<h:outputText value="firstName" styleClass="label"/>
+				<h:inputText value="#{registrationAction.person.firstName}" style="position:relative;" id="firstName" required="true" requiredMessage="#{msgs.firstName} - #{msgs.isReq}"/>				
+				<p:watermark value="#{msgs.firstName}" for="firstName"/>
+				<h:message for="firstName" display="icon" style="color:red;" />
+
+				<h:outputText value="phone" styleClass="label"/>
+				<h:inputText value="#{registrationAction.person.phone}" style="position:relative;" id="phone" required="true" requiredMessage="#{msgs.phone} - #{msgs.isReq}"/>				
+				<p:watermark value="#{msgs.phone}" for="phone"/>
+				<h:message for="phone" display="icon" style="color:red;" />
+
+                
+                <p:selectBooleanCheckbox id="isReq" value="#{registrationAction.person.requirement}" required="true"/>			
+				<h:outputLabel style="margin-left:40px" for="isReq" value="#{msgs.registerReq}" />
+		    	
+		        <h:panelGrid columns="2">
+					<p:commandButton ajax="false" value="#{msgs.register}"  action="#{registrationAction.save()}"/>
+					<a style="margin-left:20px" href="#{registrationAction.returnLogin()}"  >#{msgs.returnLogin}</a>	
+				</h:panelGrid>
+			</h:form>
+				
+	
+			<div class="clear"></div>
+			
+			<script type="text/javascript">
+	
+				$(window).load(function() {
+					var element = $('.focus');
+					element.focus();
+				});
+				
+			
+			</script>
+		</div>
+			
+			
+		
+				
+	</ui:define>	
+	
+</ui:composition>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+
+	<ui:define name="content">
+		<div class="container">
+			<div class="jukForm">
+				<h:form>
+					<div class="row">
+						<div class="col-12" style="text-align: center;">
+							<H4>Заявка на отправку груза</H4>
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.transportType}" />
+							<h:selectOneMenu id="transportType"
+								value="#{shipmentApplicationAction.shipments.transportType}"
+								required="true"
+								requiredMessage="#{msgs.transportType} - #{msgs.isReq}"
+								effect="fold" editable="true" converter="#{transportConverter}">
+								<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<f:selectItems
+									value="#{shipmentApplicationAction.transportTypeList}"
+									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+							</h:selectOneMenu>
+							<p:message for="transportType" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.capacity}" />
+							<h:inputText id="capacity"
+								value="#{shipmentApplicationAction.shipments.capacity}"
+								required="true"
+								requiredMessage="#{msgs.capacity} - #{msgs.isReq}" />
+							<p:message for="capacity" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.countryFrom}" />
+							<h:selectOneMenu id="countryFrom"
+								value="#{countrySelector.country}" effect="fold" editable="true"
+								converter="#{countryConverter}" required="true"
+								requiredMessage="#{msgs.countryFrom} - #{msgs.isReq}">
+								<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<f:selectItems value="#{countrySelector.countryList}"
+									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+								<p:ajax event="change" update="oblastFrom" />
+							</h:selectOneMenu>
+							<p:message for="countryFrom" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.countryTo}" />
+							<h:selectOneMenu id="countryTo"
+								value="#{countrySelector2.country}" effect="fold"
+								editable="true" converter="#{countryConverter}" required="true"
+								requiredMessage="#{msgs.countryTo} - #{msgs.isReq}">
+								<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<f:selectItems value="#{countrySelector2.countryList}"
+									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+								<p:ajax event="change" update="oblastTo" />
+							</h:selectOneMenu>
+							<p:message for="countryTo" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel for="oblastFrom" value="#{msgs.oblastFrom}" />
+							<h:selectOneMenu id="oblastFrom"
+								value="#{countrySelector.oblast}" effect="fold" editable="true"
+								converter="#{oblastConverter}" required="true"
+								requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
+								<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<f:selectItems
+									value="#{countrySelector.getOblastList(countrySelector.country)}"
+									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+								<p:ajax event="change" update="regionFrom regFrom" />
+							</h:selectOneMenu>
+							<p:message for="oblastFrom" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}" />
+							<h:selectOneMenu id="oblastTo" value="#{countrySelector2.oblast}"
+								effect="fold" editable="true" converter="#{oblastConverter}"
+								required="true"
+								requiredMessage="#{msgs.oblastTo} - #{msgs.isReq}">
+								<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<f:selectItems
+									value="#{countrySelector2.getOblastList(countrySelector2.country)}"
+									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+								<p:ajax event="change" update="regionTo regTo" />
+							</h:selectOneMenu>
+							<p:message for="oblastTo" />
+						</div>
+						<h:panelGroup  layout="block" id="regFrom" class="col-6">
+							<h:outputLabel for="regionFrom" value="#{msgs.regionFrom}" rendered="#{countrySelector.oblast.city!=true}"/>
+							<h:selectOneMenu id="regionFrom"
+								value="#{countrySelector.region}" effect="fold" editable="true"
+								converter="#{regionConverter}" required="true" rendered="#{countrySelector.oblast.city!=true}"
+								requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
+								<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<f:selectItems
+									value="#{countrySelector.getRegionList(countrySelector.oblast)}"
+									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+							</h:selectOneMenu>
+							<p:message for="regionFrom" rendered="#{countrySelector.oblast.city!=true}"/>
+						</h:panelGroup>
+						<h:panelGroup  layout="block" id="regTo" class="col-6">
+							<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{countrySelector2.oblast.city!=true}"/>
+							<h:selectOneMenu id="regionTo" value="#{countrySelector2.region}"
+								effect="fold" editable="true" converter="#{regionConverter}" rendered="#{countrySelector2.oblast.city!=true}"
+								required="true" requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
+								<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<f:selectItems
+									value="#{countrySelector2.getRegionList(countrySelector2.oblast)}"
+									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+							</h:selectOneMenu>
+							<p:message for="regionTo" rendered="#{countrySelector2.oblast.city!=true}"/>
+						</h:panelGroup>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.addressFrom}" />
+							<h:inputTextarea cols="20" rows="2" id="addressFrom"
+								value="#{shipmentApplicationAction.shipments.addressFrom}"
+								required="true"
+								requiredMessage="#{msgs.addressFrom} - #{msgs.isReq}" />
+							<p:message for="addressFrom" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.addressTo}" />
+							<h:inputTextarea cols="20" rows="2" id="addressTo"
+								value="#{shipmentApplicationAction.shipments.addressTo}"
+								required="true"
+								requiredMessage="#{msgs.addressTo} - #{msgs.isReq}" />
+							<p:message for="addressTo" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.fromPlace}" for="dateFrom"
+								style="color:red" />
+							<p:calendar
+								value="#{shipmentApplicationAction.shipments.dateFrom}"
+								id="dateFrom" required="true" showOn="button"
+								requiredMessage="#{msgs.dateFrom} - #{msgs.isReq}"
+								pattern="dd-MM-yyyy HH:mm" />
+							<p:message for="dateFrom" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.toPlace}" for="dateTo"
+								style="color:green" />
+							<p:calendar value="#{shipmentApplicationAction.shipments.dateTo}"
+								id="dateTo" required="true" showOn="button"
+								requiredMessage="#{msgs.dateTo} - #{msgs.isReq}"
+								pattern="dd-MM-yyyy HH:mm" />
+							<p:message for="dateTo" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.myPhone}" />
+							<h:inputText id="phone"
+								value="#{shipmentApplicationAction.shipments.phone}"
+								required="true"
+								requiredMessage="#{msgs.myPhone} - #{msgs.isReq}" />
+							<p:message for="phone" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.amount}" for="amount" />
+							<p:inputText
+								value="#{shipmentApplicationAction.shipments.amount}"
+								id="amount" required="true"
+								requiredMessage="#{msgs.amount} - #{msgs.isReq}"
+								converterMessage="Должны быть только цифры" maxlength="18"
+								validatorMessage="Неправильная сумма">
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+							</p:inputText>
+							<p:message for="amount" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.productInfo}" />
+							<h:inputTextarea cols="30" rows="2" id="productInfo"
+								value="#{shipmentApplicationAction.shipments.products}"
+								required="true"
+								requiredMessage="#{msgs.productInfo} - #{msgs.isReq}" />
+							<p:message for="productInfo" />
+						</div>
+						<div class="col-12">
+							<p:commandButton ajax="false" value="#{msgs.send}" icon="fas fa-save"
+								action="#{shipmentApplicationAction.save()}" />
+								<h:outputLabel style="width:50px;display:inline-block"/>
+							<p:commandButton ajax="false" immediate="true"
+								value="#{msgs.cancel}" icon="fas fa-window-close"
+								action="#{shipmentApplicationAction.returnHome()}" />
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

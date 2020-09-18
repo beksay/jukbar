@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<div class="pageTitle">
+				<h2>#{msgs.news}</h2>
+				
+			</div>
+			<h:panelGroup class="btnRegBlock">		
+				<h:commandButton value="#{msgs.add}" action="#{newsController.add()}" styleClass="btnRegister"></h:commandButton>
+			</h:panelGroup>	
+	        
+	        <p:dataTable var="entity" value="#{newsList.model}"
+				rows="5" rowIndexVar="index" lazy="true"
+				emptyMessage="#{msgs.noRecordsFound}" style="margin-top:0px"
+				styleClass="newsData"
+				sortOrder="ASCENDING"
+				rowKey="#{entity.id}" selectionMode="single"
+				selection="#{newsController.news}">
+
+				<p:column style="width:185px;" >
+  					<h:graphicImage rendered="#{entity.image.fileName eq null}" library="images" name="news.png" width="170" height="110"/>
+  					<h:graphicImage rendered="#{entity.image.fileName ne null}" value="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(entity.image))}" width="170" height="110"/>
+  				</p:column>  
+
+				<p:column >
+					<h:outputText value="#{entity.dateNews}" style="color:green; margin-right:10px" >
+					    <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+					</h:outputText> <br/>
+					<h:outputText value="#{entity.title}" /> <br/>
+					<h:outputText value="#{entity.content}" style="color:#204a87; margin-left:10px"/>
+				</p:column>
+				
+				<p:column width="250">
+					<h:outputText value="#{entity.active}" /> 
+				</p:column>
+				
+				<p:column width="250">
+		        	<p:commandButton action="#{newsController.edit(entity)}" update="@form" icon="fa fa-edit" class="btn-journal" title="Обработать" />
+		        	<p:commandButton action="#{newsController.delete(entity)}" update="@form" icon="fa fa-remove" class="btn-journal" title="Удалить" />
+		        </p:column>
+
+			</p:dataTable>
+	</h:form>
+	</ui:define>
+</ui:composition>

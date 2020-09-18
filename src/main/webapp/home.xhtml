@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+
+	<ui:define name="content">
+		<div class="mainBanner">
+			<div class="container">
+				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+				  <div class="carousel-inner">
+				    <div class="carousel-item active" style="background-image:url('/jukbar/javax.faces.resource/bannerBG.png.xhtml?ln=images');">
+				    	<div class="banner-inner">
+				    		<label> Header text banner</label>
+				    		<p>Подробный курс программирования на языке Python 3 для новичков. Вы освоите базовые принципы языка и научитесь писать программы</p>
+				    	</div>
+				    </div>
+				    <div class="carousel-item" style="background-image:url('/jukbar/javax.faces.resource/bannerBG.png.xhtml?ln=images');">
+				    	<div class="banner-inner">
+				    		<label> Header text banner</label>
+				    		<p>Подробный курс программирования на языке Python 3 для новичков. Вы освоите базовые принципы языка и научитесь писать программы</p>
+				    	</div>				    
+				    </div>
+				    <div class="carousel-item" style="background-image:url('/jukbar/javax.faces.resource/bannerBG.png.xhtml?ln=images');">
+				    	<div class="banner-inner">
+				    		<label> Header text banner</label>
+				    		<p>Подробный курс программирования на языке Python 3 для новичков. Вы освоите базовые принципы языка и научитесь писать программы</p>
+				    	</div>				    
+				    </div>
+				  </div>
+				  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div>
+			</div>
+		</div>
+		<div class="mainJukList">
+			<div class="container">
+				<div class="mainList">
+					<div class="mainJuk">
+						<div class="mainJukLeft">
+			              
+						</div>
+						<div class="mainJukContent">
+							<div class="mainJukInfo">
+								<label>Почему клиенты выбирают «#{msgs.title}» </label>
+								<p>Подробный курс программирования на языке Python 3 для новичков. Вы освоите базовые принципы языка и научитесь писать программы.</p>
+								<ul>
+									<li><span><i class="fas fa-hourglass-start"></i> :</span> Экономия времени</li>
+									<li><span><i class="far fa-money-bill-alt"></i> :</span> Гарантированная цена</li>
+								</ul>
+							</div>
+						</div>
+						<div class="mainJukButton">
+							<button>#{msgs.learnMore}</button>
+						</div>
+					</div>
+					<div class="mainJuk">
+						<div class="mainJukLeft">
+						</div>
+						<div class="mainJukContent"> 
+							<div class="mainJukInfo">
+								<label>Авторизация на сайте</label>
+								<p>Подробный курс программирования на языке Python 3 для новичков. Вы освоите базовые принципы языка и научитесь писать программы.</p>
+								<ul>
+									<li><span><i class="fas fa-truck"></i> :</span> #{msgs.register}</li>
+								</ul>
+							</div>
+						</div>
+						<div class="mainJukButton">
+							<button>#{msgs.learnMore}</button>
+						</div>
+					</div>
+					<div class="mainJuk">
+						<div class="mainJukLeft">
+						</div>
+						<div class="mainJukContent">
+							<div class="mainJukInfo">
+								<label>Как работает «#{msgs.title}»</label>
+								<p>Подробный курс программирования на языке Python 3 для новичков. Вы освоите базовые принципы языка и научитесь писать программы.</p>
+								<ul>
+									<li><span><i class="fas fa-truck"></i> :</span> Переезд</li>
+								</ul>
+							</div>
+						</div>
+						<div class="mainJukButton">
+							<button>#{msgs.learnMore}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

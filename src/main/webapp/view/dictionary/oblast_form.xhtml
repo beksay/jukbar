@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+
+	<ui:define name="content">
+	<div class="container">
+			<div class="jukForm">
+				<h:form>
+					<div class="row">
+						<div class="col-12">
+						   <h3>#{msgs.oblasts} (#{oblastController.conversationCountry.country.name})</h3>
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.name}" />
+							<h:inputText id="name" 
+								value="#{oblastController.oblast.name}" required="true"
+								requiredMessage="#{msgs.name} - #{msgs.isReq}">
+							</h:inputText>
+							<h:message for="name" display="icon" style="color:red;" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.city}"/>
+	                        <p:selectBooleanCheckbox value="#{oblastController.oblast.city}" >
+	                            <p:ajax update="factAddress"/>
+	                        </p:selectBooleanCheckbox>
+						</div>
+						<h:panelGroup  layout="block" id="factAddress" class="col-6">
+							<h:outputLabel value="#{msgs.location}" rendered="#{oblastController.oblast.city==true}"/>
+							<h:inputText id="location" class="location" rendered="#{oblastController.oblast.city==true}"
+								value="#{oblastController.oblast.location}" required="true"
+								requiredMessage="#{msgs.location} - #{msgs.isReq}">
+							</h:inputText>
+							<h:message for="location" display="icon" style="color:red;" rendered="#{oblastController.oblast.city==true}"/>
+						</h:panelGroup>
+						<div class="col-6" >
+						   <p:commandButton class="button" value="#{msgs.save}"
+							     action="#{oblastController.save()}" icon="fas fa-save"/>
+							<h:outputLabel style="width:50px;display:inline-block"/>				
+							<p:commandButton class="button" value="#{msgs.cancel}" icon="fas fa-window-close"
+							    action="#{oblastController.cancel()}" immediate="true" />
+						</div>
+					</div>
+					<p:messages/>
+				 </h:form>
+			</div>
+	 </div>	
+
+	</ui:define>
+</ui:composition>

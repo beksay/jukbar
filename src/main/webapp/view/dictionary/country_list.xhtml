@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="mainListData">
+				<h:form id="form">
+					<div class="mainListContent">
+						<p:dataTable var="entity" value="#{countryList.model}"
+							paginator="true" rows="50" rowIndexVar="index" lazy="true"
+							emptyMessage="#{msgs.noRecordsFound}" id="table"
+							style="margin-top:0px" sortOrder="ASCENDING"
+							selectionMode="single" selection="#{countryController.country}"
+							rowsPerPageTemplate="50,100,200" paginatorPosition="bottom"
+							pageLinks="10"
+							currentPageReportTemplate="#{msgs.showPaymentNumbers}"
+							paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+							first="#{countryList.first}">
+							<p:ajax event="page" listener="#{countryList.onPageChange}" />
+							<p:ajax event="rowSelect"
+								listener="#{countryController.onRowSelect}" />
+							<f:facet name="header">
+					            #{msgs.countries}
+					        </f:facet> 
+							<p:column headerText="#{msgs.number}" width="100">
+			                    #{index + 1}
+			                </p:column>
+			                <p:column  width="50">
+			                    <h:graphicImage library="images" height="20" width="20" name="kg.png" rendered="#{entity.id eq 1}" />
+								<h:graphicImage library="images" height="20" width="20" name="kz.png" rendered="#{entity.id eq 2}" />
+								<h:graphicImage library="images" height="20" width="20" name="ru.png" rendered="#{entity.id eq 3}" />
+								<h:graphicImage library="images" height="20" width="20" name="uz.png" rendered="#{entity.id eq 4}" />
+			                </p:column>
+							<p:column headerText="#{msgs.name}">
+								<h:outputText value="#{entity.name}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

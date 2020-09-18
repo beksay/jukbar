@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="mainListData">
+			     <div class="mainListFilter">
+					<h:form id="filter-form">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<div class="col">
+								<p:inputText value="#{oblastList.searchString}" id="watermark"
+									styleClass="m-right">
+									<p:ajax listener="#{oblastList.filterData()}" event="keyup"
+										update="form" />
+								</p:inputText>
+								<p:watermark for="watermark" value="Поиск" />
+							</div>
+							<div class="col">
+								<p:commandButton ajax="true" update="form"
+									value="#{msgs.search}" style="display:none"
+									actionListener="#{oblastList.filterData()}"
+									styleClass="button green f-right" />
+							</div>
+							<div class="col">
+						    	<p:commandButton value="#{msgs.add}" action="#{oblastController.add()}" />
+							</div>
+						</h:panelGroup>
+
+					</h:form>
+				</div>
+				<h:form id="form">
+					<div class="mainListContent">
+						<p:dataTable var="entity" value="#{oblastList.model}" 
+							paginator="true" rows="50" rowIndexVar="index" lazy="true" 
+							emptyMessage="#{msgs.noRecordsFound}" 
+							id="table"
+							style="margin-top:0px"
+							sortOrder="DESCENDING"
+							selectionMode="single" selection="#{oblastController.oblast}"
+							rowsPerPageTemplate="50,100,200" paginatorPosition="bottom" pageLinks="10"
+				   			currentPageReportTemplate="#{msgs.showPaymentNumbers}" 
+				            paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+				            first="#{oblastList.first}" >
+				            <p:ajax event="page" listener="#{oblastList.onPageChange}"/>  
+				            <p:ajax event="rowSelect" listener="#{oblastController.onRowSelect}"/>
+				                <f:facet name="header">
+						            #{msgs.oblasts} (#{oblastController.conversationCountry.country.name})
+						        </f:facet>
+						 		<p:column headerText="#{msgs.number}" width="100">
+				                    #{index + 1}
+				                </p:column>
+						        <p:column headerText="#{msgs.name}">
+						            <h:outputText value="#{entity.name}" />
+						        </p:column> 
+						        <p:column headerText="#{msgs.location}">
+						            <h:outputText value="#{entity.location}" />
+						        </p:column>
+						        <p:column headerText="#{msgs.city}">
+						            <h:outputText value="#{msgs.yes}" rendered="#{entity.city == true}"/>
+						        </p:column>
+						        <p:column headerText="#{msgs.operation}">
+						        	<p:commandButton action="#{oblastController.edit(entity)}" update="@form" icon="fa fa-edit"  title="Обработать" />
+						        	<p:commandButton action="#{oblastController.delete(entity)}" update="@form" icon="fas fa-trash-alt" title="Удалить" />
+						        </p:column>
+					    </p:dataTable>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

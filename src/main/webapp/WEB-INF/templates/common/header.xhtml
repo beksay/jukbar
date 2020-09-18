@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+<div class="maintopContainer">
+	<div class="container">
+		<div class="maintopContent">
+			<div class="maintop-logo">
+				<a class="mainlogo" href="/jukbar/home.xhtml"><h:graphicImage library="images" name="logojuk.png"/></a>
+				<ul class="jukMenu">
+					<li><a href="/jukbar/view/public/shipments.xhtml" >#{msgs.shipments}</a></li>
+					<li>
+						<h:form>
+		        			<h:commandLink action="#{shipmentApplicationAction.form()}" value="Заявка на отправку груза" />
+		        		</h:form>					
+					</li>
+				</ul>
+				
+				
+			</div>
+			<div class="maintop-right">
+				<a href="/jukbar/view/user/login.xhtml">#{msgs.login}</a>
+			</div>
+		</div>
+	</div>
+</div>
+</ui:composition>

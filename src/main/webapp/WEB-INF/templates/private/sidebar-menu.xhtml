@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:composition>
+	<h:form class="clearfix">
+	    <div class="user clearfix">
+	        <div class="user-icon f-left"></div>
+	        <div class="user-name f-left">
+	        	#{sessionScope['org.infosystema.projects.votingsystem.current_user_fio']}
+	        </div>
+	        <div class="menu-arrow f-right"></div>
+	        <div class="user-menu">
+	            <div class="menu">
+	              	<ul>				        
+					     <li>
+					         <h:commandLink action="#{passwordChanger.change()}" value="#{msgs.changePassword}" />
+					     </li>
+					     <li>
+					         <h:commandLink value="#{msgs.logout}" action="#{userController.logout()}">
+					             
+					         </h:commandLink>
+					     </li>
+					   </ul>
+	            </div>
+	        </div>	       
+	    </div>
+	    
+	    <br/>
+	    <br/>
+	    
+	    <p:tieredMenu class="menu mymenu">
+	    
+	        <p:submenu label="Документы" icon="fa fa-list-alt">
+	        	<p:menuitem value="#{msgs.incoming}" target="_blank" url="http://10.200.2.108:7070/kazna3-2015/" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck')}" />
+	        	<p:menuitem value="#{msgs.outstandingList}" outcome="/view/sk/outstanding/journal.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck')}" />
+	        	<p:menuitem value="#{msgs.journalTitle}" outcome="/view/sk/journal.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck')}" />
+	        	<p:menuitem value="#{msgs.currencyAccountInfoList}" outcome="/view/currency_account_info/journal.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'bank')}" />
+	    		<p:menuitem value="Расспределение сумм" outcome="/view/payment/allocations.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck')}" />
+	    		<p:menuitem value="Журнал исходящих платежей" outcome="/view/payment/payment_out_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'bank')}" />
+	            <p:menuitem value="Журнал входящих платежей" outcome="/view/payment/payment_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'bank')}" />
+	        	
+	        	<p:menuitem value="#{msgs.outstandingList}" outcome="/view/outstanding/journal.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'сustomer') or loginUtil.userHasRole(loginUtil.currentUser, 'bank')}" />
+	        	<p:menuitem value="#{msgs.journalTitle}" outcome="/view/journal/journal.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'сustomer') or loginUtil.userHasRole(loginUtil.currentUser, 'bank')}" />
+	        </p:submenu>
+	        	        
+	    	<p:submenu label="#{msgs.reports}" icon="fa fa-print">
+	    		<p:menuitem value="Отчет по заявкам на зачет по таможенным пошлинам" outcome="/view/reports/conclusion.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'сustomer')}" />
+	    		<p:menuitem value="Отчет по заявкам на возврат по таможенным пошлинам" outcome="/view/reports/return.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck')}" />
+	    		<p:menuitem value="Сводный реестр" outcome="/view/reports/svod.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'сustomer')}" />
+	    		<p:menuitem value="Невыясненные" outcome="/view/reports/outstanding.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'сustomer')}" />
+	    		<p:menuitem value="Выписка" outcome="/view/reports/excerpt.xhtml"  rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'bank')}" />
+	    		<p:menuitem value="#{msgs.reestr_bank_agent}" outcome="/view/reports/reestr_bank_agent.xhtml"  rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'сustomer')}" />
+	    		<p:menuitem value="#{msgs.reestr_BKP}" outcome="/view/reports/reestr_BKP.xhtml"  rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'сustomer')}" />
+	    		<p:menuitem value="#{msgs.reestr_conclusion}" outcome="/view/reports/reestr_conclusion.xhtml"  rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck') or loginUtil.userHasRole(loginUtil.currentUser, 'сustomer')}" />
+	    		<p:menuitem value="#{msgs.settlementDocuments}" outcome="/view/reports/settlementDocuments.xhtml"  rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck')}" />
+	    		
+	    		
+	    		<p:menuitem value="Валютный" outcome="/view/reports/currency_account.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'bank') or loginUtil.userHasRole(loginUtil.currentUser, 'ck')}" />
+	        </p:submenu>
+	        
+	        <p:submenu label="Справочники" icon="fa fa-list-ul" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'ck')}">
+	        	<p:menuitem value="#{msgs.classiferRefence}" outcome="/view/reference/econom_classifier.xhtml" />
+	        	<p:menuitem value="Нормативы распределения" outcome="/view/reference/allocation_norms_header.xhtml" />
+	        	<p:menuitem value="Страны" outcome="/view/reference/country.xhtml" />
+	        	
+	        </p:submenu>
+	        
+	    </p:tieredMenu>
+	    
+	</h:form>
+	
+</ui:composition>
+
+</html>

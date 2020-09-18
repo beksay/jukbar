@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+
+	<ui:define name="content">
+	<div class="container">
+			<div class="jukForm">
+				<h:form>
+					<div class="row">
+						<div class="col-12">
+						   <h3>#{msgs.regions} (#{regionController.conversationOblast.oblast.name})</h3>
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.name}" />
+							<h:inputText id="name" class="uname"
+								value="#{regionController.region.name}" required="true"
+								requiredMessage="#{msgs.name} - #{msgs.isReq}">
+							</h:inputText>
+							<h:message for="name" display="icon" style="color:red;" />
+						</div>
+						<div class="col-6">
+							<h:outputLabel value="#{msgs.location}" />
+							<h:inputText id="location" class="location"
+								value="#{regionController.region.location}" required="true"
+								requiredMessage="#{msgs.location} - #{msgs.isReq}">
+							</h:inputText>
+							<h:message for="location" display="icon" style="color:red;" />
+						</div>
+						<div class="col-6" >
+						   <p:commandButton class="button" value="#{msgs.save}"
+							     action="#{regionController.save()}" icon="fas fa-save"/>
+							<h:outputLabel style="width:50px;display:inline-block"/>				
+							<p:commandButton class="button" value="#{msgs.cancel}" icon="fas fa-window-close"
+							    action="#{regionController.cancel()}" immediate="true" />
+						</div>
+					</div>
+					<p:messages/>
+				 </h:form>
+			</div>
+	 </div>
+	</ui:define>
+</ui:composition>

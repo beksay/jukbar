@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	
+	<ui:define name="metadata">
+    	<f:event listener="#{userList.filterData()}" type="preRenderView" />
+    </ui:define>
+	
+	<ui:define name="content">
+	<p:growl id="growl" life="5000"/>
+		<h:form>
+			<div class="pageTitle">
+				<h2>#{msgs.userJournal}</h2>
+			</div>
+			
+			<p:panel id="filterPanel">
+			<h:outputLabel value="#{msgs.firstname}" />
+			<p:inputText id="name" value="#{userList.name}"
+				title="Введите наименование" />
+			<p:tooltip id="nameTooltip" for="name" showEvent="focus"
+				hideEvent="blur" />
+				
+			<h:outputLabel for="role" value="#{msgs.role}" />
+			<h:selectOneMenu id="role" value="#{userList.role}" 
+			     effect="fold" editable="true" converter="#{roleConverter}">
+	            <f:selectItem itemLabel="#{msgs.selectValue}"/>
+				<f:selectItems value="#{userAction.availableRoles}" var="entity" itemLabel="#{entity.humanName}" itemValue="#{entity}"/>
+		    </h:selectOneMenu>
+					
+			<h:panelGroup class="btnRegBlock">		
+				<h:commandButton id="applyBtn" action="#{userList.filterData()}" value="#{msgs.apply}" styleClass="btnRegister" />
+				<h:outputLabel style="width:30px;display:inline-block"/>
+				<h:commandButton id="clearBtn" action="#{userList.clearData()}" value="#{msgs.clear}" styleClass="btnReject"/>
+			</h:panelGroup>	
+			</p:panel>
+			 
+			<p:dataTable var="entity" value="#{userList.model}" 
+			paginator="true" rows="50" rowIndexVar="index" lazy="true" 
+			id="table"
+			emptyMessage="#{msgs.noRecordsFound}" 
+			style="margin-top:0px"
+			sortOrder="DESCENDING"
+			styleClass="borderless"
+			rowStyleClass="#{entity.status != null and entity.status eq 'INACTIVE' ? 'INACTIVE_USER' : 'OTHER'}"
+			rowsPerPageTemplate="50,100,200" paginatorPosition="bottom" pageLinks="10"
+   			currentPageReportTemplate="#{msgs.showPaymentNumbers}" 
+            paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}">
+		 		<p:column headerText="#{msgs.number}" width="100">
+                    #{index + 1}
+                </p:column>
+		        <p:column headerText="#{msgs.firstname}">
+		          	<h:outputText value="#{entity.person.fullName}" />
+		        </p:column>
+		        <p:column headerText="#{msgs.username}">
+		        	<h:outputText value="#{entity.username}" />
+		        </p:column>
+		        <p:column headerText="#{msgs.email}">
+		        	<h:outputText value="#{entity.person.email}" />
+		        </p:column>
+		        <p:column headerText="#{msgs.status}">
+		        	<h:outputText value="#{enums[entity.status]}" />
+		        </p:column>
+		        <p:column headerText="#{msgs.role}">
+		        	<h:outputText value="#{entity.role.humanName}" />
+		        </p:column>
+		        <p:column headerText="#{msgs.educationInstitution}">
+		        	<h:outputText value="#{entity.educationInstitution.name}" />
+		        </p:column>
+		        <p:column headerText="#{msgs.operation}" width="150">
+		        	<p:commandButton action="#{userAction.block(entity)}" styleClass="add-btn" update="table" icon="fa fa-lock" title="#{msgs.lock}" rendered="#{entity.status.toString() eq 'ACTIVE'}" />
+			        <p:commandButton action="#{userAction.unblock(entity)}" styleClass="add-btn" update="table" icon="fa fa-unlock" title="#{msgs.unlock}" rendered="#{entity.status.toString() eq 'INACTIVE' or entity.status.toString() eq 'BLOCKED'}" />
+			        <p:commandButton action="#{userAction.refreshPassword(entity)}" styleClass="add-btn" update="table" icon="fa fa-refresh" title="#{msgs.refreshPassword}" />  
+		        </p:column>
+	        </p:dataTable>
+	</h:form>
+	</ui:define>
+</ui:composition>

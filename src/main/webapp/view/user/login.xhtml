@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+
+    <ui:define name="content">
+		
+		<div class="full-height p-padding login-page">					
+			    
+			<div class="logo-block">
+				<h:link outcome="/home.xhtml">
+					<h1 class="title">Вход в аккаунт</h1>
+				</h:link>
+			</div>
+			    
+			<h:form id="login-form" prependId="false" >
+				<p:messages/>
+				<h:outputText value="email" styleClass="label"/>
+				<h:inputText value="#{userController.email}" style="position:relative;" id="email"/>				
+				<p:watermark value="#{msgs.email}" for="email"/>
+		
+				
+				<h:outputText value="password" styleClass="label psw"/>
+				<h:inputSecret value="#{userController.password}" style="position:relative;" id="password"/>
+				<p:watermark value="#{msgs.password}" for="password"/>
+				
+				<h:panelGrid columns="2">
+					<p:commandButton value="#{msgs.login}" action="#{userController.login()}"/>
+					<p:commandButton value="#{msgs.register}" ajax="false" style="margin-left:20px"  action="#{registrationAction.register()}"/>
+				</h:panelGrid>
+				
+				<a  href="#{userController.forgot()}" >#{msgs.forgotPassword}</a>	
+				
+			</h:form>
+			
+			
+	
+			<div class="clear"></div>
+			
+			<script type="text/javascript">
+	
+				$(window).load(function() {
+					var element = $('.focus');
+					element.focus();
+				});
+				
+			
+			</script>
+		</div>
+			
+			
+		
+				
+	</ui:define>	
+	
+</ui:composition>

@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" lang="ru">
+
+<ui:insert name="metadata"/>
+
+<h:head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    
+	<h:outputStylesheet library="css" name="bootstrap-grid.min.css" />
+	<h:outputStylesheet library="css" name="fontawesome.min.css" />
+	<h:outputScript library="primefaces" name="jquery/jquery.js"/>
+	<h:outputScript library = "js" name = "bootstrap.min.js" />
+	<h:outputScript library = "js" name = "fontawesome.min.js" />
+	<h:outputScript library = "js" name = "core.js" />
+    <title>
+        <ui:insert name="title">
+            <h:outputText value="#{msgs.title}"/>
+        </ui:insert>
+    </title>
+
+    <ui:insert name="favicon">
+        <link rel="shortcut icon" type="image/x-icon"
+              href="#{request.contextPath}/faces_resources?folder=icons&amp;name=favicon.ico"/>
+    </ui:insert>
+
+    <ui:insert name="head">
+        <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=ru"></script>
+    </ui:insert>
+
+    <ui:insert name="additional-head"/>
+</h:head>
+<h:body id="entirePage">
+
+    <f:facet name="last">
+
+    </f:facet>
+    <ui:insert name="wrap-container">
+
+        <div id="container">
+
+            <ui:insert name="container">
+
+                <ui:insert name="outer-wrap-header">
+                    <div id="top-menu">
+                        <ui:insert name="wrap-header">
+
+                            <div id="header" class="grid">
+                                <ui:insert name="header"/>
+                            </div>
+
+                        </ui:insert>
+
+                    </div>
+                </ui:insert>
+
+                <ui:insert name="outer-wrap-content">
+                    <div id="wrap-content">
+
+                        <ui:insert name="wrap-content">
+
+                            <div id="content" class="grid">
+                                <ui:insert name="content"/>
+                            </div>
+                        </ui:insert>
+                    </div>
+
+
+                </ui:insert>
+
+
+            </ui:insert>
+
+        </div>
+
+    </ui:insert>
+
+
+    <ui:insert name="js"/>
+
+    <ui:insert name="add-js"/>
+
+</h:body>
+</html>
