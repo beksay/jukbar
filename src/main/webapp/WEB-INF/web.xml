@@ -43,7 +43,7 @@
     <async-supported>true</async-supported>
     <init-param>
       <param-name>public</param-name>
-      <param-value>/faces_resources.*|/view/user/login.xhtml.*|/download.*|/view/user/.*|/home.xhtml.*|/view/home.xhtml.*|/index.jsp.*|/view/user/login_ds.xhtml.*|/view/user/blocked.xhtml|/view/public/.*</param-value>
+      <param-value>/faces_resources.*|/view/user/login.xhtml.*|/download.*|/view/user/.*|/home.xhtml.*|/view/home.xhtml.*|/index.jsp.*|/view/user/login_ds.xhtml.*|/view/user/blocked.xhtml|/view/public/.*|/rest/xml/kicb.*</param-value>
     </init-param>
     <init-param>
       <param-name>logged</param-name>
