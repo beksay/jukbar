@@ -17,24 +17,11 @@ public class Digest {
 		this.algorithm = algorithm;
 	}
 	
-	public String doEncrypt(String message) {
-        StringBuilder sb = new StringBuilder();
-        try {
-            MessageDigest md = MessageDigest.getInstance(algorithm);
-            byte[] dataBytes = message.getBytes();
-
-            md.update(dataBytes, 0, dataBytes.length); 
-            byte[] digestedBytes = md.digest();
-
-            //convert the byte to hex format
-            for (byte digestedByte : digestedBytes) {
-                sb.append(Integer.toString((digestedByte & 0xff) + 0x100, 16).substring(1));
-            }
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-       return sb.toString();
+	public String doEncypt(String message) throws NoSuchAlgorithmException {
+        byte[] dataBytes = message.getBytes();
+ 
+        return doEncypt(dataBytes);
+ 
 	}
 	
 	public String doEncypt(byte[] dataBytes) throws NoSuchAlgorithmException {
@@ -52,4 +39,5 @@ public class Digest {
        return sb.toString();
  
 	}
+
 }

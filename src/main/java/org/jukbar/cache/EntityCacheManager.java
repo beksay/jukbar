@@ -9,8 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import org.jukbar.cache.CacheManager;
-import org.jukbar.cache.EntityCache;
 import org.jukbar.domain.PersistentEntity;
 import org.jukbar.util.Digest;
 import org.jukbar.util.PersistenceXMLParser;
@@ -100,7 +98,7 @@ public class EntityCacheManager implements CacheManager {
 			String name = entity.getClass().getName();
 			name = getCorrectName(name);
 			
-			return new Digest("MD5").doEncrypt(name + "_" + id);
+			return new Digest("MD5").doEncypt(name + "_" + id);
 		}
 		 
 		return null;

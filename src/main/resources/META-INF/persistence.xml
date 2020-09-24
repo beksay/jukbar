@@ -18,6 +18,7 @@
       <class>org.jukbar.domain.Shipments</class>
       <class>org.jukbar.domain.Oblast</class>
       <class>org.jukbar.domain.Region</class>
+      <class>org.jukbar.domain.Payment</class>
       <!-- entities -->
       
       <exclude-unlisted-classes>true</exclude-unlisted-classes>
