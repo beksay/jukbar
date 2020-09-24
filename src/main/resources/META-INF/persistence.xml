@@ -19,6 +19,7 @@
       <class>org.jukbar.domain.Oblast</class>
       <class>org.jukbar.domain.Region</class>
       <class>org.jukbar.domain.Payment</class>
+      <class>org.jukbar.domain.Operator</class>
       <!-- entities -->
       
       <exclude-unlisted-classes>true</exclude-unlisted-classes>
