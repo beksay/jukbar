@@ -32,6 +32,11 @@
 				<h:inputText value="#{registrationAction.person.firstName}" style="position:relative;" id="firstName" required="true" requiredMessage="#{msgs.firstName} - #{msgs.isReq}"/>				
 				<p:watermark value="#{msgs.firstName}" for="firstName"/>
 				<h:message for="firstName" display="icon" style="color:red;" />
+				
+				<h:outputText value="lastName" styleClass="label"/>
+				<h:inputText value="#{registrationAction.person.lastName}" style="position:relative;" id="lastName" required="true" requiredMessage="#{msgs.lastName} - #{msgs.isReq}"/>				
+				<p:watermark value="#{msgs.lastName}" for="lastName"/>
+				<h:message for="lastName" display="icon" style="color:red;" />
 
 				<h:outputText value="phone" styleClass="label"/>
 				<h:inputText value="#{registrationAction.person.phone}" style="position:relative;" id="phone" required="true" requiredMessage="#{msgs.phone} - #{msgs.isReq}"/>				
