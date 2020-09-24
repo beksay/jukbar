@@ -116,14 +116,6 @@ public class RegistrationAction extends Conversational{
 		validator.validate(user);
 		if(!FacesContext.getCurrentInstance().getMessageList().isEmpty()) return null;
 		
-		InputStream stream = this.getClass().getClassLoader().getResourceAsStream("user.template");
-		String template = null;
-		try {
-			template = IOUtils.toString(stream, "UTF-8");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 		PasswordBuilder builder = new PasswordBuilder();
 	    builder.lowercase(2)
 	            .uppercase(8)
@@ -132,12 +124,13 @@ public class RegistrationAction extends Conversational{
 	            .shuffle();
 	    
 	    String password = builder.build();
-	    String body = MessageFormat.format(template, new Object[]{user.getEmail(), user.getEmail(), user.getPerson().getFullName(), password});
 	    Message message = new Message();
 		message.setEmail(user.getEmail());
 		message.setSubject("jukbar");
-		message.setContent(body);
-		
+		message.setContent(""
+				+ "<li><b>Username: </b> " + getUser().getEmail() + "</li>"
+				+ "<li><b>Password: </b> " + password + "</li>"
+				);
 		MailSender.getInstance().asyncSend(message);
         
 	    try {
