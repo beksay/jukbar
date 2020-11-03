@@ -141,11 +141,9 @@ public class XmlServiceImpl implements XmlService {
 					format.setGroupingUsed(false);
 
 					response.setStatusId(200);
-					double v = 2000.0D;
 
 					extra = new ItemExtra();
 					extra.setName("amount");
-					extra.setValue(format.format(v));
 					response.getExtracts().add(extra);
 
 					extra = new ItemExtra();
