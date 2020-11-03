@@ -19,11 +19,10 @@ import org.jukbar.dto.rest.ItemExtra;
 import org.jukbar.dto.rest.ItemTo;
 import org.jukbar.dto.rest.KicbRequest;
 import org.jukbar.dto.rest.KicbResponse;
+import org.jukbar.rest.soa.XmlService;
 import org.jukbar.service.OperatorService;
 import org.jukbar.service.PaymentService;
 import org.jukbar.service.PersonService;
-import org.jukbar.util.Digest;
-import org.jukbar.rest.soa.XmlService;
 
 /**
  * 
@@ -44,8 +43,7 @@ public class XmlServiceImpl implements XmlService {
 	public Response kicbRequest(KicbRequest request) throws Exception {
 
 		Operator operator = operatorService.findById(3, false);
-		Digest digest = new Digest("MD5");
-		String password = digest.doEncypt(operator.getPassword());
+		String password = operator.getPassword();
 
 		KicbResponse response = new KicbResponse();
 		response.setProtocolVersion("4.00");
