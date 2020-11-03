@@ -141,11 +141,10 @@ public class XmlServiceImpl implements XmlService {
 					format.setGroupingUsed(false);
 
 					response.setStatusId(200);
-					double v = 2000.0D;
 
 					extra = new ItemExtra();
 					extra.setName("amount");
-					extra.setValue(format.format(v));
+					extra.setValue(format.format(request.getTo().getAmount()));
 					response.getExtracts().add(extra);
 
 					extra = new ItemExtra();
@@ -170,7 +169,7 @@ public class XmlServiceImpl implements XmlService {
 					response.setStatusId(30);
 
 					ItemTo to = new ItemTo();
-					to.setAmount(v);
+					to.setAmount(request.getTo().getAmount());
 					to.setServiceId(request.getTo().getServiceId());
 					to.setAccountNumber(request.getTo().getAccountNumber());
 					response.setTo(to);
