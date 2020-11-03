@@ -155,7 +155,7 @@ public class XmlServiceImpl implements XmlService {
 					extra = new ItemExtra();
 					extra.setName("serviceType");
 
-					String message = "Jukbar";
+					String message = "jukbar.kg";
 
 					extra.setValue(message);
 					response.getExtracts().add(extra);
