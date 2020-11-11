@@ -109,7 +109,7 @@ public class ShipmentApplicationAction extends Conversational{
 
 		shipments = new Shipments();
 		
-		return "/view/public/shipment_thank_you.xhtml?faces-redirect=true";
+		return "/view/public/application/thank_you.xhtml?faces-redirect=true";
 	}
 	
 	public String returnHome() {
@@ -121,7 +121,7 @@ public class ShipmentApplicationAction extends Conversational{
 		return "/home.xhtml";
 	}
 	
-	public void onRowSelect(SelectEvent event) throws IOException {
+	public void onRowSelectLocal(SelectEvent event) throws IOException {
 		shipments=(Shipments) event.getObject();
 		conversation.setShipments(shipments);
 		
@@ -138,11 +138,32 @@ public class ShipmentApplicationAction extends Conversational{
 		}
 		
 		System.out.println("shipments===" +shipments);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/public/shipments_list.xhtml?cid="+conversation.getId());
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/public/local/local_preview.xhtml?cid="+conversation.getId());
         
     }
 	
-	public String form(){
+	public void onRowSelectInternational(SelectEvent event) throws IOException {
+		shipments=(Shipments) event.getObject();
+		conversation.setShipments(shipments);
+		
+		if(shipments.getOblastFrom().getCity()==true) {
+		   setStartLocation(shipments.getOblastFrom().getLocation());
+		}else {
+		   setStartLocation(shipments.getRegionFrom().getLocation());
+		}
+		
+		if(shipments.getOblastTo().getCity()==true) {
+		    setEndLocation(shipments.getOblastTo().getLocation());
+		}else {
+		   setEndLocation(shipments.getRegionTo().getLocation());
+		}
+		
+		System.out.println("shipments===" +shipments);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/public/international/international_preview.xhtml?cid="+conversation.getId());
+        
+    }
+	
+	public String internationalForm(){
 		shipments = new Shipments();
 		selector.setCountry(new Country());
 		selector.setOblast(new Oblast());
@@ -150,7 +171,20 @@ public class ShipmentApplicationAction extends Conversational{
 		selector2.setCountry(new Country());
 		selector2.setOblast(new Oblast());
 		selector2.setRegion(new Region());
-		return "/view/public/shipment_application.xhtml";
+		return "/view/public/application/international_form.xhtml";
+	}
+	
+	public String localForm(){
+		shipments = new Shipments();
+		selector.setOblast(new Oblast());
+		selector.setRegion(new Region());
+		selector2.setOblast(new Oblast());
+		selector2.setRegion(new Region());
+		return "/view/public/application/local_form.xhtml";
+	}
+	
+	public String mainForm(){
+		return "/view/public/application/main.xhtml";
 	}
 	
 	public List<TransportType> getTransportTypeList() {

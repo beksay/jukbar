@@ -10072,7 +10072,7 @@ div.scrollmenuForm h3 {
         }
 
 .maintopContainer {
-	background-color:#577ACA;
+	background-color:#596D9B;
 	height:70px;
 }
 .maintopContainerPrivate {
@@ -10164,14 +10164,14 @@ body .mainList {
 body .mainList .mainJuk {
 	display:flex;
 	flex-direction: row;
-	min-height:180px;
+	min-height:150px;
 	border-radius:10px;
 	margin:15px 0 30px 0;
 	background:#fff;
 }
 body .mainList .mainJuk .mainJukLeft {
 	border-top-left-radius: 10px;
-	width:250px;
+	width:230px;
 	border-bottom-left-radius: 10px;
 }
 body .mainList .mainJuk .mainJukLeftMenu {
@@ -10194,13 +10194,16 @@ body .mainList .mainJuk:nth-child(1) .mainJukLeft {
 	background-color: #4a7fc4;
 }
 body .mainList .mainJuk:nth-child(2) .mainJukLeft {
+	background-image: url("../resources/images/local.png");
 	background-color: #288fa6;
 }
 body .mainList .mainJuk:nth-child(3) .mainJukLeft {
-	background-color: #40B1A4;
+	background-image: url("../resources/images/world.png");
+	background-color: #B7A694;
 }
 body .mainList .mainJuk:nth-child(4) .mainJukLeft {
-	background-color: #288fa6;
+	background-image: url("../resources/images/FAQ.png");
+	background-color: #8e896d;
 }
 body .mainJuk .mainJukContent {
 	flex:1;

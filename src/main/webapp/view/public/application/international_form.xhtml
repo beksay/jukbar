@@ -12,7 +12,7 @@
 				<h:form>
 					<div class="row">
 						<div class="col-12" style="text-align: center;">
-							<H4>Заявка на отправку груза</H4>
+							<H4>Заявка на отправку груза(#{msgs.internationalCargo})</H4>
 						</div>
 						<div class="col-6">
 							<h:outputLabel value="#{msgs.transportType}" />
@@ -63,9 +63,9 @@
 							<p:message for="countryTo" />
 						</div>
 						<div class="col-6">
-							<h:outputLabel for="oblastFrom" value="#{msgs.oblastFrom}" />
+							<h:outputLabel for="oblastFrom" value="#{msgs.oblastFrom}" rendered="#{countrySelector.country.id !=null}"/>
 							<h:selectOneMenu id="oblastFrom"
-								value="#{countrySelector.oblast}" effect="fold" editable="true"
+								value="#{countrySelector.oblast}" rendered="#{countrySelector.country.id !=null}"
 								converter="#{oblastConverter}" required="true"
 								requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
 								<f:selectItem itemLabel="#{msgs.selectValue}" />
@@ -74,46 +74,45 @@
 									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
 								<p:ajax event="change" update="regionFrom regFrom" />
 							</h:selectOneMenu>
-							<p:message for="oblastFrom" />
+							<p:message for="oblastFrom" rendered="#{countrySelector.country.id !=null}"/>
 						</div>
 						<div class="col-6">
-							<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}" />
+							<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}" rendered="#{countrySelector2.country.id !=null}"/>
 							<h:selectOneMenu id="oblastTo" value="#{countrySelector2.oblast}"
-								effect="fold" editable="true" converter="#{oblastConverter}"
-								required="true"
-								requiredMessage="#{msgs.oblastTo} - #{msgs.isReq}">
+								converter="#{oblastConverter}" rendered="#{countrySelector2.country.id !=null}"
+								required="true" requiredMessage="#{msgs.oblastTo} - #{msgs.isReq}">
 								<f:selectItem itemLabel="#{msgs.selectValue}" />
 								<f:selectItems
 									value="#{countrySelector2.getOblastList(countrySelector2.country)}"
 									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
 								<p:ajax event="change" update="regionTo regTo" />
 							</h:selectOneMenu>
-							<p:message for="oblastTo" />
+							<p:message for="oblastTo" rendered="#{countrySelector2.country.id !=null}"/>
 						</div>
 						<h:panelGroup  layout="block" id="regFrom" class="col-6">
-							<h:outputLabel for="regionFrom" value="#{msgs.regionFrom}" rendered="#{countrySelector.oblast.city!=true}"/>
+							<h:outputLabel for="regionFrom" value="#{msgs.regionFrom}" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
 							<h:selectOneMenu id="regionFrom"
 								value="#{countrySelector.region}" effect="fold" editable="true"
-								converter="#{regionConverter}" required="true" rendered="#{countrySelector.oblast.city!=true}"
+								converter="#{regionConverter}" required="true" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"
 								requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
 								<f:selectItem itemLabel="#{msgs.selectValue}" />
 								<f:selectItems
 									value="#{countrySelector.getRegionList(countrySelector.oblast)}"
 									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
 							</h:selectOneMenu>
-							<p:message for="regionFrom" rendered="#{countrySelector.oblast.city!=true}"/>
+							<p:message for="regionFrom" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
 						</h:panelGroup>
 						<h:panelGroup  layout="block" id="regTo" class="col-6">
-							<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{countrySelector2.oblast.city!=true}"/>
+							<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"/>
 							<h:selectOneMenu id="regionTo" value="#{countrySelector2.region}"
-								effect="fold" editable="true" converter="#{regionConverter}" rendered="#{countrySelector2.oblast.city!=true}"
+								effect="fold" editable="true" converter="#{regionConverter}" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"
 								required="true" requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
 								<f:selectItem itemLabel="#{msgs.selectValue}" />
 								<f:selectItems
 									value="#{countrySelector2.getRegionList(countrySelector2.oblast)}"
 									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
 							</h:selectOneMenu>
-							<p:message for="regionTo" rendered="#{countrySelector2.oblast.city!=true}"/>
+							<p:message for="regionTo" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"/>
 						</h:panelGroup>
 						<div class="col-6">
 							<h:outputLabel value="#{msgs.addressFrom}" />

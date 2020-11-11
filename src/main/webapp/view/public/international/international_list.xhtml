@@ -107,9 +107,9 @@
 								first="#{publicList.first}">
 								<p:ajax event="page" listener="#{publicList.onPageChange}" />
 								<p:ajax event="rowSelect"
-									listener="#{shipmentApplicationAction.onRowSelect}" />
+									listener="#{shipmentApplicationAction.onRowSelectInternational}" />
 								<f:facet name="header">
-					               #{msgs.shipments}
+					               #{msgs.internationalCargo}
 					            </f:facet> 	
 								<p:column headerText="№ заказа" width="100">
 									<h:outputText value="#{entity.id}" style="margin-right:5px" />
@@ -155,24 +155,25 @@
 										</p>
 									</div>
 								</p:column>
-								<p:column headerText="Дата перевозки" width="150">
+								<p:column headerText="#{msgs.fromPlace}" width="150">
 									<div class="mainDataDate">
 										<p>
 											<i class="fas fa-hourglass-start"></i>
-											<h:outputText value="#{entity.dateFrom}">
-												<f:convertDateTime pattern="dd.MM.yyyy" />
-											</h:outputText>
-										</p>
-										<p>
-											<i class="fas fa-hourglass-end"></i>
-											<h:outputText value="#{entity.dateTo}">
+											<h:outputText value="#{entity.dateFrom}" style="color:#596D9B">
 												<f:convertDateTime pattern="dd.MM.yyyy" />
 											</h:outputText>
 										</p>
 									</div>
 								</p:column>
 								<p:column headerText="#{msgs.amount}" width="150">
-									<h:outputText value="#{entity.amount} сом" style="font-weight: bold;"/>
+									<h:outputText value="#{entity.amount} сом" >
+									   <f:converter converterId="decimalNumberConverter" />
+									</h:outputText>
+								</p:column>
+								<p:column width="50">
+									<h:commandLink >
+									  <i class="fas fa-search"></i>
+									</h:commandLink>
 								</p:column>
 							</p:dataTable>
 						</div>

@@ -74,6 +74,12 @@ public class CountrySelector implements Serializable {
 		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
     
+    public List<Oblast> getLocalOblastList() {
+		List<FilterExample> examples = new ArrayList<>();
+		examples.add(new FilterExample("country.id", 1, InequalityConstants.EQUAL)); 
+		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
+	}
+    
     public List<Region> getRegionList(Oblast oblast) {
 		List<FilterExample> examples = new ArrayList<>();
 		if(oblast !=null) {

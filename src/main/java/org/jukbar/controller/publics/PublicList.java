@@ -103,6 +103,12 @@ public class PublicList extends BaseController implements Serializable {
 		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	
+	public List<Oblast> getOblastListLocal() {
+		List<FilterExample> examples = new ArrayList<>();
+		examples.add(new FilterExample("country.id", 1, InequalityConstants.EQUAL)); 
+		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
+	}
+	
 	public List<Region> getRegionList() {
 		List<FilterExample> examples = new ArrayList<>();
 		if(oblast !=null) {
@@ -125,6 +131,12 @@ public class PublicList extends BaseController implements Serializable {
 		}else {
 			examples.add(new FilterExample("id", InequalityConstants.IS_NULL_SINGLE)); 
 		}
+		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
+	}
+	
+	public List<Oblast> getOblastToListLocal() {
+		List<FilterExample> examples = new ArrayList<>();
+		examples.add(new FilterExample("country.id", 1, InequalityConstants.EQUAL)); 
 		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	

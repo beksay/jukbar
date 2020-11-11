@@ -8,10 +8,11 @@
 			<div class="maintop-logo">
 				<a class="mainlogo" href="/jukbar/home.xhtml"><h:graphicImage library="images" name="logojuk.png"/></a>
 				<ul class="jukMenu">
-					<li><a href="/jukbar/view/public/shipments.xhtml" >#{msgs.shipments}</a></li>
+					<li><a href="/jukbar/view/public/local/local_list.xhtml" >#{msgs.localCargo}</a></li>
+					<li><a href="/jukbar/view/public/international/international_list.xhtml" >#{msgs.internationalCargo}</a></li>
 					<li>
 						<h:form>
-		        			<h:commandLink action="#{shipmentApplicationAction.form()}" value="Заявка на отправку груза" />
+		        			<h:commandLink action="#{shipmentApplicationAction.mainForm()}" value="Заявка" />
 		        		</h:form>					
 					</li>
 				</ul>
