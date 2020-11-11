@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+
+	<ui:define name="content">
+		<div class="container">
+			<div class="jukForm">
+				<h:form>
+					<div class="row">
+						<div class="col-12" style="text-align: center;">
+							<H4>Заявка на отправку груза</H4>
+						</div>
+						<div class="col-6">
+						   <p:commandButton value="#{msgs.localCargo}" action="#{shipmentApplicationAction.localForm()}"/>
+						</div>
+						<div class="col-6">
+							<p:commandButton value="#{msgs.internationalCargo}" action="#{shipmentApplicationAction.internationalForm()}" />
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
