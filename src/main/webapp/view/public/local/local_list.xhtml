@@ -15,65 +15,65 @@
 							id="filterPanel">
 							<h:panelGroup id="oblastFrom" layout="block" class="col">
 								<h:outputLabel for="oblast" value="#{msgs.oblastFrom}" />
-								<h:selectOneMenu id="oblast" value="#{publicList.oblast}"
+								<h:selectOneMenu id="oblast" value="#{publicLocalList.oblast}"
 									effect="fold" editable="true" converter="#{oblastConverter}" >
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast"
+									<f:selectItems value="#{publicLocalList.oblastListLocal}" var="oblast"
 										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
-									<p:ajax listener="#{publicList.filterData()}" event="change"
+									<p:ajax listener="#{publicLocalList.filterData()}" event="change"
 										update="region table regionFrom" />
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<h:panelGroup id="regionFrom" layout="block" class="col">
-								<h:outputLabel for="region" value="#{msgs.regionFrom}" rendered="#{publicList.oblast.id!=null}"/>
-								<h:selectOneMenu id="region" value="#{publicList.region}" rendered="#{publicList.oblast.id!=null}"
+								<h:outputLabel for="region" value="#{msgs.regionFrom}" rendered="#{publicLocalList.oblast.id!=null}"/>
+								<h:selectOneMenu id="region" value="#{publicLocalList.region}" rendered="#{publicLocalList.oblast.id!=null}"
 									effect="fold" editable="true" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicList.regionList}" var="region"
+									<f:selectItems value="#{publicLocalList.regionList}" var="region"
 										itemLabel="#{region.name}" itemValue="#{region}" />
-									<p:ajax listener="#{publicList.filterData()}" event="change"
+									<p:ajax listener="#{publicLocalList.filterData()}" event="change"
 										update="table" />
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<h:panelGroup id="oblastToId" layout="block" class="col">
 								<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}" />
-								<h:selectOneMenu id="oblastTo" value="#{publicList.oblastTo}"
+								<h:selectOneMenu id="oblastTo" value="#{publicLocalList.oblastTo}"
 									effect="fold" editable="true" converter="#{oblastConverter}" >
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicList.oblastToListLocal}" var="oblast"
+									<f:selectItems value="#{publicLocalList.oblastToListLocal}" var="oblast"
 										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
-									<p:ajax listener="#{publicList.filterData()}" event="change"
+									<p:ajax listener="#{publicLocalList.filterData()}" event="change"
 										update="regionTo table regionToId" />
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<h:panelGroup id="regionToId" layout="block" class="col">
-								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{publicList.oblastTo.id!=null}"/>
-								<h:selectOneMenu id="regionTo" value="#{publicList.region}" rendered="#{publicList.oblastTo.id!=null}"
+								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{publicLocalList.oblastTo.id!=null}"/>
+								<h:selectOneMenu id="regionTo" value="#{publicLocalList.region}" rendered="#{publicLocalList.oblastTo.id!=null}"
 									effect="fold" editable="true" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicList.regionToList}" var="region"
+									<f:selectItems value="#{publicLocalList.regionToList}" var="region"
 										itemLabel="#{region.name}" itemValue="#{region}" />
-									<p:ajax listener="#{publicList.filterData()}" event="change"
+									<p:ajax listener="#{publicLocalList.filterData()}" event="change"
 										update="table" />
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<div class="col-auto">
 								<label></label>
 								<p:commandButton ajax="false" id="applyBtn"
-									action="#{publicList.filterData()}" value="#{msgs.search}"
+									action="#{publicLocalList.filterData()}" value="#{msgs.search}"
 									icon="fas fa-search" />
 							</div>
 							<div class="col-auto">
 								<label></label>
 								<p:commandButton ajax="false" id="clearBtn"
-									action="#{publicList.clearData()}" value="#{msgs.clear}"
+									action="#{publicLocalList.clearData()}" value="#{msgs.clear}"
 									icon="fas fa-eraser" />
 							</div>
 						</h:panelGroup>
 					</div>
 					<div class="mainListContent">
 						<div class="mainJukInfo">
-							<p:dataTable var="entity" value="#{publicList.model}"
+							<p:dataTable var="entity" value="#{publicLocalList.model}"
 								paginator="true" rows="10" rowIndexVar="index" lazy="true"
 								emptyMessage="#{msgs.noRecordsFound}" id="table"
 								sortOrder="DESCENDING"
@@ -82,36 +82,18 @@
 								paginatorPosition="bottom" pageLinks="10"
 								currentPageReportTemplate="#{msgs.showPaymentNumbers}"
 								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
-								first="#{publicList.first}">
-								<p:ajax event="page" listener="#{publicList.onPageChange}" />
+								first="#{publicLocalList.first}">
+								<p:ajax event="page" listener="#{publicLocalList.onPageChange}" />
 								<p:ajax event="rowSelect"
 									listener="#{shipmentApplicationAction.onRowSelectLocal}" />
 								<f:facet name="header">
 					               #{msgs.localCargo}
 					            </f:facet> 	
-								<p:column headerText="№ заказа" width="100">
-									<h:outputText value="#{entity.id}" style="margin-right:5px" />
-									<h:commandLink rendered="#{entity.transportType.id eq 1}">
-										<i class="fas fa-carrot"></i>
-									</h:commandLink>
-									<h:commandLink rendered="#{entity.transportType.id eq 2}">
-										<i class="fas fa-building"></i>
-									</h:commandLink>
-									<h:commandLink rendered="#{entity.transportType.id eq 3}">
-										<i class="fas fa-couch"></i>
-									</h:commandLink>
-									<h:commandLink rendered="#{entity.transportType.id eq 4}">
-										<i class="fas fa-tint"></i>
-									</h:commandLink>
-									<h:commandLink rendered="#{entity.transportType.id eq 5}">
-										<i class="fas fa-anchor"></i>
-									</h:commandLink>
-									<h:commandLink rendered="#{entity.transportType.id eq 6}">
-										<i class="fas fa-horse"></i>
-									</h:commandLink>
+								<p:column headerText="№ заказа" width="80">
+									<h:outputText value="#{entity.id}"  />
 								</p:column>
-								<p:column headerText="#{msgs.capacity}" width="100">
-									<h:outputText value="#{entity.capacity}" />
+								<p:column headerText="#{msgs.transportType}" width="200">
+									<h:outputText value="#{entity.transportType.name}" />
 								</p:column>
 								<p:column headerText="Маршрут">
 									<div class="MainDataContent">

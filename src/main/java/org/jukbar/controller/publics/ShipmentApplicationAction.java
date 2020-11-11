@@ -23,6 +23,7 @@ import org.jukbar.domain.Region;
 import org.jukbar.domain.Shipments;
 import org.jukbar.domain.TransportType;
 import org.jukbar.enums.ShipmentStatus;
+import org.jukbar.enums.ShipmentType;
 import org.jukbar.service.CountryService;
 import org.jukbar.service.OblastService;
 import org.jukbar.service.RegionService;
@@ -78,6 +79,38 @@ public class ShipmentApplicationAction extends Conversational{
         simpleModel.addOverlay(new Marker(coord1, "TEST"));
 	}
     
+	public String saveLocal() {
+		if(shipments == null){
+			FacesMessages.addMessage(Messages.getMessage("invalidData"), Messages.getMessage("invalidData"), null);
+			return null;
+		}
+		shipments.setOblastFrom(selector.getOblast());
+		if(selector.getOblast()!=null && selector.getOblast().getCity()!=true) {
+			shipments.setRegionFrom(selector.getRegion());
+		}
+		
+		shipments.setOblastTo(selector2.getOblast());
+		if(selector2.getOblast()!=null && selector2.getOblast().getCity()!=true) {
+			shipments.setRegionTo(selector2.getRegion());
+		}
+		shipments.setType(ShipmentType.LOCAL);
+		shipments.setDateCreated(new Date());
+		shipments.setStatus(ShipmentStatus.NEW);
+		
+		validator.validate(shipments);
+		if(!FacesContext.getCurrentInstance().getMessageList().isEmpty()) return null;
+		
+		if (shipments.getId() == null) {
+			service.persist(shipments);
+		} else {
+			service.merge(shipments);
+		}
+
+		shipments = new Shipments();
+		
+		return "/view/public/application/thank_you.xhtml?faces-redirect=true";
+	}
+	
 	public String save() {
 		if(shipments == null){
 			FacesMessages.addMessage(Messages.getMessage("invalidData"), Messages.getMessage("invalidData"), null);
@@ -94,7 +127,7 @@ public class ShipmentApplicationAction extends Conversational{
 		if(selector2.getOblast()!=null && selector2.getOblast().getCity()!=true) {
 			shipments.setRegionTo(selector2.getRegion());
 		}
-		
+		shipments.setType(ShipmentType.INTERNATIONAL);
 		shipments.setDateCreated(new Date());
 		shipments.setStatus(ShipmentStatus.NEW);
 		

@@ -15,22 +15,26 @@
 						<ul class="jukMenu">
 						    <h:panelGroup rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
 							<li>
-							   <h:link value="#{msgs.newShipments}"  outcome="/view/manager/new_shipments_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
+							   <h:link value="#{msgs.local}"  outcome="/view/managerLocal/new_list.xhtml" >
 									<span class="badge">#{managerController.newList}</span>
 							   </h:link>
 							</li>
 							<li>
-							   <h:link value="#{msgs.inProgressShipments}"  outcome="/view/manager/in_progress_shipments_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
+							   <h:link value="#{msgs.international}"  outcome="/view/managerInt/new_list.xhtml" >
+									<span class="badge">#{managerController.newList}</span>
+							   </h:link>
+							</li>
+							<li>
+							   <h:link value="#{msgs.inProgressShipments}"  outcome="/view/managerLocal/in_progress_list.xhtml" >
+							   </h:link>
+							</li>
+							<li>
+							   <h:link value="#{msgs.takenShipments}"  outcome="/view/managerLocal/taken_list.xhtml" >
 									
 							   </h:link>
 							</li>
 							<li>
-							   <h:link value="#{msgs.takenShipments}"  outcome="/view/manager/taken_shipments_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
-									
-							   </h:link>
-							</li>
-							<li>
-							   <h:link value="#{msgs.countries}"  outcome="/view/dictionary/country_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">	
+							   <h:link value="#{msgs.countries}"  outcome="/view/dictionary/country_list.xhtml" >	
 							   </h:link>
 							</li>
 							</h:panelGroup>

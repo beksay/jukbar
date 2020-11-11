@@ -51,7 +51,7 @@
     </init-param>
     <init-param>
       <param-name>manager</param-name>
-      <param-value>/view/news/.*|/view/manager/.*|/view/dictionary/.*|/view/user/.*|/view/profile/.*</param-value>
+      <param-value>/view/news/.*|/view/managerLocal/.*|/view/managerInt/.*|/view/dictionary/.*|/view/user/.*|/view/profile/.*</param-value>
     </init-param>
     <init-param>
       <param-name>driver</param-name>

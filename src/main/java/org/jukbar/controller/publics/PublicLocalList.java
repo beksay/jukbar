@@ -15,13 +15,12 @@ import javax.servlet.http.HttpSession;
 import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
 import org.jukbar.controller.BaseController;
-import org.jukbar.domain.Country;
 import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Region;
 import org.jukbar.enums.ShipmentStatus;
+import org.jukbar.enums.ShipmentType;
 import org.jukbar.enums.SortEnum;
 import org.jukbar.model.ShipmentsModel;
-import org.jukbar.service.CountryService;
 import org.jukbar.service.OblastService;
 import org.jukbar.service.RegionService;
 import org.jukbar.service.ShipmentsService;
@@ -36,7 +35,7 @@ import org.primefaces.event.data.PageEvent;
 
 @ManagedBean
 @ViewScoped
-public class PublicList extends BaseController implements Serializable {
+public class PublicLocalList extends BaseController implements Serializable {
 	
 	private static final long serialVersionUID = -6100072166946495229L;
 	@EJB
@@ -44,16 +43,12 @@ public class PublicList extends BaseController implements Serializable {
 	@EJB
 	private OblastService oblastService;
 	@EJB
-	private CountryService countryService;
-	@EJB
 	private RegionService regionService;
 	private ShipmentsModel model;
 	
-	private Country country;
 	private Oblast oblast;
 	private Region region;
-	
-	private Country countryTo;
+
 	private Oblast oblastTo;
 	private Region regionTo;
 	private Integer first;
@@ -66,41 +61,23 @@ public class PublicList extends BaseController implements Serializable {
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
+		filters.add(new FilterExample("type", ShipmentType.LOCAL, InequalityConstants.EQUAL));
 		filters.add(new FilterExample("status", ShipmentStatus.IN_PROGRESS, InequalityConstants.EQUAL));  
-		if(country !=null) filters.add(new FilterExample("countryFrom", country, InequalityConstants.EQUAL)); 
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
         if(region !=null) filters.add(new FilterExample("regionFrom", region, InequalityConstants.EQUAL));
         
-        if(countryTo !=null) filters.add(new FilterExample("countryTo", countryTo, InequalityConstants.EQUAL)); 
 		if(oblastTo !=null) filters.add(new FilterExample("oblastTo", oblastTo, InequalityConstants.EQUAL));  
         if(regionTo !=null) filters.add(new FilterExample("regionTo", regionTo, InequalityConstants.EQUAL));
 		model = new ShipmentsModel(filters, service);
 	}
 	
 	public String clearData() {
-		country=null;
 		oblast=null;
 		region=null;
-		countryTo=null;
 		oblastTo=null;
 		regionTo=null;
 		init();
 		return null;
-	}
-	
-	public List<Country> getCountryList() {
-		List<FilterExample> examples = new ArrayList<>();
-		return countryService.findByExample(0, 10, SortEnum.ASCENDING, examples, "id");
-	}
-	
-	public List<Oblast> getOblastList() {
-		List<FilterExample> examples = new ArrayList<>();
-		if(country !=null) {
-			examples.add(new FilterExample("country", country, InequalityConstants.EQUAL)); 
-		}else {
-			examples.add(new FilterExample("id", InequalityConstants.IS_NULL_SINGLE)); 
-		}
-		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	
 	public List<Oblast> getOblastListLocal() {
@@ -117,21 +94,6 @@ public class PublicList extends BaseController implements Serializable {
 			examples.add(new FilterExample("id", InequalityConstants.IS_NULL_SINGLE)); 
 		}
 		return regionService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
-	}
-	
-	public List<Country> getCountryToList() {
-		List<FilterExample> examples = new ArrayList<>();
-		return countryService.findByExample(0, 10, SortEnum.ASCENDING, examples, "id");
-	}
-	
-	public List<Oblast> getOblastToList() {
-		List<FilterExample> examples = new ArrayList<>();
-		if(countryTo !=null) {
-			examples.add(new FilterExample("country", countryTo, InequalityConstants.EQUAL)); 
-		}else {
-			examples.add(new FilterExample("id", InequalityConstants.IS_NULL_SINGLE)); 
-		}
-		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	
 	public List<Oblast> getOblastToListLocal() {
@@ -223,22 +185,6 @@ public class PublicList extends BaseController implements Serializable {
 	
 	public void setFirst(Integer first) {
 		this.first = first;
-	}
-
-	public Country getCountry() {
-		return country;
-	}
-
-	public void setCountry(Country country) {
-		this.country = country;
-	}
-
-	public Country getCountryTo() {
-		return countryTo;
-	}
-
-	public void setCountryTo(Country countryTo) {
-		this.countryTo = countryTo;
 	}
 
 	public Oblast getOblastTo() {

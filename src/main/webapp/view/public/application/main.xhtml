@@ -15,10 +15,10 @@
 							<H4>Заявка на отправку груза</H4>
 						</div>
 						<div class="col-6">
-						   <p:commandButton value="#{msgs.localCargo}" action="#{shipmentApplicationAction.localForm()}"/>
+						   <h:commandLink action="#{shipmentApplicationAction.localForm()}" value="#{msgs.localCargo}" />
 						</div>
 						<div class="col-6">
-							<p:commandButton value="#{msgs.internationalCargo}" action="#{shipmentApplicationAction.internationalForm()}" />
+							<h:commandLink action="#{shipmentApplicationAction.internationalForm()}" value="#{msgs.internationalCargo}" />
 						</div>
 					</div>
 				</h:form>

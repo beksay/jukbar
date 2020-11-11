@@ -14,12 +14,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.jukbar.enums.ShipmentStatus;
+import org.jukbar.enums.ShipmentType;
 
 @Entity
 @Table(name = "shipments")
 public class Shipments extends AbstractEntity<Integer>{
 
     private static final long serialVersionUID = 1L;
+    private ShipmentType type;
     private ShipmentStatus status;
     private TransportType transportType;
     private Country countryFrom;		
@@ -238,6 +240,15 @@ public class Shipments extends AbstractEntity<Integer>{
 
 	public void setCapacity(String capacity) {
 		this.capacity = capacity;
+	}
+
+	@Enumerated(EnumType.ORDINAL)
+	public ShipmentType getType() {
+		return type;
+	}
+
+	public void setType(ShipmentType type) {
+		this.type = type;
 	}
 
 
