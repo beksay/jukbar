@@ -1,6 +1,5 @@
 package org.jukbar.controller;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import org.jukbar.beans.FilterExample;
@@ -19,7 +17,6 @@ import org.jukbar.conversations.ConversationManager;
 import org.jukbar.domain.Shipments;
 import org.jukbar.enums.ShipmentStatus;
 import org.jukbar.service.ShipmentsService;
-import org.primefaces.event.SelectEvent;
 
 @ManagedBean
 @ViewScoped
@@ -44,15 +41,15 @@ public class ManagerController{
 	public String sendProgress(Shipments shipments) {
 		shipments.setStatus(ShipmentStatus.IN_PROGRESS);
 		shipments.setDateProgress(new Date());
-		BigDecimal percentage = new BigDecimal("1");
+		BigDecimal percentage = new BigDecimal("5");
 		BigDecimal price =  shipments.getAmount().multiply(percentage).divide(new BigDecimal(100));
 		shipments.setPrice(price);
 		service.merge(shipments);
-		return listNew();
+		return listLocalNew();
 	}
 	
-	public void onRowSelectNew(SelectEvent event) throws IOException {
-		shipments=(Shipments) event.getObject();
+	public String viewLocalNew(Shipments shipments) {
+		this.shipments = shipments;
 		conversation.setShipments(shipments);
 		if(shipments.getOblastFrom().getCity()==true) {
 		   conversation.setStartLocation(shipments.getOblastFrom().getLocation());
@@ -65,32 +62,11 @@ public class ManagerController{
 		}else {
 			conversation.setEndLocation(shipments.getRegionTo().getLocation());
 		}
-		System.out.println("shipments===" +shipments);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/manager/new_preview.xhtml?cid="+conversation.getId());
-        
-    }
+		return "/view/managerLocal/new_preview.xhtml?faces-redirect=true";
+	}
 	
-	public void onRowSelectInProgress(SelectEvent event) throws IOException {
-		shipments=(Shipments) event.getObject();
-		conversation.setShipments(shipments);
-		if (shipments.getOblastFrom().getCity() == true) {
-			conversation.setStartLocation(shipments.getOblastFrom().getLocation());
-		} else {
-			conversation.setStartLocation(shipments.getRegionFrom().getLocation());
-		}
-
-		if (shipments.getOblastTo().getCity() == true) {
-			conversation.setEndLocation(shipments.getOblastTo().getLocation());
-		} else {
-			conversation.setEndLocation(shipments.getRegionTo().getLocation());
-		}
-		System.out.println("shipments===" +shipments);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/manager/in_progress_preview.xhtml?cid="+conversation.getId());
-        
-    }
-	
-	public void onRowSelectTaken(SelectEvent event) throws IOException {
-		shipments=(Shipments) event.getObject();
+	public String viewIntNew(Shipments shipments) {
+		this.shipments = shipments;
 		conversation.setShipments(shipments);
 		if(shipments.getOblastFrom().getCity()==true) {
 		   conversation.setStartLocation(shipments.getOblastFrom().getLocation());
@@ -103,13 +79,79 @@ public class ManagerController{
 		}else {
 			conversation.setEndLocation(shipments.getRegionTo().getLocation());
 		}
-		System.out.println("shipments===" +shipments);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/manager/taken_preview.xhtml?cid="+conversation.getId());
-        
-    }
+		return "/view/managerInt/new_preview.xhtml?faces-redirect=true";
+	}
 	
-	private String listNew(){
-		return "/view/manager/new_shipments_list.xhtml?faces-redirect=true";
+	public String viewLocalInProgress(Shipments shipments) {
+		this.shipments = shipments;
+		conversation.setShipments(shipments);
+		if(shipments.getOblastFrom().getCity()==true) {
+		   conversation.setStartLocation(shipments.getOblastFrom().getLocation());
+		}else {
+			 conversation.setStartLocation(shipments.getRegionFrom().getLocation());		   
+		}
+		
+		if(shipments.getOblastTo().getCity()==true) {
+			conversation.setEndLocation(shipments.getOblastTo().getLocation());
+		}else {
+			conversation.setEndLocation(shipments.getRegionTo().getLocation());
+		}
+		return "/view/managerLocal/in_progress_preview.xhtml?faces-redirect=true";
+	}
+	
+	public String viewIntInProgress(Shipments shipments) {
+		this.shipments = shipments;
+		conversation.setShipments(shipments);
+		if(shipments.getOblastFrom().getCity()==true) {
+		   conversation.setStartLocation(shipments.getOblastFrom().getLocation());
+		}else {
+			 conversation.setStartLocation(shipments.getRegionFrom().getLocation());		   
+		}
+		
+		if(shipments.getOblastTo().getCity()==true) {
+			conversation.setEndLocation(shipments.getOblastTo().getLocation());
+		}else {
+			conversation.setEndLocation(shipments.getRegionTo().getLocation());
+		}
+		return "/view/managerInt/in_progress_preview.xhtml?faces-redirect=true";
+	}
+	
+	public String viewLocalTaken(Shipments shipments) {
+		this.shipments = shipments;
+		conversation.setShipments(shipments);
+		if(shipments.getOblastFrom().getCity()==true) {
+		   conversation.setStartLocation(shipments.getOblastFrom().getLocation());
+		}else {
+			 conversation.setStartLocation(shipments.getRegionFrom().getLocation());		   
+		}
+		
+		if(shipments.getOblastTo().getCity()==true) {
+			conversation.setEndLocation(shipments.getOblastTo().getLocation());
+		}else {
+			conversation.setEndLocation(shipments.getRegionTo().getLocation());
+		}
+		return "/view/managerLocal/taken_preview.xhtml?faces-redirect=true";
+	}
+	
+	public String viewIntTaken(Shipments shipments) {
+		this.shipments = shipments;
+		conversation.setShipments(shipments);
+		if(shipments.getOblastFrom().getCity()==true) {
+		   conversation.setStartLocation(shipments.getOblastFrom().getLocation());
+		}else {
+			 conversation.setStartLocation(shipments.getRegionFrom().getLocation());		   
+		}
+		
+		if(shipments.getOblastTo().getCity()==true) {
+			conversation.setEndLocation(shipments.getOblastTo().getLocation());
+		}else {
+			conversation.setEndLocation(shipments.getRegionTo().getLocation());
+		}
+		return "/view/managerInt/taken_preview.xhtml?faces-redirect=true";
+	}
+	
+	private String listLocalNew(){
+		return "/view/managerLocal/new_list.xhtml?faces-redirect=true";
 	}
 	
 	public Long getNewList() {

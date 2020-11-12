@@ -12,32 +12,29 @@
 					<div class="maintop-logo">
 						<a class="mainlogo" href="/jukbar/view/main.xhtml"><h:graphicImage library="images" name="logojuk.png"/></a>
 						
+						<p:menubar styleClass="jukMenu">
+					        <p:menuitem value="#{msgs.local}" outcome="/view/managerLocal/new_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
+					           <span class="badge">#{managerController.newList}</span>
+					        </p:menuitem>
+					        <p:menuitem value="#{msgs.international}" outcome="/view/managerInt/new_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
+					           <span class="badge">#{managerController.newList}</span>
+					        </p:menuitem>
+							<p:submenu label="#{msgs.cargos}" icon="pi pi-file" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
+					            <p:submenu label="#{msgs.inProgressShipments}" icon="pi pi-briefcase">
+					                <p:menuitem value="#{msgs.local}" outcome="/view/managerLocal/in_progress_list.xhtml" />
+					                <p:menuitem value="#{msgs.international}" outcome="/view/managerInt/in_progress_list.xhtml" />
+					            </p:submenu>
+					            <p:submenu label="#{msgs.takenShipments}" icon="pi pi-briefcase">
+					                <p:menuitem value="#{msgs.local}" outcome="/view/managerLocal/taken_list.xhtml" />
+					                <p:menuitem value="#{msgs.international}" outcome="/view/managerInt/taken_list.xhtml" />
+					            </p:submenu>
+					        </p:submenu>
+					        <p:submenu label="#{msgs.dict}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
+					                <p:menuitem value="#{msgs.countries}" outcome="/view/dictionary/country_list.xhtml" />
+					        </p:submenu>
+					    </p:menubar>
+						
 						<ul class="jukMenu">
-						    <h:panelGroup rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
-							<li>
-							   <h:link value="#{msgs.local}"  outcome="/view/managerLocal/new_list.xhtml" >
-									<span class="badge">#{managerController.newList}</span>
-							   </h:link>
-							</li>
-							<li>
-							   <h:link value="#{msgs.international}"  outcome="/view/managerInt/new_list.xhtml" >
-									<span class="badge">#{managerController.newList}</span>
-							   </h:link>
-							</li>
-							<li>
-							   <h:link value="#{msgs.inProgressShipments}"  outcome="/view/managerLocal/in_progress_list.xhtml" >
-							   </h:link>
-							</li>
-							<li>
-							   <h:link value="#{msgs.takenShipments}"  outcome="/view/managerLocal/taken_list.xhtml" >
-									
-							   </h:link>
-							</li>
-							<li>
-							   <h:link value="#{msgs.countries}"  outcome="/view/dictionary/country_list.xhtml" >	
-							   </h:link>
-							</li>
-							</h:panelGroup>
 							<li>
 							   <h:link value="#{msgs.shipments}"  outcome="/view/shipments/shipments_list.xhtml" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}">
 							   </h:link>

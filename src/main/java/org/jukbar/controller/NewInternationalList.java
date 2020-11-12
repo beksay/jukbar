@@ -19,6 +19,7 @@ import org.jukbar.domain.Country;
 import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Region;
 import org.jukbar.enums.ShipmentStatus;
+import org.jukbar.enums.ShipmentType;
 import org.jukbar.enums.SortEnum;
 import org.jukbar.model.ShipmentsModel;
 import org.jukbar.service.CountryService;
@@ -67,6 +68,7 @@ public class NewInternationalList extends BaseController implements Serializable
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
+		filters.add(new FilterExample("type", ShipmentType.INTERNATIONAL, InequalityConstants.EQUAL));
 		filters.add(new FilterExample("status", ShipmentStatus.NEW, InequalityConstants.EQUAL));  
 		if(country !=null) filters.add(new FilterExample("countryFrom", country, InequalityConstants.EQUAL)); 
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
