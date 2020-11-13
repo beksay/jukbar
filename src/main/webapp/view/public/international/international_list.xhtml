@@ -106,8 +106,6 @@
 								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
 								first="#{publicInternationalList.first}">
 								<p:ajax event="page" listener="#{publicInternationalList.onPageChange}" />
-								<p:ajax event="rowSelect"
-									listener="#{shipmentApplicationAction.onRowSelectInternational}" />
 								<f:facet name="header">
 					               #{msgs.internationalCargo}
 					            </f:facet> 	
@@ -153,7 +151,7 @@
 									</h:outputText>
 								</p:column>
 								<p:column width="50">
-									<h:commandLink >
+									<h:commandLink action="#{shipmentApplicationAction.viewInternational(entity)}">
 									  <i class="fas fa-search"></i>
 									</h:commandLink>
 								</p:column>

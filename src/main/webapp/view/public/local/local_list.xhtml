@@ -84,8 +84,6 @@
 								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
 								first="#{publicLocalList.first}">
 								<p:ajax event="page" listener="#{publicLocalList.onPageChange}" />
-								<p:ajax event="rowSelect"
-									listener="#{shipmentApplicationAction.onRowSelectLocal}" />
 								<f:facet name="header">
 					               #{msgs.localCargo}
 					            </f:facet> 	
@@ -125,7 +123,7 @@
 									</h:outputText>
 								</p:column>
 								<p:column width="50">
-									<h:commandLink >
+									<h:commandLink action="#{shipmentApplicationAction.viewLocal(entity)}">
 									  <i class="fas fa-search"></i>
 									</h:commandLink>
 								</p:column>

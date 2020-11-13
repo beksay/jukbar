@@ -154,12 +154,11 @@ public class ShipmentApplicationAction extends Conversational{
 		return "/home.xhtml";
 	}
 	
-	public void onRowSelectLocal(SelectEvent event) throws IOException {
-		shipments=(Shipments) event.getObject();
-		conversation.setShipments(shipments);
+	public String viewLocal(Shipments shipments) {
+		this.shipments = shipments;
 		
 		if(shipments.getOblastFrom().getCity()==true) {
-		   setStartLocation(shipments.getOblastFrom().getLocation());
+			   setStartLocation(shipments.getOblastFrom().getLocation());
 		}else {
 		   setStartLocation(shipments.getRegionFrom().getLocation());
 		}
@@ -170,17 +169,15 @@ public class ShipmentApplicationAction extends Conversational{
 		   setEndLocation(shipments.getRegionTo().getLocation());
 		}
 		
-		System.out.println("shipments===" +shipments);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/public/local/local_preview.xhtml?cid="+conversation.getId());
-        
-    }
+		return "/view/public/local/local_preview.xhtml";
+		
+	}
 	
-	public void onRowSelectInternational(SelectEvent event) throws IOException {
-		shipments=(Shipments) event.getObject();
-		conversation.setShipments(shipments);
+	public String viewInternational(Shipments shipments) {
+		this.shipments = shipments;
 		
 		if(shipments.getOblastFrom().getCity()==true) {
-		   setStartLocation(shipments.getOblastFrom().getLocation());
+			   setStartLocation(shipments.getOblastFrom().getLocation());
 		}else {
 		   setStartLocation(shipments.getRegionFrom().getLocation());
 		}
@@ -191,10 +188,9 @@ public class ShipmentApplicationAction extends Conversational{
 		   setEndLocation(shipments.getRegionTo().getLocation());
 		}
 		
-		System.out.println("shipments===" +shipments);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/public/international/international_preview.xhtml?cid="+conversation.getId());
-        
-    }
+		return "/view/public/international/international_preview.xhtml";
+		
+	}
 	
 	public String internationalForm(){
 		shipments = new Shipments();
