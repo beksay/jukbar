@@ -17,43 +17,26 @@
 			</div>
 			    
 			<h:form id="login-form" prependId="false" >
-				<p:messages/>
-				<h:outputText value="email" styleClass="label"/>
-				<h:inputText value="#{userController.email}" style="position:relative;" id="email"/>				
-				<p:watermark value="#{msgs.email}" for="email"/>
-		
 				
+				<h:outputText value="email" styleClass="label"/>
+				<h:inputText value="#{userController.email}" style="position:relative;" id="email" required="true" requiredMessage="#{msgs.email} - #{msgs.isReq}"/>				
+				<p:watermark value="#{msgs.email}" for="email"/>
+				<p:message for="email" />
+		
 				<h:outputText value="password" styleClass="label psw"/>
-				<h:inputSecret value="#{userController.password}" style="position:relative;" id="password"/>
+				<h:inputSecret value="#{userController.password}" style="position:relative;" id="password" required="true" requiredMessage="#{msgs.password} - #{msgs.isReq}"/>
 				<p:watermark value="#{msgs.password}" for="password"/>
+				<p:message for="password" />
 				
 				<h:panelGrid columns="2">
-					<p:commandButton value="#{msgs.login}" action="#{userController.login()}"/>
+					<p:commandButton value="#{msgs.login}" action="#{userController.login()}" ajax="false"/>
 					<p:commandButton value="#{msgs.register}" ajax="false" style="margin-left:20px"  action="#{registrationAction.register()}"/>
 				</h:panelGrid>
 				
-				<a  href="#{userController.forgot()}" >#{msgs.forgotPassword}</a>	
+				<a  href="#{userController.forgot()}" >#{msgs.forgotPassword}</a>
 				
+				<p:growl id="growl" showDetail="true" sticky="true" /> 	
 			</h:form>
-			
-			
-	
-			<div class="clear"></div>
-			
-			<script type="text/javascript">
-	
-				$(window).load(function() {
-					var element = $('.focus');
-					element.focus();
-				});
-				
-			
-			</script>
-		</div>
-			
-			
-		
-				
-	</ui:define>	
-	
+		</div>			
+	</ui:define>		
 </ui:composition>
