@@ -37,7 +37,7 @@ import org.primefaces.event.data.PageEvent;
 @Logged
 @ManagedBean
 @ViewScoped
-public class ShipmentsList extends BaseController implements Serializable {
+public class InternationalList extends BaseController implements Serializable {
 	
 	private static final long serialVersionUID = -6100072166946495229L;
 	@EJB

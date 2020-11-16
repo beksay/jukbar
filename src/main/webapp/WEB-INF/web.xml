@@ -55,7 +55,7 @@
     </init-param>
     <init-param>
       <param-name>driver</param-name>
-      <param-value>/view/shipments/.*|/view/manager/.*|/view/student/.*|/view/personal/.*|/view/profile/.*|/view/news/.*|/view/teacher/.*|/view/dictionaries/.*</param-value>
+      <param-value>/view/local/.*|/view/international/.*|/view/profile/.*|/view/news/.*</param-value>
     </init-param>
   </filter>
   <filter-mapping>

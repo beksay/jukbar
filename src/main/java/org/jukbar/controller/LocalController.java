@@ -19,7 +19,7 @@ import org.primefaces.event.SelectEvent;
 
 @ManagedBean
 @ViewScoped
-public class ShipmentsController{
+public class LocalController{
 
 	@EJB
 	private ShipmentsService service;
