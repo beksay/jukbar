@@ -16,12 +16,10 @@
 	<ui:define name="outer-wrap-content">
 
 		<div id="wrap-private-content">
-			<div id="private-content">
-				<div id="content" class="private">
-				    <div class="main-left-menu">
-						<ui:insert name="main-content-left" />
-					</div>
-					<div class="container">
+			<div id="private-content" class="container">
+				<div id="content" class="InnerLeft">
+					<ui:insert name="main-content-left" />
+					<div class="InnerContent">
 						<ui:insert name="content" />
 					</div>
 				</div>

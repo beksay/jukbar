@@ -10345,3 +10345,53 @@ body .mainDataDate p svg {
     z-index: 99999999;
     font-size: 10px;
 }
+.InnerLeft {
+	display:flex;
+	flex-direction: row;
+}
+.InnerLeft .mainSidecontent {
+	width:220px;
+	background:#fff;
+	margin-right:5px;
+}
+.InnerLeft .mainSidecontent .main-menu{
+	display:flex;
+	flex-direction: column;
+}
+.InnerLeft .mainSidecontent .main-menu a:first-child {
+	border-top: 0;
+}
+.InnerLeft .mainSidecontent .main-menu a:first-child {
+	border-top:0;
+}
+.InnerLeft .mainSidecontent .main-menu a.active, .InnerLeft .mainSidecontent .main-menu a:hover, .InnerLeft .mainSidecontent .main-menu a:active {
+	color:#457770;
+	border-left:6px solid #457770;
+}
+.InnerLeft .mainSidecontent .main-menu a{
+	background:#f7f7f7;
+	border-left:6px solid transparent;
+	padding:10px 5px;
+	border-top:1px solid #fff;
+	border-bottom:1px solid #ccc;
+}
+.InnerLeft .InnerContent {
+	flex:1;
+} 
+.InnerLeft .mainSidecontent .main-menu .my-avatar {
+	background:#E5EEF7;
+	display:flex;
+	padding:10px 20px;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;	
+}
+.InnerLeft .mainSidecontent .main-menu .my-avatar .the-avatar{
+	font-size:30px;
+	color:#457770;
+}
+.InnerLeft .mainSidecontent .main-menu .my-avatar .the-user {
+	padding-left:10px;
+	font-size:18px;
+	font-weight:500;
+}

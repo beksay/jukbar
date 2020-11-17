@@ -9,8 +9,17 @@
 	    <div class="mainSidecontent">
 			<h:form>
 		        <div class="main-menu">
-		               <h:commandLink  value="Мой профиль" styleClass="#{view.viewId.contains('nickname') ? 'active' : ''}"/>
-		               <h:commandLink  value="Адрес" styleClass="#{view.viewId.contains('address') ? 'active' : ''}"/>
+		        		<div class="my-avatar">
+		        			<div class="the-avatar">
+		        				<i class="fas fa-cogs"></i>
+		        			</div>
+		        			<div class="the-user">My Profile</div>
+		        		</div>
+		               <h:commandLink  value="Основные данные" styleClass="#{view.viewId.contains('my_profile') ? 'active' : ''}"/>
+		               <h:commandLink  value="Мои документы" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
+		               <h:commandLink  value="Мой счет" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
+		               <h:commandLink  value="Архив ставок" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
+		               <h:commandLink  value="Помощь" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
 				</div>
  			</h:form>						
 		</div> 
