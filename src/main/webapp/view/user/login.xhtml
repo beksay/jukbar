@@ -28,12 +28,12 @@
 				<p:watermark value="#{msgs.password}" for="password"/>
 				<p:message for="password" />
 				
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" styleClass="login_hr">
 					<p:commandButton value="#{msgs.login}" action="#{userController.login()}" ajax="false"/>
 					<p:commandButton value="#{msgs.register}" ajax="false" style="margin-left:20px"  action="#{registrationAction.register()}" immediate="true"/>
 				</h:panelGrid>
 				
-				<a  href="#{userController.forgot()}" >#{msgs.forgotPassword}</a>
+				<a  href="#{userController.forgot()}">#{msgs.forgotPassword}</a>
 				
 				<p:growl id="growl" showDetail="true" sticky="true" /> 	
 			</h:form>

@@ -5,7 +5,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
-
 	<ui:define name="content">
 		<div class="container">
 			<div class="jukForm">
@@ -14,11 +13,31 @@
 						<div class="col-12" style="text-align: center;">
 							<H4>Заявка на отправку груза</H4>
 						</div>
-						<div class="col-6">
-						   <h:commandLink action="#{shipmentApplicationAction.localForm()}" value="#{msgs.localCargo}" />
+						<div class="col-md-6">
+						   <div class="card text-center">
+							  <div class="card-header">
+							    #{msgs.localCargo}
+							  </div>
+							  <h:commandLink action="#{shipmentApplicationAction.localForm()}">
+								  <div class="card-body">
+								    <h:graphicImage library="images" height="100" width="100"  name="local.png"/>
+								    <h5 class="card-title">Перевозка любых грузов по Кыргызстану</h5>
+								  </div>
+							  </h:commandLink>
+							</div>
 						</div>
-						<div class="col-6">
-							<h:commandLink action="#{shipmentApplicationAction.internationalForm()}" value="#{msgs.internationalCargo}" />
+						<div class="col-md-6">
+							<div class="card text-center">
+							  <div class="card-header">
+							    #{msgs.internationalCargo}
+							  </div>
+							  <h:commandLink action="#{shipmentApplicationAction.internationalForm()}">
+								  <div class="card-body">
+								    <h:graphicImage library="images" height="100" width="100"  name="world.png"/>
+								    <h5 class="card-title">Транспортным компаниям </h5>
+								  </div>
+							  </h:commandLink>
+							</div>
 						</div>
 					</div>
 				</h:form>

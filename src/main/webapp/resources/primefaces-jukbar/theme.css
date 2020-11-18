@@ -8015,6 +8015,7 @@ div.user:hover .user-menu {
 #login-form {
     width: 280px;
     margin: 40px auto 0;
+    
 }
 
 #login-form .label {
@@ -8031,12 +8032,6 @@ div.user:hover .user-menu {
 
 #login-form input[type="text"],
 #login-form input[type="password"] {
-    border-radius: 2px;
-    -o-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-color: #ddd;
     font-size: 15px;
     font-family: 'Open Sans', Arial, sans-serif;
     margin-bottom: 10px;
@@ -8063,8 +8058,11 @@ div.user:hover .user-menu {
 }
 
 #login-form div {
-    margin-top: 10px;
     text-align: center;
+    display: flex;
+}
+.login_hr{
+	margin-bottom: 7px;
 }
 
 .reg {
