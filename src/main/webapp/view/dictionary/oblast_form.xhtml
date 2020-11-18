@@ -5,7 +5,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/layouts/private.xhtml">
-
+    <ui:define name="main-content-left">
+		<ui:include src="../../WEB-INF/templates/private/left_menu.xhtml" />		
+	</ui:define>
 	<ui:define name="content">
 	<div class="container">
 			<div class="jukForm">

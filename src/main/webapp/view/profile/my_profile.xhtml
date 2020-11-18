@@ -14,7 +14,7 @@
 				<h:form>
 					<div class="row">
 					    <div class="col-12" style="text-align: center;">
-							<H4>#{msgs.myProfile} (#{loginUtil.currentUser.person.firstName})</H4>
+							<H4>#{msgs.mainData}</H4>
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.myAccount}" />
@@ -54,6 +54,7 @@
 							<p:commandButton ajax="false" icon="fas fa-save" action="#{profileController.save()}" rendered="#{profileController.editProfile}" value="#{msgs.save}" />					
 							<h:outputLabel style="width:20px;display:inline-block"/>
 							<p:commandButton ajax="false" icon="fas fa-window-close" action="#{profileController.cancel()}" rendered="#{profileController.editProfile}" value="#{msgs.cancel}" />
+						    <h:outputLabel style="width:20px;display:inline-block"/>
 						    <p:commandButton ajax="false" action="#{passwordChanger.change()}" value="#{msgs.changePassword}" icon="fas fa-key"/>
 							<h:outputLabel style="width:20px;display:inline-block"/>
 							<p:commandButton value="#{msgs.logout}" action="#{userController.logout()}" icon="fas fa-sign-out-alt"/>

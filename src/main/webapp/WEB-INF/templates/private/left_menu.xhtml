@@ -9,17 +9,21 @@
 	    <div class="mainSidecontent">
 			<h:form>
 		        <div class="main-menu">
-		        		<div class="my-avatar">
-		        			<div class="the-avatar">
-		        				<i class="fas fa-cogs"></i>
-		        			</div>
-		        			<div class="the-user">My Profile</div>
-		        		</div>
-		               <h:commandLink  value="Основные данные" styleClass="#{view.viewId.contains('my_profile') ? 'active' : ''}"/>
-		               <h:commandLink  value="Мои документы" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
-		               <h:commandLink  value="Мой счет" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
-		               <h:commandLink  value="Архив ставок" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
-		               <h:commandLink  value="Помощь" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
+	        		<div class="my-avatar">
+	        			<div class="the-avatar">
+	        				<i class="fas fa-cogs"></i>
+	        			</div>
+	        			<div class="the-user">#{msgs.myProfile}</div>
+	        		</div>
+	               <h:commandLink  value="#{msgs.mainData}" action="#{profileController.mainData()}"
+	                      styleClass="#{view.viewId.contains('profile') ? 'active' : ''}"/>
+	               <h:commandLink  value="#{msgs.countries}" action="#{profileController.countryList()}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}"
+	                      styleClass="#{view.viewId.contains('dictionary') ? 'active' : ''}"/>       
+	               <h:commandLink  value="Мои документы" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
+	               <h:commandLink  value="Мой счет" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
+	               <h:commandLink  value="Архив ставок" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
+	               
+	               <h:commandLink  value="Помощь" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
 				</div>
  			</h:form>						
 		</div> 

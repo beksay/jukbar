@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="mainListData">
+			     <div class="mainListFilter">
+					<h:form id="filter-form">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<div class="col">
+							    <h:outputLabel for="watermark" value="#{msgs.fullName}"/>
+								<p:inputText value="#{userList.searchString}" id="watermark"
+									styleClass="m-right">
+									<p:ajax listener="#{userList.filterData()}" event="keyup"
+										update="form" />
+								</p:inputText>
+								<p:watermark for="watermark" value="Поиск по ФИО" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="applyBtn"
+									action="#{userList.filterData()}" value="#{msgs.search}"
+									icon="fas fa-search" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="clearBtn"
+									action="#{userList.clearData()}" value="#{msgs.clear}"
+									icon="fas fa-eraser" />
+							</div>
+						</h:panelGroup>
+
+					</h:form>
+				</div>
+				<h:form id="form">
+					<div class="mainListContent">
+						<p:dataTable var="entity" value="#{userList.model}" 
+							paginator="true" rows="15" rowIndexVar="index" lazy="true" 
+							emptyMessage="#{msgs.noRecordsFound}" 
+							id="table"
+							style="margin-top:0px"
+							sortOrder="DESCENDING"
+							selectionMode="single" selection="#{userAction.user}"
+							rowsPerPageTemplate="15,30,50" paginatorPosition="bottom" pageLinks="10"
+				   			currentPageReportTemplate="#{msgs.showPaymentNumbers}" 
+				            paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+				            first="#{userList.first}" >
+				            <p:ajax event="page" listener="#{userList.onPageChange}"/>  
+				                <f:facet name="header">
+						            #{msgs.users}
+						        </f:facet>
+						 		<p:column headerText="#{msgs.number}" width="60">
+				                    #{index + 1}
+				                </p:column>
+						        <p:column headerText="#{msgs.fullName}">
+						          	<h:outputText value="#{entity.person.fullName}" />
+						        </p:column>
+						        <p:column headerText="#{msgs.email}">
+						        	<h:outputText value="#{entity.email}" />
+						        </p:column>
+						        <p:column headerText="#{msgs.status}">
+						        	<h:outputText value="#{enums[entity.status]}" />
+						        </p:column>
+						        <p:column headerText="#{msgs.operation}" >
+						        	<p:commandButton action="#{userAction.block(entity)}" update="table" icon="fa fa-lock" title="#{msgs.lock}" rendered="#{entity.status.toString() eq 'ACTIVE'}" />
+							        <p:commandButton action="#{userAction.unblock(entity)}" update="table" icon="fa fa-unlock" title="#{msgs.unlock}" rendered="#{entity.status.toString() eq 'INACTIVE' or entity.status.toString() eq 'BLOCKED'}" />
+						        </p:column>
+					    </p:dataTable>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

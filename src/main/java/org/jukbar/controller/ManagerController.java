@@ -16,6 +16,7 @@ import org.jukbar.beans.InequalityConstants;
 import org.jukbar.conversations.ConversationManager;
 import org.jukbar.domain.Shipments;
 import org.jukbar.enums.ShipmentStatus;
+import org.jukbar.enums.ShipmentType;
 import org.jukbar.service.ShipmentsService;
 
 @ManagedBean
@@ -157,6 +158,15 @@ public class ManagerController{
 	public Long getNewList() {
         List<FilterExample> examples=new ArrayList<>();
         examples.add(new FilterExample("status", ShipmentStatus.NEW, InequalityConstants.EQUAL));
+        examples.add(new FilterExample("type", ShipmentType.LOCAL, InequalityConstants.EQUAL));
+        Long c = service.countByExample(examples);
+        return c;
+	}
+	
+	public Long getNewIntList() {
+        List<FilterExample> examples=new ArrayList<>();
+        examples.add(new FilterExample("status", ShipmentStatus.NEW, InequalityConstants.EQUAL));
+        examples.add(new FilterExample("type", ShipmentType.INTERNATIONAL, InequalityConstants.EQUAL));
         Long c = service.countByExample(examples);
         return c;
 	}

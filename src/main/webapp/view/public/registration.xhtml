@@ -43,9 +43,8 @@
 				<p:watermark value="#{msgs.phone}" for="phone"/>
 				<h:message for="phone" display="icon" style="color:red;" />
 
-                
                 <p:selectBooleanCheckbox id="isReq" value="#{registrationAction.person.requirement}" required="true"/>			
-				<h:outputLabel style="margin-left:40px" for="isReq" value="#{msgs.registerReq}" />
+				<h:outputLabel  for="isReq" value="#{msgs.registerReq}" />
 		    	
 		        <h:panelGrid columns="2">
 					<p:commandButton ajax="false" value="#{msgs.register}"  action="#{registrationAction.save()}"/>

@@ -47,12 +47,11 @@ public class PasswordChanger extends Conversational {
 	public String change() {
 		User user = new FacesScopeQualifier().getValue(LoginUtil.CURRENT_USER_SESSION_KEY, ScopeConstants.SESSION_SCOPE);
 		System.out.println("go to add [change password] by user " + user);
-		return "/view/user/change_password.xhtml?faces-redirect=true";
+		return "/view/profile/change_password.xhtml?faces-redirect=true";
 	}
 	
 	public String cancel() {
-		closeConversation();
-		return "/view/main.xhtml?faces-redirect=true";
+		return "/view/profile/my_profile.xhtml?faces-redirect=true";
 	}
 	
 	public String doChange() throws Exception {

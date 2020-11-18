@@ -87,6 +87,14 @@ public class ProfileController extends Conversational {
 		return "/view/main.xhtml";
 	}
 	
+	public String countryList() {
+		return "/view/dictionary/country_list.xhtml";
+	}
+	
+	public String mainData() {
+		return "/view/profile/my_profile.xhtml";
+	}
+	
 	public User getUser() {
 		return user;
 	}
