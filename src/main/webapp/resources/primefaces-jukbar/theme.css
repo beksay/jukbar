@@ -10264,6 +10264,12 @@ body .jukForm select {
 	padding:5px;
 } 
 body .jukForm input[type="text"], body .jukForm textarea, body .jukForm select {
+	font-size: 15px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin-bottom: 10px;
+    line-height: 1.5em;
+    padding-left: 10px;
+    height: 40px;
 	width:100%;
 }
 body .jukForm label {

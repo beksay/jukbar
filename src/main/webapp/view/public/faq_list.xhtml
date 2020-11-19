@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+
+	<ui:define name="content">
+		<div class="container">
+			<div class="mainListData">
+			     <div class="mainListFilter">
+					<h:form id="filter-form">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<div class="col">
+								<p:inputText value="#{publicController.searchString}" id="watermark"
+									styleClass="m-right">
+									<p:ajax listener="#{publicController.allFaqList()}" event="keyup"
+										update="form" />
+								</p:inputText>
+								<p:watermark for="watermark" value="Поиск" />
+							</div>
+							<div class="col">
+							 <h4>#{msgs.faq}</h4>
+							</div>
+						</h:panelGroup>
+					</h:form>
+				</div>
+				<h:form id="form">
+				    <p:accordionPanel value="#{publicController.allFaqList()}" var="car" dynamic="true" cache="true">
+				        <p:tab title="#{car.title}">
+				            <h:panelGrid columns="2" cellpadding="10">
+				                <h:outputText value="#{car.content}" />
+				            </h:panelGrid>
+				        </p:tab>
+				    </p:accordionPanel>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

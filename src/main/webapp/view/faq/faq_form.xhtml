@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+    <ui:define name="main-content-left">
+		<ui:include src="../../WEB-INF/templates/private/left_menu.xhtml" />		
+	</ui:define>
+	<ui:define name="content">
+	<div class="container">
+			<div class="jukForm">
+				<h:form>
+					<div class="row">
+						<div class="col-12">
+						   <h3>#{msgs.faq}</h3>
+						</div>
+						<div class="col-12">
+							<h:outputLabel value="#{msgs.theme}" />
+							<h:inputText id="theme" value="#{faqController.faq.title}" required="true"
+								requiredMessage="#{msgs.title} - #{msgs.isReq}">
+							</h:inputText>
+							<h:message for="theme" display="icon" style="color:red;" />
+						</div>
+						<div class="col-12">
+							<h:outputLabel value="#{msgs.content}" />
+							<p:inputTextarea id="content" value="#{faqController.faq.content}" required="true"
+								requiredMessage="#{msgs.content} - #{msgs.isReq}"  counter="display" counterTemplate="{0} #{msgs.charactersRemaining}." maxlength="1500">
+							    <f:ajax execute="@this" event="blur" /> 
+							</p:inputTextarea>
+							<h:outputText id="display"/>
+							<h:message for="content" display="icon" style="color:red;" />
+						</div>
+						<div class="col-12 mt-2" >
+						   <p:commandButton class="button" value="#{msgs.save}"
+							     action="#{faqController.save()}" icon="fas fa-save"/>
+							<h:outputLabel style="width:50px;display:inline-block"/>				
+							<p:commandButton class="button" value="#{msgs.cancel}" icon="fas fa-window-close"
+							    action="#{faqController.cancel()}" immediate="true" />
+						</div>
+					</div>
+					<p:messages/>
+				 </h:form>
+			</div>
+	 </div>	
+
+	</ui:define>
+</ui:composition>

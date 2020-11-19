@@ -18,7 +18,9 @@
 	               <h:commandLink  value="#{msgs.mainData}" action="#{profileController.mainData()}"
 	                      styleClass="#{view.viewId.contains('profile') ? 'active' : ''}"/>
 	               <h:commandLink  value="#{msgs.countries}" action="#{profileController.countryList()}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}"
-	                      styleClass="#{view.viewId.contains('dictionary') ? 'active' : ''}"/>       
+	                      styleClass="#{view.viewId.contains('dictionary') ? 'active' : ''}"/> 
+	               <h:commandLink  value="#{msgs.faq}" action="#{profileController.faqList()}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}"
+	                      styleClass="#{view.viewId.contains('faq') ? 'active' : ''}"/>        
 	               <h:commandLink  value="Мои документы" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
 	               <h:commandLink  value="Мой счет" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
 	               <h:commandLink  value="Архив ставок" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>

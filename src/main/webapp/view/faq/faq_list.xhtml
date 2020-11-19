@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="main-content-left">
+		<ui:include src="../../WEB-INF/templates/private/left_menu.xhtml" />		
+	</ui:define>
+	<ui:define name="content">
+		<div class="container">
+			<div class="mainListData">
+			     <div class="mainListFilter">
+					<h:form id="filter-form">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<div class="col">
+								<p:inputText value="#{faqController.searchString}" id="watermark"
+									styleClass="m-right">
+									<p:ajax listener="#{faqController.allFaqList()}" event="keyup"
+										update="form" />
+								</p:inputText>
+								<p:watermark for="watermark" value="Поиск" />
+							</div>
+							<div class="col">
+						    	<p:commandButton value="#{msgs.add}" action="#{faqController.add()}" />
+							</div>
+						</h:panelGroup>
+					</h:form>
+				</div>
+				<h:form id="form">
+				    <p:accordionPanel value="#{faqController.allFaqList()}" var="car" dynamic="true" cache="true">
+				        <p:tab title="#{car.title}">
+				            <h:panelGrid columns="2" cellpadding="10">
+				                <h:outputText value="#{car.content}" />
+				            </h:panelGrid>
+				            <h:panelGrid columns="2" cellpadding="10">
+				                <p:commandButton action="#{faqController.edit(car)}" update="@form" icon="fa fa-edit"  value="Обработать" />
+						        <p:commandButton action="#{faqController.delete(car)}" update="@form" icon="fas fa-trash-alt" value="Удалить" />
+				            </h:panelGrid>
+				        </p:tab>
+				    </p:accordionPanel>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
