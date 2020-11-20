@@ -10253,6 +10253,16 @@ body .mainBanner .carousel-item {
 	background-repeat: no-repeat;
 	background-size: cover; 
 } 
+body .mainBanner .carousel-item h3{
+	color:#212529;
+}
+body .mainBanner .carousel-item p{
+	color:#212529;
+}
+body .mainBanner .carousel-item img{
+	width: 100%;
+	height:300px;
+}
 body .banner-inner {
 	min-height:300px;
 }
@@ -10399,3 +10409,4 @@ body .mainDataDate p svg {
 	font-size:18px;
 	font-weight:500;
 }
+
