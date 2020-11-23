@@ -6094,11 +6094,24 @@ body .ui-terminal .ui-terminal-input {
 }
 
 #container {
-    height: 100%;
     min-height: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
-
+#wrap-content{
+	flex:1;	
+}
+.mainFooter {
+	background-color: #dce1e6;
+	min-height: 70px;
+	color:#596D9B;
+    text-align: center;
+}
+.mainFooter .row{
+	margin-top:20px;
+}
+	
 #top-menu {
     margin-top:0px;
     width: 100%;

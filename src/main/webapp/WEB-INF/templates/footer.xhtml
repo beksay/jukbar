@@ -2,38 +2,35 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <div class="services col-4-12">
-        <h5><h:outputText value="#{msgs.usefulLinks}"/></h5>
-        <ul>
-            <li><h:outputLink value="http://www.minfin.kg" target="_blank">#{msgs.ministryOfFincance}</h:outputLink></li>
-            <li><h:outputLink value="http://www.kazna.gov.kg" target="_blank">#{msgs.centralTreasury}</h:outputLink></li>
-            <li><h:outputLink value="http://www.antimonopolia.kg" target="_blank">#{msgs.antimonopolyAgencyKR}</h:outputLink></li>
-            <li><h:outputLink value="https://www.okmot.kg" target="_blank">#{msgs.informationalResourceKR}</h:outputLink></li>
-            <li><h:outputLink value="http://www.aks.kg" target="_blank">#{msgs.anticorruptionAgencyGKNBKR}</h:outputLink></li>
-            <li><h:outputLink value="http://training.okmot.kg" target="_blank">#{msgs.trainingCenter}</h:outputLink></li>
-        </ul>
-    </div>
-
-    <div class="services col-2-12">
-        <h5><h:outputText value="#{msgs.oldVersionsOfPortal}"/></h5>
-        <ul>
-            <li><h:outputLink value="http://zakupki.okmot.kg" target="_blank">#{msgs.version} 2013</h:outputLink></li>
-            <li><h:outputLink value="http://oldzakupki.gov.kg" target="_blank">#{msgs.version} 2012</h:outputLink></li>
-            <li><h:outputLink value="http://goszakupki.gov.kg" target="_blank">#{msgs.version} 2011</h:outputLink></li>
-            <li><h:outputLink value="http://t-zakupki.okmot.kg" target="_blank">#{msgs.testPortal}</h:outputLink></li>
-        </ul>
-    </div>
-
-    <div class="services col-3-12">
-        <ul>
-            <li><h:outputLink value="#{addressController.getUACAddress()}/view/rules/terms.xhtml"><h:outputText value="#{msgs.termsOfService2}" /></h:outputLink></li>
-            <li><h:outputLink value="#{addressController.getUACAddress()}/view/rules/privacy.xhtml"><h:outputText value="#{msgs.privacyPolicy2}"/></h:outputLink></li>
-        </ul>
-    </div>
-
-    <div class="clear"></div>
-
-    <p class="copy"><a href="http://www.minfin.kg">&#169; <h:outputText value="#{msgs.ministryOfFincance}"/></a></p>
-
-    <div class="clear"></div>
+   <h:panelGroup layout="block" class="mainFooter" rendered="#{!loginUtil.logged}">
+   	   <div class="container">
+   		<h:form>
+   			<div class="row">
+   				<div class="col-12 col-md-6 col-lg-3">
+   				  <h:commandLink  value="#{msgs.aboutUs}" />
+   				</div>
+   				<div class="col-12 col-md-6 col-lg-3">
+   				  <h:commandLink  value="Жалобы" />
+   				</div>
+   				<div class="col-12 col-md-6 col-lg-3">
+   				  <h:commandLink  value="Способы оплаты" />
+   				</div>
+   				<div class="col-12 col-md-6 col-lg-3">
+   				  <ul class="list-inline social-buttons">
+			          <li class="list-inline-item">
+			            <a href="#">
+			             <h:graphicImage library="images" height="20" width="20"  name="instagram.png"/>
+			            </a>
+			          </li>
+			          <li class="list-inline-item">
+			            <a href="#">
+			              <h:graphicImage library="images" height="20" width="20"  name="facebook.png"/>
+			            </a>
+			          </li>
+			       </ul>
+   				</div>
+   			</div>
+   		 </h:form>
+   	 </div>
+   </h:panelGroup>
 </ui:composition>
