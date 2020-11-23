@@ -10254,7 +10254,9 @@ body .mainBanner .carousel-item {
 	background-size: cover; 
 } 
 body .mainBanner .carousel-item h3{
-	color:#212529;
+	font: bold 20px 'PT Sans Caption', serif;
+    color: #3861a2;
+    text-transform: uppercase;
 }
 body .mainBanner .carousel-item p{
 	color:#212529;
