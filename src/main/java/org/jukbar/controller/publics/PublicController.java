@@ -46,8 +46,20 @@ public class PublicController extends Conversational {
         return faqService.findByExample(0, 1000, SortEnum.ASCENDING, examples, "id");
 	}
 	
+	public String mainList() {
+		return "/view/public/main.xhtml?faces-redirect=true";
+	}
+	
 	public String faqList() {
 		return "/view/public/faq_list.xhtml?faces-redirect=true";
+	}
+	
+	public String intList() {
+		return "/view/public/international/main.xhtml?faces-redirect=true";
+	}
+	
+	public String localList() {
+		return "/view/public/local/main.xhtml?faces-redirect=true";
 	}
 
 	public String getSearchString() {

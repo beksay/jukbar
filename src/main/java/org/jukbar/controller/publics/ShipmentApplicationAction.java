@@ -1,6 +1,5 @@
 package org.jukbar.controller.publics;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +31,6 @@ import org.jukbar.service.TransportTypeService;
 import org.jukbar.util.web.FacesMessages;
 import org.jukbar.util.web.Messages;
 import org.jukbar.validator.EntityValidator;
-import org.primefaces.event.SelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;

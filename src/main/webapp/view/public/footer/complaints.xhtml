@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+	<ui:define name="content">
+		<div class="container">
+		<div class="jukForm">
+		  <br/>
+		  <h:form>
+			<div class="card bg-light mb-3" >
+			  <div class="card-header">#{msgs.complaints}</div>
+			  <div class="card-body">
+			    <h:form>
+					<div class="row">
+						<div class="col-12">
+							<h:outputLabel value="#{msgs.themeMessage}" />
+							<h:inputText id="theme" value="#{complaintsController.complaints.theme}" required="true"
+								requiredMessage="#{msgs.themeMessage} - #{msgs.isReq}">
+							</h:inputText>
+							<h:message for="theme" display="icon" style="color:red;" />
+						</div>
+						<div class="col-12">
+							<h:outputLabel value="#{msgs.content}" />
+							<p:inputTextarea id="content" value="#{complaintsController.complaints.content}" required="true"
+								requiredMessage="#{msgs.content} - #{msgs.isReq}"  counter="display" counterTemplate="{0} #{msgs.charactersRemaining}." maxlength="1500">
+							    <f:ajax execute="@this" event="blur" /> 
+							</p:inputTextarea>
+							<h:outputText id="display"/>
+							<h:message for="content" display="icon" style="color:red;" />
+							<p:watermark for="content" value="#{msgs.contentInfo}" />
+						</div>
+						<div class="col-12 mt-2" >
+						   <p:commandButton class="button" value="#{msgs.sendMessage}"
+							     action="#{complaintsController.save()}" icon="fas fa-save"/>
+							<h:outputLabel style="width:50px;display:inline-block"/>				
+							<p:commandButton class="button" value="#{msgs.cancel}" icon="fas fa-window-close"
+							    action="#{complaintsController.cancel()}" immediate="true" />
+						</div>
+					</div>
+					<p:messages/>
+				 </h:form>
+			  </div>
+			</div>
+		  </h:form>	
+		  </div>
+		</div>
+	</ui:define>
+</ui:composition>
