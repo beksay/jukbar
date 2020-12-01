@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.ejb.EJB;
 import javax.ws.rs.core.Response;
@@ -23,6 +22,7 @@ import org.jukbar.rest.soa.XmlService;
 import org.jukbar.service.OperatorService;
 import org.jukbar.service.PaymentService;
 import org.jukbar.service.PersonService;
+import org.jukbar.util.Digest;
 
 /**
  * 
@@ -51,7 +51,7 @@ public class XmlServiceImpl implements XmlService {
 		response.setType(request.getType());
 		response.setTerminalId(request.getTerminalId());
 		response.setOperatorId(2239);
-		response.setTxnId(UUID.randomUUID().toString());
+		response.setTxnId(new Digest("SHA-1").doEncypt(request.getTransactionNumber()));
 		response.setTransactionNumber(request.getTransactionNumber());
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS");
