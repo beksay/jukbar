@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="main-content-left">
+		<ui:include src="../../WEB-INF/templates/private/left_menu.xhtml" />		
+	</ui:define>
+	<ui:define name="content">
+		<div class="container">
+			<div class="mainListData">
+			     <div class="mainListFilter">
+					<h:form id="filter-form">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<div class="col">
+							    <p:calendar  value="#{paymentList.dateFrom}" >
+							       <p:ajax listener="#{paymentList.filterData()}" event="keyup"
+										update="form" />
+							    </p:calendar>
+							</div>
+							<div class="col">
+							    <p:calendar  value="#{paymentList.dateTo}" >
+							       <p:ajax listener="#{paymentList.filterData()}" event="keyup"
+										update="form" />
+							    </p:calendar>
+							</div>
+							<div class="col">
+								<p:commandButton ajax="true" update="form"
+									value="#{msgs.search}" style="display:none"
+									actionListener="#{paymentList.filterData()}"
+									styleClass="button green f-right" />
+							</div>
+							<div class="col">
+						    	<p:commandButton value="#{msgs.add}" action="#{paymentController.add()}" />
+							</div>
+						</h:panelGroup>
+
+					</h:form>
+				</div>
+				<h:form id="form">
+					<div class="mainListContent">
+						<p:dataTable var="entity" value="#{paymentList.model}" 
+							paginator="true" rows="50" rowIndexVar="index" lazy="true" 
+							emptyMessage="#{msgs.noRecordsFound}" 
+							id="table"
+							style="margin-top:0px"
+							sortOrder="DESCENDING"
+							selectionMode="single" selection="#{paymentController.payment}"
+							rowsPerPageTemplate="50,100,200" paginatorPosition="bottom" pageLinks="10"
+				   			currentPageReportTemplate="#{msgs.showPaymentNumbers}" 
+				            paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+				            first="#{paymentList.first}" >
+				            <p:ajax event="page" listener="#{paymentList.onPageChange}"/>  
+				                <f:facet name="header">
+						            #{msgs.payments}
+						        </f:facet>
+						 		<p:column headerText="#{msgs.number}" width="100">
+				                    #{index + 1}
+				                </p:column>
+				                <p:column headerText="#{msgs.purpose}">
+						            <h:outputText value="Пополнен счет на" />
+						        </p:column>
+						        <p:column headerText="#{msgs.amount}">
+						            <h:outputText value="#{entity.amount} сом" >
+									   <f:converter converterId="decimalNumberConverter" />
+									</h:outputText>
+						        </p:column>
+						        <p:column headerText="#{msgs.date}">
+						            <h:outputText value="#{entity.date}" />
+						        </p:column> 
+					    </p:dataTable>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

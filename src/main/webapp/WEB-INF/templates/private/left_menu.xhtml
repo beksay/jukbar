@@ -20,10 +20,11 @@
 	               <h:commandLink  value="#{msgs.countries}" action="#{profileController.countryList()}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}"
 	                      styleClass="#{view.viewId.contains('dictionary') ? 'active' : ''}"/> 
 	               <h:commandLink  value="#{msgs.faq}" action="#{profileController.faqList()}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}"
-	                      styleClass="#{view.viewId.contains('faq') ? 'active' : ''}"/>        
-	               <h:commandLink  value="Мои документы" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
-	               <h:commandLink  value="Мой счет" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
-	               <h:commandLink  value="Архив ставок" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}"/>
+	                      styleClass="#{view.viewId.contains('faq') ? 'active' : ''}"/>    
+	               <h:commandLink  value="Мои документы" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}" 
+	                      rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>       
+	               <h:commandLink  value="#{msgs.payments}" action="#{profileController.paymentList()}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"
+	                      styleClass="#{view.viewId.contains('payments') ? 'active' : ''}"/>     
 	               
 	               <h:commandLink  value="Помощь" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}" />
 				</div>

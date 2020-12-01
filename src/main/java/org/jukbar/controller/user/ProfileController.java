@@ -95,6 +95,10 @@ public class ProfileController extends Conversational {
 		return "/view/faq/faq_list.xhtml";
 	}
 	
+	public String paymentList() {
+		return "/view/payments/payments_list.xhtml";
+	}
+	
 	public String mainData() {
 		return "/view/profile/my_profile.xhtml";
 	}
