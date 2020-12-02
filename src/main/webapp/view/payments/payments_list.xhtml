@@ -17,24 +17,21 @@
 							id="filterPanel">
 							<div class="col">
 							    <p:calendar  value="#{paymentList.dateFrom}" >
-							       <p:ajax listener="#{paymentList.filterData()}" event="keyup"
-										update="form" />
 							    </p:calendar>
 							</div>
 							<div class="col">
 							    <p:calendar  value="#{paymentList.dateTo}" >
-							       <p:ajax listener="#{paymentList.filterData()}" event="keyup"
-										update="form" />
 							    </p:calendar>
 							</div>
 							<div class="col">
-								<p:commandButton ajax="true" update="form"
-									value="#{msgs.search}" style="display:none"
-									actionListener="#{paymentList.filterData()}"
+								<p:commandButton ajax="true" update="form" value="#{msgs.search}" 
+									actionListener="#{paymentList.filterData()}" icon="fas fa-search"
 									styleClass="button green f-right" />
-							</div>
+							</div>	
 							<div class="col">
-						    	<p:commandButton value="#{msgs.add}" action="#{paymentController.add()}" />
+								<p:commandButton ajax="false" id="clearBtn"
+									action="#{paymentList.clearData()}" value="#{msgs.clear}"
+									icon="fas fa-eraser" />
 							</div>
 						</h:panelGroup>
 
@@ -43,13 +40,15 @@
 				<h:form id="form">
 					<div class="mainListContent">
 						<p:dataTable var="entity" value="#{paymentList.model}" 
-							paginator="true" rows="50" rowIndexVar="index" lazy="true" 
+							paginator="true" rows="10" rowIndexVar="index" lazy="true" 
 							emptyMessage="#{msgs.noRecordsFound}" 
 							id="table"
 							style="margin-top:0px"
 							sortOrder="DESCENDING"
 							selectionMode="single" selection="#{paymentController.payment}"
-							rowsPerPageTemplate="50,100,200" paginatorPosition="bottom" pageLinks="10"
+							rowStyleClass="#{entity.type eq 'INCOME' ? 'incomeStyle' :
+			                 (entity.type eq 'OUTCOME' ? 'outcomeStyle' : '')}"
+							rowsPerPageTemplate="10,20,50" paginatorPosition="bottom" pageLinks="10"
 				   			currentPageReportTemplate="#{msgs.showPaymentNumbers}" 
 				            paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
 				            first="#{paymentList.first}" >
@@ -61,7 +60,7 @@
 				                    #{index + 1}
 				                </p:column>
 				                <p:column headerText="#{msgs.purpose}">
-						            <h:outputText value="Пополнен счет на" />
+						            <h:outputText value="#{entity.purpose}" />
 						        </p:column>
 						        <p:column headerText="#{msgs.amount}">
 						            <h:outputText value="#{entity.amount} сом" >
@@ -69,7 +68,9 @@
 									</h:outputText>
 						        </p:column>
 						        <p:column headerText="#{msgs.date}">
-						            <h:outputText value="#{entity.date}" />
+						            <h:outputText value="#{entity.date}">
+						              <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+						            </h:outputText>
 						        </p:column> 
 					    </p:dataTable>
 					</div>

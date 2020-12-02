@@ -5,11 +5,15 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.jukbar.enums.PaymentType;
 
 /**
  * 
@@ -26,6 +30,8 @@ public class Payment extends AbstractEntity<Integer> {
 	private Integer status;
 	private Person person;
 	private String transactionId;
+	private PaymentType type;
+	private String purpose;
 
 	public Payment() {
 	}
@@ -72,5 +78,23 @@ public class Payment extends AbstractEntity<Integer> {
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	@Enumerated(EnumType.ORDINAL)
+	public PaymentType getType() {
+		return type;
+	}
+
+	public void setType(PaymentType type) {
+		this.type = type;
+	}
+
+	@Column(length = 1000)
+	public String getPurpose() {
+		return purpose;
+	}
+
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
 	}
 }

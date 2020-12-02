@@ -51,11 +51,11 @@
     </init-param>
     <init-param>
       <param-name>manager</param-name>
-      <param-value>/view/news/.*|/view/managerLocal/.*|/view/managerInt/.*|/view/dictionary/.*|/view/user/.*|/view/profile/.*|/view/persons/.*|/view/faq/.*</param-value>
+      <param-value>/view/news/.*|/view/managerLocal/.*|/view/managerInt/.*|/view/dictionary/.*|/view/user/.*|/view/profile/.*|/view/persons/.*|/view/faq/.*|/view/help/.*</param-value>
     </init-param>
     <init-param>
       <param-name>driver</param-name>
-      <param-value>/view/local/.*|/view/international/.*|/view/profile/.*|/view/news/.*|/view/payments/.*</param-value>
+      <param-value>/view/local/.*|/view/international/.*|/view/profile/.*|/view/news/.*|/view/payments/.*|/view/help/.*|/view/documents/.*</param-value>
     </init-param>
   </filter>
   <filter-mapping>

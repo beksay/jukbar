@@ -18,6 +18,7 @@ import org.jukbar.dto.rest.ItemExtra;
 import org.jukbar.dto.rest.ItemTo;
 import org.jukbar.dto.rest.KicbRequest;
 import org.jukbar.dto.rest.KicbResponse;
+import org.jukbar.enums.PaymentType;
 import org.jukbar.rest.soa.XmlService;
 import org.jukbar.service.OperatorService;
 import org.jukbar.service.PaymentService;
@@ -114,6 +115,8 @@ public class XmlServiceImpl implements XmlService {
 				payment.setPerson(person);
 				payment.setTransactionId(request.getTransactionNumber());
 				payment.setStatus(40);
+				payment.setType(PaymentType.INCOME);
+				payment.setPurpose("Пополнен счет на");
 
 				try {
 					payment = paymentService.persist(payment);
