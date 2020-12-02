@@ -1,6 +1,7 @@
 package org.jukbar.dao;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.enterprise.event.Event;
@@ -97,6 +98,9 @@ public interface GenericDao<T extends PersistentEntity<ID>, ID extends Serializa
 	 * @return
 	 */
 	<U> U sumByExample(String property, Class<U> class1, List<FilterExample> examples);
+	
+	BigDecimal sumByExample(String property,List<FilterExample> list);
+    BigDecimal sumByExample(String property,List<FilterExample> list, String[] fields);
 	
 	/***
 	 * 

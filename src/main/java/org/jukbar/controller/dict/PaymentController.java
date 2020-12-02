@@ -1,5 +1,6 @@
 package org.jukbar.controller.dict;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.jukbar.beans.FilterExample;
@@ -16,6 +18,7 @@ import org.jukbar.conversations.Conversational;
 import org.jukbar.domain.Payment;
 import org.jukbar.enums.PaymentType;
 import org.jukbar.service.PaymentService;
+import org.jukbar.util.web.LoginUtil;
 
 @Named
 @ConversationScoped
@@ -28,6 +31,8 @@ public class PaymentController extends Conversational {
 
 	@EJB
 	private PaymentService service;
+	@Inject
+	private LoginUtil loginUtil;
 	
 	private Payment payment;
 
@@ -50,6 +55,18 @@ public class PaymentController extends Conversational {
 		}else {
 			return "";
 		}
+	}
+	
+	public BigDecimal allAmount() {
+		List<FilterExample> examples=new ArrayList<>();
+        examples.add(new FilterExample("type", PaymentType.INCOME, InequalityConstants.EQUAL)); 
+        examples.add(new FilterExample("person", loginUtil.getCurrentUser().getPerson(), InequalityConstants.EQUAL)); 
+		BigDecimal incomeAmount = service.sumByExample("amount", examples);
+        examples=new ArrayList<>();
+        examples.add(new FilterExample("type", PaymentType.OUTCOME, InequalityConstants.EQUAL)); 
+        examples.add(new FilterExample("person", loginUtil.getCurrentUser().getPerson(), InequalityConstants.EQUAL));
+        BigDecimal outcomeAmount = service.sumByExample("amount", examples);
+        return incomeAmount.subtract(outcomeAmount);
 	}
 
 	public Payment getPayment() {

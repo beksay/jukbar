@@ -1,6 +1,7 @@
 package org.jukbar.service;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
@@ -144,6 +145,8 @@ public interface GenericService<T extends PersistentEntity<ID>, ID extends Seria
      * @param list
      * @return
      */
+    BigDecimal sumByExample(String property,List<FilterExample> list);
+    BigDecimal sumByExample(String property,List<FilterExample> list, String[] fields);
 
     <U> U  sumByExample(String property, Class<U> class1, List<FilterExample> list);
     

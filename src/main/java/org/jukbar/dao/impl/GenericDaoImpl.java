@@ -2,6 +2,7 @@ package org.jukbar.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -262,6 +263,36 @@ public abstract class GenericDaoImpl<T extends PersistentEntity<ID>, ID extends 
 		
 		@SuppressWarnings("unchecked")
 		TypedQuery<U> query = (TypedQuery<U>) applyFilter(class1, list, buffer, "");
+		
+		return query.setMaxResults(1).getSingleResult();
+	}
+	
+	@Override
+	public BigDecimal sumByExample(String property,List<FilterExample> list, String[] fields) {
+		
+		StringBuffer buffer = new StringBuffer("SELECT SUM("+property+") FROM " + getPersistentClass().getCanonicalName() + " entity");
+		if(fields != null){
+			for (String string : fields) {
+				buffer.append(" LEFT JOIN entity." + string);
+			}
+		}
+		if(!list.isEmpty()) buffer.append(" WHERE");
+		
+		@SuppressWarnings("unchecked")
+		TypedQuery<BigDecimal> query = (TypedQuery<BigDecimal>) applyFilter(BigDecimal.class, list, buffer, "");
+		
+		return query.setMaxResults(1).getSingleResult();
+	}
+	
+	
+	@Override
+	public BigDecimal sumByExample(String property,List<FilterExample> list) {
+		
+		StringBuffer buffer = new StringBuffer("SELECT SUM("+property+") FROM " + getPersistentClass().getCanonicalName() + " entity");
+		if(!list.isEmpty()) buffer.append(" WHERE");
+		
+		@SuppressWarnings("unchecked")
+		TypedQuery<BigDecimal> query = (TypedQuery<BigDecimal>) applyFilter(BigDecimal.class, list, buffer, "");
 		
 		return query.setMaxResults(1).getSingleResult();
 	}

@@ -45,7 +45,7 @@
 						</ul>
 					</div>
 					<div class="maintop-right">
-					    <h:outputText value="#{loginUtil.currentUser.person.money} сом" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}" style="color:#edc55f; font-weight: 700; margin-right: 3px;"/>
+					    <h:outputText value="#{paymentController.allAmount()} сом" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}" style="color:#edc55f; font-weight: 700; margin-right: 3px;"/>
 						<h:commandLink action="#{profileController.goProfile(loginUtil.currentUser)}" value="Привет, #{loginUtil.currentUser.person.firstName}" />
 					</div>
 				  </div>

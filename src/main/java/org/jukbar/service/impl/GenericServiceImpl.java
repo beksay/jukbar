@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -116,6 +117,16 @@ public abstract class GenericServiceImpl<T extends PersistentEntity<ID>, ID exte
 	@Override
 	public <U> U sumByExample(String property, Class<U> class1, List<FilterExample> examples) {
 		return getDao().sumByExample(property, class1, examples);
+	}
+	
+	@Override
+	public BigDecimal sumByExample(String property,List<FilterExample> list){
+		return getDao().sumByExample(property,list);
+	}
+	
+	@Override
+	public BigDecimal sumByExample(String property,List<FilterExample> list, String[] fields){
+		return getDao().sumByExample(property,list,fields);
 	}
 	
 	@Override
