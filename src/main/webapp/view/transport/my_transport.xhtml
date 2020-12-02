@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="main-content-left">
+		<ui:include src="../../WEB-INF/templates/private/left_menu.xhtml" />		
+	</ui:define>
+	<ui:define name="content">
+	    <div class="container">
+			<div class="jukForm">
+				<h:form>
+					<div class="row">
+					    <div class="col-12" style="text-align: center;">
+							<H4>#{msgs.myTransport}</H4>
+						</div>
+						<div class="col-12">
+							<h:outputLabel value="#{msgs.marka}" />
+		    		        <h:inputText value="#{transportController.transport.marka}" disabled="#{transportController.editProfile==false}"
+		    		           required="true" requiredMessage="#{msgs.marka} - #{msgs.isReq}"/>
+						</div>
+						<div class="col-12">
+							<h:outputLabel value="#{msgs.tsCapacity}" />
+		    		        <h:inputText value="#{transportController.transport.capacity}" disabled="#{transportController.editProfile==false}"
+		    		           required="true" requiredMessage="#{msgs.tsCapacity} - #{msgs.isReq}"/>
+						</div>
+						<div class="col-12">
+							<h:outputLabel value="#{msgs.year}" />
+		    		        <h:inputText value="#{transportController.transport.year}" disabled="#{transportController.editProfile==false}"
+		    		           required="true" requiredMessage="#{msgs.year} - #{msgs.isReq}"/>
+						</div>	 
+						<div class="col-12 mt-3">
+							<p:commandButton ajax="false" icon="fas fa-edit" action="#{transportController.change()}" value="#{msgs.editProfile}" rendered="#{transportController.editProfile ==false}"/>	
+							<p:commandButton ajax="false" icon="fas fa-save" action="#{transportController.save()}" rendered="#{transportController.editProfile}" value="#{msgs.save}" />					
+							<h:outputLabel style="width:20px;display:inline-block"/>
+							<p:commandButton ajax="false" icon="fas fa-window-close" action="#{transportController.cancel()}" rendered="#{transportController.editProfile}" value="#{msgs.cancel}" />
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</div>				
+	</ui:define>
+</ui:composition>

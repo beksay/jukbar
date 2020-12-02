@@ -21,8 +21,10 @@
 	                      styleClass="#{view.viewId.contains('dictionary') ? 'active' : ''}"/> 
 	               <h:commandLink  value="#{msgs.faq}" action="#{profileController.faqList()}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}"
 	                      styleClass="#{view.viewId.contains('faq') ? 'active' : ''}"/>    
+	               <h:commandLink  value="#{msgs.myTransport}" action="#{transportController.goProfile(loginUtil.currentUser)}" styleClass="#{view.viewId.contains('transport') ? 'active' : ''}" 
+	                      rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>  
 	               <h:commandLink  value="Мои документы" action="#{profileController.docList()}" styleClass="#{view.viewId.contains('documents') ? 'active' : ''}" 
-	                      rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>       
+	                      rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>              
 	               <h:commandLink  value="#{msgs.payments}" action="#{profileController.paymentList()}" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"
 	                      styleClass="#{view.viewId.contains('payments') ? 'active' : ''}"/>     
 	               <h:commandLink  value="Помощь" action="#{profileController.helpList()}"
