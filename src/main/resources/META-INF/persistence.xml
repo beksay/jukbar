@@ -23,6 +23,7 @@
       <class>org.jukbar.domain.Faq</class>
       <class>org.jukbar.domain.Complaints</class>
       <class>org.jukbar.domain.Transport</class>
+      <class>org.jukbar.domain.Documents</class>
       <!-- entities -->
       
       <exclude-unlisted-classes>true</exclude-unlisted-classes>

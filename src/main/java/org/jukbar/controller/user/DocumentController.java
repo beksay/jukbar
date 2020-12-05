@@ -9,11 +9,11 @@ import javax.inject.Named;
 
 import org.jukbar.annotation.Logged;
 import org.jukbar.conversations.Conversational;
+import org.jukbar.domain.Documents;
 import org.jukbar.domain.Person;
-import org.jukbar.domain.Transport;
-import org.jukbar.enums.TransportStatus;
+import org.jukbar.enums.DocStatus;
+import org.jukbar.service.DocumentsService;
 import org.jukbar.service.PersonService;
-import org.jukbar.service.TransportService;
 import org.jukbar.util.web.Messages;
 
 /**
@@ -25,79 +25,63 @@ import org.jukbar.util.web.Messages;
 @Logged
 @Named
 @ConversationScoped
-public class TransportController extends Conversational {
+public class DocumentController extends Conversational {
 
 	private static final long serialVersionUID = 5651758429305872940L;
 	
 	@EJB
 	private PersonService personService;
 	@EJB
-	private TransportService transportService;
+	private DocumentsService docService;
 	
 	private Person person;
-	private Transport transport;
-	private Boolean editTs;
+	private Documents documents;
+	private Boolean editDoc;
 
 	@PostConstruct
 	public void init() {
 		if (person==null) person= new Person();
-		if (transport==null) transport= new Transport();
-		editTs = false;
+		if (documents==null) documents= new Documents();
+		editDoc = false;
 	}
 	
 	public String change() {
-		editTs = true;
+		editDoc = true;
 		return null;
 	}
 	
 	public String cancel() {
 		init();
-		editTs=false;
+		editDoc=false;
 		return null;
 	}
 	
 	public String save() {		
-		transport.setStatus(TransportStatus.NEW);
-		person.setTransport(transport);
-		person.setTransport(person.getTransport() == null ? transportService.persist(person.getTransport()) : transportService.merge(person.getTransport()));
+		documents.setStatus(DocStatus.NEW);
+		person.setDocuments(documents);
+		person.setDocuments(person.getDocuments() == null ? docService.persist(person.getDocuments()) : docService.merge(person.getDocuments()));
 
 		personService.merge(person);
 
 		FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("dataDaved"), null) );
-		editTs = false;
+		editDoc = false;
 		return null;
 	}
 	
 	public String goProfile(Person person) {
 		this.person = person;
-		if(person.getTransport() !=null){
-			transport = transportService.findById(person.getTransport().getId(), false);	
+		if(person.getDocuments() !=null){
+			documents = docService.findById(person.getDocuments().getId(), false);	
 		}
 		return profileList();
 	}
 	
 	private String profileList() {
-		return "/view/transport/my_transport.xhtml";
+		return "/view/documents/my_documents.xhtml";
 	}
 	
 	public String mainForm() {
 		return "/view/main.xhtml";
-	}
-	
-	public Boolean geteditTs() {
-		return editTs;
-	}
-	
-	public void seteditTs(Boolean editTs) {
-		this.editTs = editTs;
-	}
-
-	public Transport getTransport() {
-		return transport;
-	}
-
-	public void setTransport(Transport transport) {
-		this.transport = transport;
 	}
 
 	public Person getPerson() {
@@ -106,6 +90,22 @@ public class TransportController extends Conversational {
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	public Documents getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(Documents documents) {
+		this.documents = documents;
+	}
+
+	public Boolean getEditDoc() {
+		return editDoc;
+	}
+
+	public void setEditDoc(Boolean editDoc) {
+		this.editDoc = editDoc;
 	}
 	
 }

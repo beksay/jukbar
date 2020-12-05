@@ -18,26 +18,27 @@
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.marka}" />
-		    		        <h:inputText value="#{transportController.transport.marka}" disabled="#{transportController.editProfile==false}"
+		    		        <h:inputText value="#{transportController.transport.marka}" disabled="#{transportController.editTs==false}"
 		    		           required="true" requiredMessage="#{msgs.marka} - #{msgs.isReq}"/>
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.tsCapacity}" />
-		    		        <h:inputText value="#{transportController.transport.capacity}" disabled="#{transportController.editProfile==false}"
+		    		        <h:inputText value="#{transportController.transport.capacity}" disabled="#{transportController.editTs==false}"
 		    		           required="true" requiredMessage="#{msgs.tsCapacity} - #{msgs.isReq}"/>
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.year}" />
-		    		        <h:inputText value="#{transportController.transport.year}" disabled="#{transportController.editProfile==false}"
+		    		        <h:inputText value="#{transportController.transport.year}" disabled="#{transportController.editTs==false}"
 		    		           required="true" requiredMessage="#{msgs.year} - #{msgs.isReq}"/>
 						</div>	 
 						<div class="col-12 mt-3">
-							<p:commandButton ajax="false" icon="fas fa-edit" action="#{transportController.change()}" value="#{msgs.editProfile}" rendered="#{transportController.editProfile ==false}"/>	
-							<p:commandButton ajax="false" icon="fas fa-save" action="#{transportController.save()}" rendered="#{transportController.editProfile}" value="#{msgs.save}" />					
+							<p:commandButton ajax="false" icon="fas fa-edit" action="#{transportController.change()}" value="#{msgs.edit}" rendered="#{transportController.editTs ==false}"/>	
+							<p:commandButton ajax="false" icon="fas fa-save" action="#{transportController.save()}" rendered="#{transportController.editTs ==true}" value="#{msgs.save}" />					
 							<h:outputLabel style="width:20px;display:inline-block"/>
-							<p:commandButton ajax="false" icon="fas fa-window-close" action="#{transportController.cancel()}" rendered="#{transportController.editProfile}" value="#{msgs.cancel}" />
+							<p:commandButton ajax="false" immediate="true" icon="fas fa-window-close" action="#{transportController.cancel()}" rendered="#{transportController.editTs == true}" value="#{msgs.cancel}" />
 						</div>
 					</div>
+					<p:growl id="growl" showDetail="true" sticky="true" /> 
 				</h:form>
 			</div>
 		</div>				

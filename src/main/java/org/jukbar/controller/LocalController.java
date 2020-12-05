@@ -60,7 +60,7 @@ public class LocalController{
 			conversation.setEndLocation(shipments.getRegionTo().getLocation());
 		}
 		System.out.println("shipments===" +shipments);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/shipments/shipments_preview.xhtml?cid="+conversation.getId());
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/local/local_preview.xhtml?cid="+conversation.getId());
     }
   
 	

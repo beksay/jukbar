@@ -32,6 +32,8 @@ public class Person extends AbstractEntity<Integer>{
     private Boolean requirement;
     private TransportType transportType;
     private Date birthDate;
+    private Documents documents;
+    private Transport transport;
 
     @Column(name = "last_name")
     public String getLastName() {
@@ -131,6 +133,24 @@ public class Person extends AbstractEntity<Integer>{
 	
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name = "documents_id")
+	public Documents getDocuments() {
+		return documents;
+	}
+	public void setDocuments(Documents documents) {
+		this.documents = documents;
+	}
+	
+	@ManyToOne
+    @JoinColumn(name="transport_id")
+	public Transport getTransport() {
+		return transport;
+	}
+	public void setTransport(Transport transport) {
+		this.transport = transport;
 	}
 	
 }

@@ -12,8 +12,11 @@ import javax.inject.Named;
 import org.jukbar.annotation.Logged;
 import org.jukbar.conversations.Conversational;
 import org.jukbar.domain.Person;
+import org.jukbar.domain.Transport;
 import org.jukbar.domain.User;
+import org.jukbar.enums.TransportStatus;
 import org.jukbar.service.PersonService;
+import org.jukbar.service.TransportService;
 import org.jukbar.service.UserService;
 import org.jukbar.util.web.Messages;
 
@@ -126,9 +129,11 @@ public class ProfileController extends Conversational {
 	public void setEditProfile(Boolean editProfile) {
 		this.editProfile = editProfile;
 	}
+	
 	public Person getPerson() {
 		return person;
 	}
+	
 	public void setPerson(Person person) {
 		this.person = person;
 	}
