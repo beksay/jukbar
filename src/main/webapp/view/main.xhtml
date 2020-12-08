@@ -6,10 +6,69 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/layouts/private.xhtml" id="bodyBlock">
 	<ui:define name="content">
-	     <center>
-			<br /> <br /> <br /> <br /> <br /> 
-			<h1 style="font-size:28px; font-weight:bold; color:#457770;">#{msgs.title}</h1>
-			<br /> <br />
-		</center>
+	    <br />
+		<div class="row">
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-6 col-md-6 mb-4">
+				<div class="card border-left-primary shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">#{msgs.myDocuments}</div>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.documents==null}">#{msgs.fillDocument}
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status eq 'NEW'}">
+								  #{msgs.sendModerator} 
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status eq 'IN_PROGRESS'}">
+								  #{msgs.inModerator}
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status eq 'COMPLETED'}">
+								  #{msgs.completed}
+								</h:panelGroup>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-file-pdf fa-2x text-gray-300" style="color: red;"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-6 col-md-6 mb-4">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">#{msgs.myTransport}</div>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.transport==null}">#{msgs.fillTransport}
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'NEW'}">
+								  #{msgs.sendModerator}
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'IN_PROGRESS'}">
+								  #{msgs.inModerator}  
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'COMPLETED'}">
+								  #{msgs.completed}
+								</h:panelGroup>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-truck fa-2x text-gray-300" style="color:#457770;"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</ui:define>
 </ui:composition>

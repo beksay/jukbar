@@ -1,5 +1,6 @@
 package org.jukbar.controller;
 
+import java.io.ByteArrayInputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,18 +8,23 @@ import java.util.List;
 import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
+import org.jukbar.dto.AttachmentBinaryDTO;
+import org.jukbar.util.Translit;
 import org.jukbar.annotation.Logged;
 import org.jukbar.beans.EntryValue;
 import org.jukbar.domain.Attachment;
 import org.jukbar.enums.Area;
 import org.jukbar.util.Krypto;
 import org.jukbar.util.web.HttpUtil;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
  
 
@@ -128,5 +134,14 @@ public class UtilController {
         }
         return s;
     }
+	
+	public StreamedContent downloadFile(AttachmentBinaryDTO attachment){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		System.out.println("attachment.getAttachment().getData()====" + attachment.getAttachment().getData());
+		StreamedContent file=new DefaultStreamedContent(new ByteArrayInputStream(attachment.getAttachment().getData()),
+				externalContext.getMimeType(Translit.translit(attachment.getAttachment().getFileName())),
+				Translit.translit(attachment.getAttachment().getFileName()));
+		return file;
+	}
 	
 }

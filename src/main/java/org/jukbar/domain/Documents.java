@@ -15,6 +15,7 @@ public class Documents extends AbstractEntity<Integer> {
     private static final long serialVersionUID = -1716718384374303808L;
     private Attachment passport;
     private Attachment driverLicense;
+    private Attachment carLicense;
     private DocStatus status;
 
 	@ManyToOne
@@ -35,6 +36,16 @@ public class Documents extends AbstractEntity<Integer> {
 
 	public void setDriverLicense(Attachment driverLicense) {
 		this.driverLicense = driverLicense;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name = "car_license_id")
+	public Attachment getCarLicense() {
+		return carLicense;
+	}
+	
+	public void setCarLicense(Attachment carLicense) {
+		this.carLicense = carLicense;
 	}
 
 	@Enumerated(EnumType.ORDINAL)

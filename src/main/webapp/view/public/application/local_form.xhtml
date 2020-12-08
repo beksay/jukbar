@@ -10,12 +10,13 @@
 		<div class="container">
 			<div class="jukForm">
 				<h:form>
-					<div class="row">
-						<div class="col-12" style="text-align: center;">
-							<H4>Заявка на отправку груза(#{msgs.localCargo})</H4>
-						</div>
-						<div class="col-6">
-							<h:outputLabel value="#{msgs.transportType}" />
+				
+				<div class="card bg-light mb-3" >
+				  <div class="card-header">Заявка на отправку груза(#{msgs.localCargo})</div>
+					<div class="card-body">
+					  <div class="row">
+					    <div class="col-md-6">
+						    <h5 class="card-title">#{msgs.transportType} :</h5>
 							<h:selectOneMenu id="transportType" value="#{shipmentApplicationAction.shipments.transportType}"
 								required="true" requiredMessage="#{msgs.transportType} - #{msgs.isReq}"
 								converter="#{transportConverter}">
@@ -25,17 +26,8 @@
 									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
 							</h:selectOneMenu>
 							<p:message for="transportType" />
-						</div>
-						<div class="col-6">
-							<h:outputLabel value="#{msgs.capacity}" />
-							<h:inputText id="capacity"
-								value="#{shipmentApplicationAction.shipments.capacity}"
-								required="true"
-								requiredMessage="#{msgs.capacity} - #{msgs.isReq}" />
-							<p:message for="capacity" />
-						</div>
-						<div class="col-6">
-							<h:outputLabel for="oblastFrom" value="#{msgs.oblastFrom}" />
+							
+							<h5 class="card-title">#{msgs.oblastFrom} :</h5>
 							<h:selectOneMenu id="oblastFrom"
 								value="#{countrySelector.oblast}" 
 								converter="#{oblastConverter}" required="true"
@@ -47,9 +39,56 @@
 								<p:ajax event="change" update="regionFrom regFrom" />
 							</h:selectOneMenu>
 							<p:message for="oblastFrom" />
-						</div>
-						<div class="col-6">
-							<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}" />
+							
+							<h:panelGroup  layout="block" id="regFrom" >
+								<h:outputLabel for="regionFrom" value="#{msgs.regionFrom}" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
+								<h:selectOneMenu id="regionFrom"
+									value="#{countrySelector.region}" 
+									converter="#{regionConverter}" required="true" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"
+									requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems
+										value="#{countrySelector.getRegionList(countrySelector.oblast)}"
+										var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+								</h:selectOneMenu>
+								<p:message for="regionFrom" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
+							</h:panelGroup>
+							
+							<h5 class="card-title">#{msgs.addressFrom} :</h5>
+							<p:inputTextarea cols="20" rows="2" id="addressFrom"
+								value="#{shipmentApplicationAction.shipments.addressFrom}"
+								required="true"
+								requiredMessage="#{msgs.addressFrom} - #{msgs.isReq}" />
+							<p:message for="addressFrom" />
+							
+							<h5 class="card-title">#{msgs.fromPlace} :</h5>	
+							<p:calendar
+								value="#{shipmentApplicationAction.shipments.dateFrom}"
+								id="dateFrom" required="true" showOn="button"
+								requiredMessage="#{msgs.dateFrom} - #{msgs.isReq}"
+								pattern="dd-MM-yyyy HH:mm" />
+							<p:message for="dateFrom" />
+							
+							<h5 class="card-title">#{msgs.amount} :</h5>
+							<p:inputText
+								value="#{shipmentApplicationAction.shipments.amount}"
+								id="amount" required="true"
+								requiredMessage="#{msgs.amount} - #{msgs.isReq}"
+								converterMessage="Должны быть только цифры" maxlength="18"
+								validatorMessage="Неправильная сумма">
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+							</p:inputText>
+							<p:message for="amount" />
+					    </div>
+					    <div class="col-md-6">
+					        <h5 class="card-title">#{msgs.capacity} :</h5>
+							<h:inputText id="capacity"
+								value="#{shipmentApplicationAction.shipments.capacity}"
+								required="true"
+								requiredMessage="#{msgs.capacity} - #{msgs.isReq}" />
+							<p:message for="capacity" />
+							
+							<h5 class="card-title">#{msgs.oblastTo} :</h5>
 							<h:selectOneMenu id="oblastTo" value="#{countrySelector2.oblast}"
 								converter="#{oblastConverter}"
 								required="true" requiredMessage="#{msgs.oblastTo} - #{msgs.isReq}">
@@ -60,86 +99,50 @@
 								<p:ajax event="change" update="regionTo regTo" />
 							</h:selectOneMenu>
 							<p:message for="oblastTo" />
-						</div>
-						<h:panelGroup  layout="block" id="regFrom" class="col-6">
-							<h:outputLabel for="regionFrom" value="#{msgs.regionFrom}" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
-							<h:selectOneMenu id="regionFrom"
-								value="#{countrySelector.region}" 
-								converter="#{regionConverter}" required="true" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"
-								requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
-								<f:selectItem itemLabel="#{msgs.selectValue}" />
-								<f:selectItems
-									value="#{countrySelector.getRegionList(countrySelector.oblast)}"
-									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
-							</h:selectOneMenu>
-							<p:message for="regionFrom" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
-						</h:panelGroup>
-						<h:panelGroup  layout="block" id="regTo" class="col-6">
-							<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"/>
-							<h:selectOneMenu id="regionTo" value="#{countrySelector2.region}"
-							    converter="#{regionConverter}" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"
-								required="true" requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
-								<f:selectItem itemLabel="#{msgs.selectValue}" />
-								<f:selectItems
-									value="#{countrySelector2.getRegionList(countrySelector2.oblast)}"
-									var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
-							</h:selectOneMenu>
-							<p:message for="regionTo" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"/>
-						</h:panelGroup>
-						<div class="col-6">
-							<h:outputLabel value="#{msgs.addressFrom}" />
-							<h:inputTextarea cols="20" rows="2" id="addressFrom"
-								value="#{shipmentApplicationAction.shipments.addressFrom}"
-								required="true"
-								requiredMessage="#{msgs.addressFrom} - #{msgs.isReq}" />
-							<p:message for="addressFrom" />
-						</div>
-						<div class="col-6">
-							<h:outputLabel value="#{msgs.addressTo}" />
-							<h:inputTextarea cols="20" rows="2" id="addressTo"
+							
+							<h:panelGroup  layout="block" id="regTo" >
+								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"/>
+								<h:selectOneMenu id="regionTo" value="#{countrySelector2.region}"
+								    converter="#{regionConverter}" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"
+									required="true" requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems
+										value="#{countrySelector2.getRegionList(countrySelector2.oblast)}"
+										var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+								</h:selectOneMenu>
+								<p:message for="regionTo" rendered="#{countrySelector2.oblast.city!=true and countrySelector2.oblast.id !=null}"/>
+							</h:panelGroup>
+							
+							<h5 class="card-title">#{msgs.addressTo} :</h5>
+							<p:inputTextarea cols="20" rows="2" id="addressTo"
 								value="#{shipmentApplicationAction.shipments.addressTo}"
 								required="true"
 								requiredMessage="#{msgs.addressTo} - #{msgs.isReq}" />
 							<p:message for="addressTo" />
-						</div>
-						<div class="col-6">
-							<h:outputLabel value="#{msgs.fromPlace}" for="dateFrom"
-								style="color:green" />
-							<p:calendar
-								value="#{shipmentApplicationAction.shipments.dateFrom}"
-								id="dateFrom" required="true" showOn="button"
-								requiredMessage="#{msgs.dateFrom} - #{msgs.isReq}"
-								pattern="dd-MM-yyyy HH:mm" />
-							<p:message for="dateFrom" />
-						</div>
-						<div class="col-6">
-							<h:outputLabel value="#{msgs.myPhone}" />
+							
+							<h5 class="card-title">#{msgs.myPhone} :</h5>
 							<h:inputText id="phone"
 								value="#{shipmentApplicationAction.shipments.phone}"
 								required="true"
 								requiredMessage="#{msgs.myPhone} - #{msgs.isReq}" />
 							<p:message for="phone" />
-						</div>
-						<div class="col-6">
-							<h:outputLabel value="#{msgs.amount}" for="amount" />
-							<p:inputText
-								value="#{shipmentApplicationAction.shipments.amount}"
-								id="amount" required="true"
-								requiredMessage="#{msgs.amount} - #{msgs.isReq}"
-								converterMessage="Должны быть только цифры" maxlength="18"
-								validatorMessage="Неправильная сумма">
-								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-							</p:inputText>
-							<p:message for="amount" />
-						</div>
-						<div class="col-6">
-							<h:outputLabel value="#{msgs.productInfo}" />
-							<h:inputTextarea cols="30" rows="2" id="productInfo"
+							
+							<h5 class="card-title">#{msgs.productInfo} :</h5>
+							<p:inputTextarea cols="30" rows="2" id="productInfo"
 								value="#{shipmentApplicationAction.shipments.products}"
 								required="true"
 								requiredMessage="#{msgs.productInfo} - #{msgs.isReq}" />
 							<p:message for="productInfo" />
-						</div>
+					    </div>
+					  </div>  
+				  </div>
+			    </div>
+				
+				
+				
+				
+					<div class="row">
+				
 						<div class="col-12">
 							<p:commandButton ajax="false" value="#{msgs.send}" icon="fas fa-save"
 								action="#{shipmentApplicationAction.saveLocal()}" />

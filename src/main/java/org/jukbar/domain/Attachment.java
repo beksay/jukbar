@@ -21,7 +21,7 @@ public class Attachment extends AbstractEntity<Integer> {
     private Boolean deleted=false;
     private Date dateCreated;
     private Boolean publicInfo=false;
-   
+    private byte[] data;
 
     public Attachment() {
     }
@@ -73,5 +73,13 @@ public class Attachment extends AbstractEntity<Integer> {
 	}
 	public void setPublicInfo(Boolean publicInfo) {
 		this.publicInfo = publicInfo;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 }
