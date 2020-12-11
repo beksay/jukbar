@@ -135,13 +135,4 @@ public class UtilController {
         return s;
     }
 	
-	public StreamedContent downloadFile(AttachmentBinaryDTO attachment){
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		System.out.println("attachment.getAttachment().getData()====" + attachment.getAttachment().getData());
-		StreamedContent file=new DefaultStreamedContent(new ByteArrayInputStream(attachment.getAttachment().getData()),
-				externalContext.getMimeType(Translit.translit(attachment.getAttachment().getFileName())),
-				Translit.translit(attachment.getAttachment().getFileName()));
-		return file;
-	}
-	
 }

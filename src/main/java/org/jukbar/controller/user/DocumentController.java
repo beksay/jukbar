@@ -178,13 +178,13 @@ public class DocumentController extends Conversational {
 		documents.setPassport(null);
 	}
     
-    public void removePicture() {		
+    public void removeDriverLicense() {		
 		if(driverLicense.getAttachment() != null && driverLicense.getAttachment().getId() != null) removedFiles.add(driverLicense.getAttachment());
 		driverLicense = null;
 		documents.setDriverLicense(null);
 	}
     
-    public void removeBankStatement() {		
+    public void removeCarLicense() {		
 		if(carLicense.getAttachment() != null && carLicense.getAttachment().getId() != null) removedFiles.add(carLicense.getAttachment());
 		carLicense = null;
 		documents.setCarLicense(null);
