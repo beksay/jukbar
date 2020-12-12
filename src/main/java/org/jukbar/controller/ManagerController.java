@@ -1,6 +1,5 @@
 package org.jukbar.controller;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,9 +41,6 @@ public class ManagerController{
 	public String sendProgress(Shipments shipments) {
 		shipments.setStatus(ShipmentStatus.IN_PROGRESS);
 		shipments.setDateProgress(new Date());
-		BigDecimal percentage = new BigDecimal("5");
-		BigDecimal price =  shipments.getAmount().multiply(percentage).divide(new BigDecimal(100));
-		shipments.setPrice(price);
 		service.merge(shipments);
 		return listLocalNew();
 	}

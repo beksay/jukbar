@@ -68,6 +68,14 @@ public class TransportController extends Conversational {
 		return null;
 	}
 	
+	public String sendModerator() {		
+		transport.setStatus(TransportStatus.IN_PROGRESS);
+        transportService.merge(transport);
+		FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("sendedToModerator"), null) );
+		editTs = false;
+		return null;
+	}
+	
 	public String goProfile(Person person) {
 		this.person = person;
 		if(person.getTransport() !=null){

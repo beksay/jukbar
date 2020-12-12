@@ -125,6 +125,51 @@ public class DocumentController extends Conversational {
 		return null;
 	}
 	
+	public String sendModerator() {	
+		if (passport != null && driverLicense != null && carLicense != null) {
+			if(passport != null) {
+	    		Attachment attachment = new Attachment();
+				attachment = createAttachment(passport);
+				passport.setAttachment(attachment);
+				try {
+					attachment = passport.getAttachment().getId() == null ? atService.saveFromDTO(passport) : passport.getAttachment();
+					documents.setPassport(attachment);
+					attachment = new Attachment();
+				} catch (IOException e) {e.printStackTrace();}			
+			}
+			
+			if(driverLicense != null) {
+	    		Attachment attachment = new Attachment();
+				attachment = createAttachment(driverLicense);
+				driverLicense.setAttachment(attachment);
+				try {
+					attachment = driverLicense.getAttachment().getId() == null ? atService.saveFromDTO(driverLicense) : driverLicense.getAttachment();
+					documents.setDriverLicense(attachment);
+					attachment = new Attachment();
+				} catch (IOException e) {e.printStackTrace();}			
+			}
+			
+			if(carLicense != null) {
+	    		Attachment attachment = new Attachment();
+				attachment = createAttachment(carLicense);
+				carLicense.setAttachment(attachment);
+				try {
+					attachment = carLicense.getAttachment().getId() == null ? atService.saveFromDTO(carLicense) : carLicense.getAttachment();
+					documents.setCarLicense(attachment);
+					attachment = new Attachment();
+				} catch (IOException e) {e.printStackTrace();}			
+			}
+			
+			documents.setStatus(DocStatus.IN_PROGRESS);
+			docService.merge(documents);
+			FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("sendedToModerator"), null) );
+		}else {
+			FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("uploadAllDocuments"), null) );
+		}		
+		editDoc = false;
+		return null;
+	}
+	
 	public String goProfile(Person person) {
 		this.person = person;
 		if(person.getDocuments() !=null){

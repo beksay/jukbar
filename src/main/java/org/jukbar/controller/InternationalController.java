@@ -1,7 +1,6 @@
 package org.jukbar.controller;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -38,9 +37,6 @@ public class InternationalController{
 	public String sendProgress(Shipments shipments) {
 		shipments.setStatus(ShipmentStatus.IN_PROGRESS);
 		shipments.setDateProgress(new Date());
-		BigDecimal percentage = new BigDecimal("5");
-		BigDecimal price =  shipments.getAmount().multiply(percentage).divide(new BigDecimal(100));
-		shipments.setPrice(price);
 		service.merge(shipments);
 		return listNew();
 	}

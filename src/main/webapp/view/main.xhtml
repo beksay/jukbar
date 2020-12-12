@@ -7,7 +7,7 @@
 	template="/WEB-INF/templates/layouts/private.xhtml" id="bodyBlock">
 	<ui:define name="content">
 	    <br />
-		<div class="row">
+		<h:panelGroup  layout="block" class="row" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}">
 			<!-- Earnings (Monthly) Card Example -->
 			<div class="col-6 col-md-6 mb-4">
 				<div class="card border-left-primary shadow h-100 py-2">
@@ -20,11 +20,11 @@
 								</h:panelGroup>
 								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
 								  rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status eq 'NEW'}">
-								  #{msgs.sendModerator} 
+								  <h:outputLabel value="#{msgs.sendModerator} " styleClass="newLabel"/>
 								</h:panelGroup>
 								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
 								  rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status eq 'IN_PROGRESS'}">
-								  #{msgs.inModerator}
+								  <h:outputLabel value="#{msgs.inModerator} " styleClass="yellowLabel"/>
 								</h:panelGroup>
 								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
 								  rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status eq 'COMPLETED'}">
@@ -51,11 +51,11 @@
 								</h:panelGroup>
 								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
 								  rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'NEW'}">
-								  #{msgs.sendModerator}
+								  <h:outputLabel value="#{msgs.sendModerator} " styleClass="newLabel"/>
 								</h:panelGroup>
 								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
 								  rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'IN_PROGRESS'}">
-								  #{msgs.inModerator}  
+								 <h:outputLabel value="#{msgs.inModerator} " styleClass="yellowLabel"/>  
 								</h:panelGroup>
 								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
 								  rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'COMPLETED'}">
@@ -69,6 +69,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</h:panelGroup>
 	</ui:define>
 </ui:composition>

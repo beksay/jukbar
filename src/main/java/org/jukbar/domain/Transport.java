@@ -1,5 +1,6 @@
 package org.jukbar.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,7 +15,8 @@ public class Transport extends AbstractEntity<Integer>{
     private static final long serialVersionUID = 1L;
     private String marka;
     private String capacity;
-    private Integer year;
+    private String tsYear;
+    private String number;
     private TransportStatus status;
     
 	public String getMarka() {
@@ -33,14 +35,6 @@ public class Transport extends AbstractEntity<Integer>{
 		this.capacity = capacity;
 	}
 
-	public Integer getYear() {
-		return year;
-	}
-
-	public void setYear(Integer year) {
-		this.year = year;
-	}
-
 	@Enumerated(EnumType.ORDINAL)
 	public TransportStatus getStatus() {
 		return status;
@@ -48,6 +42,23 @@ public class Transport extends AbstractEntity<Integer>{
 
 	public void setStatus(TransportStatus status) {
 		this.status = status;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	@Column(name="ts_year")
+	public String getTsYear() {
+		return tsYear;
+	}
+
+	public void setTsYear(String tsYear) {
+		this.tsYear = tsYear;
 	} 
 	
 }

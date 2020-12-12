@@ -23,6 +23,7 @@
 						         как на примере, не закрывая при этом серию и номер паспорта, а так же ФИО и дату выдачи.</h5>
 						    <p class="card-text">Загружаемый файл должен быть в формате .png, .jpg или .pdf. Файлы должны быть размером не более 7 мб. </p>
 								<p:fileUpload mode="advanced" fileUploadListener="#{documentController.handleFileUploadPassport}"
+								       rendered="documentController.documents !=null and documentController.documents.status eq 'NEW'"
 				                       update="messages1 passport" sizeLimit="7000000" fileLimit="1" auto="true"
 				                       fileLimitMessage="#{msgs.fileLimitMessage}" dragDropSupport="true"
 				                       uploadLabel="#{msgs.upload}" cancelLabel="#{msgs.cancel}" label="#{msgs.upload}" />
@@ -30,7 +31,9 @@
 								 <a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(documentController.passport.attachment))}">
 									 <h:outputText value="#{documentController.passport.name}" style="color:blue"/>
 								 </a>
-					            <h:commandLink styleClass="red-btn" action="#{documentController.removePassport()}" immediate="true" alt="#{msgs.delete}" rendered="#{documentController.passport.name ne null}"> <i class="fa fa-lg fa-trash"/> </h:commandLink>
+					            <h:commandLink styleClass="red-btn" action="#{documentController.removePassport()}" 
+					            immediate="true" alt="#{msgs.delete}" 
+					            rendered="#{documentController.passport.name ne null and (documentController.documents !=null and documentController.documents.status eq 'NEW')}"> <i class="fa fa-lg fa-trash"/> </h:commandLink>
 						  </h:panelGroup>
 						</div>
 					  </div>
@@ -42,6 +45,7 @@
 						  <h:panelGroup id="driverLicense" layout="block" class="card-body">
 						    <p class="card-text">Загружаемый файл должен быть в формате .png, .jpg или .pdf. Файлы должны быть размером не более 7 мб. </p>
 						       <p:fileUpload mode="advanced" fileUploadListener="#{documentController.handleFileUploadDriverLicense}"
+						               rendered="documentController.documents !=null and documentController.documents.status eq 'NEW'"
 				                       update="messages2 driverLicense" sizeLimit="7000000" fileLimit="1" auto="true"
 				                       fileLimitMessage="#{msgs.fileLimitMessage}" dragDropSupport="true"
 				                       uploadLabel="#{msgs.upload}" cancelLabel="#{msgs.cancel}" label="#{msgs.upload}" />
@@ -49,7 +53,8 @@
 								 <a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(documentController.driverLicense.attachment))}">
 									 <h:outputText value="#{documentController.driverLicense.name}" style="color:blue"/>
 								 </a>
-					            <h:commandLink styleClass="red-btn" action="#{documentController.removeDriverLicense()}" immediate="true" alt="#{msgs.delete}" rendered="#{documentController.driverLicense.name ne null}"> <i class="fa fa-lg fa-trash"/> </h:commandLink>
+					            <h:commandLink styleClass="red-btn" action="#{documentController.removeDriverLicense()}" immediate="true" alt="#{msgs.delete}" 
+					            rendered="#{documentController.driverLicense.name ne null and (documentController.documents !=null and documentController.documents.status eq 'NEW')}"> <i class="fa fa-lg fa-trash"/> </h:commandLink>
 						  </h:panelGroup>
 						</div>
 					  </div>
@@ -62,21 +67,28 @@
 						    <p class="card-text">Загружаемый файл должен быть в формате .png, .jpg или .pdf. Файлы должны быть размером не более 7 мб. </p>
 						       <p:fileUpload mode="advanced" fileUploadListener="#{documentController.handleFileUploadCarLicense}"
 				                       update="messages3 carLicense" sizeLimit="7000000" fileLimit="1" auto="true"
+				                       rendered="documentController.documents !=null and documentController.documents.status eq 'NEW'"
 				                       fileLimitMessage="#{msgs.fileLimitMessage}" dragDropSupport="true"
 				                       uploadLabel="#{msgs.upload}" cancelLabel="#{msgs.cancel}" label="#{msgs.upload}" />
 				         		<p:growl id="messages3" showDetail="true"/>  
 								 <a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(documentController.carLicense.attachment))}">
 									 <h:outputText value="#{documentController.carLicense.name}" style="color:blue"/>
 								 </a>
-					            <h:commandLink styleClass="red-btn" action="#{documentController.removeDriverLicense()}" immediate="true" alt="#{msgs.delete}" rendered="#{documentController.carLicense.name ne null}"> <i class="fa fa-lg fa-trash"/> </h:commandLink>
+					            <h:commandLink styleClass="red-btn" action="#{documentController.removeDriverLicense()}" immediate="true" alt="#{msgs.delete}" 
+					            rendered="#{documentController.carLicense.name ne null and (documentController.documents !=null and documentController.documents.status eq 'NEW')}"> <i class="fa fa-lg fa-trash"/> </h:commandLink>
 						  </h:panelGroup>
 						</div>
 					  </div>
-					  <div class="col-sm-12">
+					  <h:panelGroup  layout="block" class="col-sm-12" rendered="#{documentController.documents !=null and documentController.documents.status eq 'NEW'}">
 					     <h:outputText value="* Все загруженные документы доступны только модераторам «Жүкбар» и не передаются третьим лицам." style="color:red"/>
 					     <br/>
-						 <p:commandButton ajax="false" icon="fas fa-save" action="#{documentController.save()}" value="#{msgs.save}" />					
-					  </div>
+						 <p:commandButton ajax="false" icon="fas fa-save" action="#{documentController.save()}" value="#{msgs.save}" />	
+						 <h:outputLabel style="width:20px;display:inline-block"/>	
+						 <p:commandButton ajax="false" styleClass="greenBtn" icon="fas fa-arrow-right" action="#{documentController.sendModerator()}" rendered="#{documentController.editDoc ==false and (documentController.documents !=null and documentController.documents.status eq 'NEW')}" value="#{msgs.sendTo}" />	
+					  </h:panelGroup>
+					  <h:panelGroup  layout="block" class="col-sm-12" rendered="#{documentController.documents !=null and documentController.documents.status eq 'IN_PROGRESS'}">
+					     <h:outputLabel value="#{msgs.inModerator}" styleClass="yellowLabel" />
+					  </h:panelGroup>
 					</div>
 				</h:form>
 			</div>

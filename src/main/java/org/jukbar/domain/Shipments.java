@@ -35,7 +35,6 @@ public class Shipments extends AbstractEntity<Integer>{
     private String addressTo;
     private Date dateTo;
     private BigDecimal amount;
-    private BigDecimal price;
     private String products;
     private Date dateCreated;
     private Date dateProgress;
@@ -158,14 +157,6 @@ public class Shipments extends AbstractEntity<Integer>{
 	
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
-	}
-	
-	public BigDecimal getPrice() {
-		return price;
-	}
-	
-	public void setPrice(BigDecimal price) {
-		this.price = price;
 	}
 	
 	@Column(name = "products",length = 5000)
