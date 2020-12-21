@@ -35,7 +35,7 @@ public class SecurityFilter implements Filter {
 	
 	private Map<String[], String> map;
 	 
-	@Inject    
+	@Inject     
 	private LoginUtil loginUtil;  
 	   
 	@Override

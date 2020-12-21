@@ -20,6 +20,7 @@ import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
 import org.jukbar.beans.Message;
 import org.jukbar.conversations.ConversationUser;
+import org.jukbar.domain.Country;
 import org.jukbar.domain.Person;
 import org.jukbar.domain.Role;
 import org.jukbar.domain.User;
@@ -32,6 +33,7 @@ import org.jukbar.util.web.FacesMessages;
 import org.jukbar.util.web.LoginUtil;
 import org.jukbar.util.web.Messages;
 import org.jukbar.validator.EntityValidator;
+import org.primefaces.event.SelectEvent;
 
 
 @SuppressWarnings("unused")
@@ -78,6 +80,13 @@ public class UserAction {
 		service.merge(user);		
 		return "user_journal.xhtml?faces-redirect=true";
 	}
+	
+	public void onRowSelect(SelectEvent event) throws IOException {
+		user=(User) event.getObject();
+		conversation.setUser(user);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/persons/person_card.xhtml?cid="+conversation.getId());
+        
+    }
 	
 	public String unblock(User user) {
 		user.setCountFailed(0);

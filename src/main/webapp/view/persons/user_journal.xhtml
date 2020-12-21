@@ -44,17 +44,18 @@
 							emptyMessage="#{msgs.noRecordsFound}" 
 							id="table"
 							style="margin-top:0px"
-							sortOrder="DESCENDING"
+							sortOrder="DESCENDING" 
 							selectionMode="single" selection="#{userAction.user}"
-							rowsPerPageTemplate="15,30,50" paginatorPosition="bottom" pageLinks="10"
+							rowsPerPageTemplate="15,30,50" paginatorPosition="bottom" pageLinks="15"
 				   			currentPageReportTemplate="#{msgs.showPaymentNumbers}" 
 				            paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
 				            first="#{userList.first}" >
 				            <p:ajax event="page" listener="#{userList.onPageChange}"/>  
+				            <p:ajax event="rowSelect" listener="#{userAction.onRowSelect}" />
 				                <f:facet name="header">
 						            #{msgs.users}
 						        </f:facet>
-						 		<p:column headerText="#{msgs.number}" width="60">
+						 		<p:column headerText="#{msgs.number}" width="50">
 				                    #{index + 1}
 				                </p:column>
 						        <p:column headerText="#{msgs.fullName}">
@@ -63,10 +64,19 @@
 						        <p:column headerText="#{msgs.email}">
 						        	<h:outputText value="#{entity.email}" />
 						        </p:column>
-						        <p:column headerText="#{msgs.status}">
+						        <p:column headerText="#{msgs.phone}">
+						        	<h:outputText value="#{entity.person.phone}" />
+						        </p:column>
+						        <p:column headerText="#{msgs.status}" width="100">
 						        	<h:outputText value="#{enums[entity.status]}" />
 						        </p:column>
-						        <p:column headerText="#{msgs.operation}" >
+						        <p:column headerText="#{msgs.documents}" width="100">
+						        	<h:outputText value="#{enums[entity.person.documents.status]}" />
+						        </p:column>
+						        <p:column headerText="#{msgs.transport}" width="100">
+						        	<h:outputText value="#{enums[entity.person.transport.status]}" />
+						        </p:column>
+						        <p:column headerText="#{msgs.operation}" width="100">
 						        	<p:commandButton action="#{userAction.block(entity)}" update="table" icon="fa fa-lock" title="#{msgs.lock}" rendered="#{entity.status.toString() eq 'ACTIVE'}" />
 							        <p:commandButton action="#{userAction.unblock(entity)}" update="table" icon="fa fa-unlock" title="#{msgs.unlock}" rendered="#{entity.status.toString() eq 'INACTIVE' or entity.status.toString() eq 'BLOCKED'}" />
 						        </p:column>
