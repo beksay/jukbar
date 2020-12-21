@@ -53,6 +53,7 @@ public class UserList extends BaseController implements Serializable {
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
+		filters.add(new FilterExample("role.id", 2, InequalityConstants.EQUAL));
 		if (searchString != null && searchString.length()>0) {
 			filters.add(new FilterExample(true, "person.firstName", '%' + searchString.toLowerCase() + '%', InequalityConstants.LIKE, true));
 			filters.add(new FilterExample(true, "person.lastName", '%' + searchString.toLowerCase() + '%', InequalityConstants.LIKE, true));
