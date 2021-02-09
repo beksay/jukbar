@@ -109,10 +109,10 @@
 								<f:facet name="header">
 					               #{msgs.internationalCargo}
 					            </f:facet> 	
-								<p:column headerText="№ заказа" width="80">
+								<p:column headerText="№ заказа">
 									<h:outputText value="#{entity.id}" />
 								</p:column>
-								<p:column headerText="#{msgs.transportType}" width="200">
+								<p:column headerText="#{msgs.transportType}">
 									<h:outputText value="#{entity.transportType.name}" />
 								</p:column>
 								<p:column headerText="Маршрут">
@@ -135,7 +135,7 @@
 										</p>
 									</div>
 								</p:column>
-								<p:column headerText="#{msgs.fromPlace}" width="150">
+								<p:column headerText="#{msgs.fromPlace}">
 									<div class="mainDataDate">
 										<p>
 											<i class="fas fa-hourglass-start"></i>
@@ -145,7 +145,7 @@
 										</p>
 									</div>
 								</p:column>
-								<p:column headerText="#{msgs.amount}" width="150">
+								<p:column headerText="#{msgs.amount}">
 									<h:outputText value="#{entity.amount} сом" >
 									   <f:converter converterId="decimalNumberConverter" />
 									</h:outputText>
