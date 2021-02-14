@@ -1,9 +1,6 @@
 package org.jukbar.controller.user;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigDecimal;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -17,7 +14,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.commons.io.IOUtils;
 import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.Message;
 import org.jukbar.conversations.Conversational;
@@ -112,7 +108,6 @@ public class RegistrationAction extends Conversational{
 		user.setPerson(person);
 		user.setStatus(UserStatus.ACTIVE);
 		user.setCountFailed(0);
-		user.setDatePasswordExpired(calendar.getTime());
 		validator.validate(user);
 		if(!FacesContext.getCurrentInstance().getMessageList().isEmpty()) return null;
 		
@@ -151,7 +146,7 @@ public class RegistrationAction extends Conversational{
         
 		user = new User();
 		
-		return "/view/public/thank_you.xhtml?faces-redirect=true";
+		return "/view/public/registration/thank_you.xhtml?faces-redirect=true";
 	}
 	
 	private String listPublic() {
@@ -178,8 +173,16 @@ public class RegistrationAction extends Conversational{
 		closeConversation();
 		user = new User();
 		person = new Person();
-    	return "/view/public/registration.xhtml";
+    	return "/view/public/registration/main.xhtml";
     }
+	 
+	public String registerPerson() {
+	    return "/view/public/registration/registration_person.xhtml";
+	}
+	
+	public String registerDriver() {
+	    return "/view/public/registration/registration_driver.xhtml";
+	}
 	
 	private String home(){
 		return "/home.xhtml";

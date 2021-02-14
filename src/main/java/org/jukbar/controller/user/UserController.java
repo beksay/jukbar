@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -19,16 +18,13 @@ import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
 import org.jukbar.beans.Message;
 import org.jukbar.domain.User;
-import org.jukbar.enums.ScopeConstants;
 import org.jukbar.enums.SortEnum;
 import org.jukbar.enums.UserStatus;
 import org.jukbar.service.UserService;
 import org.jukbar.util.MailSender;
 import org.jukbar.util.PasswordBuilder;
-import org.jukbar.util.web.FacesScopeQualifier;
 import org.jukbar.util.web.LoginUtil;
 import org.jukbar.util.web.Messages;
-import org.jukbar.util.web.ScopeQualifier;
 
 
 /***
@@ -102,12 +98,6 @@ public class UserController {
 		
 		loginUtil.setCurrentUser(user);
 		
-		if(user.getDatePasswordExpired() == null || user.getDatePasswordExpired().getTime()  <= System.currentTimeMillis()){
-			ScopeQualifier qualifier = new FacesScopeQualifier();
-			qualifier.setValue("changePassword", true, ScopeConstants.SESSION_SCOPE);
-			return "/view/user/change_password.xhtml";
-		}
-		
 		String address = loginUtil.userHasRole(user, "ck") ? "/jukbar/view/main.xhtml" : "/jukbar/view/main.xhtml";
 		
 		user.setCountFailed(0);
@@ -166,7 +156,6 @@ public class UserController {
 	    String password = builder.build();
 		
 		String body = MessageFormat.format(template, new Object[]{email, email, user.getPerson().getFullName(), password});
-		user.setDatePasswordExpired(new Date());
 		user.setPassword(loginUtil.getHashPassword(password));
 		user.setCountFailed(0);
 		user.setStatus(UserStatus.ACTIVE);

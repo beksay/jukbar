@@ -84,8 +84,20 @@ public class TransportController extends Conversational {
 		return profileList();
 	}
 	
+	public String goProfileMain(Person person) {
+		this.person = person;
+		if(person.getTransport() !=null){
+			transport = transportService.findById(person.getTransport().getId(), false);	
+		}
+		return profileListMain();
+	}
+	
 	private String profileList() {
 		return "/view/transport/my_transport.xhtml";
+	}
+	
+	private String profileListMain() {
+		return "/view/transport/my_transport_main.xhtml";
 	}
 	
 	public String mainForm() {

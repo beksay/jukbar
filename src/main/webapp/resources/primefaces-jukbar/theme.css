@@ -8053,6 +8053,11 @@ div.user:hover .user-menu {
     display: block;
 }
 
+#reg-form {
+    width: 700px;
+    margin: 40px auto 0;
+}
+
 #login-form {
     width: 280px;
     margin: 40px auto 0;
@@ -10170,11 +10175,14 @@ body .jumbotron {
 	background-color: #f9f9f9;
 
 }
-body .my-card {
+body .jumbotron .my-card {
     position:absolute;
     left:40%;
     top:-20px;
     border-radius:50%;
+}
+body .jumbotron .in-card{
+	height: 100%;
 }
 body .jukMenu {
 	display:flex;

@@ -32,7 +32,6 @@ public class User extends AbstractEntity<Integer>  {
 	private String email;
 	private UserStatus status;
 	private Integer countFailed;
-	private Date datePasswordExpired;
 	private Role role;
 	private Person person;
 	
@@ -70,16 +69,6 @@ public class User extends AbstractEntity<Integer>  {
 	
 	public void setCountFailed(Integer countFailed) {
 		this.countFailed = countFailed;
-	}
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="date_password_expired")
-	public Date getDatePasswordExpired() {
-		return datePasswordExpired;
-	}
-	
-	public void setDatePasswordExpired(Date datePasswordExpired) {
-		this.datePasswordExpired = datePasswordExpired;
 	}
 	
 	@ManyToOne

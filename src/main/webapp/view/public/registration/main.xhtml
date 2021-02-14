@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+
+    <ui:define name="content">
+		
+		<div class="full-height p-padding login-page">					
+			    
+			<div class="logo-block">
+				<h:link outcome="/home.xhtml">
+					<h1 class="title">Регистрация аккаунта</h1>
+				</h:link>
+			</div>
+			    
+			<h:form id="reg-form" prependId="false" >
+				   <h:panelGroup  layout="block" class="row" >
+					<div class="col-md-6">
+					   <div class="card text-center">
+						  <div class="card-header">
+						    Если вы хотите перевезти груз
+						  </div>
+						  <h:commandLink action="#{registrationAction.registerPerson()}">
+							  <div class="card-body">
+							    <h:graphicImage library="images" height="120" width="120"  name="gruz.png"/>
+							    <h5 class="card-title">Разместить запрос на перевозку</h5>
+							  </div>
+						  </h:commandLink>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card text-center">
+						  <div class="card-header">
+						    Если вы перевозчик
+						  </div>
+						  <h:commandLink action="#{registrationAction.registerDriver()}">
+							  <div class="card-body">
+							    <h:graphicImage library="images" height="120" width="120"  name="bus.png"/>
+							    <h5 class="card-title">Для частных перевозчиков</h5>
+							  </div>
+						  </h:commandLink>
+						</div>
+					</div>
+				  </h:panelGroup>
+			</h:form>
+		</div>			
+	</ui:define>		
+</ui:composition>

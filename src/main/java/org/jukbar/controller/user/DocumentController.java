@@ -199,8 +199,41 @@ public class DocumentController extends Conversational {
 		return profileList();
 	}
 	
+	public String goProfileMain(Person person) {
+		this.person = person;
+		if(person.getDocuments() !=null){
+			documents = docService.findById(person.getDocuments().getId(), false);	
+	
+			try {
+				if (documents.getPassport() != null) {
+					passport = Util.createAttachmentDTO(documents.getPassport());
+				}else {
+					passport = null;
+				}
+				if (documents.getDriverLicense() != null) {
+					driverLicense = Util.createAttachmentDTO(documents.getDriverLicense());
+				}else {
+					driverLicense = null;
+				}
+				if (documents.getCarLicense() != null) {
+					carLicense = Util.createAttachmentDTO(documents.getCarLicense());
+				}else {
+					carLicense = null;
+				}
+			} catch (Exception e) {
+				passport = null;
+				driverLicense = null;
+			}
+		}
+		return profileListMain();
+	}
+	
 	private String profileList() {
 		return "/view/documents/my_documents.xhtml";
+	}
+	
+	private String profileListMain() {
+		return "/view/documents/my_documents_main.xhtml";
 	}
 	
 	public String mainForm() {

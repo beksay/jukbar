@@ -74,7 +74,6 @@ public class PasswordChanger extends Conversational {
 		
 		user.setPassword(hashPassword);
 		user.setCountFailed(0);
-		user.setDatePasswordExpired(calendar.getTime());
 		user = service.merge(user);
 		
 		ScopeQualifier qualifier = new FacesScopeQualifier();
