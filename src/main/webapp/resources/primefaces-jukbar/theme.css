@@ -10120,7 +10120,7 @@ div.scrollmenuForm h3 {
 	height:70px;
 }
 .maintopContainerPrivate {
-	background-color:#457770;
+	background-color:#24796d;
 	height:70px;
 }
 .maintopContent {
@@ -10445,8 +10445,8 @@ body .mainDataDate p svg {
 	border-top:0;
 }
 .InnerLeft .mainSidecontent .main-menu a.active, .InnerLeft .mainSidecontent .main-menu a:hover, .InnerLeft .mainSidecontent .main-menu a:active {
-	color:#457770;
-	border-left:6px solid #457770;
+	color:#24796d;
+	border-left:6px solid #24796d;
 }
 .InnerLeft .mainSidecontent .main-menu a{
 	background:#f7f7f7;
@@ -10468,7 +10468,7 @@ body .mainDataDate p svg {
 }
 .InnerLeft .mainSidecontent .main-menu .my-avatar .the-avatar{
 	font-size:30px;
-	color:#457770;
+	color:#24796d;
 }
 .InnerLeft .mainSidecontent .main-menu .my-avatar .the-user {
 	padding-left:10px;
@@ -10531,4 +10531,10 @@ body .mainDataDate p svg {
 }
 .divider-custom.divider-light .divider-custom-icon {
   color: #fff !important;
+}
+body .formTitle {
+	text-align: center;
+	margin-top: 10px;
+	color: #24796d;
+	font-size: 20px;
 }

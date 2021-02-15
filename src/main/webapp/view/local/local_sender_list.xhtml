@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<div class="container">
+				<div class="mainListData">
+					<div class="mainListFilter">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<h:panelGroup id="oblastFrom" layout="block" class="col">
+								<h:outputLabel for="oblast" value="#{msgs.oblastFrom}"/>
+								<h:selectOneMenu id="oblast" value="#{localSenderList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{localSenderList.oblastList}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+									<p:ajax listener="#{localSenderList.filterData()}" event="change"
+										update="region table regionFrom" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<h:panelGroup id="regionFrom" layout="block" class="col">
+								<h:outputLabel for="region" value="#{msgs.regionFrom}" rendered="#{localSenderList.oblast.id!=null}"/>
+								<h:selectOneMenu id="region" value="#{localSenderList.region}" rendered="#{localSenderList.oblast.id!=null}"
+									effect="fold" editable="true" converter="#{regionConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{localSenderList.regionList}" var="region"
+										itemLabel="#{region.name}" itemValue="#{region}" />
+									<p:ajax listener="#{localSenderList.filterData()}" event="change"
+										update="table" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<h:panelGroup id="oblastToId" layout="block" class="col">
+								<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}"/>
+								<h:selectOneMenu id="oblastTo" value="#{localSenderList.oblastTo}"
+									effect="fold" editable="true" converter="#{oblastConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{localSenderList.oblastToList}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+									<p:ajax listener="#{localSenderList.filterData()}" event="change"
+										update="regionTo table regionToId" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<h:panelGroup id="regionToId" layout="block" class="col">
+								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{localSenderList.oblastTo.id!=null}"/>
+								<h:selectOneMenu id="regionTo" value="#{localSenderList.region}" rendered="#{localSenderList.oblastTo.id!=null}"
+									effect="fold" editable="true" converter="#{regionConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{localSenderList.regionToList}" var="region"
+										itemLabel="#{region.name}" itemValue="#{region}" />
+									<p:ajax listener="#{localSenderList.filterData()}" event="change"
+										update="table" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="applyBtn"
+									action="#{localSenderList.filterData()}" value="#{msgs.search}"
+									icon="fas fa-search" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="clearBtn"
+									action="#{localSenderList.clearData()}" value="#{msgs.clear}"
+									icon="fas fa-eraser" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="addBtn"
+									action="#{localSenderController.add()}" value="#{msgs.addCargo}" styleClass="ui-button success-btn"
+									icon="fas fa-plus" />
+							</div>
+						</h:panelGroup>
+					</div>
+					<div class="mainListContent">
+						<div class="mainJukInfo">
+							<p:dataTable var="entity" value="#{localSenderList.model}"
+								paginator="true" rows="10" rowIndexVar="index" lazy="true"
+								emptyMessage="#{msgs.noRecordsFound}" id="table"
+								style="margin-top:0px" sortOrder="DESCENDING"
+								selectionMode="single" selection="#{localSenderController.shipments}"
+								rowsPerPageTemplate="10,20,40,80" paginatorPosition="bottom"
+								pageLinks="10" currentPageReportTemplate="#{msgs.showPaymentNumbers}"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+								first="#{localSenderList.first}">
+								<p:ajax event="page" listener="#{localSenderList.onPageChange}" />
+								<p:ajax event="rowSelect" listener="#{localSenderController.onRowSelect}" />
+								<f:facet name="header">
+						            #{msgs.localCargo}
+						        </f:facet>
+								<p:column headerText="№ заказа">
+									<h:outputText value="#{entity.id}"  />
+								</p:column>
+								<p:column headerText="#{msgs.transportType}">
+									<h:outputText value="#{entity.transportType.name}" />
+								</p:column>
+								<p:column headerText="Маршрут">
+									<div class="MainDataContent">
+										<p>
+											<h:outputText value="#{entity.oblastFrom.name}" rendered="#{entity.oblastFrom.id != null}" />
+											<h:outputText value="," rendered="#{entity.regionFrom.id !=null}" />
+											<h:outputText value="#{entity.regionFrom.name}" rendered="#{entity.regionFrom.id !=null}" />
+										</p>
+										<p>
+											<h:outputText value="#{entity.oblastTo.name}" rendered="#{entity.oblastTo.id !=null}" />
+											<h:outputText value="," rendered="#{entity.regionTo.id !=null}" />
+											<h:outputText value="#{entity.regionTo.name}" rendered="#{entity.regionTo.id !=null}" />										
+										</p>
+									</div>
+								</p:column>
+								<p:column headerText="#{msgs.fromPlace}">
+									<div class="mainDataDate">
+										<p>
+											<i class="fas fa-hourglass-start"></i>
+											<h:outputText value="#{entity.dateFrom}" style="color:#596D9B">
+												<f:convertDateTime pattern="dd.MM.yyyy" />
+											</h:outputText>
+										</p>
+									</div>
+								</p:column>
+								<p:column headerText="#{msgs.amount} (сом)">
+									<h:outputText value="#{entity.amount}" >
+									   <f:converter converterId="decimalNumberConverter" />
+									</h:outputText>
+								</p:column>
+								<p:column headerText="#{msgs.status}">
+									<h:outputText value="#{enums[entity.status]}" />
+								</p:column>
+							</p:dataTable>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -40,6 +40,16 @@
 							   </h:link>
 							</li>
 							<li>
+							   <h:link value="#{msgs.localCargo}"  outcome="/view/local/local_sender_list.xhtml" 
+							    rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'sender')}">
+							   </h:link>
+							</li>
+							<li>
+							   <h:link value="#{msgs.internationalCargo}"  outcome="/view/international/international_list.xhtml" 
+							        rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'sender')}">
+							   </h:link>
+							</li>
+							<li>
 							   <h:link value="#{msgs.myShipments}"  outcome="/view/local/my_local_list.xhtml" 
 							     rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver' and loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'COMPLETED')}">	
 							   </h:link>

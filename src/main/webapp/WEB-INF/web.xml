@@ -57,6 +57,10 @@
       <param-name>driver</param-name>
       <param-value>/view/local/.*|/view/international/.*|/view/profile/.*|/view/news/.*|/view/payments/.*|/view/help/.*|/view/documents/.*|/view/transport/.*</param-value>
     </init-param>
+    <init-param>
+      <param-name>sender</param-name>
+      <param-value>/view/local/.*|/view/international/.*|/view/profile/.*|/view/payments/.*|/view/help/.*</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
     <filter-name>SecurityFilter</filter-name>
