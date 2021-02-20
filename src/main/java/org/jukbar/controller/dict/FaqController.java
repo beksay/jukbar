@@ -38,7 +38,6 @@ public class FaqController extends Conversational implements Serializable {
 	}
 	
 	public String add() {
-		faq.setDateCreated(new Date());
 		if (faq==null) faq= new Faq();
         return form();
     }
@@ -49,6 +48,7 @@ public class FaqController extends Conversational implements Serializable {
     }
 
     public String save() {
+    	faq.setDateCreated(new Date());
     	if (faq.getId() == null) {
     		faq = service.persist(faq);
     	} else { 

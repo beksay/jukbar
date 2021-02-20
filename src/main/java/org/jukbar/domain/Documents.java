@@ -17,6 +17,7 @@ public class Documents extends AbstractEntity<Integer> {
     private Attachment driverLicense;
     private Attachment carLicense;
     private DocStatus status;
+    private String reason;
 
 	@ManyToOne
 	@JoinColumn(name = "passport_id")
@@ -55,6 +56,14 @@ public class Documents extends AbstractEntity<Integer> {
 
 	public void setStatus(DocStatus status) {
 		this.status = status;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 }

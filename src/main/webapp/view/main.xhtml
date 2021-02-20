@@ -33,12 +33,16 @@
 								  rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status eq 'COMPLETED'}">
 								  #{msgs.completed}
 								</h:panelGroup>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status eq 'REFUSED'}">
+								  #{enums.REFUSED}
+								</h:panelGroup>
 							</div>
-							<div class="col-2">
+							<h:panelGroup layout="block" class="col-2" rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status ne 'COMPLETED'}">
 							  <h:form>
 								<p:commandButton value="#{msgs.add}" action="#{documentController.goProfileMain(loginUtil.currentUser.person)}"/>
 							  </h:form>	
-							</div>
+							</h:panelGroup>
 						</div>
 					</div>
 				</div>
@@ -70,11 +74,11 @@
 								  #{msgs.completed}
 								</h:panelGroup>
 							</div>
-							<div class="col-2">
+							<h:panelGroup layout="block" class="col-2" rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status ne 'COMPLETED'}">
 						   	   <h:form>
-								<p:commandButton value="#{msgs.add}" action="#{transportController.goProfileMain(loginUtil.currentUser.person)}"/>
+								<p:commandButton value="#{msgs.add}" action="#{transportController.goProfileMain(loginUtil.currentUser.person)}"  />
 							   </h:form>
-							</div>
+							</h:panelGroup>
 						</div>
 					</div>
 				</div>

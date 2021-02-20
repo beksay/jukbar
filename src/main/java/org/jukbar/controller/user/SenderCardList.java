@@ -1,4 +1,4 @@
-package org.jukbar.controller;
+package org.jukbar.controller.user;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,22 +9,27 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.jukbar.annotation.Logged;
 import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
+import org.jukbar.controller.BaseController;
+import org.jukbar.conversations.ConversationUser;
 import org.jukbar.domain.Country;
 import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Region;
 import org.jukbar.enums.ShipmentStatus;
+import org.jukbar.enums.ShipmentType;
 import org.jukbar.enums.SortEnum;
 import org.jukbar.model.ShipmentsModel;
 import org.jukbar.service.CountryService;
 import org.jukbar.service.OblastService;
 import org.jukbar.service.RegionService;
 import org.jukbar.service.ShipmentsService;
+import org.jukbar.util.web.LoginUtil;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.data.PageEvent;
 
@@ -37,7 +42,7 @@ import org.primefaces.event.data.PageEvent;
 @Logged
 @ManagedBean
 @ViewScoped
-public class InProgressShipmentsList extends BaseController implements Serializable {
+public class SenderCardList extends BaseController implements Serializable {
 	
 	private static final long serialVersionUID = -6100072166946495229L;
 	@EJB
@@ -49,6 +54,11 @@ public class InProgressShipmentsList extends BaseController implements Serializa
 	@EJB
 	private RegionService regionService;
 	private ShipmentsModel model;
+	
+	@Inject
+	private LoginUtil loginUtil;
+	@Inject
+	private ConversationUser conversation;
 	
 	private Country country;
 	private Oblast oblast;
@@ -68,7 +78,7 @@ public class InProgressShipmentsList extends BaseController implements Serializa
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
-		filters.add(new FilterExample("status", ShipmentStatus.IN_PROGRESS, InequalityConstants.EQUAL));  
+		filters.add(new FilterExample("owner", conversation.getUser(), InequalityConstants.EQUAL));
 		if(country !=null) filters.add(new FilterExample("countryFrom", country, InequalityConstants.EQUAL)); 
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
         if(region !=null) filters.add(new FilterExample("regionFrom", region, InequalityConstants.EQUAL));
@@ -243,5 +253,11 @@ public class InProgressShipmentsList extends BaseController implements Serializa
 		this.regionTo = regionTo;
 	}
 
+    public ConversationUser getConversation() {
+		return conversation;
+	}
     
+    public void setConversation(ConversationUser conversation) {
+		this.conversation = conversation;
+	}
 }

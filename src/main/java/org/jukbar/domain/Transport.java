@@ -18,6 +18,7 @@ public class Transport extends AbstractEntity<Integer>{
     private String tsYear;
     private String number;
     private TransportStatus status;
+    private String reason;
     
 	public String getMarka() {
 		return marka;
@@ -59,6 +60,14 @@ public class Transport extends AbstractEntity<Integer>{
 
 	public void setTsYear(String tsYear) {
 		this.tsYear = tsYear;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	} 
 	
 }

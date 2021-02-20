@@ -95,6 +95,25 @@ public class InternationalController{
         FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/international/international_preview.xhtml?cid="+conversation.getId());
     }
 	
+	public void onRowSelectManager(SelectEvent event) throws IOException {
+		shipments=(Shipments) event.getObject();
+		conversation.setShipments(shipments);
+		
+		if(shipments.getOblastFrom().getCity()==true) {
+		   conversation.setStartLocation(shipments.getOblastFrom().getLocation());
+		}else {
+			 conversation.setStartLocation(shipments.getRegionFrom().getLocation());		   
+		}
+		
+		if(shipments.getOblastTo().getCity()==true) {
+			conversation.setEndLocation(shipments.getOblastTo().getLocation());
+		}else {
+			conversation.setEndLocation(shipments.getRegionTo().getLocation());
+		}
+		System.out.println("shipments===" +shipments);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/persons/sender_preview.xhtml?cid="+conversation.getId());
+    }
+	
 	public String save() {
 		if(shipments == null){
 			FacesMessages.addMessage(Messages.getMessage("invalidData"), Messages.getMessage("invalidData"), null);

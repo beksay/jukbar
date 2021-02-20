@@ -40,6 +40,36 @@
 						<a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(userAction.user.person.documents.carLicense))}">
 							 <h:outputText value="#{userAction.user.person.documents.carLicense.fileName}" style="color:blue"/>
 						</a>
+						
+						<h:panelGroup styleClass="row filter" layout="block" rendered="#{userAction.user.person.documents.status eq 'IN_PROGRESS'}">
+						   <div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" value="#{msgs.confirm}" styleClass="ui-button success-btn"
+									icon="fas fa-check-circle" update="@form" action="#{userAction.confirmDoc()}"/>
+							</div>
+							<h:panelGroup class="col-auto" layout="block">
+								<label></label>
+								<p:commandButton ajax="false" value="#{msgs.refuse}" action="#{userAction.changeDoc()}"
+									icon="fas fa-window-close" />
+							</h:panelGroup>
+							<h:panelGroup class="col-12 mt-3" layout="block" rendered="#{userAction.refuseDoc}">
+								<p:inputTextarea id="reasonRefuseDoc" value="#{userAction.reasonDoc}" />
+								<p:watermark value="Причина отказа" for="reasonRefuseDoc"/>
+								<p:message for="reasonRefuseDoc" />
+							</h:panelGroup>
+							<h:panelGroup class="col-auto" layout="block" rendered="#{userAction.refuseDoc}">
+								<p:commandButton ajax="false" value="#{msgs.refuse}" styleClass="ui-button danger-btn"
+									icon="fas fa-window-close" action="#{userAction.refuseDoc()}"/>
+							</h:panelGroup>
+							<h:panelGroup class="col-auto" layout="block" rendered="#{userAction.refuseDoc}">
+								<p:commandButton ajax="false" value="#{msgs.cancel}" action="#{userAction.cancelChangeDoc()}" />
+							</h:panelGroup>
+						</h:panelGroup>
+						<br /><br />
+						<h:outputText value="#{msgs.completed}" rendered="#{userAction.user.person.documents.status eq 'COMPLETED'}" style="color:green"/>
+						<h:outputText value="#{msgs.refused}" rendered="#{userAction.user.person.documents.status eq 'REFUSED'}" style="color:red"/>
+						<br />
+						<h:outputText value="#{userAction.user.person.documents.reason}" rendered="#{userAction.user.person.documents.status eq 'REFUSED'}" style="color:red"/>
 				    </div>
 				    <div class="col-md-4">
 				        <h5 class="card-title">Транспорт</h5>
@@ -51,6 +81,35 @@
 				        <p>#{userAction.user.person.transport.capacity}</p>
 				        <p class="card-text">#{msgs.year}</p>
 				        <p>#{userAction.user.person.transport.tsYear}</p>
+				        
+				        <h:panelGroup styleClass="row filter" layout="block" rendered="#{userAction.user.person.transport.status eq 'IN_PROGRESS'}">
+						   <div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" value="#{msgs.confirm}" styleClass="ui-button success-btn"
+									icon="fas fa-check-circle" update="@form" action="#{userAction.confirmTransport()}"/>
+							</div>
+							<h:panelGroup class="col-auto" layout="block">
+								<label></label>
+								<p:commandButton ajax="false" value="#{msgs.refuse}" action="#{userAction.change()}"
+									icon="fas fa-window-close" />
+							</h:panelGroup>
+							<h:panelGroup class="col-12 mt-3" layout="block" rendered="#{userAction.refuseButton}">
+								<p:inputTextarea id="reasonRefuse"  value="#{userAction.reasonTransport}"/>
+								<p:watermark value="Причина отказа" for="reasonRefuse"/>
+								<p:message for="reasonRefuse" />
+							</h:panelGroup>
+							<h:panelGroup class="col-auto" layout="block" rendered="#{userAction.refuseButton}">
+								<p:commandButton ajax="false" value="#{msgs.refuse}" styleClass="ui-button danger-btn"
+									icon="fas fa-window-close" action="#{userAction.refuseTransport()}"/>
+							</h:panelGroup>
+							<h:panelGroup class="col-auto" layout="block" rendered="#{userAction.refuseButton}">
+								<p:commandButton ajax="false" value="#{msgs.cancel}" action="#{userAction.cancelChange()}" />
+							</h:panelGroup>
+						</h:panelGroup>
+						
+						<h:outputText value="#{msgs.completed}" rendered="#{userAction.user.person.transport.status eq 'COMPLETED'}" style="color:green"/>
+						<h:outputText value="#{msgs.refused}" rendered="#{userAction.user.person.transport.status eq 'REFUSED'}" style="color:red"/>
+						<h:outputText value="#{userAction.user.person.documents.reason}" rendered="#{userAction.user.person.transport.status eq 'REFUSED'}" style="color:red"/>
 				    </div>
 				  </div>  
 				 </div>

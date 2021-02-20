@@ -6,60 +6,165 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/layouts/private.xhtml">
 	<ui:define name="content">
-		<div class="container">
-			<div class="jukForm">
-				<h:form>
-				<div class="card bg-light mb-3" >
-				<div class="card-header">#{userAction.user.person.fullName}</div>
-				<div class="card-body">
-				  <div class="row">
-				    <div class="col-md-4">
-				        <h5 class="card-title">#{msgs.mainData}</h5>
-				        <p class="card-text">#{msgs.myAccount}</p>
-				        <p class="card-text">#{userAction.user.person.account}</p>
-				        <p class="card-text">#{msgs.email}</p>
-				        <p class="card-text">#{userAction.user.email}</p>
-				        <p class="card-text">#{msgs.status}</p>
-				        <p class="card-text">#{enums[userAction.user.status]}</p>
-				        <p class="card-text">#{msgs.birthDate}</p>
-				        <p class="card-text">#{userAction.user.person.birthDate}</p>
-				        <p class="card-text">#{msgs.myPhone}</p>
-				        <p class="card-text">#{userAction.user.person.phone}</p>
-				    </div>
-				    <div class="col-md-4">
-					    <h5 class="card-title">Документы</h5>
-					    <p class="card-text">Фото паспорта основной страницы</p>	
-					    <a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(userAction.user.person.documents.passport))}">
-							 <h:outputText value="#{userAction.user.person.documents.passport.fileName}" style="color:blue"/>
-						</a>	
-						<p class="card-text">Водительское удостоверение</p>	 
-						<a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(userAction.user.person.documents.driverLicense))}">
-							 <h:outputText value="#{userAction.user.person.documents.driverLicense.fileName}" style="color:blue"/>
-						</a> 
-						<p class="card-text">Свидетельство о регистрации ТС</p>	
-						<a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(userAction.user.person.documents.carLicense))}">
-							 <h:outputText value="#{userAction.user.person.documents.carLicense.fileName}" style="color:blue"/>
-						</a>
-				    </div>
-				    <div class="col-md-4">
-				        <h5 class="card-title">Транспорт</h5>
-				        <p class="card-text">#{msgs.tsNumber}</p>
-				        <p>#{userAction.user.person.transport.number}</p>
-				        <p class="card-text">#{msgs.marka}</p>
-				        <p>#{userAction.user.person.transport.marka}</p>
-				        <p class="card-text">#{msgs.tsCapacity}</p>
-				        <p>#{userAction.user.person.transport.capacity}</p>
-				        <p class="card-text">#{msgs.year}</p>
-				        <p>#{userAction.user.person.transport.tsYear}</p>
-				    </div>
-				  </div>  
-				 </div>
-			   </div>
-				<h:panelGroup id="messages">
-					<p:growl globalOnly="true" />
-				</h:panelGroup>
-			 </h:form>
-		  </div>
-		</div>
+		<h:form>
+			<div class="container">
+				<div class="mainListData">
+					<div class="mainListFilter">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<div class="col">
+								<h:outputLabel value="#{msgs.countryFrom}" />
+								<h:selectOneMenu id="countryFrom" value="#{senderCardList.country}"
+									effect="fold" editable="true" converter="#{countryConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{senderCardList.countryList}" var="entity"
+										itemLabel="#{entity.name}" itemValue="#{entity}" />
+									<p:ajax listener="#{senderCardList.filterData()}" event="change"
+										update="oblast table oblastFrom" />
+								</h:selectOneMenu>
+							</div>
+							<h:panelGroup id="oblastFrom" layout="block" class="col">
+								<h:outputLabel for="oblast" value="#{msgs.oblastFrom}" rendered="#{senderCardList.country.id!=null}"/>
+								<h:selectOneMenu id="oblast" value="#{senderCardList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}" rendered="#{senderCardList.country.id!=null}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{senderCardList.oblastList}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+									<p:ajax listener="#{senderCardList.filterData()}" event="change"
+										update="region table regionFrom" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<h:panelGroup id="regionFrom" layout="block" class="col">
+								<h:outputLabel for="region" value="#{msgs.regionFrom}" rendered="#{senderCardList.oblast.id!=null}"/>
+								<h:selectOneMenu id="region" value="#{senderCardList.region}" rendered="#{senderCardList.oblast.id!=null}"
+									effect="fold" editable="true" converter="#{regionConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{senderCardList.regionList}" var="region"
+										itemLabel="#{region.name}" itemValue="#{region}" />
+									<p:ajax listener="#{senderCardList.filterData()}" event="change"
+										update="table" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<div class="col">
+								<h:outputLabel value="#{msgs.countryTo}" />
+								<h:selectOneMenu id="countryTo" value="#{senderCardList.countryTo}"
+									effect="fold" editable="true" converter="#{countryConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{senderCardList.countryToList}" var="entity"
+										itemLabel="#{entity.name}" itemValue="#{entity}" />
+									<p:ajax listener="#{senderCardList.filterData()}" event="change"
+										update="oblastTo table oblastToId" />
+								</h:selectOneMenu>
+							</div>
+							<h:panelGroup id="oblastToId" layout="block" class="col">
+								<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}" rendered="#{senderCardList.countryTo.id!=null}"/>
+								<h:selectOneMenu id="oblastTo" value="#{senderCardList.oblastTo}"
+									effect="fold" editable="true" converter="#{oblastConverter}" rendered="#{senderCardList.countryTo.id!=null}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{senderCardList.oblastToList}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+									<p:ajax listener="#{senderCardList.filterData()}" event="change"
+										update="regionTo table regionToId" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<h:panelGroup id="regionToId" layout="block" class="col">
+								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{senderCardList.oblastTo.id!=null}"/>
+								<h:selectOneMenu id="regionTo" value="#{senderCardList.region}" rendered="#{senderCardList.oblastTo.id!=null}"
+									effect="fold" editable="true" converter="#{regionConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{senderCardList.regionToList}" var="region"
+										itemLabel="#{region.name}" itemValue="#{region}" />
+									<p:ajax listener="#{senderCardList.filterData()}" event="change"
+										update="table" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="applyBtn"
+									action="#{senderCardList.filterData()}" value="#{msgs.search}"
+									icon="fas fa-search" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="clearBtn"
+									action="#{senderCardList.clearData()}" value="#{msgs.clear}"
+									icon="fas fa-eraser" />
+							</div>
+						</h:panelGroup>
+					</div>
+					<div class="mainListContent">
+						<div class="mainJukInfo">
+							<p:dataTable var="entity" value="#{senderCardList.model}"
+								paginator="true" rows="10" rowIndexVar="index" lazy="true"
+								emptyMessage="#{msgs.noRecordsFound}" id="table"
+								style="margin-top:0px" sortOrder="DESCENDING"
+								selectionMode="single"
+								selection="#{internationalController.shipments}"
+								rowsPerPageTemplate="10,20,40,80" paginatorPosition="bottom"
+								pageLinks="10"
+								currentPageReportTemplate="#{msgs.showPaymentNumbers}"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+								first="#{senderCardList.first}">
+								<p:ajax event="page" listener="#{senderCardList.onPageChange}" />
+								<p:ajax event="rowSelect" listener="#{internationalController.onRowSelectManager}" />
+								<f:facet name="header">
+						            #{msgs.shipments}
+						        </f:facet>
+								<p:column headerText="№ заказа" width="100">
+									<h:outputText value="#{entity.id}"/>
+								</p:column>
+								<p:column headerText="#{msgs.transportType}">
+									<h:outputText value="#{entity.transportType.name}" />
+								</p:column>
+								<p:column headerText="Маршрут" width="300">
+									<div class="MainDataContent">
+										<p>
+											<h:graphicImage library="images" height="20" width="20" name="kg.png" rendered="#{entity.countryFrom.id eq 1}" />
+											<h:graphicImage library="images" height="20" width="20" name="kz.png" rendered="#{entity.countryFrom.id eq 2}" />
+											<h:outputText value="#{entity.countryFrom.name} ," />
+											<h:outputText value="#{entity.oblastFrom.name}" rendered="#{entity.oblastFrom.id != null}" />
+											<h:outputText value="," rendered="#{entity.regionFrom.id !=null}" />
+											<h:outputText value="#{entity.regionFrom.name}" rendered="#{entity.regionFrom.id !=null}" />
+										</p>
+										<p>
+											<h:graphicImage library="images" height="20" width="20" name="kg.png" rendered="#{entity.countryTo.id eq 1}" />
+											<h:graphicImage library="images" height="20" width="20" name="kz.png" rendered="#{entity.countryTo.id eq 2}" />
+											<h:outputText value="#{entity.countryTo.name} ," />
+											<h:outputText value="#{entity.oblastTo.name}" rendered="#{entity.oblastTo.id !=null}" />
+											<h:outputText value="," rendered="#{entity.regionTo.id !=null}" />
+											<h:outputText value="#{entity.regionTo.name}" rendered="#{entity.regionTo.id !=null}" />										
+										</p>
+									</div>
+								</p:column>
+								<p:column headerText="#{msgs.fromPlace}">
+									<div class="mainDataDate">
+										<p>
+											<i class="fas fa-hourglass-start"></i>
+											<h:outputText value="#{entity.dateFrom}" >
+												<f:convertDateTime pattern="dd.MM.yyyy" />
+											</h:outputText>
+										</p>
+									</div>
+								</p:column>
+								<p:column headerText="#{msgs.capacity}" >
+									<h:outputText value="#{entity.capacity}" />
+								</p:column>
+								<p:column headerText="#{msgs.amount} (сом)">
+									<h:outputText value="#{entity.amount}" >
+									   <f:converter converterId="decimalNumberConverter" />
+									</h:outputText>
+								</p:column>
+								<p:column headerText="#{msgs.status}">
+									<h:outputText value="#{enums[entity.status]}" />
+								</p:column>
+								<p:column headerText="#{msgs.type}">
+									<h:outputText value="#{enums[entity.type]}" />
+								</p:column>
+							</p:dataTable>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
 	</ui:define>
 </ui:composition>
