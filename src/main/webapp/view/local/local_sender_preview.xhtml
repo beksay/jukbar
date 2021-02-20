@@ -19,43 +19,37 @@
 				  <div class="row">
 				    <div class="col-md-5">
 				    <h5 class="card-title">#{msgs.transportType} :</h5>
-				    <p class="card-text">#{localSenderController.shipments.transportType.name}</p>
+				    <p class="card-text">#{localController.shipments.transportType.name}</p>
 				    <h5 class="card-title">#{msgs.capacity} :</h5>
-				    <p class="card-text">#{localSenderController.shipments.capacity}</p>
+				    <p class="card-text">#{localController.shipments.capacity}</p>
 				    <h5 class="card-title">#{msgs.fromPlace} :</h5>
-				    <p class="card-text"><h:outputText value="#{localSenderController.shipments.dateFrom}" >
+				    <p class="card-text"><h:outputText value="#{localController.shipments.dateFrom}" >
 								       <f:convertDateTime pattern="dd.MM.yyyy" />
 								  </h:outputText></p>
 					<h5 class="card-title">#{msgs.amount} :</h5>
 				    <p class="card-text">
-					    <h:outputText value="#{localSenderController.shipments.amount} сом">
+					    <h:outputText value="#{localController.shipments.amount} сом">
 						   <f:converter converterId="decimalNumberConverter" />
 						</h:outputText>
 				    </p>
 				    <h5 class="card-title">#{msgs.productInfo} :</h5>
-				    <p class="card-text">#{localSenderController.shipments.products}</p>			  
+				    <p class="card-text">#{localController.shipments.products}</p>			  
 				    </div>
 				    <div class="col-md-3">
 				       <h:panelGrid columns="1">
 						      <h:panelGrid columns="2">
 							      <a> <i class="fas fa-thumbtack" aria-hidden="true" style="color:red"></i> </a>
-							      <h:graphicImage library="images" height="20" width="20"  name="kg.png" rendered="#{localSenderController.shipments.countryFrom.id eq 1}"/>
-						          <h:graphicImage library="images" height="20" width="20"  name="kz.png" rendered="#{localSenderController.shipments.countryFrom.id eq 2}"/>
 					          </h:panelGrid>
 							  <h:outputText value="#{msgs.placeFrom}" style="color:red"/>
-							  <h:outputText value="#{localSenderController.shipments.countryFrom.name}" />
-							  <h:outputText value="#{localSenderController.shipments.oblastFrom.name}" />
-							  <h:outputText value="#{localSenderController.shipments.regionFrom.name}" />
+							  <h:outputText value="#{localController.shipments.oblastFrom.name}" />
+							  <h:outputText value="#{localController.shipments.regionFrom.name}" />
 			
 			                  <h:panelGrid columns="2">
 						          <a> <i class="fas fa-thumbtack" aria-hidden="true" style="color:green"></i> </a>
-						          <h:graphicImage library="images" height="20" width="20"  name="kg.png" rendered="#{localSenderController.shipments.countryTo.id eq 1}"/>
-						          <h:graphicImage library="images" height="20" width="20"  name="kz.png" rendered="#{localSenderController.shipments.countryTo.id eq 2}"/>
 					          </h:panelGrid>
 							  <h:outputText value="#{msgs.toPlace}" style="color:green"/>
-							  <h:outputText value="#{localSenderController.shipments.countryTo.name}" />
-							  <h:outputText value="#{localSenderController.shipments.oblastTo.name}" />
-							  <h:outputText value="#{localSenderController.shipments.regionTo.name}" />
+							  <h:outputText value="#{localController.shipments.oblastTo.name}" />
+							  <h:outputText value="#{localController.shipments.regionTo.name}" />
 						</h:panelGrid> 
 				    </div>
 				    <div class="col-md-4">
@@ -88,10 +82,10 @@
 			       // Построение маршрута от станции метро Смоленская до станции Третьяковская.
 			       // Маршрут должен проходить через метро "Арбатская".
 			       ymaps.route([
-			           [#{localSenderController.conversation.startLocation}],
+			           [#{localController.conversation.startLocation}],
 			       
 			           // Метро "Третьяковская".
-			           [#{localSenderController.conversation.endLocation}]
+			           [#{localController.conversation.endLocation}]
 			       ], {
 			           // Автоматически позиционировать карту.
 			           mapStateAutoApply: true

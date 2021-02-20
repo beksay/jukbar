@@ -14,9 +14,9 @@
 							id="filterPanel">
 							<div class="col">
 							    <h:outputLabel for="watermark" value="#{msgs.fullName}"/>
-								<p:inputText value="#{userList.searchString}" id="watermark"
+								<p:inputText value="#{driverList.searchString}" id="watermark"
 									styleClass="m-right">
-									<p:ajax listener="#{userList.filterData()}" event="keyup"
+									<p:ajax listener="#{driverList.filterData()}" event="keyup"
 										update="form" />
 								</p:inputText>
 								<p:watermark for="watermark" value="Поиск по ФИО" />
@@ -24,13 +24,13 @@
 							<div class="col-auto">
 								<label></label>
 								<p:commandButton ajax="false" id="applyBtn"
-									action="#{userList.filterData()}" value="#{msgs.search}"
+									action="#{driverList.filterData()}" value="#{msgs.search}"
 									icon="fas fa-search" />
 							</div>
 							<div class="col-auto">
 								<label></label>
 								<p:commandButton ajax="false" id="clearBtn"
-									action="#{userList.clearData()}" value="#{msgs.clear}"
+									action="#{driverList.clearData()}" value="#{msgs.clear}"
 									icon="fas fa-eraser" />
 							</div>
 						</h:panelGroup>
@@ -39,7 +39,7 @@
 				</div>
 				<h:form id="form">
 					<div class="mainListContent">
-						<p:dataTable var="entity" value="#{userList.model}" 
+						<p:dataTable var="entity" value="#{driverList.model}" 
 							paginator="true" rows="15" rowIndexVar="index" lazy="true" 
 							emptyMessage="#{msgs.noRecordsFound}" 
 							id="table"
@@ -49,9 +49,9 @@
 							rowsPerPageTemplate="15,30,50" paginatorPosition="bottom" pageLinks="15"
 				   			currentPageReportTemplate="#{msgs.showPaymentNumbers}" 
 				            paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
-				            first="#{userList.first}" >
-				            <p:ajax event="page" listener="#{userList.onPageChange}"/>  
-				            <p:ajax event="rowSelect" listener="#{userAction.onRowSelect}" />
+				            first="#{driverList.first}" >
+				            <p:ajax event="page" listener="#{driverList.onPageChange}"/>  
+				            <p:ajax event="rowSelect" listener="#{userAction.onRowSelectDriver}" />
 				                <f:facet name="header">
 						            #{msgs.users}
 						        </f:facet>

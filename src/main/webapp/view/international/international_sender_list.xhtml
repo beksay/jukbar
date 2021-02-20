@@ -4,8 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
-
+	template="/WEB-INF/templates/layouts/private.xhtml">
 	<ui:define name="content">
 		<h:form>
 			<div class="container">
@@ -15,100 +14,108 @@
 							id="filterPanel">
 							<div class="col">
 								<h:outputLabel value="#{msgs.countryFrom}" />
-								<h:selectOneMenu id="countryFrom" value="#{publicInternationalList.country}"
+								<h:selectOneMenu id="countryFrom" value="#{internationalSenderList.country}"
 									effect="fold" editable="true" converter="#{countryConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicInternationalList.countryList}" var="entity"
+									<f:selectItems value="#{internationalSenderList.countryList}" var="entity"
 										itemLabel="#{entity.name}" itemValue="#{entity}" />
-									<p:ajax listener="#{publicInternationalList.filterData()}" event="change"
+									<p:ajax listener="#{internationalSenderList.filterData()}" event="change"
 										update="oblast table oblastFrom" />
 								</h:selectOneMenu>
 							</div>
 							<h:panelGroup id="oblastFrom" layout="block" class="col">
-								<h:outputLabel for="oblast" value="#{msgs.oblastFrom}" rendered="#{publicInternationalList.country.id!=null}"/>
-								<h:selectOneMenu id="oblast" value="#{publicInternationalList.oblast}"
-									effect="fold" editable="true" converter="#{oblastConverter}" rendered="#{publicInternationalList.country.id!=null}">
+								<h:outputLabel for="oblast" value="#{msgs.oblastFrom}" rendered="#{internationalSenderList.country.id!=null}"/>
+								<h:selectOneMenu id="oblast" value="#{internationalSenderList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}" rendered="#{internationalSenderList.country.id!=null}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicInternationalList.oblastList}" var="oblast"
+									<f:selectItems value="#{internationalSenderList.oblastList}" var="oblast"
 										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
-									<p:ajax listener="#{publicInternationalList.filterData()}" event="change"
+									<p:ajax listener="#{internationalSenderList.filterData()}" event="change"
 										update="region table regionFrom" />
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<h:panelGroup id="regionFrom" layout="block" class="col">
-								<h:outputLabel for="region" value="#{msgs.regionFrom}" rendered="#{publicInternationalList.oblast.id!=null}"/>
-								<h:selectOneMenu id="region" value="#{publicInternationalList.region}" rendered="#{publicInternationalList.oblast.id!=null}"
+								<h:outputLabel for="region" value="#{msgs.regionFrom}" rendered="#{internationalSenderList.oblast.id!=null}"/>
+								<h:selectOneMenu id="region" value="#{internationalSenderList.region}" rendered="#{internationalSenderList.oblast.id!=null}"
 									effect="fold" editable="true" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicInternationalList.regionList}" var="region"
+									<f:selectItems value="#{internationalSenderList.regionList}" var="region"
 										itemLabel="#{region.name}" itemValue="#{region}" />
-									<p:ajax listener="#{publicInternationalList.filterData()}" event="change"
+									<p:ajax listener="#{internationalSenderList.filterData()}" event="change"
 										update="table" />
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<div class="col">
 								<h:outputLabel value="#{msgs.countryTo}" />
-								<h:selectOneMenu id="countryTo" value="#{publicInternationalList.countryTo}"
+								<h:selectOneMenu id="countryTo" value="#{internationalSenderList.countryTo}"
 									effect="fold" editable="true" converter="#{countryConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicInternationalList.countryToList}" var="entity"
+									<f:selectItems value="#{internationalSenderList.countryToList}" var="entity"
 										itemLabel="#{entity.name}" itemValue="#{entity}" />
-									<p:ajax listener="#{publicInternationalList.filterData()}" event="change"
+									<p:ajax listener="#{internationalSenderList.filterData()}" event="change"
 										update="oblastTo table oblastToId" />
 								</h:selectOneMenu>
 							</div>
 							<h:panelGroup id="oblastToId" layout="block" class="col">
-								<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}" rendered="#{publicInternationalList.countryTo.id!=null}"/>
-								<h:selectOneMenu id="oblastTo" value="#{publicInternationalList.oblastTo}"
-									effect="fold" editable="true" converter="#{oblastConverter}" rendered="#{publicInternationalList.countryTo.id!=null}">
+								<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}" rendered="#{internationalSenderList.countryTo.id!=null}"/>
+								<h:selectOneMenu id="oblastTo" value="#{internationalSenderList.oblastTo}"
+									effect="fold" editable="true" converter="#{oblastConverter}" rendered="#{internationalSenderList.countryTo.id!=null}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicInternationalList.oblastToList}" var="oblast"
+									<f:selectItems value="#{internationalSenderList.oblastToList}" var="oblast"
 										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
-									<p:ajax listener="#{publicInternationalList.filterData()}" event="change"
+									<p:ajax listener="#{internationalSenderList.filterData()}" event="change"
 										update="regionTo table regionToId" />
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<h:panelGroup id="regionToId" layout="block" class="col">
-								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{publicInternationalList.oblastTo.id!=null}"/>
-								<h:selectOneMenu id="regionTo" value="#{publicInternationalList.region}" rendered="#{publicInternationalList.oblastTo.id!=null}"
+								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{internationalSenderList.oblastTo.id!=null}"/>
+								<h:selectOneMenu id="regionTo" value="#{internationalSenderList.region}" rendered="#{internationalSenderList.oblastTo.id!=null}"
 									effect="fold" editable="true" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems value="#{publicInternationalList.regionToList}" var="region"
+									<f:selectItems value="#{internationalSenderList.regionToList}" var="region"
 										itemLabel="#{region.name}" itemValue="#{region}" />
-									<p:ajax listener="#{publicInternationalList.filterData()}" event="change"
+									<p:ajax listener="#{internationalSenderList.filterData()}" event="change"
 										update="table" />
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<div class="col-auto">
 								<label></label>
 								<p:commandButton ajax="false" id="applyBtn"
-									action="#{publicInternationalList.filterData()}" value="#{msgs.search}"
+									action="#{internationalSenderList.filterData()}" value="#{msgs.search}"
 									icon="fas fa-search" />
 							</div>
 							<div class="col-auto">
 								<label></label>
 								<p:commandButton ajax="false" id="clearBtn"
-									action="#{publicInternationalList.clearData()}" value="#{msgs.clear}"
+									action="#{internationalSenderList.clearData()}" value="#{msgs.clear}"
 									icon="fas fa-eraser" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="addBtn"
+									action="#{internationalController.add()}" value="#{msgs.addCargo}" styleClass="ui-button success-btn"
+									icon="fas fa-plus" />
 							</div>
 						</h:panelGroup>
 					</div>
 					<div class="mainListContent">
 						<div class="mainJukInfo">
-							<p:dataTable var="entity" value="#{publicInternationalList.model}"
+							<p:dataTable var="entity" value="#{internationalSenderList.model}"
 								paginator="true" rows="10" rowIndexVar="index" lazy="true"
 								emptyMessage="#{msgs.noRecordsFound}" id="table"
-								sortOrder="DESCENDING"
-								selection="#{shipmentApplicationAction.shipments}"
-								selectionMode="single" rowsPerPageTemplate="10,20,40,80"
-								paginatorPosition="bottom" pageLinks="10"
+								style="margin-top:0px" sortOrder="DESCENDING"
+								selectionMode="single"
+								selection="#{internationalController.shipments}"
+								rowsPerPageTemplate="10,20,40,80" paginatorPosition="bottom"
+								pageLinks="10"
 								currentPageReportTemplate="#{msgs.showPaymentNumbers}"
 								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
-								first="#{publicInternationalList.first}">
-								<p:ajax event="page" listener="#{publicInternationalList.onPageChange}" />
+								first="#{internationalSenderList.first}">
+								<p:ajax event="page" listener="#{internationalSenderList.onPageChange}" />
+								<p:ajax event="rowSelect" listener="#{internationalController.onRowSelect}" />
 								<f:facet name="header">
-					               #{msgs.internationalCargo}
-					            </f:facet> 	
+						            #{msgs.shipments}
+						        </f:facet>
 								<p:column headerText="№ заказа" >
 									<h:outputText value="#{entity.id}"/>
 								</p:column>
@@ -153,20 +160,14 @@
 									   <f:converter converterId="decimalNumberConverter" />
 									</h:outputText>
 								</p:column>
-								<p:column width="50">
-									<h:commandLink action="#{shipmentApplicationAction.viewInternational(entity)}">
-									  <i class="fas fa-search"></i>
-									</h:commandLink>
+								<p:column headerText="#{msgs.status}">
+									<h:outputText value="#{enums[entity.status]}" />
 								</p:column>
 							</p:dataTable>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
-
 		</h:form>
-
 	</ui:define>
 </ui:composition>

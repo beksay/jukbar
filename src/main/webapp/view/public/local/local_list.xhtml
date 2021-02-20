@@ -93,7 +93,7 @@
 								<p:column headerText="#{msgs.transportType}">
 									<h:outputText value="#{entity.transportType.name}" />
 								</p:column>
-								<p:column headerText="Маршрут">
+								<p:column headerText="Маршрут" width="400">
 									<div class="MainDataContent">
 										<p>
 											<h:outputText value="#{entity.oblastFrom.name}" rendered="#{entity.oblastFrom.id != null}" />
@@ -111,14 +111,17 @@
 									<div class="mainDataDate">
 										<p>
 											<i class="fas fa-hourglass-start"></i>
-											<h:outputText value="#{entity.dateFrom}" style="color:#596D9B">
+											<h:outputText value="#{entity.dateFrom}">
 												<f:convertDateTime pattern="dd.MM.yyyy" />
 											</h:outputText>
 										</p>
 									</div>
 								</p:column>
-								<p:column headerText="#{msgs.amount}">
-									<h:outputText value="#{entity.amount} сом">
+								<p:column headerText="#{msgs.capacity}" >
+									<h:outputText value="#{entity.capacity}" />
+								</p:column>
+								<p:column headerText="#{msgs.amount} (сом)">
+									<h:outputText value="#{entity.amount}" >
 									   <f:converter converterId="decimalNumberConverter" />
 									</h:outputText>
 								</p:column>

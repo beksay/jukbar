@@ -15,17 +15,11 @@
 						<ul class="jukMenu">
 						    <h:panelGroup  layout="block" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
 								<li>
-								   <h:link value="#{msgs.local}"  outcome="/view/managerLocal/new_list.xhtml">
-								      <span class="badge">#{managerController.newList}</span>
+								   <h:link value="#{msgs.senders}" outcome="/view/persons/sender_journal.xhtml">
 								   </h:link>
 								</li>
 								<li>
-								   <h:link value="#{msgs.international}" outcome="/view/managerInt/new_list.xhtml">
-								      <span class="badge">#{managerController.newIntList}</span>
-								   </h:link>
-								</li>
-								<li>
-								   <h:link value="#{msgs.users}" outcome="/view/persons/user_journal.xhtml">
+								   <h:link value="#{msgs.drivers}" outcome="/view/persons/driver_journal.xhtml">
 								   </h:link>
 								</li>
 							</h:panelGroup>
@@ -45,7 +39,7 @@
 							   </h:link>
 							</li>
 							<li>
-							   <h:link value="#{msgs.internationalCargo}"  outcome="/view/international/international_list.xhtml" 
+							   <h:link value="#{msgs.internationalCargo}"  outcome="/view/international/international_sender_list.xhtml" 
 							        rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'sender')}">
 							   </h:link>
 							</li>

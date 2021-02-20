@@ -84,8 +84,13 @@ public class UserAction {
 	public void onRowSelect(SelectEvent event) throws IOException {
 		user=(User) event.getObject();
 		conversation.setUser(user);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/persons/person_card.xhtml?cid="+conversation.getId());
-        
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/persons/sender_card.xhtml?cid="+conversation.getId()); 
+    }
+	
+	public void onRowSelectDriver(SelectEvent event) throws IOException {
+		user=(User) event.getObject();
+		conversation.setUser(user);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/persons/driver_card.xhtml?cid="+conversation.getId()); 
     }
 	
 	public String unblock(User user) {

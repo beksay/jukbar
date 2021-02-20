@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="jukForm">
+				<h:form>
+				<div class="card bg-light mb-3" >
+				<div class="card-header">#{userAction.user.person.fullName}</div>
+				<div class="card-body">
+				  <div class="row">
+				    <div class="col-md-4">
+				        <h5 class="card-title">#{msgs.mainData}</h5>
+				        <p class="card-text">#{msgs.myAccount}</p>
+				        <p class="card-text">#{userAction.user.person.account}</p>
+				        <p class="card-text">#{msgs.email}</p>
+				        <p class="card-text">#{userAction.user.email}</p>
+				        <p class="card-text">#{msgs.status}</p>
+				        <p class="card-text">#{enums[userAction.user.status]}</p>
+				        <p class="card-text">#{msgs.birthDate}</p>
+				        <p class="card-text">#{userAction.user.person.birthDate}</p>
+				        <p class="card-text">#{msgs.myPhone}</p>
+				        <p class="card-text">#{userAction.user.person.phone}</p>
+				    </div>
+				    <div class="col-md-4">
+					    <h5 class="card-title">Документы</h5>
+					    <p class="card-text">Фото паспорта основной страницы</p>	
+					    <a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(userAction.user.person.documents.passport))}">
+							 <h:outputText value="#{userAction.user.person.documents.passport.fileName}" style="color:blue"/>
+						</a>	
+						<p class="card-text">Водительское удостоверение</p>	 
+						<a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(userAction.user.person.documents.driverLicense))}">
+							 <h:outputText value="#{userAction.user.person.documents.driverLicense.fileName}" style="color:blue"/>
+						</a> 
+						<p class="card-text">Свидетельство о регистрации ТС</p>	
+						<a href="#{utilController.getDownloadURL(utilController.generateKeyAliveCurrentSession(userAction.user.person.documents.carLicense))}">
+							 <h:outputText value="#{userAction.user.person.documents.carLicense.fileName}" style="color:blue"/>
+						</a>
+				    </div>
+				    <div class="col-md-4">
+				        <h5 class="card-title">Транспорт</h5>
+				        <p class="card-text">#{msgs.tsNumber}</p>
+				        <p>#{userAction.user.person.transport.number}</p>
+				        <p class="card-text">#{msgs.marka}</p>
+				        <p>#{userAction.user.person.transport.marka}</p>
+				        <p class="card-text">#{msgs.tsCapacity}</p>
+				        <p>#{userAction.user.person.transport.capacity}</p>
+				        <p class="card-text">#{msgs.year}</p>
+				        <p>#{userAction.user.person.transport.tsYear}</p>
+				    </div>
+				  </div>  
+				 </div>
+			   </div>
+				<h:panelGroup id="messages">
+					<p:growl globalOnly="true" />
+				</h:panelGroup>
+			 </h:form>
+		  </div>
+		</div>
+	</ui:define>
+</ui:composition>

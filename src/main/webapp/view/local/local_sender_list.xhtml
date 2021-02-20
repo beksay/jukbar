@@ -71,7 +71,7 @@
 							<div class="col-auto">
 								<label></label>
 								<p:commandButton ajax="false" id="addBtn"
-									action="#{localSenderController.add()}" value="#{msgs.addCargo}" styleClass="ui-button success-btn"
+									action="#{localController.add()}" value="#{msgs.addCargo}" styleClass="ui-button success-btn"
 									icon="fas fa-plus" />
 							</div>
 						</h:panelGroup>
@@ -82,13 +82,13 @@
 								paginator="true" rows="10" rowIndexVar="index" lazy="true"
 								emptyMessage="#{msgs.noRecordsFound}" id="table"
 								style="margin-top:0px" sortOrder="DESCENDING"
-								selectionMode="single" selection="#{localSenderController.shipments}"
+								selectionMode="single" selection="#{localController.shipments}"
 								rowsPerPageTemplate="10,20,40,80" paginatorPosition="bottom"
 								pageLinks="10" currentPageReportTemplate="#{msgs.showPaymentNumbers}"
 								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
 								first="#{localSenderList.first}">
 								<p:ajax event="page" listener="#{localSenderList.onPageChange}" />
-								<p:ajax event="rowSelect" listener="#{localSenderController.onRowSelect}" />
+								<p:ajax event="rowSelect" listener="#{localController.onRowSelect}" />
 								<f:facet name="header">
 						            #{msgs.localCargo}
 						        </f:facet>
@@ -98,7 +98,7 @@
 								<p:column headerText="#{msgs.transportType}">
 									<h:outputText value="#{entity.transportType.name}" />
 								</p:column>
-								<p:column headerText="Маршрут">
+								<p:column headerText="Маршрут" width="400">
 									<div class="MainDataContent">
 										<p>
 											<h:outputText value="#{entity.oblastFrom.name}" rendered="#{entity.oblastFrom.id != null}" />
@@ -116,11 +116,14 @@
 									<div class="mainDataDate">
 										<p>
 											<i class="fas fa-hourglass-start"></i>
-											<h:outputText value="#{entity.dateFrom}" style="color:#596D9B">
+											<h:outputText value="#{entity.dateFrom}">
 												<f:convertDateTime pattern="dd.MM.yyyy" />
 											</h:outputText>
 										</p>
 									</div>
+								</p:column>
+								<p:column headerText="#{msgs.capacity}" >
+									<h:outputText value="#{entity.capacity}" />
 								</p:column>
 								<p:column headerText="#{msgs.amount} (сом)">
 									<h:outputText value="#{entity.amount}" >

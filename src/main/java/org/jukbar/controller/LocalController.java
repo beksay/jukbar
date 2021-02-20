@@ -1,7 +1,9 @@
 package org.jukbar.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -10,10 +12,20 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import org.jukbar.beans.FilterExample;
 import org.jukbar.conversations.ConversationManager;
+import org.jukbar.domain.Oblast;
+import org.jukbar.domain.Region;
 import org.jukbar.domain.Shipments;
+import org.jukbar.domain.TransportType;
 import org.jukbar.enums.ShipmentStatus;
+import org.jukbar.enums.ShipmentType;
 import org.jukbar.service.ShipmentsService;
+import org.jukbar.service.TransportTypeService;
+import org.jukbar.util.web.FacesMessages;
+import org.jukbar.util.web.LoginUtil;
+import org.jukbar.util.web.Messages;
+import org.jukbar.validator.EntityValidator;
 import org.primefaces.event.SelectEvent;
 
 @ManagedBean
@@ -22,6 +34,17 @@ public class LocalController{
 
 	@EJB
 	private ShipmentsService service;
+	@EJB
+	private TransportTypeService transportService;
+	
+	@Inject
+	private EntityValidator validator;
+	@Inject
+	private CountrySelector selector;
+	@Inject
+	private CountrySelector2 selector2;
+	@Inject
+	private LoginUtil loginUtil;
 	
 	private Shipments shipments;
 	
@@ -34,11 +57,20 @@ public class LocalController{
 		if (shipments==null) shipments= new Shipments();
 	}
 	
+	public String add(){
+		shipments = new Shipments();
+		selector.setOblast(new Oblast());
+		selector.setRegion(new Region());
+		selector2.setOblast(new Oblast());
+		selector2.setRegion(new Region());
+		return form();
+	}
+	
 	public String sendProgress(Shipments shipments) {
 		shipments.setStatus(ShipmentStatus.IN_PROGRESS);
 		shipments.setDateProgress(new Date());
 		service.merge(shipments);
-		return listNew();
+		return list();
 	}
 	
 	public void onRowSelect(SelectEvent event) throws IOException {
@@ -56,12 +88,66 @@ public class LocalController{
 			conversation.setEndLocation(shipments.getRegionTo().getLocation());
 		}
 		System.out.println("shipments===" +shipments);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/local/local_preview.xhtml?cid="+conversation.getId());
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/jukbar/view/local/local_sender_preview.xhtml?cid="+conversation.getId());
     }
-  
 	
-	private String listNew(){
-		return "/view/manager/new_shipments_list.xhtml?faces-redirect=true";
+	public String saveLocal() {
+		if(shipments == null){
+			FacesMessages.addMessage(Messages.getMessage("invalidData"), Messages.getMessage("invalidData"), null);
+			return null;
+		}
+		shipments.setOblastFrom(selector.getOblast());
+		if(selector.getOblast()!=null && selector.getOblast().getCity()!=true) {
+			shipments.setRegionFrom(selector.getRegion());
+		}
+		
+		shipments.setOblastTo(selector2.getOblast());
+		if(selector2.getOblast()!=null && selector2.getOblast().getCity()!=true) {
+			shipments.setRegionTo(selector2.getRegion());
+		}
+		shipments.setType(ShipmentType.LOCAL);
+		shipments.setDateCreated(new Date());
+		shipments.setStatus(ShipmentStatus.IN_PROGRESS);
+		shipments.setOwner(loginUtil.getCurrentUser());
+		
+		validator.validate(shipments);
+		if(!FacesContext.getCurrentInstance().getMessageList().isEmpty()) return null;
+		
+		if (shipments.getId() == null) {
+			service.persist(shipments);
+		} else {
+			service.merge(shipments);
+		}
+
+		shipments = new Shipments();
+		selector.setOblast(new Oblast());
+		selector.setRegion(new Region());
+		selector2.setOblast(new Oblast());
+		selector2.setRegion(new Region());
+		
+		return list();
+	}
+  
+	public String cancel() {
+		shipments = null;
+		selector.setOblast(new Oblast());
+		selector.setRegion(new Region());
+		selector2.setOblast(new Oblast());
+		selector2.setRegion(new Region());
+        return list();
+    }
+	
+	private String list(){
+		return "/view/local/local_sender_list.xhtml?faces-redirect=true";
+	}
+	
+	public String form(){
+		return "/view/local/local_form.xhtml?faces-redirect=true";
+	}
+	
+	public List<TransportType> getTransportTypeList() {
+		List<FilterExample> examples = new ArrayList<>();
+		return transportService.findByExample(0, 10, examples);
 	}
 
 	public Shipments getShipments() {
