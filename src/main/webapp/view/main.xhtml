@@ -8,8 +8,8 @@
 	<ui:define name="content">
 	    <br />
 		<h:panelGroup  layout="block" class="row" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}">
-			<!-- Earnings (Monthly) Card Example -->
-			<div class="col-6 col-md-6 mb-4">
+		
+			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4" rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status ne 'COMPLETED'}">
 				<div class="card border-left-primary shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
@@ -46,10 +46,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</h:panelGroup>
 
-			<!-- Earnings (Monthly) Card Example -->
-			<div class="col-6 col-md-6 mb-4">
+			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4" rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status ne 'COMPLETED'}">
 				<div class="card border-left-success shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
@@ -82,7 +81,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</h:panelGroup>
 		</h:panelGroup>
 	</ui:define>
 </ui:composition>

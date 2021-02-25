@@ -25,7 +25,7 @@
 							</h:panelGroup>
 							<li>
 							   <h:link value="#{msgs.localCargo}"  outcome="/view/local/local_list.xhtml" 
-							    rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver' and loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'COMPLETED')}">
+							         rendered="#{loginUtil.currentUser.person.documents.status eq 'COMPLETED' and loginUtil.currentUser.person.transport.status eq 'COMPLETED'}">
 							   </h:link>
 							</li>
 							<li>
