@@ -10214,9 +10214,10 @@ body .mainlogo {
 }
 body .mainBanner {
 	background:#d5e6f3;
+	height: 300px;
 }
 body .mainList {
-	margin-top:40px;
+	margin-top:30px;
 }
 body .mainList .mainJuk {
 	display:flex;
@@ -10538,3 +10539,75 @@ body .formTitle {
 	color: #24796d;
 	font-size: 20px;
 }
+
+#team {
+    background: #eee !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #108d6f;
+    border-color: #108d6f;
+    box-shadow: none;
+    outline: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007b5e;
+    border-color: #007b5e;
+}
+
+section {
+    padding: 30px 0;
+}
+body .contentBlock .ui-g .ui-datagrid-column {
+	padding:15px;
+}
+body .contentBlock .contentBlockInner {
+	background:#fff;
+	border-radius: 5px;
+	padding:10px;
+	display: flex;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	flex-direction: column-reverse;
+}
+body .contentBlock .contentBlockInner .ui-panel-content{
+	border:0;
+	padding:0;
+}
+body .contentBlock .contentBlockInner .ui-panel-titlebar {
+	border:none;
+	display: flex;
+	background: #f1f3f4;
+	color: #577ACA;
+    justify-content: center;
+}
+body .contentBlock .contentBlockInner .ui-panel-content table {
+	width:100%;
+}
+body .contentBlock .contentBlockInner .InnerBlock{
+	
+} 
+body .contentBlock .contentBlockInner .innerDetail {
+	display: flex;
+	flex-direction: row;
+	padding:5px 1px 10px;
+}
+body .contentBlock .contentBlockInner .innerDetail .blockDate {
+	font-size:12px;
+}
+body .contentBlock .contentBlockInner .innerDetail .blockDate svg {
+	margin-right:5px;
+	font-size:14px;
+}
+body .contentBlock .contentBlockInner .innerDetail a {
+	flex:1;
+	font-weight:500;
+}
+body .contentBlock .contentBlockInner .InnerBlock .innerDetailIMG {
+	display:block;
+}
+
