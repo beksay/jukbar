@@ -85,14 +85,15 @@
 					            first="#{driverPublicList.first}" >
 					            <p:ajax event="page" listener="#{driverPublicList.onPageChange}"/>  
 					            <f:facet name="header">ЧАСТНЫЕ ПЕРЕВОЗЧИКИ</f:facet>
-								<p:panel header="#{entity.person.transport.marka}" styleClass="contentBlockInner">
+								<p:panel header="#{entity.person.transport.marka} - #{entity.person.transport.tsYear}" styleClass="contentBlockInner">
 						            <div class="InnerBlock">
 						                <h:commandLink styleClass="innerDetailIMG">
 						    		        <h:graphicImage library="images" name="bus.png" width="210" />
 						                </h:commandLink>
 						                <div class="innerDetail">
 						                    <i class="fas fa-map-marker-alt"></i>
-							                <h:outputText value="15" style="margin-left: auto;"/>
+							                <h:outputText value="#{entity.person.oblast.name}" style="margin-left: auto;"/>
+							                <h:outputText value="#{entity.person.region.name}" style="margin-left: auto;"/>
 						                </div>
 						            </div>
 				                </p:panel>

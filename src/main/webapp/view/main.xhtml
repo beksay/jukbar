@@ -9,7 +9,7 @@
 	    <br />
 		<h:panelGroup  layout="block" class="row" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}">
 		
-			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4">
+			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4" rendered="#{loginUtil.currentUser.person.documents.status ne 'COMPLETED'}">
 				<div class="card border-left-primary shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
@@ -48,7 +48,7 @@
 				</div>
 			</h:panelGroup>
 
-			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4">
+			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4" rendered="#{loginUtil.currentUser.person.transport.status ne 'COMPLETED'}">
 				<div class="card border-left-success shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">

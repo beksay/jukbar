@@ -71,7 +71,7 @@
 						<br />
 						<h:outputText value="#{userAction.user.person.documents.reason}" rendered="#{userAction.user.person.documents.status eq 'REFUSED'}" style="color:red"/>
 				    </div>
-				    <div class="col-md-4">
+				    <h:panelGroup layout="block" class="col-md-4" id="transportId">
 				        <h5 class="card-title">Транспорт</h5>
 				        <p class="card-text">#{msgs.tsNumber}</p>
 				        <p>#{userAction.user.person.transport.number}</p>
@@ -86,7 +86,7 @@
 						   <div class="col-auto">
 								<label></label>
 								<p:commandButton ajax="false" value="#{msgs.confirm}" styleClass="ui-button success-btn"
-									icon="fas fa-check-circle" update="@form" action="#{userAction.confirmTransport()}"/>
+									icon="fas fa-check-circle" update="transportId" action="#{userAction.confirmTransport()}"/>
 							</div>
 							<h:panelGroup class="col-auto" layout="block">
 								<label></label>
@@ -110,7 +110,7 @@
 						<h:outputText value="#{msgs.completed}" rendered="#{userAction.user.person.transport.status eq 'COMPLETED'}" style="color:green"/>
 						<h:outputText value="#{msgs.refused}" rendered="#{userAction.user.person.transport.status eq 'REFUSED'}" style="color:red"/>
 						<h:outputText value="#{userAction.user.person.documents.reason}" rendered="#{userAction.user.person.transport.status eq 'REFUSED'}" style="color:red"/>
-				    </div>
+				    </h:panelGroup>
 				  </div>  
 				 </div>
 			   </div>
