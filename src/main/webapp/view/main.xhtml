@@ -72,8 +72,12 @@
 								  rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'COMPLETED'}">
 								  #{msgs.completed}
 								</h:panelGroup>
+								<h:panelGroup layout="block" class="h5 mb-0 font-weight-bold text-gray-800"
+								  rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'REFUSED'}">
+								  #{enums.REFUSED}
+								</h:panelGroup>
 							</div>
-							<h:panelGroup layout="block" class="col-2" rendered="#{loginUtil.currentUser.person.transport.status eq null or loginUtil.currentUser.person.transport.status eq 'NEW' or loginUtil.currentUser.person.transport.status eq 'IN_PROGRESS'}">
+							<h:panelGroup layout="block" class="col-2" rendered="#{loginUtil.currentUser.person.transport eq null or loginUtil.currentUser.person.transport.status eq 'NEW' or loginUtil.currentUser.person.transport.status eq 'REFUSED'}">
 						   	   <h:form>
 								<p:commandButton value="#{msgs.add}" action="#{transportController.goProfileMain(loginUtil.currentUser.person)}"  />
 							   </h:form>

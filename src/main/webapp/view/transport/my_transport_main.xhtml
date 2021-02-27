@@ -16,33 +16,35 @@
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.tsNumber}" />
 		    		        <h:inputText id="tsNumber" value="#{transportController.transport.number}" 
-		    		           required="true" requiredMessage="#{msgs.number} - #{msgs.isReq}"/>
-		    		        <p:watermark value="Например: 01KG123ABC, B1234A, B1234AB, KGBH1234" for="tsNumber" />   
+		    		           required="true" requiredMessage="#{msgs.tsNumber} - #{msgs.isReq}"/>
+		    		        <p:watermark value="Например: 01KG123ABC, B1234A, B1234AB, KGBH1234" for="tsNumber" />  
+		    		        <p:message for="tsNumber" />
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.marka}" />
 		    		        <h:inputText value="#{transportController.transport.marka}" id="marka" 
 		    		           required="true" requiredMessage="#{msgs.marka} - #{msgs.isReq}"/>
 		    		        <p:watermark value="Укажите марку" for="marka" />
+		    		        <p:message for="marka" />
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.tsCapacity}" />
-		    		        <h:inputText value="#{transportController.transport.capacity}" 
+		    		        <h:inputText value="#{transportController.transport.capacity}" id="tsCapacity"
 		    		           required="true" requiredMessage="#{msgs.tsCapacity} - #{msgs.isReq}"/>
+		    		        <p:message for="tsCapacity" />   
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.year}" />
-		    		        <h:inputText value="#{transportController.transport.tsYear}" 
+		    		        <h:inputText value="#{transportController.transport.tsYear}" id="year"
 		    		           required="true" requiredMessage="#{msgs.year} - #{msgs.isReq}"/>
+		    		        <p:message for="year" />  
 						</div>	 
-						<h:panelGroup  layout="block" class="col-12 mt-3" rendered="#{transportController.transport.status ==null and transportController.transport.status eq 'NEW'}">
-							<p:commandButton ajax="false" icon="fas fa-edit" action="#{transportController.change()}" value="#{msgs.edit}" rendered="#{transportController.editTs ==false}"/>	
-							<p:commandButton ajax="false" icon="fas fa-save" action="#{transportController.save()}" rendered="#{transportController.editTs ==true}" value="#{msgs.save}" />					
+						<h:panelGroup  layout="block" class="col-12 mt-3">
+							<p:commandButton ajax="false" icon="fas fa-save" action="#{transportController.save()}"  value="#{msgs.save}" class="success-btn"/>					
 							<h:outputLabel style="width:20px;display:inline-block"/>
-							<p:commandButton ajax="false" immediate="true" icon="fas fa-window-close" action="#{transportController.cancel()}" rendered="#{transportController.editTs == true}" value="#{msgs.cancel}" />
-						    <p:commandButton ajax="false" styleClass="greenBtn" icon="fas fa-arrow-right" action="#{transportController.sendModerator()}" rendered="#{transportController.editTs ==false and (transportController.transport !=null and transportController.transport.status eq 'NEW')}" value="#{msgs.sendTo}" />	
+						    <p:commandButton ajax="false" styleClass="greenBtn" icon="fas fa-arrow-right" action="#{transportController.sendModerator()}" rendered="#{transportController.transport.status eq 'NEW'}" value="#{msgs.sendTo}" />	
 						</h:panelGroup>
-						<h:panelGroup  layout="block" class="col-12 mt-3" rendered="#{transportController.transport !=null and transportController.transport.status eq 'IN_PROGRESS'}">
+						<h:panelGroup  layout="block" class="col-12 mt-3" rendered="#{transportController.transport.status eq 'IN_PROGRESS'}">
 						    <h:outputLabel value="#{msgs.inModerator}" styleClass="yellowLabel" />
 						</h:panelGroup>
 					</div>

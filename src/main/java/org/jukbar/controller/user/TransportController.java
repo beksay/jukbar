@@ -36,35 +36,27 @@ public class TransportController extends Conversational {
 	
 	private Person person;
 	private Transport transport;
-	private Boolean editTs;
 
 	@PostConstruct
 	public void init() {
 		if (person==null) person= new Person();
 		if (transport==null) transport= new Transport();
-		editTs = false;
 	}
 	
-	public String change() {
-		editTs = true;
-		return null;
-	}
 	
 	public String cancel() {
 		init();
-		editTs=false;
 		return null;
 	}
 	
 	public String save() {		
 		transport.setStatus(TransportStatus.NEW);
-		person.setTransport(transport);
 		person.setTransport(person.getTransport() == null ? transportService.persist(person.getTransport()) : transportService.merge(person.getTransport()));
-
+		person.setTransport(transport);
 		personService.merge(person);
 
 		FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("dataDaved"), null) );
-		editTs = false;
+		init();
 		return null;
 	}
 	
@@ -72,8 +64,7 @@ public class TransportController extends Conversational {
 		transport.setStatus(TransportStatus.IN_PROGRESS);
         transportService.merge(transport);
 		FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("sendedToModerator"), null) );
-		editTs = false;
-		return null;
+		return mainForm();
 	}
 	
 	public String goProfile(Person person) {
@@ -101,17 +92,10 @@ public class TransportController extends Conversational {
 	}
 	
 	public String mainForm() {
+		init();
 		return "/view/main.xhtml";
 	}
 	
-	public Boolean geteditTs() {
-		return editTs;
-	}
-	
-	public void seteditTs(Boolean editTs) {
-		this.editTs = editTs;
-	}
-
 	public Transport getTransport() {
 		return transport;
 	}
