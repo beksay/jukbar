@@ -66,6 +66,8 @@ public class PaymentController extends Conversational {
         examples.add(new FilterExample("type", PaymentType.OUTCOME, InequalityConstants.EQUAL)); 
         examples.add(new FilterExample("person", loginUtil.getCurrentUser().getPerson(), InequalityConstants.EQUAL));
         BigDecimal outcomeAmount = service.sumByExample("amount", examples);
+        if(incomeAmount==null) incomeAmount = BigDecimal.ZERO;
+        if(outcomeAmount==null) outcomeAmount = BigDecimal.ZERO;
         return incomeAmount.subtract(outcomeAmount);
 	}
 

@@ -26,7 +26,7 @@
 				    <f:ajax render="email-error @this" event="blur" />
 				</h:inputText>				
 				<p:watermark value="#{msgs.email}" for="email"/>
-				<h:message for="email-error" display="icon" style="color:red;" />
+				<h:message for="email" display="icon" style="color:red;" />
 				
 				<h:outputText value="firstName" styleClass="label"/>
 				<h:inputText value="#{registrationAction.person.firstName}" style="position:relative;" id="firstName" required="true" requiredMessage="#{msgs.firstName} - #{msgs.isReq}"/>				
@@ -37,6 +37,30 @@
 				<h:inputText value="#{registrationAction.person.lastName}" style="position:relative;" id="lastName" required="true" requiredMessage="#{msgs.lastName} - #{msgs.isReq}"/>				
 				<p:watermark value="#{msgs.lastName}" for="lastName"/>
 				<h:message for="lastName" display="icon" style="color:red;" />
+				
+				<h:selectOneMenu id="oblastFrom" style="width: 100%;"
+					value="#{countrySelector.oblast}" converter="#{oblastConverter}" required="true"
+					requiredMessage="#{msgs.address} - #{msgs.isReq}">
+					<f:selectItem itemLabel="#{msgs.selectAddress}" />
+					<f:selectItems
+						value="#{countrySelector.localOblastList}"
+						var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+					<p:ajax event="change" update="oblastId" />
+				</h:selectOneMenu>
+				<p:message for="oblastFrom" />
+				
+				<h:panelGroup id="oblastId">
+				<h:selectOneMenu id="regionFrom" style="width: 100%;"
+					value="#{countrySelector.region}" converter="#{regionConverter}" 
+					required="true" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"
+					requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
+					<f:selectItem itemLabel="#{msgs.selectValue}" />
+					<f:selectItems
+						value="#{countrySelector.getRegionList(countrySelector.oblast)}"
+						var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+				</h:selectOneMenu>
+				<p:message for="regionFrom" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
+				</h:panelGroup>
 
 				<h:outputText value="phone" styleClass="label"/>
 				<h:inputText value="#{registrationAction.person.phone}" style="position:relative;" id="phone" required="true" requiredMessage="#{msgs.phone} - #{msgs.isReq}"/>				

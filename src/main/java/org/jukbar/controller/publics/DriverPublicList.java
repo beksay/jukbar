@@ -18,6 +18,8 @@ import org.jukbar.beans.InequalityConstants;
 import org.jukbar.controller.BaseController;
 import org.jukbar.domain.Role;
 import org.jukbar.domain.User;
+import org.jukbar.enums.DocStatus;
+import org.jukbar.enums.TransportStatus;
 import org.jukbar.model.UserModel;
 import org.jukbar.service.RoleService;
 import org.jukbar.service.UserService;
@@ -55,6 +57,8 @@ public class DriverPublicList extends BaseController implements Serializable {
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
 		filters.add(new FilterExample("role.id", 2, InequalityConstants.EQUAL));
+		filters.add(new FilterExample("person.transport.status", TransportStatus.COMPLETED, InequalityConstants.EQUAL));
+		filters.add(new FilterExample("person.documents.status", DocStatus.COMPLETED, InequalityConstants.EQUAL));
 		if (searchString != null && searchString.length()>0) {
 			filters.add(new FilterExample(true, "person.firstName", '%' + searchString.toLowerCase() + '%', InequalityConstants.LIKE, true));
 			filters.add(new FilterExample(true, "person.lastName", '%' + searchString.toLowerCase() + '%', InequalityConstants.LIKE, true));

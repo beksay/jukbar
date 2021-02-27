@@ -26,7 +26,7 @@
 				    <f:ajax render="email-error @this" event="blur" />
 				</h:inputText>				
 				<p:watermark value="#{msgs.email}" for="email"/>
-				<h:message for="email-error" display="icon" style="color:red;" />
+				<h:message for="email" display="icon" style="color:red;" />
 				
 				<h:outputText value="firstName" styleClass="label"/>
 				<h:inputText value="#{registrationAction.person.firstName}" style="position:relative;" id="firstName" required="true" requiredMessage="#{msgs.firstName} - #{msgs.isReq}"/>				

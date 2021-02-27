@@ -15,27 +15,27 @@
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.tsNumber}" />
-		    		        <h:inputText id="tsNumber" value="#{transportController.transport.number}" disabled="#{transportController.editTs==false}"
+		    		        <h:inputText id="tsNumber" value="#{transportController.transport.number}" 
 		    		           required="true" requiredMessage="#{msgs.number} - #{msgs.isReq}"/>
 		    		        <p:watermark value="Например: 01KG123ABC, B1234A, B1234AB, KGBH1234" for="tsNumber" />   
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.marka}" />
-		    		        <h:inputText value="#{transportController.transport.marka}" id="marka" disabled="#{transportController.editTs==false}"
+		    		        <h:inputText value="#{transportController.transport.marka}" id="marka" 
 		    		           required="true" requiredMessage="#{msgs.marka} - #{msgs.isReq}"/>
 		    		        <p:watermark value="Укажите марку" for="marka" />
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.tsCapacity}" />
-		    		        <h:inputText value="#{transportController.transport.capacity}" disabled="#{transportController.editTs==false}"
+		    		        <h:inputText value="#{transportController.transport.capacity}" 
 		    		           required="true" requiredMessage="#{msgs.tsCapacity} - #{msgs.isReq}"/>
 						</div>
 						<div class="col-12">
 							<h:outputLabel value="#{msgs.year}" />
-		    		        <h:inputText value="#{transportController.transport.tsYear}" disabled="#{transportController.editTs==false}"
+		    		        <h:inputText value="#{transportController.transport.tsYear}" 
 		    		           required="true" requiredMessage="#{msgs.year} - #{msgs.isReq}"/>
 						</div>	 
-						<h:panelGroup  layout="block" class="col-12 mt-3" rendered="#{transportController.transport !=null and transportController.transport.status eq 'NEW'}">
+						<h:panelGroup  layout="block" class="col-12 mt-3" rendered="#{transportController.transport.status ==null and transportController.transport.status eq 'NEW'}">
 							<p:commandButton ajax="false" icon="fas fa-edit" action="#{transportController.change()}" value="#{msgs.edit}" rendered="#{transportController.editTs ==false}"/>	
 							<p:commandButton ajax="false" icon="fas fa-save" action="#{transportController.save()}" rendered="#{transportController.editTs ==true}" value="#{msgs.save}" />					
 							<h:outputLabel style="width:20px;display:inline-block"/>

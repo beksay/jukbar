@@ -16,8 +16,11 @@ import javax.inject.Named;
 
 import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.Message;
+import org.jukbar.controller.CountrySelector;
 import org.jukbar.conversations.Conversational;
+import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Person;
+import org.jukbar.domain.Region;
 import org.jukbar.domain.Role;
 import org.jukbar.domain.TransportType;
 import org.jukbar.domain.User;
@@ -56,6 +59,8 @@ public class RegistrationAction extends Conversational{
 	private EntityValidator validator;
 	@Inject
 	private LoginUtil loginUtil;
+	@Inject
+	private CountrySelector selector;
 	
 	private User user;
 	private Person person;
@@ -96,6 +101,11 @@ public class RegistrationAction extends Conversational{
     	}
 	    person.setAccount(personAccount);
 	    person.setMoney(new BigDecimal(0));
+	    
+	    person.setOblast(selector.getOblast());
+		if(selector.getOblast()!=null && selector.getOblast().getCity()!=true) {
+			person.setRegion(selector.getRegion());
+		}
         
 		Role addRole = roleService.findById(2, false);
 		user.setRole(addRole);
@@ -227,6 +237,8 @@ public class RegistrationAction extends Conversational{
 	public String loginForm() {
 		user = new User();
 		person = new Person();
+		selector.setOblast(new Oblast());
+		selector.setRegion(new Region());
 		return "/view/user/login.xhtml?faces-redirect=true";
 	}
 	
@@ -278,6 +290,14 @@ public class RegistrationAction extends Conversational{
 	
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	public CountrySelector getSelector() {
+		return selector;
+	}
+
+	public void setSelector(CountrySelector selector) {
+		this.selector = selector;
 	}
 
 }

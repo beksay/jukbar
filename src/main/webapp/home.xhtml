@@ -7,6 +7,7 @@
                 template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
 
 	<ui:define name="content">
+	   <ui:remove>
 		<div class="mainBanner">
 			<div class="container">
 				<div class="masthead container d-flex align-items-center flex-column">
@@ -19,6 +20,7 @@
 	            </div>
 			</div>
 		</div>
+		</ui:remove>
 		<div class="mainJukList">
 		<ui:remove>
 		    <div class="jumbotron">
@@ -82,15 +84,16 @@
 								selection="#{driverPublicList.user}"
 					            first="#{driverPublicList.first}" >
 					            <p:ajax event="page" listener="#{driverPublicList.onPageChange}"/>  
-								<p:panel header="#{entity.person.fullName}" styleClass="contentBlockInner">
+					            <f:facet name="header">ЧАСТНЫЕ ПЕРЕВОЗЧИКИ</f:facet>
+								<p:panel header="#{entity.person.transport.marka}" styleClass="contentBlockInner">
 						            <div class="InnerBlock">
 						                <h:commandLink styleClass="innerDetailIMG">
 						    		        <h:graphicImage library="images" name="bus.png" width="210" />
 						                </h:commandLink>
 						                <div class="innerDetail">
+						                    <i class="fas fa-map-marker-alt"></i>
 							                <h:outputText value="15" style="margin-left: auto;"/>
 						                </div>
-						               <h:commandLink value="#{entity.person.phone}"/>
 						            </div>
 				                </p:panel>
 					        </p:dataGrid>

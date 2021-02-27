@@ -9,7 +9,7 @@
 	    <br />
 		<h:panelGroup  layout="block" class="row" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}">
 		
-			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4" rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status ne 'COMPLETED'}">
+			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4">
 				<div class="card border-left-primary shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
@@ -38,7 +38,7 @@
 								  #{enums.REFUSED}
 								</h:panelGroup>
 							</div>
-							<h:panelGroup layout="block" class="col-2" rendered="#{loginUtil.currentUser.person.documents !=null and loginUtil.currentUser.person.documents.status ne 'COMPLETED'}">
+							<h:panelGroup layout="block" class="col-2" rendered="#{loginUtil.currentUser.person.documents.status eq 'NEW' or loginUtil.currentUser.person.documents.status eq 'REFUSED'}">
 							  <h:form>
 								<p:commandButton value="#{msgs.add}" action="#{documentController.goProfileMain(loginUtil.currentUser.person)}"/>
 							  </h:form>	
@@ -48,7 +48,7 @@
 				</div>
 			</h:panelGroup>
 
-			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4" rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status ne 'COMPLETED'}">
+			<h:panelGroup layout="block" class="col-6 col-md-6 mb-4">
 				<div class="card border-left-success shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
@@ -73,7 +73,7 @@
 								  #{msgs.completed}
 								</h:panelGroup>
 							</div>
-							<h:panelGroup layout="block" class="col-2" rendered="#{loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status ne 'COMPLETED'}">
+							<h:panelGroup layout="block" class="col-2" rendered="#{loginUtil.currentUser.person.transport.status eq null or loginUtil.currentUser.person.transport.status eq 'NEW' or loginUtil.currentUser.person.transport.status eq 'IN_PROGRESS'}">
 						   	   <h:form>
 								<p:commandButton value="#{msgs.add}" action="#{transportController.goProfileMain(loginUtil.currentUser.person)}"  />
 							   </h:form>

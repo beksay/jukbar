@@ -79,7 +79,7 @@ public class DocumentController extends Conversational {
 		return null;
 	}
 	
-	public String save() {		
+	public String save() {			
 		documents.setStatus(DocStatus.NEW);
 		
 		if(passport != null) {
@@ -121,12 +121,33 @@ public class DocumentController extends Conversational {
 		personService.merge(person);
 
 		FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("dataDaved"), null) );
-		editDoc = false;
+		
+		try {
+			if (documents.getPassport() != null) {
+				passport = Util.createAttachmentDTO(documents.getPassport());
+			}else {
+				passport = null;
+			}
+			if (documents.getDriverLicense() != null) {
+				driverLicense = Util.createAttachmentDTO(documents.getDriverLicense());
+			}else {
+				driverLicense = null;
+			}
+			if (documents.getCarLicense() != null) {
+				carLicense = Util.createAttachmentDTO(documents.getCarLicense());
+			}else {
+				carLicense = null;
+			}
+		} catch (Exception e) {
+			passport = null;
+			driverLicense = null;
+			carLicense = null;
+		}
+		
 		return null;
 	}
 	
 	public String sendModerator() {	
-		if (passport != null && driverLicense != null && carLicense != null) {
 			if(passport != null) {
 	    		Attachment attachment = new Attachment();
 				attachment = createAttachment(passport);
@@ -162,12 +183,8 @@ public class DocumentController extends Conversational {
 			
 			documents.setStatus(DocStatus.IN_PROGRESS);
 			docService.merge(documents);
-			FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("sendedToModerator"), null) );
-		}else {
-			FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("uploadAllDocuments"), null) );
-		}		
-		editDoc = false;
-		return null;
+			FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("sendedToModerator"), null) );	
+		return "/main.html";
 	}
 	
 	public String goProfile(Person person) {
@@ -194,6 +211,7 @@ public class DocumentController extends Conversational {
 			} catch (Exception e) {
 				passport = null;
 				driverLicense = null;
+				carLicense = null;
 			}
 		}
 		return profileList();
@@ -203,28 +221,28 @@ public class DocumentController extends Conversational {
 		this.person = person;
 		if(person.getDocuments() !=null){
 			documents = docService.findById(person.getDocuments().getId(), false);	
-	
-			try {
-				if (documents.getPassport() != null) {
-					passport = Util.createAttachmentDTO(documents.getPassport());
-				}else {
-					passport = null;
-				}
-				if (documents.getDriverLicense() != null) {
-					driverLicense = Util.createAttachmentDTO(documents.getDriverLicense());
-				}else {
-					driverLicense = null;
-				}
-				if (documents.getCarLicense() != null) {
-					carLicense = Util.createAttachmentDTO(documents.getCarLicense());
-				}else {
-					carLicense = null;
-				}
-			} catch (Exception e) {
+		}
+		try {
+			if (documents.getPassport() != null) {
+				passport = Util.createAttachmentDTO(documents.getPassport());
+			}else {
 				passport = null;
+			}
+			if (documents.getDriverLicense() != null) {
+				driverLicense = Util.createAttachmentDTO(documents.getDriverLicense());
+			}else {
 				driverLicense = null;
 			}
+			if (documents.getCarLicense() != null) {
+				carLicense = Util.createAttachmentDTO(documents.getCarLicense());
+			}else {
+				carLicense = null;
+			}
+		} catch (Exception e) {
+			passport = null;
+			driverLicense = null;
 		}
+		
 		return profileListMain();
 	}
 	
