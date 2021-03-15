@@ -7,53 +7,7 @@
                 template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
 
 	<ui:define name="content">
-	   <ui:remove>
-		<div class="mainBanner">
-			<div class="container">
-				<div class="masthead container d-flex align-items-center flex-column">
-	                <h3 class="masthead-heading text-uppercase mb-0">Найдём перевозчика для доставки любого груза!</h3>
-	                <div class="divider-custom divider-light">
-	                    <div class="divider-custom-line"></div>
-	                    <div class="divider-custom-icon"><i class="fas fa-truck" style="color: #8c4949"></i></div>
-	                    <div class="divider-custom-line"></div>
-	                </div>
-	            </div>
-			</div>
-		</div>
-		</ui:remove>
 		<div class="mainJukList">
-		<ui:remove>
-		    <div class="jumbotron">
-			  <div class="row w-100">
-			        <div class="col-md-3">
-			            <div class="in-card card border-info mx-sm-1 p-3">
-			                <div class="card border-info shadow text-info p-3 my-card" ><i class="fas fa-edit"></i></div>
-			                <div class="text-info text-center mt-3"><h4>Разместите запрос на грузоперевозку
-                                 Напишите что нужно перевезти, откуда и куда. </h4></div>
-			            </div>
-			        </div>
-			        <div class="col-md-3">
-			            <div class="in-card card border-info mx-sm-1 p-3">
-			                <div class="card border-info shadow text-info p-3 my-card" ><i class="fas fa-tags"></i></div>
-			                <div class="text-info text-center mt-3"><h4>Перевозчики торгуются за ваш заказ, снижая цены</h4></div>
-			            </div>
-			        </div>
-			        <div class="col-md-3">
-			            <div class="in-card card border-info mx-sm-1 p-3">
-			                <div class="card border-info shadow text-info p-3 my-card" ><i class="fas fa-clock"></i></div>
-			                <div class="text-info text-center mt-3"><h4>Через несколько минут после размещения запроса вы получите первые предложения на перевозку грузов</h4></div>
-			            </div>
-			        </div>
-			        <div class="col-md-3">
-			            <div class="in-card card border-info mx-sm-1 p-3">
-			                <div class="card border-info shadow text-info p-3 my-card"><i class="fas fa-truck"></i></div>
-			                <div class="text-info text-center mt-3"><h4>Выберите исполнителя и «Жүкбар» пришлет его контактные данные, чтобы совершить грузоперевозки</h4></div>
-			            </div>
-			        </div>
-			     </div>
-			</div>
-			</ui:remove>
-			<div class="jumbotron">
 			<h:form>
 				<div class="mainListData">
 					<div class="mainListFilter">
@@ -75,25 +29,25 @@
 					</div>
 					<div class="mainListContent">
 						<div class="mainJukInfo">
-						   <p:dataGrid var="entity" value="#{driverPublicList.model}" paginator="true" rows="12" rowIndexVar="index" 
+						   <p:dataGrid var="entity" value="#{transportList.model}" paginator="true" rows="12" rowIndexVar="index" 
 						        lazy="true" emptyMessage="#{msgs.noRecordsFound}"  
 								columns="6" layout="grid" sortOrder="DESCENDING" styleClass="contentBlock" 
 								rowsPerPageTemplate="12,24,36,48,64" paginatorPosition="bottom" pageLinks="12"
 								currentPageReportTemplate="#{msgs.showPaymentNumbers}" selectionMode="single"
 								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
-								selection="#{driverPublicList.user}"
-					            first="#{driverPublicList.first}" >
-					            <p:ajax event="page" listener="#{driverPublicList.onPageChange}"/>  
+								selection="#{transportList.transport}"
+					            first="#{transportList.first}" >
+					            <p:ajax event="page" listener="#{transportList.onPageChange}"/>  
 					            <f:facet name="header">ЧАСТНЫЕ ПЕРЕВОЗЧИКИ</f:facet>
-								<p:panel header="#{entity.person.transport.marka} - #{entity.person.transport.tsYear}" styleClass="contentBlockInner">
+								<p:panel header="#{entity.marka} - #{entity.tsYear}" styleClass="contentBlockInner">
 						            <div class="InnerBlock">
 						                <h:commandLink styleClass="innerDetailIMG">
 						    		        <h:graphicImage library="images" name="bus.png" width="210" />
 						                </h:commandLink>
 						                <div class="innerDetail">
 						                    <i class="fas fa-map-marker-alt"></i>
-							                <h:outputText value="#{entity.person.oblast.name}" style="margin-left: auto;"/>
-							                <h:outputText value="#{entity.person.region.name}" style="margin-left: auto;"/>
+							                <h:outputText value="Bishkek" style="margin-left: auto;"/>
+							                <h:outputText value="Osh" style="margin-left: auto;"/>
 						                </div>
 						            </div>
 				                </p:panel>
@@ -103,6 +57,5 @@
 				</div>
 			</h:form>
 			</div>
-		</div>
 	</ui:define>
 </ui:composition>

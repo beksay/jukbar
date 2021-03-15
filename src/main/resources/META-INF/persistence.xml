@@ -24,6 +24,7 @@
       <class>org.jukbar.domain.Complaints</class>
       <class>org.jukbar.domain.Transport</class>
       <class>org.jukbar.domain.Documents</class>
+      <class>org.jukbar.domain.Orders</class>
       <!-- entities -->
       
       <exclude-unlisted-classes>true</exclude-unlisted-classes>

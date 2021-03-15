@@ -17,13 +17,11 @@ import org.jukbar.beans.InequalityConstants;
 import org.jukbar.controller.BaseController;
 import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Region;
-import org.jukbar.enums.ShipmentStatus;
-import org.jukbar.enums.ShipmentType;
 import org.jukbar.enums.SortEnum;
-import org.jukbar.model.ShipmentsModel;
+import org.jukbar.model.OrdersModel;
 import org.jukbar.service.OblastService;
+import org.jukbar.service.OrdersService;
 import org.jukbar.service.RegionService;
-import org.jukbar.service.ShipmentsService;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.data.PageEvent;
 
@@ -35,16 +33,16 @@ import org.primefaces.event.data.PageEvent;
 
 @ManagedBean
 @ViewScoped
-public class PublicLocalList extends BaseController implements Serializable {
+public class PublicList extends BaseController implements Serializable {
 	
 	private static final long serialVersionUID = -6100072166946495229L;
 	@EJB
-	private ShipmentsService service;
+	private OrdersService service;
 	@EJB
 	private OblastService oblastService;
 	@EJB
 	private RegionService regionService;
-	private ShipmentsModel model;
+	private OrdersModel model;
 	
 	private Oblast oblast;
 	private Region region;
@@ -61,14 +59,12 @@ public class PublicLocalList extends BaseController implements Serializable {
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
-		filters.add(new FilterExample("type", ShipmentType.LOCAL, InequalityConstants.EQUAL));
-		filters.add(new FilterExample("status", ShipmentStatus.IN_PROGRESS, InequalityConstants.EQUAL));  
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
         if(region !=null) filters.add(new FilterExample("regionFrom", region, InequalityConstants.EQUAL));
         
 		if(oblastTo !=null) filters.add(new FilterExample("oblastTo", oblastTo, InequalityConstants.EQUAL));  
         if(regionTo !=null) filters.add(new FilterExample("regionTo", regionTo, InequalityConstants.EQUAL));
-		model = new ShipmentsModel(filters, service);
+		model = new OrdersModel(filters, service);
 	}
 	
 	public String clearData() {
@@ -122,7 +118,7 @@ public class PublicLocalList extends BaseController implements Serializable {
 	public void restoreState() {
     	HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		HttpSession session = request.getSession();
-		model = (ShipmentsModel) session.getAttribute("model");
+		model = (OrdersModel) session.getAttribute("model");
 		first = (Integer) session.getAttribute("first");
 	}
 	
@@ -147,19 +143,19 @@ public class PublicLocalList extends BaseController implements Serializable {
 		return "/view/user/login.xhtml?faces-redirect=true";
 	}
 
-	public ShipmentsService getService() {
+	public OrdersService getService() {
 		return service;
 	}
 	
-	public void setService(ShipmentsService service) {
+	public void setService(OrdersService service) {
 		this.service = service;
 	}
 	
-	public ShipmentsModel getModel() {
+	public OrdersModel getModel() {
 		return model;
 	}
 	
-	public void setModel(ShipmentsModel model) {
+	public void setModel(OrdersModel model) {
 		this.model = model;
 	}
 

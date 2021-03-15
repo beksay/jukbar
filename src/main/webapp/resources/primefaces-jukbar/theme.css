@@ -37,7 +37,9 @@ form {
 
 html, body {
 	height: 100%;
-	background:#F2F7FC !important;
+	min-height: 90vh;
+	background: linear-gradient(0deg,#fff 5%,#e5efff 95%);
+	position: relative;
 	font-family: "Exo" !important;
 	font-size: 14px;
 	color: #597a96;
@@ -6131,10 +6133,9 @@ body .ui-terminal .ui-terminal-input {
 	flex:1;	
 }
 .mainFooter {
-	background-color: #dce1e6;
+	background-color: #1d293f;
 	min-height: 70px;
-	color:#577ACA;
-    text-align: center;
+	color:#fff;
 }
 .mainFooter .row{
 	margin-top:20px;
@@ -10111,16 +10112,17 @@ div.scrollmenuForm h3 {
 	   }
 
 #map {
-             width: 300px;
-		   height: 350px;
-        }
+          width: 240px;
+		  height: 200px;
+    }
 
 .maintopContainer {
-	background-color:#577ACA;
+	background-color:#fff;
+	color:#1d293f;
 	height:70px;
 }
 .maintopContainerPrivate {
-	background-color:#24796d;
+	background-color:#fff;
 	height:70px;
 }
 .maintopContent {
@@ -10148,7 +10150,29 @@ div.scrollmenuForm h3 {
 	display: flex;
 	align-items:center;
 	border-radius: 3px;
-	border:1px solid #fff;
+	border:1px solid #1d293f;
+	padding:0 15px;
+	color:#1d293f;
+	font-weight:500;
+	font-size:15px;
+	height:40px;
+	margin-left:20px;
+}
+.maintop-right a:hover, .maintop-right a:active{
+	background:#bd7b3a;
+	border:1px solid #bd7b3a;
+	color:#fff !important;
+}
+.maintop-app {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.maintop-app a {
+	display: flex;
+	align-items:center;
+	border-radius: 3px;
+	background:#bd7b3a;
 	padding:0 15px;
 	color:#fff;
 	font-weight:500;
@@ -10156,7 +10180,7 @@ div.scrollmenuForm h3 {
 	height:40px;
 	margin-left:20px;
 }
-.maintop-right a:hover, .maintop-right a:active{
+.maintop-app a:hover, .maintop-app a:active{
 	background:#7594D6;
 	color:#fff !important;
 }
@@ -10170,19 +10194,6 @@ div.scrollmenuForm h3 {
 }
 .filter {
 	margin-bottom:15px;
-}
-body .jumbotron {
-	background-color: #f9f9f9;
-
-}
-body .jumbotron .my-card {
-    position:absolute;
-    left:40%;
-    top:-20px;
-    border-radius:50%;
-}
-body .jumbotron .in-card{
-	height: 100%;
 }
 body .jukMenu {
 	display:flex;
@@ -10200,10 +10211,10 @@ body .jukMenu li a {
 	font-size:18px;
 }
 body .jukMenu li a:link, body .jukMenu li a:visited {
-	color:#fff;
+	color:#1d293f;
 }
 body .jukMenu li a:hover, body .jukMenu li a:active{
-	color:#e2c466 !important;
+	color:#bd7b3a !important;
 }
 body .mainlogo {
 	display: flex;
@@ -10610,4 +10621,16 @@ body .contentBlock .contentBlockInner .innerDetail a {
 body .contentBlock .contentBlockInner .InnerBlock .innerDetailIMG {
 	display:block;
 }
-
+body .mainRoute{
+	margin-left:10px; 
+}
+body .mainText{
+	font-weight: bold;
+}
+body .listOrder .ui-datalist-content {
+	border:0;
+	padding:0;
+}
+body .listOrder .ui-datalist-item {
+	margin-bottom:3px;
+}
