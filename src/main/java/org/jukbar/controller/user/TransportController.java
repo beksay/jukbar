@@ -5,15 +5,18 @@ import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.jukbar.annotation.Logged;
+import org.jukbar.controller.CountrySelector;
 import org.jukbar.conversations.Conversational;
-import org.jukbar.domain.Person;
+import org.jukbar.domain.Oblast;
+import org.jukbar.domain.Region;
 import org.jukbar.domain.Transport;
 import org.jukbar.enums.TransportStatus;
-import org.jukbar.service.PersonService;
 import org.jukbar.service.TransportService;
+import org.jukbar.util.web.LoginUtil;
 import org.jukbar.util.web.Messages;
 
 /**
@@ -30,31 +33,53 @@ public class TransportController extends Conversational {
 	private static final long serialVersionUID = 5651758429305872940L;
 	
 	@EJB
-	private PersonService personService;
-	@EJB
 	private TransportService transportService;
-	
-	private Person person;
+	@Inject
+	private LoginUtil loginUtil;
+	@Inject
+	private CountrySelector selector;
+
 	private Transport transport;
 
 	@PostConstruct
 	public void init() {
-		if (person==null) person= new Person();
 		if (transport==null) transport= new Transport();
 	}
 	
 	
 	public String cancel() {
-		init();
-		return null;
+		transport = new Transport();
+		return list();
+	}
+	
+	public String add() {
+		transport = new Transport();
+		selector.setOblast(new Oblast());
+		selector.setRegion(new Region());
+		return form();
+	}
+	
+	public String edit(Transport transport) {
+		this.transport = transport;
+		selector.setOblast(transport.getOblast());
+		if(transport.getOblast().getCity()==false) {
+			selector.setRegion(transport.getRegion());
+		}
+		return form();
 	}
 	
 	public String save() {		
 		transport.setStatus(TransportStatus.NEW);
-		person.setTransport(person.getTransport() == null ? transportService.persist(person.getTransport()) : transportService.merge(person.getTransport()));
-		person.setTransport(transport);
-		personService.merge(person);
-
+		transport.setUser(loginUtil.getCurrentUser());
+		transport.setOblast(selector.getOblast());
+		if(selector.getOblast()!=null && selector.getOblast().getCity()!=true) {
+			transport.setRegion(selector.getRegion());
+		}
+		if (transport==null) {
+			transport = transportService.persist(transport);
+		} else {
+			transport = transportService.merge(transport);
+		}
 		FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("dataDaved"), null) );
 		init();
 		return null;
@@ -67,28 +92,12 @@ public class TransportController extends Conversational {
 		return mainForm();
 	}
 	
-	public String goProfile(Person person) {
-		this.person = person;
-		if(person.getTransport() !=null){
-			transport = transportService.findById(person.getTransport().getId(), false);	
-		}
-		return profileList();
+	private String list() {
+		return "/view/transport/transport_list.xhtml";
 	}
 	
-	public String goProfileMain(Person person) {
-		this.person = person;
-		if(person.getTransport() !=null){
-			transport = transportService.findById(person.getTransport().getId(), false);	
-		}
-		return profileListMain();
-	}
-	
-	private String profileList() {
-		return "/view/transport/my_transport.xhtml";
-	}
-	
-	private String profileListMain() {
-		return "/view/transport/my_transport_main.xhtml";
+	private String form() {
+		return "/view/transport/transport_form.xhtml";
 	}
 	
 	public String mainForm() {
@@ -102,14 +111,6 @@ public class TransportController extends Conversational {
 
 	public void setTransport(Transport transport) {
 		this.transport = transport;
-	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
 	}
 	
 }

@@ -18,14 +18,13 @@ import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
 import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Region;
-import org.jukbar.enums.ShipmentStatus;
-import org.jukbar.enums.ShipmentType;
+import org.jukbar.domain.Transport;
 import org.jukbar.enums.SortEnum;
-import org.jukbar.model.ShipmentsModel;
+import org.jukbar.model.TransportModel;
 import org.jukbar.service.OblastService;
-import org.jukbar.service.RegionService;
-import org.jukbar.service.ShipmentsService;
+import org.jukbar.service.TransportService;
 import org.jukbar.util.web.LoginUtil;
+import org.jukbar.service.RegionService;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.data.PageEvent;
 
@@ -38,24 +37,23 @@ import org.primefaces.event.data.PageEvent;
 @Logged
 @ManagedBean
 @ViewScoped
-public class LocalSenderList extends BaseController implements Serializable {
+public class MyTransportList extends BaseController implements Serializable {
 	
 	private static final long serialVersionUID = -6100072166946495229L;
 	@EJB
-	private ShipmentsService service;
+	private TransportService service;
 	@EJB
 	private OblastService oblastService;
 	@EJB
 	private RegionService regionService;
-	@Inject
+	@Inject 
 	private LoginUtil loginUtil;
-	private ShipmentsModel model;
+	
+	private TransportModel model;
 	
 	private Oblast oblast;
 	private Region region;
-
-	private Oblast oblastTo;
-	private Region regionTo;
+	private Transport transport;
 	
 	private Integer first;
 	
@@ -67,21 +65,15 @@ public class LocalSenderList extends BaseController implements Serializable {
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
-		filters.add(new FilterExample("owner", loginUtil.getCurrentUser(), InequalityConstants.EQUAL));
-		filters.add(new FilterExample("type", ShipmentType.LOCAL, InequalityConstants.EQUAL));  
-		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
-        if(region !=null) filters.add(new FilterExample("regionFrom", region, InequalityConstants.EQUAL));
-        
-		if(oblastTo !=null) filters.add(new FilterExample("oblastTo", oblastTo, InequalityConstants.EQUAL));  
-        if(regionTo !=null) filters.add(new FilterExample("regionTo", regionTo, InequalityConstants.EQUAL));
-		model = new ShipmentsModel(filters, service);
+		filters.add(new FilterExample("user", loginUtil.getCurrentUser(), InequalityConstants.EQUAL));  
+		if(oblast !=null) filters.add(new FilterExample("oblast", oblast, InequalityConstants.EQUAL));  
+        if(region !=null) filters.add(new FilterExample("region", region, InequalityConstants.EQUAL));
+		model = new TransportModel(filters, service);
 	}
 	
 	public String clearData() {
 		oblast=null;
 		region=null;
-		oblastTo=null;
-		regionTo=null;
 		init();
 		return null;
 	}
@@ -102,22 +94,6 @@ public class LocalSenderList extends BaseController implements Serializable {
 		return regionService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	
-	public List<Oblast> getOblastToList() {
-		List<FilterExample> examples = new ArrayList<>();
-		examples.add(new FilterExample("country.id", 1, InequalityConstants.EQUAL)); 
-		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
-	}
-	
-	public List<Region> getRegionToList() {
-		List<FilterExample> examples = new ArrayList<>();
-		if(oblastTo !=null) {
-			examples.add(new FilterExample("oblast", oblastTo, InequalityConstants.EQUAL)); 
-		}else {
-			examples.add(new FilterExample("id", InequalityConstants.IS_NULL_SINGLE)); 
-		}
-		return regionService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
-	}
-	
 	public void saveState() {
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		HttpSession session = request.getSession();
@@ -128,7 +104,7 @@ public class LocalSenderList extends BaseController implements Serializable {
 	public void restoreState() {
     	HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		HttpSession session = request.getSession();
-		model = (ShipmentsModel) session.getAttribute("model");
+		model = (TransportModel) session.getAttribute("model");
 		first = (Integer) session.getAttribute("first");
 	}
 	
@@ -149,19 +125,19 @@ public class LocalSenderList extends BaseController implements Serializable {
 		session.setAttribute("first", first);
 	}
 
-	public ShipmentsService getService() {
+	public TransportService getService() {
 		return service;
 	}
 	
-	public void setService(ShipmentsService service) {
+	public void setService(TransportService service) {
 		this.service = service;
 	}
 	
-	public ShipmentsModel getModel() {
+	public TransportModel getModel() {
 		return model;
 	}
 	
-	public void setModel(ShipmentsModel model) {
+	public void setModel(TransportModel model) {
 		this.model = model;
 	}
 
@@ -189,21 +165,12 @@ public class LocalSenderList extends BaseController implements Serializable {
 		this.first = first;
 	}
 
-	public Oblast getOblastTo() {
-		return oblastTo;
+	public Transport getTransport() {
+		return transport;
 	}
 
-	public void setOblastTo(Oblast oblastTo) {
-		this.oblastTo = oblastTo;
+	public void setTransport(Transport transport) {
+		this.transport = transport;
 	}
-
-	public Region getRegionTo() {
-		return regionTo;
-	}
-
-	public void setRegionTo(Region regionTo) {
-		this.regionTo = regionTo;
-	}
-
     
 }

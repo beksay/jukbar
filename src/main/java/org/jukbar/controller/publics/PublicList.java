@@ -17,6 +17,7 @@ import org.jukbar.beans.InequalityConstants;
 import org.jukbar.controller.BaseController;
 import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Region;
+import org.jukbar.enums.OrderStatus;
 import org.jukbar.enums.SortEnum;
 import org.jukbar.model.OrdersModel;
 import org.jukbar.service.OblastService;
@@ -59,6 +60,7 @@ public class PublicList extends BaseController implements Serializable {
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
+		filters.add(new FilterExample("status", OrderStatus.COMPLETED, InequalityConstants.EQUAL));
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
         if(region !=null) filters.add(new FilterExample("regionFrom", region, InequalityConstants.EQUAL));
         

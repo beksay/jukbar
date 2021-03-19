@@ -87,6 +87,20 @@
 				    </p:tab> 
 				    <p:tab id="general" title="#{msgs.generalInfo}">
 		              <p:panel header="#{msgs.addGeneral}"> 
+		                    <h:outputText value="#{msgs.fio}" />
+					 		<h:inputText id="fio"
+								value="#{orderApplicationAction.orders.fullname}"
+								required="true"
+								requiredMessage="#{msgs.fio} - #{msgs.isReq}" />
+							<p:message for="fio" />
+							
+							<h:outputText value="#{msgs.myPhone}" />
+					 		<h:inputText id="phone"
+								value="#{orderApplicationAction.orders.phone}"
+								required="true"
+								requiredMessage="#{msgs.myPhone} - #{msgs.isReq}" />
+							<p:message for="phone" />
+		              
 		                    <h:outputText value="#{msgs.dateFrom}" /> 
 							<p:calendar value="#{orderApplicationAction.orders.date}"
 								id="dateFrom" required="true" requiredMessage="#{msgs.dateFrom} - #{msgs.isReq}"
@@ -102,13 +116,6 @@
 								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</p:inputText>
 							<p:message for="amount" />
-						
-						    <h:outputText value="#{msgs.myPhone}" />
-							<h:inputText id="phone"
-								value="#{orderApplicationAction.orders.phone}"
-								required="true"
-								requiredMessage="#{msgs.myPhone} - #{msgs.isReq}" />
-							<p:message for="phone" />
 							
 							<h:outputText value="#{msgs.transportType}" />
 							<h:selectOneMenu id="transportType" value="#{orderApplicationAction.orders.transportType}"

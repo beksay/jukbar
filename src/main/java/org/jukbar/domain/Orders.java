@@ -37,6 +37,7 @@ public class Orders extends AbstractEntity<Integer>{
     private String phone;
     private String addPhone;
     private User owner;
+    private String fullname;
     
     @ManyToOne
 	@JoinColumn(name="transport_type_id")
@@ -197,6 +198,14 @@ public class Orders extends AbstractEntity<Integer>{
 
 	public void setAddPhone(String addPhone) {
 		this.addPhone = addPhone;
+	}
+
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 	
 }

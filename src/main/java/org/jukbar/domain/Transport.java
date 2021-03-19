@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.jukbar.enums.TransportStatus;
@@ -19,6 +21,11 @@ public class Transport extends AbstractEntity<Integer>{
     private String number;
     private TransportStatus status;
     private String reason;
+    private Oblast oblast;
+    private Region region;
+    private User user;
+    private Attachment document;
+    private Attachment picture;
     
 	public String getMarka() {
 		return marka;
@@ -69,5 +76,54 @@ public class Transport extends AbstractEntity<Integer>{
 	public void setReason(String reason) {
 		this.reason = reason;
 	} 
+	
+	@ManyToOne
+	@JoinColumn(name="oblast_id")
+	public Oblast getOblast() {
+		return oblast;
+	}
+	
+	public void setOblast(Oblast oblast) {
+		this.oblast = oblast;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="region_id")
+	public Region getRegion() {
+		return region;
+	}
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="document_id")
+	public Attachment getDocument() {
+		return document;
+	}
+
+	public void setDocument(Attachment document) {
+		this.document = document;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="picture_id")
+	public Attachment getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Attachment picture) {
+		this.picture = picture;
+	}
 	
 }

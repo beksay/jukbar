@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<div class="container">
+				<div class="mainListData">
+					<div class="mainListFilter">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<h:panelGroup id="oblastFrom" layout="block" class="col">
+								<h:outputLabel for="oblast" value="#{msgs.oblastFrom}"/>
+								<h:selectOneMenu id="oblast" value="#{ordersList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{ordersList.oblastList}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+									<p:ajax listener="#{ordersList.filterData()}" event="change"
+										update="region table regionFrom" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<h:panelGroup id="regionFrom" layout="block" class="col">
+								<h:outputLabel for="region" value="#{msgs.regionFrom}" rendered="#{ordersList.oblast.id!=null}"/>
+								<h:selectOneMenu id="region" value="#{ordersList.region}" rendered="#{ordersList.oblast.id!=null}"
+									effect="fold" editable="true" converter="#{regionConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{ordersList.regionList}" var="region"
+										itemLabel="#{region.name}" itemValue="#{region}" />
+									<p:ajax listener="#{ordersList.filterData()}" event="change"
+										update="table" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<h:panelGroup id="oblastToId" layout="block" class="col">
+								<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}"/>
+								<h:selectOneMenu id="oblastTo" value="#{ordersList.oblastTo}"
+									effect="fold" editable="true" converter="#{oblastConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{ordersList.oblastToList}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+									<p:ajax listener="#{ordersList.filterData()}" event="change"
+										update="regionTo table regionToId" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<h:panelGroup id="regionToId" layout="block" class="col">
+								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{ordersList.oblastTo.id!=null}"/>
+								<h:selectOneMenu id="regionTo" value="#{ordersList.region}" rendered="#{ordersList.oblastTo.id!=null}"
+									effect="fold" editable="true" converter="#{regionConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{ordersList.regionToList}" var="region"
+										itemLabel="#{region.name}" itemValue="#{region}" />
+									<p:ajax listener="#{ordersList.filterData()}" event="change"
+										update="table" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="applyBtn" class="success-btn"
+									action="#{ordersList.filterData()}" value="#{msgs.search}"
+									icon="fas fa-search" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="clearBtn"
+									action="#{ordersList.clearData()}" value="#{msgs.clear}"
+									icon="fas fa-eraser" />
+							</div>
+						</h:panelGroup>
+					</div>
+					<div class="mainListContent">
+						<div class="mainJukInfo">
+							<p:dataList value="#{ordersList.model}" styleClass="listOrder" var="entity" type="ordered" id="table" lazy="true" rows="10"
+					            rowsPerPageTemplate="10,20,40,80" paginatorPosition="bottom" paginator="true" 
+								pageLinks="10" currentPageReportTemplate="#{msgs.showPaymentNumbers}"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+								first="#{ordersList.first}">
+					             <p:accordionPanel activeIndex="false">
+						            <p:tab>
+						              <f:facet name="title">
+						                <h:outputText value="#{entity.amount} сом" >
+										   <f:converter converterId="decimalNumberConverter" />
+										</h:outputText>
+										<i class="fas fa-map-marker-alt mainRoute"></i>
+									    <h:outputText styleClass="mainRoute" value="#{entity.oblastFrom.name} #{entity.regionFrom.name}" />
+									    <i class="fas fa-arrows-alt-h mainRoute"></i>
+									    <h:outputText styleClass="mainRoute" value="#{entity.oblastTo.name} #{entity.regionTo.name}" />
+									    <h:outputText value="#{entity.date}" style="float:right;">
+											<f:convertDateTime pattern="dd.MM.yyyy" />
+										</h:outputText>
+									  </f:facet>
+									  <div class="row">
+								       <div class="col-4">
+								          <div class="MainDataContent">
+											<p>
+												<h:outputText value="#{entity.oblastFrom.name}" rendered="#{entity.oblastFrom.id != null}" />
+												<h:outputText value="," rendered="#{entity.regionFrom.id !=null}" />
+												<h:outputText value="#{entity.regionFrom.name}" rendered="#{entity.regionFrom.id !=null}" />
+											</p>
+											<p>
+												<h:outputText value="#{entity.oblastTo.name}" rendered="#{entity.oblastTo.id !=null}" />
+												<h:outputText value="," rendered="#{entity.regionTo.id !=null}" />
+												<h:outputText value="#{entity.regionTo.name}" rendered="#{entity.regionTo.id !=null}" />										
+											</p>
+									      </div>
+									      <h:panelGrid columns="1">
+								               <h:outputLabel value="#{msgs.fio} : " styleClass="mainText"/>
+								               <h:outputText value="#{entity.fullname}" />
+											   <h:outputLabel value="#{msgs.phone} : " styleClass="mainText"/>
+											   <h:outputText value="#{entity.phone}"  />
+								          </h:panelGrid>
+								       </div>
+								       <div class="col-5">
+								            <h:panelGrid columns="1">
+								               <h:outputLabel value="#{msgs.amount} : " styleClass="mainText"/>
+								               <h:outputText value="#{entity.amount} сом">
+												   <f:converter converterId="decimalNumberConverter" />
+											   </h:outputText>
+											   <h:outputLabel value="#{msgs.date} : " styleClass="mainText"/>
+											   <h:outputText value="#{entity.date}">
+												 <f:convertDateTime pattern="dd.MM.yyyy" />
+											   </h:outputText>
+											   <h:outputLabel value="#{msgs.transportType} : " styleClass="mainText"/>
+											   <h:outputText value="#{entity.transportType.name}" />
+											   <h:outputLabel value="#{msgs.productInfo} : " styleClass="mainText"/>
+											   <h:outputText value="#{entity.products}"  />
+								            </h:panelGrid>
+								       </div>
+								      </div>   
+						            </p:tab>
+						        </p:accordionPanel>
+					        </p:dataList>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -34,8 +34,6 @@ public class Person extends AbstractEntity<Integer>{
     private Date birthDate;
     private Documents documents;
     private Transport transport;
-    private Oblast oblast;
-    private Region region;
 
     @Column(name = "last_name")
     public String getLastName() {
@@ -154,25 +152,6 @@ public class Person extends AbstractEntity<Integer>{
 	
 	public void setTransport(Transport transport) {
 		this.transport = transport;
-	}
-	
-	@ManyToOne
-	@JoinColumn(name="oblast_id")
-	public Oblast getOblast() {
-		return oblast;
-	}
-	
-	public void setOblast(Oblast oblast) {
-		this.oblast = oblast;
-	}
-	
-	@ManyToOne
-	@JoinColumn(name="region_id")
-	public Region getRegion() {
-		return region;
-	}
-	public void setRegion(Region region) {
-		this.region = region;
 	}
 	
 }

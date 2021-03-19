@@ -7,6 +7,7 @@
                 template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
 
 	<ui:define name="content">
+	 <div class="container">
 		<div class="mainJukList">
 			<h:form>
 				<div class="mainListData">
@@ -29,25 +30,24 @@
 					</div>
 					<div class="mainListContent">
 						<div class="mainJukInfo">
-						   <p:dataGrid var="entity" value="#{transportList.model}" paginator="true" rows="12" rowIndexVar="index" 
+						   <p:dataGrid var="entity" value="#{transportList.model}" paginator="true" rows="8" rowIndexVar="index" 
 						        lazy="true" emptyMessage="#{msgs.noRecordsFound}"  
-								columns="6" layout="grid" sortOrder="DESCENDING" styleClass="contentBlock" 
+								columns="4" layout="grid" sortOrder="DESCENDING" styleClass="contentBlock" 
 								rowsPerPageTemplate="12,24,36,48,64" paginatorPosition="bottom" pageLinks="12"
 								currentPageReportTemplate="#{msgs.showPaymentNumbers}" selectionMode="single"
 								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
 								selection="#{transportList.transport}"
-					            first="#{transportList.first}" >
-					            <p:ajax event="page" listener="#{transportList.onPageChange}"/>  
+					            first="#{transportList.first}" >  
 					            <f:facet name="header">ЧАСТНЫЕ ПЕРЕВОЗЧИКИ</f:facet>
 								<p:panel header="#{entity.marka} - #{entity.tsYear}" styleClass="contentBlockInner">
 						            <div class="InnerBlock">
 						                <h:commandLink styleClass="innerDetailIMG">
-						    		        <h:graphicImage library="images" name="bus.png" width="210" />
+						    		        <h:graphicImage library="images" name="bus.png" width="200" />
 						                </h:commandLink>
 						                <div class="innerDetail">
 						                    <i class="fas fa-map-marker-alt"></i>
-							                <h:outputText value="Bishkek" style="margin-left: auto;"/>
-							                <h:outputText value="Osh" style="margin-left: auto;"/>
+							                <h:outputText value="#{entity.oblast.name}" style="margin-left: auto;"/>
+							                <h:outputText value="#{entity.region.name}" style="margin-left: auto;"/>
 						                </div>
 						            </div>
 				                </p:panel>
@@ -56,6 +56,7 @@
 					</div>
 				</div>
 			</h:form>
-			</div>
+		  </div>
+		</div>	
 	</ui:define>
 </ui:composition>

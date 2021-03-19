@@ -9,25 +9,20 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.jukbar.annotation.Logged;
 import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
-import org.jukbar.domain.Country;
 import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Region;
-import org.jukbar.enums.ShipmentStatus;
-import org.jukbar.enums.ShipmentType;
+import org.jukbar.enums.OrderStatus;
 import org.jukbar.enums.SortEnum;
-import org.jukbar.model.ShipmentsModel;
-import org.jukbar.service.CountryService;
+import org.jukbar.model.OrdersModel;
 import org.jukbar.service.OblastService;
+import org.jukbar.service.OrdersService;
 import org.jukbar.service.RegionService;
-import org.jukbar.service.ShipmentsService;
-import org.jukbar.util.web.LoginUtil;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.data.PageEvent;
 
@@ -40,27 +35,20 @@ import org.primefaces.event.data.PageEvent;
 @Logged
 @ManagedBean
 @ViewScoped
-public class InternationalSenderList extends BaseController implements Serializable {
+public class OrdersList extends BaseController implements Serializable {
 	
 	private static final long serialVersionUID = -6100072166946495229L;
 	@EJB
-	private ShipmentsService service;
+	private OrdersService service;
 	@EJB
 	private OblastService oblastService;
 	@EJB
-	private CountryService countryService;
-	@EJB
 	private RegionService regionService;
-	private ShipmentsModel model;
+	private OrdersModel model;
 	
-	@Inject
-	private LoginUtil loginUtil;
-	
-	private Country country;
 	private Oblast oblast;
 	private Region region;
-	
-	private Country countryTo;
+
 	private Oblast oblastTo;
 	private Region regionTo;
 	
@@ -74,41 +62,27 @@ public class InternationalSenderList extends BaseController implements Serializa
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
-		filters.add(new FilterExample("owner", loginUtil.getCurrentUser(), InequalityConstants.EQUAL));
-		filters.add(new FilterExample("type", ShipmentType.INTERNATIONAL, InequalityConstants.EQUAL));  
-		if(country !=null) filters.add(new FilterExample("countryFrom", country, InequalityConstants.EQUAL)); 
+		filters.add(new FilterExample("status", OrderStatus.COMPLETED, InequalityConstants.EQUAL));  
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
         if(region !=null) filters.add(new FilterExample("regionFrom", region, InequalityConstants.EQUAL));
         
-        if(countryTo !=null) filters.add(new FilterExample("countryTo", countryTo, InequalityConstants.EQUAL)); 
 		if(oblastTo !=null) filters.add(new FilterExample("oblastTo", oblastTo, InequalityConstants.EQUAL));  
         if(regionTo !=null) filters.add(new FilterExample("regionTo", regionTo, InequalityConstants.EQUAL));
-		model = new ShipmentsModel(filters, service);
+		model = new OrdersModel(filters, service);
 	}
 	
 	public String clearData() {
-		country = null;
 		oblast=null;
 		region=null;
-		countryTo=null;
 		oblastTo=null;
 		regionTo=null;
 		init();
 		return null;
 	}
 	
-	public List<Country> getCountryList() {
-		List<FilterExample> examples = new ArrayList<>();
-		return countryService.findByExample(0, 10, SortEnum.ASCENDING, examples, "id");
-	}
-	
 	public List<Oblast> getOblastList() {
 		List<FilterExample> examples = new ArrayList<>();
-		if(country !=null) {
-			examples.add(new FilterExample("country", country, InequalityConstants.EQUAL)); 
-		}else {
-			examples.add(new FilterExample("id", InequalityConstants.IS_NULL_SINGLE)); 
-		}
+		examples.add(new FilterExample("country.id", 1, InequalityConstants.EQUAL)); 
 		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	
@@ -122,18 +96,9 @@ public class InternationalSenderList extends BaseController implements Serializa
 		return regionService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	
-	public List<Country> getCountryToList() {
-		List<FilterExample> examples = new ArrayList<>();
-		return countryService.findByExample(0, 10, SortEnum.ASCENDING, examples, "id");
-	}
-	
 	public List<Oblast> getOblastToList() {
 		List<FilterExample> examples = new ArrayList<>();
-		if(countryTo !=null) {
-			examples.add(new FilterExample("country", countryTo, InequalityConstants.EQUAL)); 
-		}else {
-			examples.add(new FilterExample("id", InequalityConstants.IS_NULL_SINGLE)); 
-		}
+		examples.add(new FilterExample("country.id", 1, InequalityConstants.EQUAL)); 
 		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	
@@ -157,7 +122,7 @@ public class InternationalSenderList extends BaseController implements Serializa
 	public void restoreState() {
     	HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		HttpSession session = request.getSession();
-		model = (ShipmentsModel) session.getAttribute("model");
+		model = (OrdersModel) session.getAttribute("model");
 		first = (Integer) session.getAttribute("first");
 	}
 	
@@ -178,19 +143,19 @@ public class InternationalSenderList extends BaseController implements Serializa
 		session.setAttribute("first", first);
 	}
 
-	public ShipmentsService getService() {
+	public OrdersService getService() {
 		return service;
 	}
 	
-	public void setService(ShipmentsService service) {
+	public void setService(OrdersService service) {
 		this.service = service;
 	}
 	
-	public ShipmentsModel getModel() {
+	public OrdersModel getModel() {
 		return model;
 	}
 	
-	public void setModel(ShipmentsModel model) {
+	public void setModel(OrdersModel model) {
 		this.model = model;
 	}
 
@@ -216,22 +181,6 @@ public class InternationalSenderList extends BaseController implements Serializa
 	
 	public void setFirst(Integer first) {
 		this.first = first;
-	}
-
-	public Country getCountry() {
-		return country;
-	}
-
-	public void setCountry(Country country) {
-		this.country = country;
-	}
-
-	public Country getCountryTo() {
-		return countryTo;
-	}
-
-	public void setCountryTo(Country countryTo) {
-		this.countryTo = countryTo;
 	}
 
 	public Oblast getOblastTo() {

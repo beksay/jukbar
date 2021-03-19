@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/private.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<div class="container">
+				<div class="mainListData">
+					<div class="mainListFilter">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<h:panelGroup id="oblastFrom" layout="block" class="col">
+								<h:outputLabel for="oblast" value="#{msgs.oblast}"/>
+								<h:selectOneMenu id="oblast" value="#{myTransportList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{myTransportList.oblastList}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+									<p:ajax listener="#{myTransportList.filterData()}" event="change"
+										update="region table regionFrom" />
+								</h:selectOneMenu>
+							</h:panelGroup> 
+							<h:panelGroup id="regionFrom" layout="block" class="col">
+								<h:outputLabel for="region" value="#{msgs.region}" rendered="#{myTransportList.oblast.id!=null}"/>
+								<h:selectOneMenu id="region" value="#{myTransportList.region}" rendered="#{myTransportList.oblast.id!=null}"
+									effect="fold" editable="true" converter="#{regionConverter}">
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{myTransportList.regionList}" var="region"
+										itemLabel="#{region.name}" itemValue="#{region}" />
+									<p:ajax listener="#{myTransportList.filterData()}" event="change"
+										update="table" />
+								</h:selectOneMenu>
+							</h:panelGroup>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="applyBtn" 
+									action="#{myTransportList.filterData()}" value="#{msgs.search}"
+									icon="fas fa-search" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="clearBtn"
+									action="#{myTransportList.clearData()}" value="#{msgs.clear}"
+									icon="fas fa-eraser" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false"  class="success-btn" icon="fas fa-plus"
+									action="#{transportController.add()}" value="#{msgs.addTransport}" />
+							</div>
+						</h:panelGroup>
+					</div>
+					<div class="mainListContent">
+						<div class="mainJukInfo">
+						    <p:dataGrid var="entity" value="#{myTransportList.model}" paginator="true" rows="6" rowIndexVar="index" 
+						        lazy="true" emptyMessage="#{msgs.noRecordsFound}"  id="table"
+								columns="3" layout="grid" sortOrder="DESCENDING" styleClass="contentBlock" 
+								rowsPerPageTemplate="9,21,30" paginatorPosition="bottom" pageLinks="9"
+								currentPageReportTemplate="#{msgs.showPaymentNumbers}" selectionMode="single"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+								selection="#{myTransportList.transport}"
+					            first="#{myTransportList.first}" >
+					            <f:facet name="header">#{msgs.myTransport}</f:facet>
+								<p:panel header="#{entity.marka} - #{entity.tsYear}" styleClass="contentBlockInner">
+						           <h:commandLink styleClass="innerDetailIMG" action="#{transportController.edit(entity)}">
+						            <div class="InnerBlock">
+						    		    <h:graphicImage library="images" name="bus.png" width="210" />
+						                <div class="innerDetail">
+						                    <i class="fas fa-map-marker-alt"></i>
+							                <h:outputText value="#{entity.oblast.name}" style="margin-left: auto;"/>
+							                <h:outputText value="#{entity.region.name}" style="margin-left: auto;"/>
+						                </div>
+						            </div>
+						           </h:commandLink> 
+				                </p:panel>
+					        </p:dataGrid>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

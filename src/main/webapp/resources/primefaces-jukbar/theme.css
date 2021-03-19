@@ -10604,7 +10604,7 @@ body .contentBlock .contentBlockInner .InnerBlock{
 } 
 body .contentBlock .contentBlockInner .innerDetail {
 	display: flex;
-	flex-direction: row;
+	flex-direction: ;
 	padding:5px 1px 10px;
 }
 body .contentBlock .contentBlockInner .innerDetail .blockDate {
@@ -10624,6 +10624,9 @@ body .contentBlock .contentBlockInner .InnerBlock .innerDetailIMG {
 body .mainRoute{
 	margin-left:10px; 
 }
+body .mainRouteBtn{
+	margin-top:10px; 
+}
 body .mainText{
 	font-weight: bold;
 }
@@ -10634,3 +10637,4 @@ body .listOrder .ui-datalist-content {
 body .listOrder .ui-datalist-item {
 	margin-bottom:3px;
 }
+

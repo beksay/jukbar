@@ -15,28 +15,23 @@
 						<ul class="jukMenu">
 						    <h:panelGroup  layout="block" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
 								<li>
-								   <h:link value="#{msgs.senders}" outcome="/view/persons/sender_journal.xhtml">
+								   <h:link value="#{msgs.orders}" outcome="/view/moderator/order_list.xhtml">
+								       <span class="badge">#{moderatorController.orderAmount}</span>
 								   </h:link>
 								</li>
 								<li>
-								   <h:link value="#{msgs.drivers}" outcome="/view/persons/driver_journal.xhtml">
+								   <h:link value="#{msgs.transports}" outcome="/view/moderator/transport_list.xhtml">
+								       <span class="badge">#{moderatorController.transportAmount}</span>
 								   </h:link>
-								</li>
+								</li> 
 							</h:panelGroup>
 							<li>
-							   <h:link value="#{msgs.localCargo}"  outcome="/view/local/local_list.xhtml" 
-							         rendered="#{loginUtil.currentUser.person.documents.status eq 'COMPLETED' and loginUtil.currentUser.person.transport.status eq 'COMPLETED'}">
-							   </h:link>
+							   <h:link value="#{msgs.orders}"  outcome="/view/orders/order_list.xhtml" 
+							            rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>
 							</li>
 							<li>
-							   <h:link value="#{msgs.localCargo}"  outcome="/view/local/local_sender_list.xhtml" 
-							    rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'sender')}">
-							   </h:link>
-							</li>
-							<li>
-							   <h:link value="#{msgs.myShipments}"  outcome="/view/local/my_local_list.xhtml" 
-							     rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver' and loginUtil.currentUser.person.transport !=null and loginUtil.currentUser.person.transport.status eq 'COMPLETED')}">	
-							   </h:link>
+							   <h:link value="#{msgs.myTransport}"  outcome="/view/transport/transport_list.xhtml" 
+							            rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>
 							</li>
 						</ul>
 					</div>
