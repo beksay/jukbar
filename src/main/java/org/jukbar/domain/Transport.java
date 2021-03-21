@@ -1,5 +1,7 @@
 package org.jukbar.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -26,6 +28,7 @@ public class Transport extends AbstractEntity<Integer>{
     private User user;
     private Attachment document;
     private Attachment picture;
+    private Date date;
     
 	public String getMarka() {
 		return marka;
@@ -124,6 +127,14 @@ public class Transport extends AbstractEntity<Integer>{
 
 	public void setPicture(Attachment picture) {
 		this.picture = picture;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 }

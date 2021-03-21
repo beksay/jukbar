@@ -76,9 +76,9 @@
 					</div>
 					<div class="mainListContent">
 						<div class="mainJukInfo">
-					        <p:dataList value="#{publicList.model}" styleClass="listOrder" var="entity" type="ordered" id="accordionId" lazy="true" rows="10"
-					            rowsPerPageTemplate="10,20,40,80" paginatorPosition="bottom" paginator="true" 
-								pageLinks="10" currentPageReportTemplate="#{msgs.showPaymentNumbers}"
+					        <p:dataList value="#{publicList.model}" styleClass="listOrder" var="entity" type="ordered" id="accordionId" lazy="true" rows="20"
+					            rowsPerPageTemplate="20,30,50,80" paginatorPosition="bottom" paginator="true" 
+								pageLinks="20" currentPageReportTemplate="#{msgs.showPaymentNumbers}"
 								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
 								first="#{publicList.first}">
 					             <p:accordionPanel activeIndex="false">

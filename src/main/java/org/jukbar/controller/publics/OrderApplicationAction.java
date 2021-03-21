@@ -60,6 +60,7 @@ public class OrderApplicationAction extends Conversational{
 	private MapModel simpleModel;
 	private String startLocation;
 	private String endLocation;
+	private Date currentDate = new Date();
 	
 	@PostConstruct
 	public void initialize() {
@@ -178,6 +179,14 @@ public class OrderApplicationAction extends Conversational{
 
 	public void setOrders(Orders orders) {
 		this.orders = orders;
+	}
+
+	public Date getCurrentDate() {
+		return currentDate;
+	}
+
+	public void setCurrentDate(Date currentDate) {
+		this.currentDate = currentDate;
 	}
 
 

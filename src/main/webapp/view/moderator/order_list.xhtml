@@ -133,13 +133,16 @@
 								            </h:panelGrid>
 								       </div>
 								       <div class="col-2">
-				                            <p:commandButton value="#{msgs.confirm}" icon="fas fa-check" styleClass="mainRouteBtn" class="success-btn"/>
-				                            <p:commandButton value="#{msgs.delete}" icon="fas fa-window-close" styleClass="mainRouteBtn" />
+				                            <p:commandButton value="#{msgs.confirm}" action="#{moderatorController.send(entity)}"
+				                              update="@form menuId" icon="fas fa-check" styleClass="mainRouteBtn" class="success-btn"/>
+				                            <p:commandButton value="#{msgs.delete}" action="#{moderatorController.delete(entity)}" 
+				                              update="@form menuId" icon="fas fa-window-close" styleClass="mainRouteBtn" />
 								       </div>
 								      </div>   
 						            </p:tab>
 						        </p:accordionPanel>
 					        </p:dataList>
+					        <p:growl id="growl" showDetail="true" sticky="true" /> 
 						</div>
 					</div>
 				</div>

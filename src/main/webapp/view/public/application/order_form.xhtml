@@ -102,7 +102,7 @@
 							<p:message for="phone" />
 		              
 		                    <h:outputText value="#{msgs.dateFrom}" /> 
-							<p:calendar value="#{orderApplicationAction.orders.date}"
+							<p:calendar value="#{orderApplicationAction.orders.date}" mindate="#{orderApplicationAction.currentDate}"
 								id="dateFrom" required="true" requiredMessage="#{msgs.dateFrom} - #{msgs.isReq}"
 								pattern="dd-MM-yyyy" />
 							<p:message for="dateFrom" />

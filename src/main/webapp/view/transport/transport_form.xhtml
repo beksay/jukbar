@@ -18,7 +18,7 @@
 							<h:outputLabel value="#{msgs.tsNumber}" />
 		    		        <h:inputText id="tsNumber" value="#{transportController.transport.number}" 
 		    		           required="true" requiredMessage="#{msgs.tsNumber} - #{msgs.isReq}"
-		    		           disabled="#{transportController.transport.status eq 'IN_PROGRESS'}"/>
+		    		           disabled="#{transportController.transport.status eq 'IN_PROGRESS' or transportController.transport.status eq 'COMPLETED'}"/>
 		    		        <p:watermark value="Например: 01KG123ABC, B1234A, B1234AB, KGBH1234" for="tsNumber" />  
 		    		        <p:message for="tsNumber" />
 						</div>
@@ -26,7 +26,7 @@
 							<h:outputLabel value="#{msgs.marka}" />
 		    		        <h:inputText value="#{transportController.transport.marka}" id="marka" 
 		    		           required="true" requiredMessage="#{msgs.marka} - #{msgs.isReq}"
-		    		           disabled="#{transportController.transport.status eq 'IN_PROGRESS'}"/>
+		    		           disabled="#{transportController.transport.status eq 'IN_PROGRESS' or transportController.transport.status eq 'COMPLETED'}"/>
 		    		        <p:watermark value="Укажите марку" for="marka" />
 		    		        <p:message for="marka" />
 						</div>
@@ -34,21 +34,22 @@
 							<h:outputLabel value="#{msgs.year}" />
 		    		        <h:inputText value="#{transportController.transport.tsYear}" id="year"
 		    		           required="true" requiredMessage="#{msgs.year} - #{msgs.isReq}"
-		    		           disabled="#{transportController.transport.status eq 'IN_PROGRESS'}"/>
+		    		           disabled="#{transportController.transport.status eq 'IN_PROGRESS' or transportController.transport.status eq 'COMPLETED'}"/>
 		    		        <p:message for="year" />  
 						</div>
 						<div class="col-4">
 							<h:outputLabel value="#{msgs.tsCapacity}" />
 		    		        <h:inputText value="#{transportController.transport.capacity}" id="tsCapacity"
 		    		           required="true" requiredMessage="#{msgs.tsCapacity} - #{msgs.isReq}"
-		    		           disabled="#{transportController.transport.status eq 'IN_PROGRESS'}"/>
+		    		           disabled="#{transportController.transport.status eq 'IN_PROGRESS' or transportController.transport.status eq 'COMPLETED'}"/>
 		    		        <p:message for="tsCapacity" />   
 						</div>
 						<div class="col-6">
 						    <h:outputLabel value="#{msgs.route}" />
 							<h:selectOneMenu id="oblastFrom"
 								value="#{countrySelector.oblast}" converter="#{oblastConverter}" required="true"
-								requiredMessage="#{msgs.route} - #{msgs.isReq}" disabled="#{transportController.transport.status eq 'IN_PROGRESS'}">
+								requiredMessage="#{msgs.route} - #{msgs.isReq}" 
+								disabled="#{transportController.transport.status eq 'IN_PROGRESS' or transportController.transport.status eq 'COMPLETED'}">
 								<f:selectItem itemLabel="#{msgs.selectAddress}" />
 								<f:selectItems
 									value="#{countrySelector.localOblastList}"
@@ -59,7 +60,8 @@
 						</div>
 						<h:panelGroup id="oblastId" layout="block" class="col-6">
 							<h:outputLabel value="#{msgs.region}" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
-							<h:selectOneMenu id="region" disabled="#{transportController.transport.status eq 'IN_PROGRESS'}"
+							<h:selectOneMenu id="region" 
+							    disabled="#{transportController.transport.status eq 'IN_PROGRESS' or transportController.transport.status eq 'COMPLETED'}"
 								value="#{countrySelector.region}" converter="#{regionConverter}" 
 								required="true" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"
 								requiredMessage="#{msgs.region} - #{msgs.isReq}">
@@ -71,6 +73,8 @@
 							<p:message for="region" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
 						</h:panelGroup>
 						<h:panelGroup  layout="block" class="col-12 mt-3">
+					    	<p:commandButton value="#{msgs.back}" action="#{transportController.cancel}" immediate="true" icon="fas fa-angle-left"/>
+					    	<h:outputLabel style="width:20px;display:inline-block"/>
 							<p:commandButton ajax="false" icon="fas fa-save" action="#{transportController.save()}"  value="#{msgs.save}" class="success-btn"
 							 rendered="#{transportController.transport.status eq 'NEW' or transportController.transport.status eq null}"/>	
 							<h:outputLabel style="width:20px;display:inline-block"/>
@@ -78,9 +82,6 @@
 						</h:panelGroup>
 						<h:panelGroup  layout="block" class="col-12 mt-3" rendered="#{transportController.transport.status eq 'IN_PROGRESS'}">
 						    <h:outputLabel value="#{msgs.inModerator}" styleClass="yellowLabel" />
-						</h:panelGroup>
-						<h:panelGroup  layout="block" class="col-12 mt-3">
-						    <p:commandButton value="#{msgs.back}" action="#{transportController.cancel}" immediate="true" />
 						</h:panelGroup>
 					</div>
 					<p:growl id="growl" showDetail="true" sticky="true" /> 

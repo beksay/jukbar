@@ -1,7 +1,9 @@
 package org.jukbar.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,10 +16,13 @@ import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
 import org.jukbar.conversations.ConversationModerator;
 import org.jukbar.domain.Orders;
+import org.jukbar.domain.Transport;
 import org.jukbar.enums.OrderStatus;
 import org.jukbar.enums.TransportStatus;
 import org.jukbar.service.OrdersService;
 import org.jukbar.service.TransportService;
+import org.jukbar.util.web.FacesMessages;
+import org.jukbar.util.web.Messages;
 
 @ManagedBean
 @ViewScoped
@@ -43,10 +48,21 @@ public class ModeratorController{
 		orders.setStatus(OrderStatus.IN_PROGRESS);
 		orders.setDateProgress(new Date());
 		orderService.merge(orders);
+		FacesMessages.addMessage(Messages.getMessage("sendOrder"), Messages.getMessage("sendOrder"), null);
 	}
 	
 	public void delete(Orders orders) {
 		orderService.remove(orders);
+		FacesMessages.addMessage(Messages.getMessage("deleteOrder"), Messages.getMessage("deleteOrder"), null);
+	}
+	
+	public void confirmTransport(Transport transport) {
+		Calendar calendar = new GregorianCalendar();
+		calendar.add(Calendar.MONTH, 1);
+		transport.setDate(calendar.getTime());
+		transport.setStatus(TransportStatus.COMPLETED);
+		transportService.merge(transport);
+		FacesMessages.addMessage(Messages.getMessage("transportConfirmed"), Messages.getMessage("transportConfirmed"), null);
 	}
 	
 	public String list(){

@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -17,12 +18,16 @@ import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
 import org.jukbar.domain.Oblast;
 import org.jukbar.domain.Region;
+import org.jukbar.domain.Transport;
 import org.jukbar.enums.OrderStatus;
 import org.jukbar.enums.SortEnum;
+import org.jukbar.enums.TransportStatus;
 import org.jukbar.model.OrdersModel;
 import org.jukbar.service.OblastService;
 import org.jukbar.service.OrdersService;
 import org.jukbar.service.RegionService;
+import org.jukbar.service.TransportService;
+import org.jukbar.util.web.LoginUtil;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.data.PageEvent;
 
@@ -41,9 +46,14 @@ public class OrdersList extends BaseController implements Serializable {
 	@EJB
 	private OrdersService service;
 	@EJB
+	private TransportService transportService;
+	@EJB
 	private OblastService oblastService;
 	@EJB
 	private RegionService regionService;
+	@Inject
+	private LoginUtil loginUtil;
+	
 	private OrdersModel model;
 	
 	private Oblast oblast;
@@ -62,7 +72,26 @@ public class OrdersList extends BaseController implements Serializable {
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
-		filters.add(new FilterExample("status", OrderStatus.COMPLETED, InequalityConstants.EQUAL));  
+		filters.add(new FilterExample("status", OrderStatus.IN_PROGRESS, InequalityConstants.EQUAL));
+			
+		List<Integer> oblastPC = new ArrayList<>();
+		List<Integer> regionPC = new ArrayList<>();
+		List<FilterExample> examples = new ArrayList<>();
+		examples.add(new FilterExample("user",loginUtil.getCurrentUser(),InequalityConstants.EQUAL));
+	    List<Transport> scList = transportService.findByExample(0, 100, examples);
+		for (Transport entity : scList) {
+			if (entity.getStatus().equals(TransportStatus.COMPLETED)) {
+				oblastPC.add(entity.getOblast().getId());
+				regionPC.add(entity.getRegion().getId());
+			}
+			
+		}	
+		filters.add(new FilterExample(true,"oblastFrom.id", oblastPC, InequalityConstants.IN,false));	
+		filters.add(new FilterExample(true,"regionFrom.id", regionPC, InequalityConstants.IN,false));
+		filters.add(new FilterExample(true,"oblastTo.id", oblastPC, InequalityConstants.IN,false));	
+		filters.add(new FilterExample(true,"regionTo.id", regionPC, InequalityConstants.IN,false));
+		
+		
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
         if(region !=null) filters.add(new FilterExample("regionFrom", region, InequalityConstants.EQUAL));
         

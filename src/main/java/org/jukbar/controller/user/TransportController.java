@@ -1,5 +1,7 @@
 package org.jukbar.controller.user;
 
+import java.util.Date;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
@@ -87,9 +89,10 @@ public class TransportController extends Conversational {
 	
 	public String sendModerator() {		
 		transport.setStatus(TransportStatus.IN_PROGRESS);
+		transport.setDate(new Date());
         transportService.merge(transport);
 		FacesContext.getCurrentInstance().addMessage("form", new FacesMessage( FacesMessage.SEVERITY_INFO,  Messages.getMessage("sendedToModerator"), null) );
-		return mainForm();
+		return list();
 	}
 	
 	private String list() {

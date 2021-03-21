@@ -60,7 +60,7 @@ public class PublicList extends BaseController implements Serializable {
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
-		filters.add(new FilterExample("status", OrderStatus.COMPLETED, InequalityConstants.EQUAL));
+		filters.add(new FilterExample("status", OrderStatus.IN_PROGRESS, InequalityConstants.EQUAL));
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  
         if(region !=null) filters.add(new FilterExample("regionFrom", region, InequalityConstants.EQUAL));
         
