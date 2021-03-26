@@ -2,24 +2,36 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets">
-<div class="maintopContainer">
-	<div class="container">
-		<div class="maintopContent">
-			<div class="maintop-logo">
-				<a class="mainlogo" href="/jukbar/home.xhtml"><h:graphicImage library="images" name="logo.png" height="56"/></a>
-				<ul class="jukMenu">
-					<li><a href="/jukbar/view/public/orders/order_list.xhtml">#{msgs.localCargo}</a></li>
-				</ul>
-				<div class="maintop-app">
-				  <h:form>
-				    <h:commandLink action="#{orderApplicationAction.form()}" value="#{msgs.addCardo}" />
-				  </h:form>
-				</div>	
-			</div>
-			<div class="maintop-right">
-				<a href="/jukbar/view/user/login.xhtml">#{msgs.login}</a>
+	<div class="maintopContainer">
+		<div class="container-fluid">
+			<div class="MainTopContent">
+				<div class="MainTopLogo">
+					<a href="/jukbar"></a>
+				</div>
+				<div class="MainTopMenu">
+					<ul>
+						<li><a href="/jukbar/view/public/orders/order_list.xhtml">#{msgs.localCargo}</a></li>
+						<li><a href="#cars">Cars</a></li>
+						<li><a href="#cars">How to New Order?</a></li>
+						<li class="last"><a href="#cars">Contacts</a></li>
+						<li class="mainTopButton"><h:form><h:commandLink action="#{orderApplicationAction.form()}" value="#{msgs.addCardo}" /></h:form></li>
+					</ul>
+					<div class="mainTopRight">
+						<ul>
+							<li><a href="/jukbar/view/user/login.xhtml">#{msgs.login}</a></li>
+							<li><a href="#register">Registration</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+		<div class="maintopContent">
+			<div class="maintop-logo">
+
+				<div class="maintop-app">
+				  
+				</div>	
+			</div>
+		</div>
 </ui:composition>
