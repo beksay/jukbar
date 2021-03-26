@@ -13,15 +13,48 @@
 						<label class="BlockTitle">Search for parts by cargo</label>
 						<p class="BlockText">Now you can browse part <span class="BlockTextColor">among 150 000 cargo cars</span> in a simple way by configure you car model using an easy below:</p>
 						<div class="BlockFilter">
+						   <h:form>
 							<div class="inputForm">
-							
+							    <h:outputLabel value="#{msgs.oblastFrom}" />
+								<h:selectOneMenu value="#{publicList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}" >
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+								</h:selectOneMenu>
 							</div>
 							<div class="inputForm">
-							
+							    <h:outputLabel value="#{msgs.oblastFrom}" />
+								<h:selectOneMenu value="#{publicList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}" >
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+								</h:selectOneMenu>
 							</div>
 							<div class="inputForm">
-							
+							    <h:outputLabel value="#{msgs.oblastTo}" />
+								<h:selectOneMenu value="#{publicList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}" >
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+								</h:selectOneMenu>
 							</div>
+							<div class="inputForm">
+							    <h:outputLabel value="#{msgs.oblastTo}" />
+								<h:selectOneMenu value="#{publicList.oblast}"
+									effect="fold" editable="true" converter="#{oblastConverter}" >
+									<f:selectItem itemLabel="#{msgs.selectValue}" />
+									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast"
+										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+								</h:selectOneMenu>
+							</div>
+							<div class="inputForm">
+							   <p:commandButton ajax="false" value="#{msgs.search}"
+									icon="fas fa-search" />
+							</div>
+						 </h:form>	
 						</div>
 					</div>
 				</div>
@@ -31,59 +64,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-	
-	 <div class="container">
-		<div class="mainJukList">
-			<h:form>
-				<div class="mainListData">
-					<div class="mainListFilter">
-						<h:panelGroup styleClass="row filter" layout="block"
-							id="filterPanel">
-							<h:panelGroup layout="block" class="col">
-							</h:panelGroup>
-							<div class="col-auto">
-								<label></label>
-								<p:commandButton ajax="false" id="applyBtn" class="success-btn"
-								   value="#{msgs.search}" icon="fas fa-search" />
-							</div>
-							<div class="col-auto">
-								<label></label>
-								<p:commandButton ajax="false" id="clearBtn"
-									value="#{msgs.clear}" icon="fas fa-eraser" />
-							</div>
-						</h:panelGroup>
-					</div>
-					<div class="mainListContent">
-						<div class="mainJukInfo">
-						   <p:dataGrid var="entity" value="#{transportList.model}" paginator="true" rows="8" rowIndexVar="index" 
-						        lazy="true" emptyMessage="#{msgs.noRecordsFound}"  
-								columns="4" layout="grid" sortOrder="DESCENDING" styleClass="contentBlock" 
-								rowsPerPageTemplate="12,24,36,48,64" paginatorPosition="bottom" pageLinks="12"
-								currentPageReportTemplate="#{msgs.showPaymentNumbers}" selectionMode="single"
-								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
-								selection="#{transportList.transport}"
-					            first="#{transportList.first}" >  
-					            <f:facet name="header">ЧАСТНЫЕ ПЕРЕВОЗЧИКИ</f:facet>
-								<p:panel header="#{entity.marka} - #{entity.tsYear}" styleClass="contentBlockInner">
-						            <div class="InnerBlock">
-						                <h:commandLink styleClass="innerDetailIMG">
-						    		        <h:graphicImage library="images" name="bus.png" width="200" />
-						                </h:commandLink>
-						                <div class="innerDetail">
-						                    <i class="fas fa-map-marker-alt"></i>
-							                <h:outputText value="#{entity.oblast.name}" style="margin-left: auto;"/>
-							                <h:outputText value="#{entity.region.name}" style="margin-left: auto;"/>
-						                </div>
-						            </div>
-				                </p:panel>
-					        </p:dataGrid>
-						</div>
-					</div>
-				</div>
-			</h:form>
-		  </div>
-		</div>	
 	</ui:define>
 </ui:composition>

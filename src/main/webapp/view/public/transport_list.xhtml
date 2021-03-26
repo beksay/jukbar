@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+
+	<ui:define name="content">
+		<div class="container">
+		<div class="mainJukList">
+			<h:form>
+				<div class="mainListData">
+					<div class="mainListFilter">
+						<h:panelGroup styleClass="row filter" layout="block"
+							id="filterPanel">
+							<h:panelGroup layout="block" class="col">
+							</h:panelGroup>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="applyBtn" class="success-btn"
+								   value="#{msgs.search}" icon="fas fa-search" />
+							</div>
+							<div class="col-auto">
+								<label></label>
+								<p:commandButton ajax="false" id="clearBtn"
+									value="#{msgs.clear}" icon="fas fa-eraser" />
+							</div>
+						</h:panelGroup>
+					</div>
+					<div class="mainListContent">
+						<div class="mainJukInfo">
+						   <p:dataGrid var="entity" value="#{transportList.model}" paginator="true" rows="8" rowIndexVar="index" 
+						        lazy="true" emptyMessage="#{msgs.noRecordsFound}"  
+								columns="4" layout="grid" sortOrder="DESCENDING" styleClass="contentBlock" 
+								rowsPerPageTemplate="12,24,36,48,64" paginatorPosition="bottom" pageLinks="12"
+								currentPageReportTemplate="#{msgs.showPaymentNumbers}" selectionMode="single"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
+								selection="#{transportList.transport}"
+					            first="#{transportList.first}" >  
+					            <f:facet name="header">ЧАСТНЫЕ ПЕРЕВОЗЧИКИ</f:facet>
+								<p:panel header="#{entity.marka} - #{entity.tsYear}" styleClass="contentBlockInner">
+						            <div class="InnerBlock">
+						                <h:commandLink styleClass="innerDetailIMG">
+						    		        <h:graphicImage library="images" name="bus.png" width="200" />
+						                </h:commandLink>
+						                <div class="innerDetail">
+						                    <i class="fas fa-map-marker-alt"></i>
+							                <h:outputText value="#{entity.oblast.name}" style="margin-left: auto;"/>
+							                <h:outputText value="#{entity.region.name}" style="margin-left: auto;"/>
+						                </div>
+						            </div>
+				                </p:panel>
+					        </p:dataGrid>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		  </div>
+		</div>
+	</ui:define>
+</ui:composition>
