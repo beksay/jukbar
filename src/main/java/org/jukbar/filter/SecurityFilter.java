@@ -36,7 +36,7 @@ public class SecurityFilter implements Filter {
 	private Map<String[], String> map;
 	 
 	@Inject     
-	private LoginUtil loginUtil;  
+	private LoginUtil loginUtil;    
 	   
 	@Override
 	public void init(FilterConfig config) throws ServletException {
