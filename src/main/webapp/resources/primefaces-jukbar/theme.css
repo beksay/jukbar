@@ -357,7 +357,7 @@ body .ui-button {
       border-radius: 50%;
       height: 2.357rem; }
   body .ui-button .ui-icon-triangle-1-s {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -485,7 +485,7 @@ body .ui-splitbutton {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; }
     body .ui-splitbutton .ui-button.ui-splitbutton-menubutton .ui-icon.ui-icon-triangle-1-s {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -776,7 +776,7 @@ body .ui-paginator {
       line-height: inherit;
       top: -1px; }
   body .ui-paginator .ui-paginator-first {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -793,7 +793,7 @@ body .ui-paginator {
     body .ui-paginator .ui-paginator-first:before {
       position: relative; }
   body .ui-paginator .ui-paginator-prev {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -810,7 +810,7 @@ body .ui-paginator {
     body .ui-paginator .ui-paginator-prev:before {
       position: relative; }
   body .ui-paginator .ui-paginator-next {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -827,7 +827,7 @@ body .ui-paginator {
     body .ui-paginator .ui-paginator-next:before {
       position: relative; }
   body .ui-paginator .ui-paginator-last {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -908,7 +908,7 @@ body .ui-datatable thead th {
   body .ui-datatable thead th .ui-sortable-column-icon {
     margin: 0 0 0 0.5rem; }
     body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -923,7 +923,7 @@ body .ui-datatable thead th {
       body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s:before {
         content: ""; }
     body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-triangle-1-n {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -938,7 +938,7 @@ body .ui-datatable thead th {
       body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-triangle-1-n:before {
         content: ""; }
     body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-triangle-1-s {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1007,7 +1007,7 @@ body .ui-datatable .ui-datatable-data > tr {
     body .ui-datatable .ui-datatable-data > tr .ui-row-editor > a.ui-row-editor-check {
       margin-right: 0.5rem; }
   body .ui-datatable .ui-datatable-data > tr .ui-row-editor .ui-icon.ui-icon-pencil {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1021,7 +1021,7 @@ body .ui-datatable .ui-datatable-data > tr {
     body .ui-datatable .ui-datatable-data > tr .ui-row-editor .ui-icon.ui-icon-pencil:before {
       content: ""; }
   body .ui-datatable .ui-datatable-data > tr .ui-row-editor .ui-icon.ui-icon-check {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1035,7 +1035,7 @@ body .ui-datatable .ui-datatable-data > tr {
     body .ui-datatable .ui-datatable-data > tr .ui-row-editor .ui-icon.ui-icon-check:before {
       content: ""; }
   body .ui-datatable .ui-datatable-data > tr .ui-row-editor .ui-icon.ui-icon-close {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1065,7 +1065,7 @@ body .ui-datatable .ui-datatable-data > tr {
       color: #495057;
       border-color: transparent; }
     body .ui-datatable .ui-datatable-data > tr .ui-row-toggler.ui-icon-circle-triangle-e {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1079,7 +1079,7 @@ body .ui-datatable .ui-datatable-data > tr {
       body .ui-datatable .ui-datatable-data > tr .ui-row-toggler.ui-icon-circle-triangle-e:before {
         content: ""; }
     body .ui-datatable .ui-datatable-data > tr .ui-row-toggler.ui-icon-circle-triangle-s {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1111,7 +1111,7 @@ body .ui-datatable .ui-datatable-data > tr {
         color: #495057;
         border-color: transparent; }
       body .ui-datatable .ui-datatable-data > tr .ui-rowgroup-toggler .ui-rowgroup-toggler-icon.ui-icon-circle-triangle-e {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -1125,7 +1125,7 @@ body .ui-datatable .ui-datatable-data > tr {
         body .ui-datatable .ui-datatable-data > tr .ui-rowgroup-toggler .ui-rowgroup-toggler-icon.ui-icon-circle-triangle-e:before {
           content: ""; }
       body .ui-datatable .ui-datatable-data > tr .ui-rowgroup-toggler .ui-rowgroup-toggler-icon.ui-icon-circle-triangle-s {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -1151,7 +1151,7 @@ body .ui-datatable tfoot td {
   font-weight: 700;
   box-sizing: content-box; }
 body .ui-datatable > .ui-icon-arrowthick-1-s {
-  font-family: 'primeicons' !important;
+  font-family:"FontAwesome";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -1166,7 +1166,7 @@ body .ui-datatable > .ui-icon-arrowthick-1-s {
   body .ui-datatable > .ui-icon-arrowthick-1-s:before {
     content: ""; }
 body .ui-datatable > .ui-icon-arrowthick-1-n {
-  font-family: 'primeicons' !important;
+  font-family:"FontAwesome";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -1314,7 +1314,7 @@ body .ui-picklist .ui-picklist-buttons {
   body .ui-picklist .ui-picklist-buttons .ui-button {
     margin-bottom: 0.5rem; }
   body .ui-picklist .ui-picklist-buttons .ui-icon-arrow-1-n {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1328,7 +1328,7 @@ body .ui-picklist .ui-picklist-buttons {
     body .ui-picklist .ui-picklist-buttons .ui-icon-arrow-1-n:before {
       content: ""; }
   body .ui-picklist .ui-picklist-buttons .ui-icon-arrowstop-1-n {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1342,7 +1342,7 @@ body .ui-picklist .ui-picklist-buttons {
     body .ui-picklist .ui-picklist-buttons .ui-icon-arrowstop-1-n:before {
       content: ""; }
   body .ui-picklist .ui-picklist-buttons .ui-icon-arrow-1-s {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1356,7 +1356,7 @@ body .ui-picklist .ui-picklist-buttons {
     body .ui-picklist .ui-picklist-buttons .ui-icon-arrow-1-s:before {
       content: ""; }
   body .ui-picklist .ui-picklist-buttons .ui-icon-arrowstop-1-s {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1370,7 +1370,7 @@ body .ui-picklist .ui-picklist-buttons {
     body .ui-picklist .ui-picklist-buttons .ui-icon-arrowstop-1-s:before {
       content: ""; }
   body .ui-picklist .ui-picklist-buttons .ui-icon-arrow-1-e {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1384,7 +1384,7 @@ body .ui-picklist .ui-picklist-buttons {
     body .ui-picklist .ui-picklist-buttons .ui-icon-arrow-1-e:before {
       content: ""; }
   body .ui-picklist .ui-picklist-buttons .ui-icon-arrowstop-1-e {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1398,7 +1398,7 @@ body .ui-picklist .ui-picklist-buttons {
     body .ui-picklist .ui-picklist-buttons .ui-icon-arrowstop-1-e:before {
       content: ""; }
   body .ui-picklist .ui-picklist-buttons .ui-icon-arrow-1-w {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1412,7 +1412,7 @@ body .ui-picklist .ui-picklist-buttons {
     body .ui-picklist .ui-picklist-buttons .ui-icon-arrow-1-w:before {
       content: ""; }
   body .ui-picklist .ui-picklist-buttons .ui-icon-arrowstop-1-w {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1440,7 +1440,7 @@ body .ui-picklist .ui-picklist-filter-container .ui-picklist-filter {
   padding-left: 2rem;
   margin-bottom: 0.5rem; }
 body .ui-picklist .ui-picklist-filter-container .ui-icon {
-  font-family: 'primeicons' !important;
+  font-family:"FontAwesome";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -1485,7 +1485,7 @@ body .ui-picklist .ui-picklist-list {
     body .ui-picklist .ui-picklist-buttons .ui-button:last-child {
       margin-right: 0; }
     body .ui-picklist .ui-picklist-buttons .ui-button .ui-icon-arrow-1-e {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1499,7 +1499,7 @@ body .ui-picklist .ui-picklist-list {
       body .ui-picklist .ui-picklist-buttons .ui-button .ui-icon-arrow-1-e:before {
         content: ""; }
     body .ui-picklist .ui-picklist-buttons .ui-button .ui-icon-arrowstop-1-e {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1513,7 +1513,7 @@ body .ui-picklist .ui-picklist-list {
       body .ui-picklist .ui-picklist-buttons .ui-button .ui-icon-arrowstop-1-e:before {
         content: ""; }
     body .ui-picklist .ui-picklist-buttons .ui-button .ui-icon-arrow-1-w {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1527,7 +1527,7 @@ body .ui-picklist .ui-picklist-list {
       body .ui-picklist .ui-picklist-buttons .ui-button .ui-icon-arrow-1-w:before {
         content: ""; }
     body .ui-picklist .ui-picklist-buttons .ui-button .ui-icon-arrowstop-1-w {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1555,7 +1555,7 @@ body .ui-orderlist .ui-orderlist-controls {
   body .ui-orderlist .ui-orderlist-controls .ui-button {
     margin-bottom: 0.5rem; }
   body .ui-orderlist .ui-orderlist-controls .ui-icon-arrow-1-n {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1569,7 +1569,7 @@ body .ui-orderlist .ui-orderlist-controls {
     body .ui-orderlist .ui-orderlist-controls .ui-icon-arrow-1-n:before {
       content: ""; }
   body .ui-orderlist .ui-orderlist-controls .ui-icon-arrowstop-1-n {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1583,7 +1583,7 @@ body .ui-orderlist .ui-orderlist-controls {
     body .ui-orderlist .ui-orderlist-controls .ui-icon-arrowstop-1-n:before {
       content: ""; }
   body .ui-orderlist .ui-orderlist-controls .ui-icon-arrow-1-s {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1597,7 +1597,7 @@ body .ui-orderlist .ui-orderlist-controls {
     body .ui-orderlist .ui-orderlist-controls .ui-icon-arrow-1-s:before {
       content: ""; }
   body .ui-orderlist .ui-orderlist-controls .ui-icon-arrowstop-1-s {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -1684,7 +1684,7 @@ body .ui-treetable thead th {
   body .ui-treetable thead th .ui-sortable-column-icon {
     margin: 0 0 0 0.5rem; }
     body .ui-treetable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1699,7 +1699,7 @@ body .ui-treetable thead th {
       body .ui-treetable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s:before {
         content: ""; }
     body .ui-treetable thead th .ui-sortable-column-icon.ui-icon-triangle-1-n {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1714,7 +1714,7 @@ body .ui-treetable thead th {
       body .ui-treetable thead th .ui-sortable-column-icon.ui-icon-triangle-1-n:before {
         content: ""; }
     body .ui-treetable thead th .ui-sortable-column-icon.ui-icon-triangle-1-s {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1765,7 +1765,7 @@ body .ui-treetable .ui-treetable-data > tr {
         color: #495057;
         border-color: transparent; }
       body .ui-treetable .ui-treetable-data > tr > td .ui-treetable-toggler.ui-icon-triangle-1-e {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -1779,7 +1779,7 @@ body .ui-treetable .ui-treetable-data > tr {
         body .ui-treetable .ui-treetable-data > tr > td .ui-treetable-toggler.ui-icon-triangle-1-e:before {
           content: ""; }
       body .ui-treetable .ui-treetable-data > tr > td .ui-treetable-toggler.ui-icon-triangle-1-s {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -1796,7 +1796,7 @@ body .ui-treetable .ui-treetable-data > tr {
       vertical-align: middle;
       margin-right: 1rem; }
       body .ui-treetable .ui-treetable-data > tr > td .ui-chkbox.ui-selection .ui-icon-minus {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -1839,7 +1839,7 @@ body .ui-treetable .ui-treetable-data > tr {
       color: #495057;
       border-color: transparent; }
     body .ui-treetable .ui-treetable-data > tr .ui-row-editor .ui-icon.ui-icon-pencil {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1853,7 +1853,7 @@ body .ui-treetable .ui-treetable-data > tr {
       body .ui-treetable .ui-treetable-data > tr .ui-row-editor .ui-icon.ui-icon-pencil:before {
         content: ""; }
     body .ui-treetable .ui-treetable-data > tr .ui-row-editor .ui-icon.ui-icon-check {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1868,7 +1868,7 @@ body .ui-treetable .ui-treetable-data > tr {
       body .ui-treetable .ui-treetable-data > tr .ui-row-editor .ui-icon.ui-icon-check:before {
         content: ""; }
     body .ui-treetable .ui-treetable-data > tr .ui-row-editor .ui-icon.ui-icon-close {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1971,7 +1971,7 @@ body .ui-carousel {
       color: #495057;
       border-color: transparent; }
     body .ui-carousel .ui-carousel-button.ui-carousel-next-button {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -1985,7 +1985,7 @@ body .ui-carousel {
       body .ui-carousel .ui-carousel-button.ui-carousel-next-button:before {
         content: ""; }
     body .ui-carousel .ui-carousel-button.ui-carousel-prev-button {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2022,7 +2022,7 @@ body .ui-carousel {
         color: #495057;
         border-color: transparent; }
       body .ui-carousel .ui-carousel-page-links .ui-carousel-page-link.ui-icon-radio-off {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -2036,7 +2036,7 @@ body .ui-carousel {
         body .ui-carousel .ui-carousel-page-links .ui-carousel-page-link.ui-icon-radio-off:before {
           content: ""; }
       body .ui-carousel .ui-carousel-page-links .ui-carousel-page-link.ui-icon-radio-on {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -2087,7 +2087,7 @@ body .ui-tree {
             color: #495057;
             border-color: transparent; }
           body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler.ui-icon-triangle-1-e {
-            font-family: 'primeicons' !important;
+            font-family:"FontAwesome";
             speak: none;
             font-style: normal;
             font-weight: normal;
@@ -2101,7 +2101,7 @@ body .ui-tree {
             body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler.ui-icon-triangle-1-e:before {
               content: ""; }
           body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler.ui-icon-triangle-1-s {
-            font-family: 'primeicons' !important;
+            font-family:"FontAwesome";
             speak: none;
             font-style: normal;
             font-weight: normal;
@@ -2115,7 +2115,7 @@ body .ui-tree {
             body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler.ui-icon-triangle-1-s:before {
               content: ""; }
           body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler.ui-icon-triangle-1-w {
-            font-family: 'primeicons' !important;
+            font-family:"FontAwesome";
             speak: none;
             font-style: normal;
             font-weight: normal;
@@ -2145,7 +2145,7 @@ body .ui-tree {
         body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-chkbox {
           margin-right: 1rem; }
           body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-chkbox .ui-icon-minus {
-            font-family: 'primeicons' !important;
+            font-family:"FontAwesome";
             speak: none;
             font-style: normal;
             font-weight: normal;
@@ -2181,7 +2181,7 @@ body .ui-tree {
         margin-right: 0.5rem;
         vertical-align: middle; }
         body .ui-tree.ui-tree-horizontal .ui-treenode-content .ui-tree-toggler.ui-icon-minus {
-          font-family: 'primeicons' !important;
+          font-family:"FontAwesome";
           speak: none;
           font-style: normal;
           font-weight: normal;
@@ -2195,7 +2195,7 @@ body .ui-tree {
           body .ui-tree.ui-tree-horizontal .ui-treenode-content .ui-tree-toggler.ui-icon-minus:before {
             content: ""; }
         body .ui-tree.ui-tree-horizontal .ui-treenode-content .ui-tree-toggler.ui-icon-plus {
-          font-family: 'primeicons' !important;
+          font-family:"FontAwesome";
           speak: none;
           font-style: normal;
           font-weight: normal;
@@ -2217,7 +2217,7 @@ body .ui-tree {
   body .ui-tree .ui-tree-filter-container {
     margin: 0 0 0.5rem 0; }
     body .ui-tree .ui-tree-filter-container .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2348,7 +2348,7 @@ body .timeline-frame {
       color: #495057;
       border-color: transparent; }
     body .timeline-frame .timeline-navigation .ui-icon.ui-icon-circle-zoomin {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2362,7 +2362,7 @@ body .timeline-frame {
       body .timeline-frame .timeline-navigation .ui-icon.ui-icon-circle-zoomin:before {
         content: ""; }
     body .timeline-frame .timeline-navigation .ui-icon.ui-icon-circle-zoomout {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2376,7 +2376,7 @@ body .timeline-frame {
       body .timeline-frame .timeline-navigation .ui-icon.ui-icon-circle-zoomout:before {
         content: ""; }
     body .timeline-frame .timeline-navigation .ui-icon.ui-icon-circle-arrow-w {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2390,7 +2390,7 @@ body .timeline-frame {
       body .timeline-frame .timeline-navigation .ui-icon.ui-icon-circle-arrow-w:before {
         content: ""; }
     body .timeline-frame .timeline-navigation .ui-icon.ui-icon-circle-arrow-e {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2499,7 +2499,7 @@ body .ui-autocomplete .ui-autocomplete-dropdown {
   body .ui-autocomplete .ui-autocomplete-dropdown .ui-button-text {
     padding: 0.5rem; }
   body .ui-autocomplete .ui-autocomplete-dropdown .ui-icon {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -2529,7 +2529,7 @@ body .ui-autocomplete .ui-autocomplete-multiple-container {
     body .ui-autocomplete .ui-autocomplete-multiple-container .ui-autocomplete-token .ui-autocomplete-token-icon {
       margin-top: -0.5rem;
       position: absolute;
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2624,7 +2624,7 @@ body .ui-chkbox {
       margin-left: -0.5rem;
       margin-top: -0.5rem; }
       body .ui-chkbox .ui-chkbox-box .ui-chkbox-icon.ui-icon-check {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -2638,7 +2638,7 @@ body .ui-chkbox {
         body .ui-chkbox .ui-chkbox-box .ui-chkbox-icon.ui-icon-check:before {
           content: ""; }
       body .ui-chkbox .ui-chkbox-box .ui-chkbox-icon.ui-icon-closethick {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -2739,7 +2739,7 @@ body .ui-selectmanymenu {
       padding-left: 2rem; }
     body .ui-selectonelistbox .ui-selectlistbox-filter-container .ui-icon,
     body .ui-selectmanymenu .ui-selectlistbox-filter-container .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2828,7 +2828,7 @@ body .ui-selectonemenu {
       position: static;
       margin: 0;
       color: #6c757d;
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2879,7 +2879,7 @@ body .ui-selectonemenu-panel {
       width: 100%;
       padding-left: 2rem; }
     body .ui-selectonemenu-panel .ui-selectonemenu-filter-container .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2963,7 +2963,7 @@ body .ui-selectcheckboxmenu {
       position: static;
       margin: 0;
       color: #6c757d;
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -2999,7 +2999,7 @@ body .ui-selectcheckboxmenu {
     body .ui-selectcheckboxmenu .ui-selectcheckboxmenu-multiple-container .ui-selectcheckboxmenu-token .ui-selectcheckboxmenu-token-icon {
       margin-top: -0.5rem;
       position: absolute;
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3059,7 +3059,7 @@ body .ui-selectcheckboxmenu-panel {
         width: 100%;
         padding-left: 2rem; }
       body .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-selectcheckboxmenu-filter-container .ui-icon {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -3099,7 +3099,7 @@ body .ui-selectcheckboxmenu-panel {
         color: #495057;
         border-color: transparent; }
       body .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-selectcheckboxmenu-close .ui-icon {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -3157,7 +3157,7 @@ body .ui-chips .ui-chips-container {
     body .ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon {
       margin-top: -0.5rem;
       position: absolute;
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3189,7 +3189,7 @@ body .ui-inplace .ui-inplace-display {
     color: #495057;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s; }
 body .ui-inplace .ui-inplace-save .ui-icon {
-  font-family: 'primeicons' !important;
+  font-family:"FontAwesome";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -3203,7 +3203,7 @@ body .ui-inplace .ui-inplace-save .ui-icon {
   body .ui-inplace .ui-inplace-save .ui-icon:before {
     content: ""; }
 body .ui-inplace .ui-inplace-cancel .ui-icon {
-  font-family: 'primeicons' !important;
+  font-family:"FontAwesome";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -3226,7 +3226,7 @@ body .ui-rating .ui-rating-cancel {
   margin-right: 0.5rem;
   overflow: visible; }
   body .ui-rating .ui-rating-cancel a {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -3254,7 +3254,7 @@ body .ui-rating .ui-rating-star {
   margin-right: 0.5rem;
   overflow: visible; }
   body .ui-rating .ui-rating-star a {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -3276,7 +3276,7 @@ body .ui-rating .ui-rating-star {
     body .ui-rating .ui-rating-star a:hover {
       color: #0d89ec; }
 body .ui-rating .ui-rating-star-on a {
-  font-family: 'primeicons' !important;
+  font-family:"FontAwesome";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -3342,7 +3342,7 @@ body .ui-datepicker {
     border-width: 0 0 1px 0;
     border-radius: 0; }
   body .ui-datepicker .ui-datepicker-next {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -3357,7 +3357,7 @@ body .ui-datepicker {
     body .ui-datepicker .ui-datepicker-next:before {
       content: ""; }
   body .ui-datepicker .ui-datepicker-prev {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -3547,7 +3547,7 @@ body .ui-datepicker {
       color: #495057;
       border-color: transparent; }
     body .ui-datepicker .ui-picker-up .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3577,7 +3577,7 @@ body .ui-datepicker {
       color: #495057;
       border-color: transparent; }
     body .ui-datepicker .ui-picker-down .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3595,7 +3595,7 @@ body .ui-calendar .ui-button.ui-button-icon-only {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0; }
   body .ui-calendar .ui-button.ui-button-icon-only .ui-icon-calendar {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -3645,7 +3645,7 @@ body .ui-spinner .ui-spinner-button.ui-button {
   body .ui-spinner .ui-spinner-button.ui-button.ui-spinner-up {
     border-top-right-radius: 3px; }
     body .ui-spinner .ui-spinner-button.ui-button.ui-spinner-up .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3661,7 +3661,7 @@ body .ui-spinner .ui-spinner-button.ui-button {
   body .ui-spinner .ui-spinner-button.ui-button.ui-spinner-down {
     border-bottom-right-radius: 3px; }
     body .ui-spinner .ui-spinner-button.ui-button.ui-spinner-down .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3821,7 +3821,7 @@ body .ui-fileupload .ui-fileupload-buttonbar {
   body .ui-fileupload .ui-fileupload-buttonbar .ui-button {
     margin-right: 0.5rem; }
     body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-choose .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3835,7 +3835,7 @@ body .ui-fileupload .ui-fileupload-buttonbar {
       body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-choose .ui-icon:before {
         content: ""; }
     body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-upload .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3849,7 +3849,7 @@ body .ui-fileupload .ui-fileupload-buttonbar {
       body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-upload .ui-icon:before {
         content: ""; }
     body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-cancel .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -3873,7 +3873,7 @@ body .ui-fileupload .ui-fileupload-content {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px; }
   body .ui-fileupload .ui-fileupload-content .ui-fileupload-cancel .ui-icon {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -3892,7 +3892,7 @@ body .ui-fileupload-simple {
   overflow: visible;
   vertical-align: top; }
   body .ui-fileupload-simple .ui-icon-plusthick {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -3976,7 +3976,7 @@ body .ui-panel {
         color: #495057;
         border-color: transparent; }
       body .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon .ui-icon-closethick {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -3990,7 +3990,7 @@ body .ui-panel {
         body .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon .ui-icon-closethick:before {
           content: ""; }
       body .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon .ui-icon-minusthick {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -4004,7 +4004,7 @@ body .ui-panel {
         body .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon .ui-icon-minusthick:before {
           content: ""; }
       body .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon .ui-icon-plusthick {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -4018,7 +4018,7 @@ body .ui-panel {
         body .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon .ui-icon-plusthick:before {
           content: ""; }
       body .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon .ui-icon-gear {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -4099,7 +4099,7 @@ body .ui-accordion .ui-accordion-header {
     display: inline-block;
     margin: 0 0.5rem 0 0; }
     body .ui-accordion .ui-accordion-header > .ui-icon.ui-icon-triangle-1-e {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4113,7 +4113,7 @@ body .ui-accordion .ui-accordion-header {
       body .ui-accordion .ui-accordion-header > .ui-icon.ui-icon-triangle-1-e:before {
         content: ""; }
     body .ui-accordion .ui-accordion-header > .ui-icon.ui-icon-triangle-1-s {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4175,7 +4175,7 @@ body .ui-tabs {
         body .ui-tabs .ui-tabs-nav li.ui-tabs-header .ui-icon.ui-icon-close {
           margin: 0;
           float: none;
-          font-family: 'primeicons' !important;
+          font-family:"FontAwesome";
           speak: none;
           font-style: normal;
           font-weight: normal;
@@ -4323,7 +4323,7 @@ body .ui-tabs {
         height: 100%; }
         body .ui-tabs .ui-tabs-navscroller .ui-tabs-navscroller-btn.ui-tabs-navscroller-btn-left .ui-icon {
           margin: 0;
-          font-family: 'primeicons' !important;
+          font-family:"FontAwesome";
           speak: none;
           font-style: normal;
           font-weight: normal;
@@ -4341,7 +4341,7 @@ body .ui-tabs {
         height: 100%; }
         body .ui-tabs .ui-tabs-navscroller .ui-tabs-navscroller-btn.ui-tabs-navscroller-btn-right .ui-icon {
           margin: 0;
-          font-family: 'primeicons' !important;
+          font-family:"FontAwesome";
           speak: none;
           font-style: normal;
           font-weight: normal;
@@ -4406,7 +4406,7 @@ body .ui-fieldset {
       float: none;
       margin-right: 0.5rem; }
     body .ui-fieldset .ui-fieldset-legend .ui-icon-minusthick {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4420,7 +4420,7 @@ body .ui-fieldset {
       body .ui-fieldset .ui-fieldset-legend .ui-icon-minusthick:before {
         content: ""; }
     body .ui-fieldset .ui-fieldset-legend .ui-icon-plusthick {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4514,7 +4514,7 @@ body .ui-messages {
       color: #495057;
       border-color: transparent; }
     body .ui-messages .ui-messages-close .ui-icon-close {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4533,7 +4533,7 @@ body .ui-messages {
     border-width: 0 0 0 6px;
     color: #01579B; }
     body .ui-messages .ui-messages-info .ui-messages-info-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4560,7 +4560,7 @@ body .ui-messages {
     border-width: 0 0 0 6px;
     color: #7f6003; }
     body .ui-messages .ui-messages-warn .ui-messages-warn-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4589,7 +4589,7 @@ body .ui-messages {
     body .ui-messages .ui-messages-error .ui-messages-error-icon,
     body .ui-messages .ui-messages-error .ui-messages-fatal, body .ui-messages .ui-messages-fatal .ui-messages-error-icon,
     body .ui-messages .ui-messages-fatal .ui-messages-fatal {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4622,7 +4622,7 @@ body .ui-message {
     border-width: 0 0 0 3px;
     color: #01579B; }
     body .ui-message.ui-message-info .ui-message-info-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4650,7 +4650,7 @@ body .ui-message {
     border-width: 0 0 0 3px;
     color: #7f6003; }
     body .ui-message.ui-message-warn .ui-message-warn-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4678,7 +4678,7 @@ body .ui-message {
     border-width: 0 0 0 3px;
     color: #B71C1C; }
     body .ui-message.ui-message-error .ui-message-error-icon, body .ui-message.ui-message-fatal .ui-message-error-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4712,7 +4712,7 @@ body .ui-growl {
     border-radius: 3px;
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12); }
     body .ui-growl .ui-growl-item-container .ui-icon-closethick {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4737,7 +4737,7 @@ body .ui-growl {
       color: #01579B;
       border-width: 0 0 0 6px; }
       body .ui-growl .ui-growl-item-container.ui-growl-info .ui-growl-image {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -4760,7 +4760,7 @@ body .ui-growl {
       color: #7f6003;
       border-width: 0 0 0 6px; }
       body .ui-growl .ui-growl-item-container.ui-growl-warn .ui-growl-image {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -4783,7 +4783,7 @@ body .ui-growl {
       color: #B71C1C;
       border-width: 0 0 0 6px; }
       body .ui-growl .ui-growl-item-container.ui-growl-error .ui-growl-image, body .ui-growl .ui-growl-item-container.ui-growl-fatal .ui-growl-image {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -4823,7 +4823,7 @@ body .ui-breadcrumb {
       body .ui-breadcrumb ul li .ui-menuitem-link .ui-menuitem-icon {
         color: #6c757d; }
     body .ui-breadcrumb ul li.ui-breadcrumb-chevron {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4839,7 +4839,7 @@ body .ui-breadcrumb {
       body .ui-breadcrumb ul li.ui-breadcrumb-chevron:before {
         content: ""; }
     body .ui-breadcrumb ul li:first-child a.ui-icon-home {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -4923,7 +4923,7 @@ body .ui-menu {
     position: static;
     margin-right: 0.5rem; }
   body .ui-menu.ui-menu-toggleable .ui-menu-list .ui-widget-header .ui-icon-triangle-1-e {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -4937,7 +4937,7 @@ body .ui-menu {
     body .ui-menu.ui-menu-toggleable .ui-menu-list .ui-widget-header .ui-icon-triangle-1-e:before {
       content: ""; }
   body .ui-menu.ui-menu-toggleable .ui-menu-list .ui-widget-header .ui-icon-triangle-1-s {
-    font-family: 'primeicons' !important;
+    font-family:"FontAwesome";
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -5004,7 +5004,7 @@ body .ui-menu {
         vertical-align: middle;
         color: #495057; }
       body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-icon-triangle-1-e:last-child {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5021,7 +5021,7 @@ body .ui-menu {
         body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-icon-triangle-1-e:last-child:before {
           content: ""; }
       body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-icon-triangle-1-s:last-child {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5090,7 +5090,7 @@ body .ui-menu {
     body .ui-menu.ui-slidemenu .ui-slidemenu-backward .ui-icon-triangle-1-w {
       position: relative;
       top: 2px;
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -5233,7 +5233,7 @@ body .ui-panelmenu h3.ui-panelmenu-header {
     vertical-align: middle;
     margin-right: 0.5rem; }
     body .ui-panelmenu h3.ui-panelmenu-header .ui-icon.ui-icon-triangle-1-e {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -5247,7 +5247,7 @@ body .ui-panelmenu h3.ui-panelmenu-header {
       body .ui-panelmenu h3.ui-panelmenu-header .ui-icon.ui-icon-triangle-1-e:before {
         content: ""; }
     body .ui-panelmenu h3.ui-panelmenu-header .ui-icon.ui-icon-triangle-1-s {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -5303,7 +5303,7 @@ body .ui-panelmenu .ui-panelmenu-content {
       position: static;
       color: #6c757d; }
       body .ui-panelmenu .ui-panelmenu-content .ui-menuitem-link > span.ui-icon.ui-panelmenu-icon.ui-icon-triangle-1-e {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5317,7 +5317,7 @@ body .ui-panelmenu .ui-panelmenu-content {
         body .ui-panelmenu .ui-panelmenu-content .ui-menuitem-link > span.ui-icon.ui-panelmenu-icon.ui-icon-triangle-1-e:before {
           content: ""; }
       body .ui-panelmenu .ui-panelmenu-content .ui-menuitem-link > span.ui-icon.ui-panelmenu-icon.ui-icon-triangle-1-s {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5362,7 +5362,7 @@ body .ui-galleria .ui-galleria-nav-next {
   body .ui-galleria .ui-galleria-nav-next:hover {
     scale: 1.2; }
 body .ui-galleria .ui-galleria-nav-prev {
-  font-family: 'primeicons' !important;
+  font-family:"FontAwesome";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -5377,7 +5377,7 @@ body .ui-galleria .ui-galleria-nav-prev {
   body .ui-galleria .ui-galleria-nav-prev:before {
     content: ""; }
 body .ui-galleria .ui-galleria-nav-next {
-  font-family: 'primeicons' !important;
+  font-family:"FontAwesome";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -5430,7 +5430,7 @@ body .ui-log {
         color: #495057;
         border-color: transparent; }
       body .ui-log .ui-log-header .ui-log-button .ui-icon-trash {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5444,7 +5444,7 @@ body .ui-log {
         body .ui-log .ui-log-header .ui-log-button .ui-icon-trash:before {
           content: ""; }
       body .ui-log .ui-log-header .ui-log-button .ui-icon-note {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5458,7 +5458,7 @@ body .ui-log {
         body .ui-log .ui-log-header .ui-log-button .ui-icon-note:before {
           content: ""; }
       body .ui-log .ui-log-header .ui-log-button .ui-icon-info {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5472,7 +5472,7 @@ body .ui-log {
         body .ui-log .ui-log-header .ui-log-button .ui-icon-info:before {
           content: ""; }
       body .ui-log .ui-log-header .ui-log-button .ui-icon-notice {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5486,7 +5486,7 @@ body .ui-log {
         body .ui-log .ui-log-header .ui-log-button .ui-icon-notice:before {
           content: ""; }
       body .ui-log .ui-log-header .ui-log-button .ui-icon-search {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5500,7 +5500,7 @@ body .ui-log {
         body .ui-log .ui-log-header .ui-log-button .ui-icon-search:before {
           content: ""; }
       body .ui-log .ui-log-header .ui-log-button .ui-icon-alert {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5696,7 +5696,7 @@ body .ui-overlaypanel {
       background: #0d89ec;
       color: #ffffff; }
     body .ui-overlaypanel .ui-overlaypanel-close .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -5746,7 +5746,7 @@ body .ui-dialog {
         color: #495057;
         border-color: transparent; }
       body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-closethick {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5760,7 +5760,7 @@ body .ui-dialog {
         body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-closethick:before {
           content: ""; }
       body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-minus {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5774,7 +5774,7 @@ body .ui-dialog {
         body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-minus:before {
           content: ""; }
       body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-plus {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5788,7 +5788,7 @@ body .ui-dialog {
         body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-plus:before {
           content: ""; }
       body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-extlink {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5802,7 +5802,7 @@ body .ui-dialog {
         body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-extlink:before {
           content: ""; }
       body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-newwin {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5847,7 +5847,7 @@ body .ui-dialog {
         margin-right: 0.5rem;
         font-size: 2.5rem; }
         body .ui-dialog.ui-confirm-dialog .ui-dialog-content > span.ui-icon.ui-icon-warn {
-          font-family: 'primeicons' !important;
+          font-family:"FontAwesome";
           speak: none;
           font-style: normal;
           font-weight: normal;
@@ -5861,7 +5861,7 @@ body .ui-dialog {
           body .ui-dialog.ui-confirm-dialog .ui-dialog-content > span.ui-icon.ui-icon-warn:before {
             content: ""; }
         body .ui-dialog.ui-confirm-dialog .ui-dialog-content > span.ui-icon.ui-icon-info {
-          font-family: 'primeicons' !important;
+          font-family:"FontAwesome";
           speak: none;
           font-style: normal;
           font-weight: normal;
@@ -5875,7 +5875,7 @@ body .ui-dialog {
           body .ui-dialog.ui-confirm-dialog .ui-dialog-content > span.ui-icon.ui-icon-info:before {
             content: ""; }
         body .ui-dialog.ui-confirm-dialog .ui-dialog-content > span.ui-icon.ui-icon-error {
-          font-family: 'primeicons' !important;
+          font-family:"FontAwesome";
           speak: none;
           font-style: normal;
           font-weight: normal;
@@ -5934,7 +5934,7 @@ body .ui-lightbox {
         color: #495057;
         border-color: transparent; }
       body .ui-lightbox .ui-lightbox-caption .ui-lightbox-close .ui-icon {
-        font-family: 'primeicons' !important;
+        font-family:"FontAwesome";
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -5954,7 +5954,7 @@ body .ui-lightbox {
     border: 0 none;
     padding: 0; }
     body .ui-lightbox .ui-lightbox-content-wrapper .ui-lightbox-nav-left {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -5976,7 +5976,7 @@ body .ui-lightbox {
       body .ui-lightbox .ui-lightbox-content-wrapper .ui-lightbox-nav-left span {
         display: none; }
     body .ui-lightbox .ui-lightbox-content-wrapper .ui-lightbox-nav-right {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -6025,7 +6025,7 @@ body .ui-sidebar {
       color: #495057;
       border-color: transparent; }
     body .ui-sidebar .ui-sidebar-close .ui-icon {
-      font-family: 'primeicons' !important;
+      font-family:"FontAwesome";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -6125,9 +6125,15 @@ body .ContentBlock .BlockTitle {
 body .ContentBlock .BlockText {
 	font-size:16px;
 	margin-top:10px;
-	font-size:400;
+	font-weight:400;
 }
 body .ContentBlock .BlockText .BlockTextColor{
 	font-weight:700;
 	color:#ff6520;
 }
+.ContentBlock .BlockFilter .inputForm .ui-selectonemenu{
+	border: 2px solid #ced4da;
+	width:100%;
+	margin-bottom:16px;
+}
+.BlockFilter
