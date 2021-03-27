@@ -8,8 +8,7 @@
 
 	<ui:define name="content">
 		<div class="container">
-		  <div class="mainListData">
-			<div class="jukForm">
+		  <div class="ContentBlock">
 				<h:form>
 				  <p:wizard nextLabel="#{msgs.next}" backLabel="#{msgs.back}">
 				    <p:tab id="route" title="#{msgs.route}">
@@ -18,12 +17,11 @@
 							 <div class="col-12">
 							    <h:outputText value="#{msgs.oblastFrom}" />
 								<h:selectOneMenu id="oblastFrom"
-									value="#{countrySelector.oblast}" 
+									value="#{countrySelector.oblast}" ajax="false"
 									converter="#{oblastConverter}" required="true"
 									requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
-									<f:selectItems
-										value="#{countrySelector.localOblastList}"
+									<f:selectItems value="#{countrySelector.localOblastList}"
 										var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
 									<p:ajax event="change" update="regionFrom regFrom" />
 								</h:selectOneMenu>
@@ -31,7 +29,7 @@
 								
 								<h:panelGroup  layout="block" id="regFrom" >
 									<h:outputLabel for="regionFrom" value="#{msgs.regionFrom}" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
-									<h:selectOneMenu id="regionFrom"
+									<h:selectOneMenu id="regionFrom" ajax="false"
 										value="#{countrySelector.region}" 
 										converter="#{regionConverter}" required="true" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"
 										requiredMessage="#{msgs.oblastFrom} - #{msgs.isReq}">
@@ -150,7 +148,6 @@
 				  </p:wizard>
 				</h:form>
 			</div>
-		   </div>
 		</div>
 	</ui:define>
 </ui:composition>

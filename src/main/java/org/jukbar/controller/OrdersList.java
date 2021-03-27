@@ -74,22 +74,22 @@ public class OrdersList extends BaseController implements Serializable {
 		List<FilterExample> filters = new ArrayList<>();
 		filters.add(new FilterExample("status", OrderStatus.IN_PROGRESS, InequalityConstants.EQUAL));
 			
-		List<Integer> oblastPC = new ArrayList<>();
-		List<Integer> regionPC = new ArrayList<>();
-		List<FilterExample> examples = new ArrayList<>();
-		examples.add(new FilterExample("user",loginUtil.getCurrentUser(),InequalityConstants.EQUAL));
-	    List<Transport> scList = transportService.findByExample(0, 100, examples);
-		for (Transport entity : scList) {
-			if (entity.getStatus().equals(TransportStatus.COMPLETED)) {
-				oblastPC.add(entity.getOblast().getId());
-				regionPC.add(entity.getRegion().getId());
-			}
-			
-		}	
-		filters.add(new FilterExample(true,"oblastFrom.id", oblastPC, InequalityConstants.IN,false));	
-		filters.add(new FilterExample(true,"regionFrom.id", regionPC, InequalityConstants.IN,false));
-		filters.add(new FilterExample(true,"oblastTo.id", oblastPC, InequalityConstants.IN,false));	
-		filters.add(new FilterExample(true,"regionTo.id", regionPC, InequalityConstants.IN,false));
+//		List<Integer> oblastPC = new ArrayList<>();
+//		List<Integer> regionPC = new ArrayList<>();
+//		List<FilterExample> examples = new ArrayList<>();
+//		examples.add(new FilterExample("user",loginUtil.getCurrentUser(),InequalityConstants.EQUAL));
+//	    List<Transport> scList = transportService.findByExample(0, 100, examples);
+//		for (Transport entity : scList) {
+//			if (entity.getStatus().equals(TransportStatus.COMPLETED)) {
+//				oblastPC.add(entity.getOblast().getId());
+//				regionPC.add(entity.getRegion().getId());
+//			}
+//			
+//		}	
+//		filters.add(new FilterExample(true,"oblastFrom.id", oblastPC, InequalityConstants.IN,false));	
+//		filters.add(new FilterExample(true,"regionFrom.id", regionPC, InequalityConstants.IN,false));
+//		filters.add(new FilterExample(true,"oblastTo.id", oblastPC, InequalityConstants.IN,false));	
+//		filters.add(new FilterExample(true,"regionTo.id", regionPC, InequalityConstants.IN,false));
 		
 		
 		if(oblast !=null) filters.add(new FilterExample("oblastFrom", oblast, InequalityConstants.EQUAL));  

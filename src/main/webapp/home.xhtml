@@ -15,23 +15,23 @@
 						<div class="BlockFilter">
 						   <h:form>
 							<div class="inputForm">
-								<p:watermark for="OblastListFrom" value="#{msgs.oblastFrom}"/>							    
-								<p:selectOneMenu id="OblastListFrom" value="#{publicList.oblast}" effect="fold" editable="true" converter="#{oblastConverter}" ajax="false" >
-									<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<p:selectOneMenu id="oblastFrom" value="#{publicList.oblast}" effect="fold" editable="false" 
+								    converter="#{oblastConverter}" ajax="false" >
+									<f:selectItem itemLabel="#{msgs.oblastFrom}" />
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>
 							<div class="inputForm">
-								<p:watermark for="RegionList" value="#{msgs.regionFrom}"/>
-								<p:selectOneMenu value="#{publicList.oblast}" id="RegionList" effect="fold" editable="true" ajax="false" converter="#{oblastConverter}" >
-									<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<p:selectOneMenu value="#{publicList.oblast}" id="RegionList" effect="fold" editable="false" 
+								     ajax="false" converter="#{oblastConverter}" >
+									<f:selectItem itemLabel="#{msgs.regionFrom}" />
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>
 							<div class="inputForm">
-								<p:watermark for="OblastListTo" value="#{msgs.oblastTo}"/>
-								<p:selectOneMenu id="OblastListTo" value="#{publicList.oblast}" ajax="false" effect="fold" editable="true" converter="#{oblastConverter}" >
-									<f:selectItem itemLabel="#{msgs.selectValue}" />
+								<p:selectOneMenu id="oblastTo" value="#{publicList.oblast}" ajax="false" effect="fold" editable="false"
+								   converter="#{oblastConverter}" >
+									<f:selectItem itemLabel="#{msgs.oblastTo}" />
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>
@@ -44,8 +44,8 @@
 					</div>
 				</div>
 				<div class="col-7">
-					<div class="cotentBlock">
-						sdf
+					<div class="ContentBlock">
+						test
 					</div>
 				</div>
 			</div>

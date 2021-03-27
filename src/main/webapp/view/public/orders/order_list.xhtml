@@ -12,14 +12,14 @@
 	<ui:define name="content">
 		<h:form>
 			<div class="container">
-				<div class="mainListData">
+				<div class="ContentBlock">
 					<div class="mainListFilter">
 						<h:panelGroup styleClass="row filter" layout="block"
 							id="filterPanel">
 							<h:panelGroup id="oblastFrom" layout="block" class="col">
 								<h:outputLabel for="oblast" value="#{msgs.oblastFrom}" />
-								<h:selectOneMenu id="oblast" value="#{publicList.oblast}"
-									effect="fold" editable="true" converter="#{oblastConverter}" >
+								<h:selectOneMenu id="oblast" value="#{publicList.oblast}" ajax="false"
+									effect="fold" editable="false" converter="#{oblastConverter}" >
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast"
 										itemLabel="#{oblast.name}" itemValue="#{oblast}" />

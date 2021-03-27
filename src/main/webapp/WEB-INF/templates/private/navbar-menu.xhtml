@@ -5,21 +5,21 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:composition>
-	    <div class="maintopContainerPrivate">
-			<div class="container">
-			  <h:form id="menuId">
-				<div class="maintopContent">
-					<div class="maintop-logo">
-						<a class="mainlogo" href="/jukbar/view/main.xhtml"><h:graphicImage library="images" name="logo.png" height="56"/></a>
-						
-						<ul class="jukMenu">
-						    <h:panelGroup  layout="block" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
+	    <div class="maintopContainer">
+		     <div class="container-fluid">
+				<div class="MainTopContent">
+					<div class="MainTopLogo">
+						<a href="/jukbar/view/main.xhtml"></a>
+					</div>
+					<div class="MainTopMenu">
+						<ul>
+						   <h:panelGroup  layout="block" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'manager')}">
 								<li>
 								   <h:link value="#{msgs.orders}" outcome="/view/moderator/order_list.xhtml">
 								       <span class="badge">#{moderatorController.orderAmount}</span>
 								   </h:link>
 								</li>
-								<li>
+								<li class="last">
 								   <h:link value="#{msgs.transports}" outcome="/view/moderator/transport_list.xhtml">
 								       <span class="badge">#{moderatorController.transportAmount}</span>
 								   </h:link>
@@ -29,18 +29,25 @@
 							   <h:link value="#{msgs.orders}"  outcome="/view/orders/order_list.xhtml" 
 							            rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>
 							</li>
-							<li>
+							<li class="last">
 							   <h:link value="#{msgs.myTransport}"  outcome="/view/transport/transport_list.xhtml" 
 							            rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>
 							</li>
 						</ul>
+						<div class="mainTopRight">
+						  <h:form>
+						    <ul>
+						     <li>
+						       <h:outputText value="#{paymentController.allAmount()} сом" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}"/>
+						     </li>
+						     <li>
+						        <h:commandLink action="#{profileController.goProfile(loginUtil.currentUser)}" value="Привет, #{loginUtil.currentUser.person.firstName}" />
+						     </li>
+						    </ul>
+						  </h:form>
+						</div>
 					</div>
-					<div class="maintop-right">
-					    <h:outputText value="#{paymentController.allAmount()} сом" rendered="#{loginUtil.userHasRole(loginUtil.currentUser, 'driver')}" style="color:#99761b; font-weight: 700; margin-right: 3px;"/>
-						<h:commandLink action="#{profileController.goProfile(loginUtil.currentUser)}" value="Привет, #{loginUtil.currentUser.person.firstName}" />
-					</div>
-				  </div>
-			   </h:form>
+				</div>
 			</div>
 		</div>
 	</ui:composition>

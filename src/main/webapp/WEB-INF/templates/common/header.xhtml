@@ -12,25 +12,17 @@
 					<ul>
 						<li><a href="/jukbar/view/public/orders/order_list.xhtml">#{msgs.localCargo}</a></li>
 						<li><a href="/jukbar/view/public/transport_list.xhtml">#{msgs.transports}</a></li>
-						<li class="last"><a href="#cars">#{msgs.contact}</a></li>
+						<li class="last"><a href="/jukbar/view/public/footer/contacts.xhtml">#{msgs.aboutUs}</a></li>
 						<li class="mainTopButton"><h:form><h:commandLink action="#{orderApplicationAction.form()}" value="#{msgs.addCardo}" /></h:form></li>
 					</ul>
 					<div class="mainTopRight">
 						<ul>
 							<li><a href="/jukbar/view/user/login.xhtml">#{msgs.login}</a></li>
-							<li><a href="#register">Registration</a></li>
+							<li><h:form><h:commandLink action="#{registrationAction.register()}" value="#{msgs.register}" /></h:form></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-		<div class="maintopContent">
-			<div class="maintop-logo">
-
-				<div class="maintop-app">
-				  
-				</div>	
-			</div>
-		</div>
 </ui:composition>
