@@ -327,6 +327,7 @@ body .ui-button {
     padding: 0.5rem 1rem 0.5rem 2rem; }
   body .ui-button.ui-button-text-icon-left .ui-icon {
     position: absolute;
+    font-family: "FontAwesome";
     top: 50%;
     left: 50%;
     margin-top: -0.5rem;
@@ -2807,7 +2808,9 @@ body .ui-selectonemenu {
   border-radius: 3px;
   background: #ffffff; }
   body .ui-selectonemenu .ui-selectonemenu-label {
-    background: transparent; }
+    background: transparent; 
+    font-family: "Nunito";
+    font-weight:500;}
   body .ui-selectonemenu .ui-selectonemenu-trigger {
     border: 0 none;
     cursor: pointer;
@@ -2831,7 +2834,7 @@ body .ui-selectonemenu {
       font-family:"FontAwesome";
       speak: none;
       font-style: normal;
-      font-weight: normal;
+      font-weight: 900;
       font-variant: normal;
       text-transform: none;
       display: inline-block;
@@ -2840,7 +2843,7 @@ body .ui-selectonemenu {
       text-indent: 0 !important;
       background-image: none !important; }
       body .ui-selectonemenu .ui-selectonemenu-trigger .ui-icon:before {
-        content: ""; }
+        content: "\f078"; }
   body .ui-selectonemenu.ui-state-hover:not(.ui-state-error) {
     border-color: #2196F3; }
   body .ui-selectonemenu.ui-state-focus:not(.ui-state-error) {
@@ -2913,7 +2916,7 @@ body .ui-selectonemenu-panel {
         background: rgba(33, 150, 243, 0.2);
         color: #495057; }
       body .ui-selectonemenu-panel .ui-selectonemenu-items .ui-selectonemenu-item.ui-state-highlight {
-        background: #FFC107;
+        background: #ff6520;
         color: #ffffff; }
       body .ui-selectonemenu-panel .ui-selectonemenu-items .ui-selectonemenu-item.ui-selectonemenu-row {
         background: #ffffff;
@@ -6108,6 +6111,8 @@ body .maintopContainer .MainTopContent .MainTopMenu ul li.mainTopButton a{
 	background:#ff6520;
 	color:#fff;
 	font-size:14px;
+	font-weight:400;
+	font-size:15px;
 	padding:8px 20px;
 	border-radius:6px;
 }
@@ -6136,4 +6141,137 @@ body .ContentBlock .BlockText .BlockTextColor{
 	width:100%;
 	margin-bottom:16px;
 }
-.BlockFilter
+.ContentBlock .BlockFilter .inputForm .ui-selectonemenu:after{
+    display: block;
+    border-right: 2px dotted #ff6520;
+    content: "";
+    top: 37px;
+    height: 16px;
+    position: absolute;
+    width: 20px;
+}
+.ContentBlock .BlockFilter .inputForm:nth-of-type(3) .ui-selectonemenu:after {
+	display:none !important;
+}
+.ContentBlock .BlockFilter .inputForm:not(.submit) .ui-selectonemenu {
+	position:relative;
+}
+.ContentBlock .BlockFilter .inputForm:not(.submit) .ui-selectonemenu:before {
+    content: "";
+    align-items: center;
+    display: flex;
+    width: 26px;
+    height: 26px;
+    left: 6px;
+    top: 4px;
+    position: absolute;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 30px;
+    border: 2px solid #ff6520;
+    align-content: center;
+    justify-content: center;
+}
+.ContentBlock .BlockFilter .inputForm .ui-selectonemenu .ui-selectonemenu-trigger .ui-icon {
+	color:#1d58db;
+}
+.ContentBlock .BlockFilter .inputForm:nth-of-type(1) .ui-selectonemenu:before {
+	content: "1";
+}
+.ContentBlock .BlockFilter .inputForm:nth-of-type(2) .ui-selectonemenu:before {
+	content: "2";
+}
+.ContentBlock .BlockFilter .inputForm:nth-of-type(3) .ui-selectonemenu:before {
+	content: "3";
+}
+.ContentBlock .BlockFilter .inputForm:nth-of-type(4) .ui-selectonemenu:before {
+	content: "4";
+}
+
+.ContentBlock .BlockFilter .inputForm:not(.submit) .ui-selectonemenu .ui-selectonemenu-label{
+	text-indent:35px;
+}
+body .ContentBlock.MainSlider .carousel-item{
+	height:365px;
+	background:#f5f6f8;
+	border-radius: 7px;	
+}
+body .ContentBlock.MainSlider {
+	padding:0;
+	border-radius: 7px;
+}
+body .ContentBlock.MainSlider .carousel-indicators{
+	bottom:auto;
+	top:30px;
+	right:auto;
+	left:30px;
+	margin:auto;
+}
+body .ContentBlock.MainSlider .carousel-indicators button {
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	background:#0d1934;
+	border:3px solid #fff;
+	opacity:1;
+}
+body .ContentBlock.MainSlider .carousel-indicators button.active {
+	border:3px solid #1d58db;
+	background:#fff;
+}
+body .ContentBlock.MainSlider .carousel-control-next, body .ContentBlock.MainSlider .carousel-control-prev {
+	top:auto;
+	width:50px;
+	height:50px;
+	bottom:40px;
+	border:2px solid #6d7585;
+	border-radius:50px;
+}
+body .ContentBlock.MainSlider .carousel-control-next {
+	left:100px;
+}
+body .ContentBlock.MainSlider .carousel-control-prev  {
+	left:30px;
+}
+body .ContentBlock.MainSlider .carousel-control-prev span {
+	left:-3px;
+}
+body .ContentBlock.MainSlider .carousel-control-next span {
+	left:2px;
+}
+body .ContentBlock.MainSlider .carousel-control-prev span, body .ContentBlock.MainSlider .carousel-control-next span{
+	filter:invert(100);
+	position:relative;
+}
+body .ContentBlock.MainSlider .carousel-item  {
+background: rgba(0, 0, 0, 0) linear-gradient(to left top, rgb(168, 207, 240, 0.6), rgb(255, 255, 255)) repeat scroll 0% 0%;	
+}
+body .ContentBlock.MainSlider .carousel-item .banner1-content {
+	height:100%;
+}
+body .ContentBlock.MainSlider .carousel-item .banner1-content{
+	background:url("../javax.faces.resource/banner1.png.xhtml?ln=images") right bottom no-repeat;
+}
+body .ContentBlock.MainSlider .carousel-item .banner1-content .banner1-text {
+	position:relative;
+	top:85px;
+	left:50px;
+	max-width:340px;
+}
+body .ContentBlock.MainSlider .carousel-item .banner1-content .banner1-text h1{
+	font-size:20px;
+	line-height:20px;
+	color:#3f92d0;
+}
+body .ContentBlock.MainSlider .carousel-item .banner1-content .banner1-text p {
+	font-size:14px;
+	margin:10px 0 20px;
+	line-height:18px;
+}
+body .ContentBlock.MainSlider .carousel-item .banner1-content .banner1-text button {
+	border:0;
+	background:#71b5e8;
+	color:#fff;
+	padding:8px 16px;
+	border-radius:6px;
+}

@@ -15,37 +15,64 @@
 						<div class="BlockFilter">
 						   <h:form>
 							<div class="inputForm">
-								<p:selectOneMenu id="oblastFrom" value="#{publicList.oblast}" effect="fold" editable="false" 
-								    converter="#{oblastConverter}" ajax="false" >
+								<p:selectOneMenu id="oblastFrom" value="#{publicList.oblast}" effect="fold" editable="false" converter="#{oblastConverter}" ajax="false" >
 									<f:selectItem itemLabel="#{msgs.oblastFrom}" />
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>
 							<div class="inputForm">
-								<p:selectOneMenu value="#{publicList.oblast}" id="RegionList" effect="fold" editable="false" 
-								     ajax="false" converter="#{oblastConverter}" >
+								<p:selectOneMenu value="#{publicList.oblast}" id="RegionList" effect="fold" editable="false" ajax="false" converter="#{oblastConverter}" >
 									<f:selectItem itemLabel="#{msgs.regionFrom}" />
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>
 							<div class="inputForm">
-								<p:selectOneMenu id="oblastTo" value="#{publicList.oblast}" ajax="false" effect="fold" editable="false"
-								   converter="#{oblastConverter}" >
+								<p:selectOneMenu id="oblastTo" value="#{publicList.oblast}" ajax="false" effect="fold" editable="false" converter="#{oblastConverter}" >
 									<f:selectItem itemLabel="#{msgs.oblastTo}" />
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>
-							<div class="inputForm">
-							   <p:commandButton ajax="false" value="#{msgs.search}"
-									icon="fas fa-search" />
+							<div class="inputForm submit">
+							   <p:commandButton ajax="false" value="#{msgs.search}" icon="fas fa-search" />
 							</div>
 						 </h:form>	
 						</div>
 					</div>
 				</div>
 				<div class="col-7">
-					<div class="ContentBlock">
-						test
+					<div class="ContentBlock MainSlider">
+						<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+						  <div class="carousel-indicators">
+						    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+						  </div>
+						  <div class="carousel-inner">
+						    <div class="carousel-item active">
+							    <div class="banner1-content">
+							    	<div class="banner1-text">
+							    		<h1>Best Global Shipment<br/>in Kyrgyzstan</h1>
+							    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor metus pellentesque suscipit lacinia. Sed placerat purus et diam volutpat sodales.</p>
+							    		<button>Разместить заказ</button>
+							    	</div>
+							    </div>
+						    </div>
+						    <div class="carousel-item">
+							    asdf2
+						    </div>
+						    <div class="carousel-item">
+							    asdf3
+						    </div>
+						  </div>
+						  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Previous</span>
+						  </button>
+						  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Next</span>
+						  </button>
+						</div>
 					</div>
 				</div>
 			</div>
