@@ -4111,8 +4111,7 @@ body .ui-accordion .ui-accordion-header {
       color: #495057; }
   body .ui-accordion .ui-accordion-header:focus {
     outline: 0 none;
-    outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem #a6d5fa; }
+    outline-offset: 0;}
   body .ui-accordion .ui-accordion-header > .ui-icon {
     position: static;
     display: inline-block;
@@ -6302,6 +6301,7 @@ body .footerContainer {
 	border-top: 4px solid #e4e6eb;
 	border-radius:7px;
 	padding:10px;
+	margin-top:20px;
 }
 body .footerContainer .footerLogo{
 	background:url("../javax.faces.resource/footer_jukbar.png.xhtml?ln=images") center center no-repeat;
@@ -6367,4 +6367,29 @@ body .ContentBlock .mainReklama .ReklamaText span {
 	font-weight:500;
 	font-size:13px;
 	width:100%;
+}
+body .ui-datalist.listOrder .ui-datalist-content {
+	border:0;
+	padding:0;
+	background:transparent;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data {
+	padding-left:0;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item {
+	margin-bottom:10px;
+}
+body .ui-datalist .ui-datalist-content {
+	
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .ui-icon-triangle-1-e, body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .ui-icon-triangle-1-s {
+	display:none;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer {
+	display:flex;
+	flex-direction: row;
+	width:100%;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderDate {
+	
 }
