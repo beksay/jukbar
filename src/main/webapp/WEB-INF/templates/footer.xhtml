@@ -4,25 +4,26 @@
 
    <h:panelGroup layout="block" class="mainFooter" rendered="#{!loginUtil.logged}">
    	   <div class="container">
-   		<h:form>
-   			<div class="row">
-   				<div class="col-3">
-   				  <h2>ЖҮКБАР</h2>
-   				  <p>0(555) 45 45 45</p>
-   				</div>
-   				<div class="col-3">
-   				  <p>Регламент сайта</p>
-   				  <p>Политика Конфиденциальности</p>
-   				</div>
-   				<div class="col-3">
-   				  <p>О нас</p>
-   				  <p>#{msgs.complaints}</p>
-   				</div>
-   				<div class="col-3">
-   				  <i class="fab fa-instagram"></i>
-   				</div>
-   			</div>
-   		 </h:form>
+   	   	<div class="footerContainer">
+	   		<h:form>
+	   			<div class="row">
+	   				<div class="col-auto">
+	   				  <p>Регламент сайта</p>
+	   				  <p>Политика Конфиденциальности</p>
+	   				</div>
+	   				<div class="col-auto">
+	   				  <p>О нас</p>
+	   				  <p>#{msgs.complaints}</p>
+	   				</div>
+	   				<div class="col-auto">
+	   				  <p>0(555) 45 45 45</p>
+	   				</div>
+	   				<div class="col">
+	   				  <div class="footerLogo"></div>
+	   				</div>
+	   			</div>
+	   		 </h:form>   	   		
+   	   	</div>
    	 </div>
    </h:panelGroup>
 </ui:composition>
