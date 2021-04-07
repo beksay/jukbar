@@ -6484,7 +6484,7 @@ body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-
 body .ui-datalist.listOrder .MainDataContent .OrderContentHeader {
 	display:flex;
 	flex-direction: column;
-	border-bottom:1px solid #749fef;
+	border-bottom:1px solid #dee2e6;
 }
 body .ui-datalist.listOrder .MainDataContent .OrderContentHeader .transportType {
 	font-size:14px;
