@@ -4074,41 +4074,43 @@ body .ui-panel {
       left: 50%;
       margin-left: -0.5rem;
       margin-top: -0.5rem; }
-body .ui-accordion .ui-accordion-header {
-  border: 1px solid #dee2e6;
-  border-top: 0 none;
-  background: #f8f9fa;
-  color: #495057;
-  padding: 1rem;
-  font-weight: 700;
-  margin-top: 0;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-  user-select: none;
-  border-radius: 0;
-  position: relative;
-  outline: 0 none; }
+	body .ui-accordion .ui-accordion-header {
+	  border: 1px solid #dee2e6;
+	  border-top: 0 none;
+	  background: #f8f9fa;
+	  color: #495057;
+	  padding: 10px;
+	  font-weight: 700;
+	  margin-top: 0;
+	  border-radius:5px;
+	  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+	  user-select: none;
+	  position: relative;
+	  outline: 0 none; 
+	}
+
   body .ui-accordion .ui-accordion-header:first-child {
     margin-top: 0;
-    border-top: 1px solid #dee2e6;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px; }
+    border-top: 1px solid #dee2e6;}
   body .ui-accordion .ui-accordion-header.ui-accordion-header-last {
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px; }
     body .ui-accordion .ui-accordion-header.ui-accordion-header-last.ui-state-active {
       border-radius: 0; }
-  body .ui-accordion .ui-accordion-header.ui-state-hover {
-    border-color: #dee2e6;
-    background: rgba(33, 150, 243, 0.2);
-    color: #495057; }
-  body .ui-accordion .ui-accordion-header.ui-state-active {
-    border-color: #dee2e6;
-    background: #f8f9fa;
-    color: #495057; }
+body .ui-accordion .ui-accordion-header.ui-state-hover {
+	border-color: #749fef;
+   	background: #e0effa;
+    }
+body .ui-accordion .ui-accordion-header.ui-state-active {
+	border-color: #749fef;
+    background: #e0effa;
+	border-bottom-right-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;	
+}
     body .ui-accordion .ui-accordion-header.ui-state-active:hover {
-      border-color: #dee2e6;
-      background: rgba(33, 150, 243, 0.2);
-      color: #495057; }
+	border-color: #749fef;
+    background: #e0effa;
+    }
   body .ui-accordion .ui-accordion-header:focus {
     outline: 0 none;
     outline-offset: 0;}
@@ -4145,7 +4147,7 @@ body .ui-accordion .ui-accordion-header {
       body .ui-accordion .ui-accordion-header > .ui-icon.ui-icon-triangle-1-s:before {
         content: ""; }
 body .ui-accordion .ui-accordion-content {
-  border: 1px solid #dee2e6;
+  border: 1px solid #a6b9de;
   background: #ffffff;
   color: #495057;
   padding: 1rem;
@@ -6373,14 +6375,14 @@ body .ui-datalist.listOrder .ui-datalist-content {
 	padding:0;
 	background:transparent;
 }
+body .ui-accordion .ui-accordion-header {
+	background:#f6f7f7;
+}
 body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data {
 	padding-left:0;
 }
 body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item {
 	margin-bottom:10px;
-}
-body .ui-datalist .ui-datalist-content {
-	
 }
 body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .ui-icon-triangle-1-e, body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .ui-icon-triangle-1-s {
 	display:none;
@@ -6389,7 +6391,115 @@ body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-
 	display:flex;
 	flex-direction: row;
 	width:100%;
+	align-items: center;
+	justify-content: space-between;
 }
-body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderDate {
-	
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderType i{
+    border: 2px solid #ff6520;
+    border-radius: 30px;
+    height: 30px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderTo i,
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderFrom i {
+	margin-right:10px;
+	color:#1d58db;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderTo {
+	padding-left:20px;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderFrom {
+	text-align:right;
+	padding-right:20px;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderFrom i {
+	position:relative;
+	left:5px;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath {
+	display:flex;
+	flex-direction: row;
+	flex:1;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderLine {
+	flex-grow: 1;
+  	flex-shrink: 1;
+  	flex-basis: 0;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderFrom,
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderTo {
+	flex-grow: 2;
+  	flex-shrink: 1;
+  	flex-basis: 0;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderMoney {
+	padding:0 20px;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderMoney i, 
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderDate i {
+	margin:0 6px;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderDate i {
+	color:#1d58db;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderMoney i {
+	color:#368558;	
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderLine {
+	position:relative;
+    width:100%;
+    height:10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderLine i{
+	position:relative;
+	z-index:10;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderLine i:first-child {
+	left:-11px;
+	color:#ff6520 !important; 
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderLine i:last-child {
+	right:-11px;
+	color:#25b161 !important;
+}
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderLine:before{
+	content: "";
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    top: 5px;
+    border-radius: 60%;
+    left: -3px;
+ }
+body .ui-datalist.listOrder .ui-datalist-content .ui-datalist-data .ui-datalist-item .OrderListContainer .OrderPath .OrderLine:before{
+    border-top:2px dashed #ff6520;
+}
+body .ui-datalist.listOrder .MainDataContent .OrderContentHeader {
+	display:flex;
+	flex-direction: column;
+	border-bottom:1px solid #749fef;
+}
+body .ui-datalist.listOrder .MainDataContent .OrderContentHeader .transportType {
+	font-size:14px;
+	font-weight:700;
+	padding:10px 0 4px;
+}
+body .ui-datalist.listOrder .MainDataContent .OrderContentHeader .transportType label{
+	font-weight:600;
+	padding-right:5px;
+}
+body .ui-datalist.listOrder .MainDataContent .transportContent {
+	font-size:14px;
+	padding:4px 0 10px;
+}
+body .ui-datalist.listOrder .MainDataContent .transportContent label {
+	font-weight:600;
+	padding-right:5px;
 }

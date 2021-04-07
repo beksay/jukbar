@@ -70,25 +70,28 @@
 						              	<div class="OrderListContainer">
 						              		<div class="OrderType">
 						              			<i class="fas fa-horse"></i>
-						              			<i class="fas fa-truck-moving"></i>
-						              			<i class="fas fa-truck-loading"></i>
-						              			<i class="fas fa-truck-pickup"></i>
-						              			<i class="fas fa-people-carry"></i>
+						              		</div>
+						              		<div class="OrderPath">
+							              		<div class="OrderFrom">
+												    <h:outputText styleClass="mainRoute" value="#{entity.oblastFrom.name} #{entity.regionFrom.name}" />
+							              		</div>
+						              			<div class="OrderLine">
+													<i class="fas fa-map-marker-alt mainRoute"></i>						              			
+													<i class="fas fa-chevron-right"></i>
+												    <i class="fas fa-flag-checkered"></i>
+						              			</div>
+							              		<div class="OrderTo">
+												    <h:outputText styleClass="mainRoute" value="#{entity.oblastTo.name} #{entity.regionTo.name}" />
+							              		</div>
 						              		</div>
 						              		<div class="OrderMoney">
+						              			<i class="fas fa-money-bill-wave"></i>
 								                <h:outputText value="#{entity.amount} сом" >
 												   <f:converter converterId="decimalNumberConverter" />
 												</h:outputText>
 						              		</div>
-						              		<div class="OrderFrom">
-												<i class="fas fa-map-marker-alt mainRoute"></i>
-											    <h:outputText styleClass="mainRoute" value="#{entity.oblastFrom.name} #{entity.regionFrom.name}" />
-						              		</div>
-						              		<div class="OrderTo">
-											    <i class="fas fa-arrows-alt-h mainRoute"></i>
-											    <h:outputText styleClass="mainRoute" value="#{entity.oblastTo.name} #{entity.regionTo.name}" />
-						              		</div>
 						              		<div class="OrderDate">
+						              			<i class="fas fa-calendar-alt"></i>
 											    <h:outputText value="#{entity.date}">
 													<f:convertDateTime pattern="dd.MM.yyyy" />
 												</h:outputText>
@@ -96,13 +99,17 @@
 						              	</div>
 									  </f:facet>
 								          <div class="MainDataContent">
-
-											   <h:outputLabel value="#{msgs.transportType} : " styleClass="mainText"/>
-											   <h:outputText value="#{entity.transportType.name}" />
-											   <h:outputLabel value="#{msgs.productInfo} : " styleClass="mainText"/>
-											   <h:outputText value="#{entity.products}"  />
+												<div class="OrderContentHeader">
+													<div class="transportType">
+														<h:outputLabel value="#{msgs.transportType}:"/>
+											   			<h:outputText value="#{entity.transportType.name}" />
+													</div>
+												</div>
+											   	<div class="transportContent">
+													<h:outputLabel value="#{msgs.productInfo}:"/>
+											   		<h:outputText value="#{entity.products}"  />
+											   	</div>
 								            </div>
-  
 						            </p:tab>
 						        </p:accordionPanel>
 					        </p:dataList>
