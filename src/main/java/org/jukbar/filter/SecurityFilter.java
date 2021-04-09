@@ -34,7 +34,7 @@ public class SecurityFilter implements Filter {
 	private static final String CHANGE_PASSWORD = "/view/user/change_password.xhtml";
 	
 	private Map<String[], String> map;
-	 
+	  
 	@Inject     
 	private LoginUtil loginUtil;    
 	   

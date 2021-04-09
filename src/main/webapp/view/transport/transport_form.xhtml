@@ -7,7 +7,7 @@
 	template="/WEB-INF/templates/layouts/private.xhtml">
 	<ui:define name="content">
 	    <div class="container">
-	      <div class="mainListData">
+	      <div class="ContentBlock">
 			<div class="jukForm">
 				<h:form>
 					<div class="row">
@@ -72,6 +72,14 @@
 							</h:selectOneMenu>
 							<p:message for="region" rendered="#{countrySelector.oblast.city!=true and countrySelector.oblast.id !=null}"/>
 						</h:panelGroup>
+						<div class="col-4">
+							<h:outputLabel value="#{msgs.oblastTo}" />
+							<p:selectManyCheckbox  value="#{transportController.oblasts}" required="true" requiredMessage="#{msgs.oblastTo} - #{msgs.isReq}" 
+									multiple="true" id="oblasts"  converter="cachedConverter" disabled="#{transportController.transport.status eq 'IN_PROGRESS' or transportController.transport.status eq 'COMPLETED'}">
+								<f:selectItems value="#{transportController.oblastList}" var="entity" itemLabel="#{entity.name}" itemValue="#{entity}"/>
+					    	</p:selectManyCheckbox>
+							<h:message for="oblasts" display="icon" style="color:red;" />	
+						</div>
 						<h:panelGroup  layout="block" class="col-12 mt-3">
 					    	<p:commandButton value="#{msgs.back}" action="#{transportController.cancel}" immediate="true" icon="fas fa-angle-left"/>
 					    	<h:outputLabel style="width:20px;display:inline-block"/>

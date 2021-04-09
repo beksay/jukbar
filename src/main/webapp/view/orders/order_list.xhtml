@@ -13,7 +13,6 @@
 						<h:panelGroup styleClass="row filter" layout="block"
 							id="filterPanel">
 							<h:panelGroup id="oblastFrom" layout="block" class="col">
-								<h:outputLabel for="oblast" value="#{msgs.oblastFrom}"/>
 								<h:selectOneMenu id="oblast" value="#{ordersList.oblast}" effect="fold" editable="true" converter="#{oblastConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
 									<f:selectItems value="#{ordersList.oblastList}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
@@ -21,7 +20,6 @@
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<h:panelGroup id="regionFrom" layout="block" class="col">
-								<h:outputLabel for="region" value="#{msgs.regionFrom}" rendered="#{ordersList.oblast.id!=null}"/>
 								<h:selectOneMenu id="region" value="#{ordersList.region}" rendered="#{ordersList.oblast.id!=null}" effect="fold" editable="true" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
 									<f:selectItems value="#{ordersList.regionList}" var="region" itemLabel="#{region.name}" itemValue="#{region}" />
@@ -29,7 +27,6 @@
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<h:panelGroup id="oblastToId" layout="block" class="col">
-								<h:outputLabel for="oblastTo" value="#{msgs.oblastTo}"/>
 								<h:selectOneMenu id="oblastTo" value="#{ordersList.oblastTo}" effect="fold" editable="true" converter="#{oblastConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
 									<f:selectItems value="#{ordersList.oblastToList}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
@@ -37,7 +34,6 @@
 								</h:selectOneMenu>
 							</h:panelGroup>
 							<h:panelGroup id="regionToId" layout="block" class="col">
-								<h:outputLabel for="regionTo" value="#{msgs.regionTo}" rendered="#{ordersList.oblastTo.id!=null}"/>
 								<h:selectOneMenu id="regionTo" value="#{ordersList.region}" rendered="#{ordersList.oblastTo.id!=null}" effect="fold" editable="true" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.selectValue}" />
 									<f:selectItems value="#{ordersList.regionToList}" var="region" itemLabel="#{region.name}" itemValue="#{region}" />

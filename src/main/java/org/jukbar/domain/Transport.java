@@ -1,12 +1,16 @@
 package org.jukbar.domain;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -29,6 +33,7 @@ public class Transport extends AbstractEntity<Integer>{
     private Attachment document;
     private Attachment picture;
     private Date date;
+    private Set<Oblast> oblasts;
     
 	public String getMarka() {
 		return marka;
@@ -135,6 +140,19 @@ public class Transport extends AbstractEntity<Integer>{
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(
+	  name = "transport_oblasts", 
+	  joinColumns = @JoinColumn(name = "transport_id"), 
+	  inverseJoinColumns = @JoinColumn(name = "oblast_id"))	
+	public Set<Oblast> getOblasts() {
+		return oblasts;
+	}
+
+	public void setOblasts(Set<Oblast> oblasts) {
+		this.oblasts = oblasts;
 	}
 	
 }

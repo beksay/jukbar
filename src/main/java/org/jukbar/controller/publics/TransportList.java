@@ -15,9 +15,14 @@ import javax.servlet.http.HttpSession;
 import org.jukbar.beans.FilterExample;
 import org.jukbar.beans.InequalityConstants;
 import org.jukbar.controller.BaseController;
+import org.jukbar.domain.Oblast;
+import org.jukbar.domain.Region;
 import org.jukbar.domain.Transport;
+import org.jukbar.enums.SortEnum;
 import org.jukbar.enums.TransportStatus;
 import org.jukbar.model.TransportModel;
+import org.jukbar.service.OblastService;
+import org.jukbar.service.RegionService;
 import org.jukbar.service.TransportService;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.data.PageEvent;
@@ -35,12 +40,18 @@ public class TransportList extends BaseController implements Serializable {
 	private static final long serialVersionUID = -6100072166946495229L;
 	@EJB
 	private TransportService service;
+	@EJB
+	private OblastService oblastService;
+	@EJB
+	private RegionService regionService;
 	
 	private TransportModel model;
 	private Transport transport;
 	
 	private String searchString;
 	private Integer first;
+	private Oblast oblast;
+	private Region region;
 	
 	@PostConstruct
 	private void init() {
@@ -54,13 +65,34 @@ public class TransportList extends BaseController implements Serializable {
 		if (searchString != null && searchString.length()>0) {
 			filters.add(new FilterExample("marka", '%' + searchString.toLowerCase() + '%', InequalityConstants.LIKE));
 		}
+		if(oblast !=null) filters.add(new FilterExample("oblast", oblast, InequalityConstants.EQUAL));  
+        if(region !=null) filters.add(new FilterExample("region", region, InequalityConstants.EQUAL));
 		model = new TransportModel(filters, service);
+		model.setFetchProperties(new String[] {"oblasts"});
 	}
 	
 	public String clearData() {
+		oblast=null;
+		region=null;
 		searchString = null;
 		init();
 		return null;
+	}
+	
+	public List<Oblast> getOblastList() {
+		List<FilterExample> examples = new ArrayList<>();
+		examples.add(new FilterExample("country.id", 1, InequalityConstants.EQUAL)); 
+		return oblastService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
+	}
+	
+	public List<Region> getRegionList() {
+		List<FilterExample> examples = new ArrayList<>();
+		if(oblast !=null) {
+			examples.add(new FilterExample("oblast", oblast, InequalityConstants.EQUAL)); 
+		}else {
+			examples.add(new FilterExample("id", InequalityConstants.IS_NULL_SINGLE)); 
+		}
+		return regionService.findByExample(0, 20, SortEnum.ASCENDING, examples, "id");
 	}
 	
 	public void saveState() {
@@ -124,5 +156,21 @@ public class TransportList extends BaseController implements Serializable {
 
 	public void setTransport(Transport transport) {
 		this.transport = transport;
+	}
+
+	public Oblast getOblast() {
+		return oblast;
+	}
+
+	public void setOblast(Oblast oblast) {
+		this.oblast = oblast;
+	}
+
+	public Region getRegion() {
+		return region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
 	} 
 }

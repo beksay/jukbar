@@ -15,20 +15,20 @@
 						<div class="BlockFilter">
 						   <h:form>
 							<div class="inputForm">
-								<p:selectOneMenu id="oblastFrom" value="#{publicList.oblast}" effect="fold" editable="false" converter="#{oblastConverter}" ajax="false" >
-									<f:selectItem itemLabel="#{msgs.oblastFrom}" />
+								<p:selectOneMenu id="oblastFrom" value="#{publicList.oblast}" converter="#{oblastConverter}">
+									<f:selectItem itemLabel="#{msgs.oblastFrom}" noSelectionOption="true"/>
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>
 							<div class="inputForm">
-								<p:selectOneMenu value="#{publicList.oblast}" id="RegionList" effect="fold" editable="false" ajax="false" converter="#{oblastConverter}" >
-									<f:selectItem itemLabel="#{msgs.regionFrom}" />
+								<p:selectOneMenu value="#{publicList.oblast}" id="RegionList" converter="#{oblastConverter}" >
+									<f:selectItem itemLabel="#{msgs.regionFrom}" noSelectionOption="true"/>
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>
 							<div class="inputForm">
-								<p:selectOneMenu id="oblastTo" value="#{publicList.oblast}" ajax="false" effect="fold" editable="false" converter="#{oblastConverter}" >
-									<f:selectItem itemLabel="#{msgs.oblastTo}" />
+								<p:selectOneMenu id="oblastTo" value="#{publicList.oblast}" converter="#{oblastConverter}" >
+									<f:selectItem itemLabel="#{msgs.oblastTo}" noSelectionOption="true"/>
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 								</p:selectOneMenu>
 							</div>

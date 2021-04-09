@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
+	<ui:define name="content">
+		<div class="container">
+		 <div class="ContentBlock">
+			<h:form>
+			 <h:panelGrid columns="2">
+			   <h:graphicImage library="images" name="bus.png" width="200" />
+               <h:panelGrid columns="2">
+                 <h:outputText value="#{msgs.firstName}" />
+                 <h:outputText value="#{transportAction.transport.user.person.firstName}" />
+                 <h:outputText value="#{msgs.phone}" />
+                 <h:outputText value="#{transportAction.transport.user.person.phone}" />
+                 <h:outputLabel value="#{msgs.tsNumber}" />
+                 <h:outputText value="#{transportAction.transport.number}" />
+                 <h:outputLabel value="#{msgs.marka}" />
+                 <h:outputText value="#{transportAction.transport.marka}" />
+                 <h:outputLabel value="#{msgs.year}" />
+                 <h:outputText value="#{transportAction.transport.tsYear}" />
+                 <h:outputLabel value="#{msgs.tsCapacity}" />
+                 <h:outputText value="#{transportAction.transport.capacity}" />
+                 <h:outputLabel value="#{msgs.route}" />
+                 <h:outputText value="#{transportAction.transport.oblast.name}" />
+                 <h:outputLabel value="#{msgs.region}" rendered="#{transportAction.transport.oblast.city!=true}"/>
+                 <h:outputText value="#{transportAction.transport.region.name}" rendered="#{transportAction.transport.oblast.city!=true}"/>
+               </h:panelGrid>
+              </h:panelGrid> 
+			</h:form>
+		  </div>
+		</div>
+	</ui:define>
+</ui:composition>

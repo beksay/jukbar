@@ -69,6 +69,7 @@ public class MyTransportList extends BaseController implements Serializable {
 		if(oblast !=null) filters.add(new FilterExample("oblast", oblast, InequalityConstants.EQUAL));  
         if(region !=null) filters.add(new FilterExample("region", region, InequalityConstants.EQUAL));
 		model = new TransportModel(filters, service);
+		model.setFetchProperties(new String[] {"oblasts"});
 	}
 	
 	public String clearData() {

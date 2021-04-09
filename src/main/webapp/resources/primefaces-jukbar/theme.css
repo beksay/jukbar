@@ -6147,6 +6147,9 @@ body .ContentBlock .BlockTitle {
 body .ContentBlock .BlockFilter {
 	margin:30px 0 0;
 }
+body .ContentBlock .mainListFilter {
+	margin-bottom: 5px;
+}
 body .ContentBlock .BlockFilter .inputForm.submit {
 	margin-top:10px;
 }
