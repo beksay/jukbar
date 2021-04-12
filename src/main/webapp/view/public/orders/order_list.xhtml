@@ -13,12 +13,12 @@
 						<h:panelGroup styleClass="row filter" layout="block" id="filterPanel">
 							<h:panelGroup id="oblastFrom" layout="block" class="col">
 								<p:selectOneMenu id="oblast" value="#{publicList.oblast}"  converter="#{oblastConverter}" >
-									<f:selectItem itemLabel="#{msgs.selectAddress}" noSelectionOption="true"/>
+									<f:selectItem itemLabel="#{msgs.oblastFrom}" noSelectionOption="true"/>
 									<f:selectItems value="#{publicList.oblastListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
-									<p:ajax listener="#{publicList.filterData()}" event="change" update="region regionFrom accordionId" />
+									<p:ajax listener="#{publicList.filterData()}" event="itemSelect" update="regionFrom accordionId filterPanel" />
 								</p:selectOneMenu>
 							</h:panelGroup>
-							<h:panelGroup id="regionFrom" layout="block" class="col">
+							<h:panelGroup id="regionFrom" layout="block" class="col" rendered="#{publicList.oblast.city!=true and publicList.oblast.id!=null}">
 								<p:selectOneMenu id="region" value="#{publicList.region}" rendered="#{publicList.oblast.city!=true and publicList.oblast.id!=null}" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.regionFrom}" noSelectionOption="true"/>
 									<f:selectItems value="#{publicList.regionList}" var="region" itemLabel="#{region.name}" itemValue="#{region}" />
@@ -29,10 +29,10 @@
 								<p:selectOneMenu id="oblastTo" value="#{publicList.oblastTo}" converter="#{oblastConverter}" >
 									<f:selectItem itemLabel="#{msgs.oblastTo}" noSelectionOption="true"/>
 									<f:selectItems value="#{publicList.oblastToListLocal}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
-									<p:ajax listener="#{publicList.filterData()}" event="change" update="regionTo regionToId accordionId" />
+									<p:ajax listener="#{publicList.filterData()}" event="change" update="regionToId accordionId filterPanel" />
 								</p:selectOneMenu>
 							</h:panelGroup>
-							<h:panelGroup id="regionToId" layout="block" class="col">
+							<h:panelGroup id="regionToId" layout="block" class="col" rendered="#{publicList.oblastTo.city!=true and publicList.oblastTo.id!=null}">
 								<p:selectOneMenu id="regionTo" value="#{publicList.region}" rendered="#{publicList.oblastTo.city!=true and publicList.oblastTo.id!=null}" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.regionFrom}" noSelectionOption="true"/>
 									<f:selectItems value="#{publicList.regionToList}" var="region" itemLabel="#{region.name}" itemValue="#{region}" />
