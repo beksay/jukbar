@@ -15,45 +15,36 @@
 							<h:panelGroup id="oblastFrom" layout="block" class="col">
 								<p:selectOneMenu id="oblast" value="#{transportList.oblast}" converter="#{oblastConverter}">
 									<f:selectItem itemLabel="#{msgs.selectAddress}" />
-									<f:selectItems value="#{transportList.oblastList}" var="oblast"
-										itemLabel="#{oblast.name}" itemValue="#{oblast}" />
-									<p:ajax listener="#{transportList.filterData()}" event="change"
-										update="region table regionFrom" />
+									<f:selectItems value="#{transportList.oblastList}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
+									<p:ajax listener="#{transportList.filterData()}" event="change" update="region table regionFrom" />
 								</p:selectOneMenu>
 							</h:panelGroup> 
 							<h:panelGroup id="regionFrom" layout="block" class="col">
 								<p:selectOneMenu id="region" value="#{transportList.region}" rendered="#{transportList.oblast.city!=true and transportList.oblast.id!=null}" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.regionFrom}" />
-									<f:selectItems value="#{transportList.regionList}" var="region"
-										itemLabel="#{region.name}" itemValue="#{region}" />
-									<p:ajax listener="#{transportList.filterData()}" event="change"
-										update="table" />
+									<f:selectItems value="#{transportList.regionList}" var="region" itemLabel="#{region.name}" itemValue="#{region}" />
+									<p:ajax listener="#{transportList.filterData()}" event="change" update="table" />
 								</p:selectOneMenu>
 							</h:panelGroup>
 							<div class="col-auto">
 								<label></label>
-								<p:commandButton ajax="false" id="applyBtn" 
-									action="#{transportListt.filterData()}" value="#{msgs.search}"
-									icon="fas fa-search" />
+								<p:commandButton ajax="false" id="applyBtn" action="#{transportListt.filterData()}" value="#{msgs.search}" icon="fas fa-search" />
 							</div>
 							<div class="col-auto">
 								<label></label>
-								<p:commandButton ajax="false" id="clearBtn"
-									action="#{transportList.clearData()}" value="#{msgs.clear}"
-									icon="fas fa-eraser" />
+								<p:commandButton ajax="false" id="clearBtn" action="#{transportList.clearData()}" value="#{msgs.clear}" icon="fas fa-eraser" />
 							</div>
 					</h:panelGroup>
 				</div>
 				<div class="mainListContent">
-				   <p:dataGrid var="entity" value="#{transportList.model}" paginator="true" rows="8" rowIndexVar="index" 
-				        lazy="true" emptyMessage="#{msgs.noRecordsFound}"  id="table"
-						columns="4" layout="grid" sortOrder="DESCENDING" styleClass="contentBlock" 
-						rowsPerPageTemplate="12,24,36,48,64" paginatorPosition="bottom" pageLinks="12"
+				   <p:dataGrid var="entity" value="#{transportList.model}" paginator="true" rows="8" rowIndexVar="index" lazy="true" emptyMessage="#{msgs.noRecordsFound}"  id="table"
+						columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+						 layout="grid" sortOrder="DESCENDING" rowsPerPageTemplate="12,24,36,48,64" paginatorPosition="bottom" pageLinks="12"
 						currentPageReportTemplate="#{msgs.showPaymentNumbers}" selectionMode="single"
 						paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
-						selection="#{transportList.transport}"
-			            first="#{transportList.first}" >  
-						<p:panel header="#{entity.marka} - #{entity.tsYear}" styleClass="contentBlockInner">
+						selection="#{transportList.transport}" first="#{transportList.first}" >  
+						<p:panel styleClass="contentBlockInner">
+							<h:outputText value="#{entity.marka} - #{entity.tsYear}"/>
 				            <div class="InnerBlock">
 				                <h:commandLink styleClass="innerDetailIMG" action="#{transportAction.preview(entity)}">
 				    		        <h:graphicImage library="images" name="bus.png" width="200" />

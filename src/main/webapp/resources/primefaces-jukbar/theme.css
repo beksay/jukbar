@@ -765,8 +765,10 @@ body .ui-paginator {
   body .ui-paginator .ui-paginator-next,
   body .ui-paginator .ui-paginator-last {
     color: #6c757d;
-    width: 2.286em;
-    height: 2.286em;
+    width: 20px;
+    font-size:20px;
+    position:relative;
+    top:-5px;
     margin: 0 0.125em;
     border: 1px solid transparent;
     vertical-align: top;
@@ -806,7 +808,7 @@ body .ui-paginator {
     background-image: none !important;
     line-height: 2.286em; }
     body .ui-paginator .ui-paginator-first:before {
-      content: ""; }
+      content: "\f100"; }
     body .ui-paginator .ui-paginator-first:before {
       position: relative; }
   body .ui-paginator .ui-paginator-prev {
@@ -823,7 +825,7 @@ body .ui-paginator {
     background-image: none !important;
     line-height: 2.286em; }
     body .ui-paginator .ui-paginator-prev:before {
-      content: ""; }
+      content: "\f104"; }
     body .ui-paginator .ui-paginator-prev:before {
       position: relative; }
   body .ui-paginator .ui-paginator-next {
@@ -840,7 +842,7 @@ body .ui-paginator {
     background-image: none !important;
     line-height: 2.286em; }
     body .ui-paginator .ui-paginator-next:before {
-      content: ""; }
+      content: "\f105"; }
     body .ui-paginator .ui-paginator-next:before {
       position: relative; }
   body .ui-paginator .ui-paginator-last {
@@ -857,7 +859,7 @@ body .ui-paginator {
     background-image: none !important;
     line-height: 2.286em; }
     body .ui-paginator .ui-paginator-last:before {
-      content: ""; }
+      content: "\f101"; }
     body .ui-paginator .ui-paginator-last:before {
       position: relative; }
   body .ui-paginator .ui-paginator-current {
@@ -6506,4 +6508,100 @@ body .ui-datalist.listOrder .MainDataContent .transportContent {
 body .ui-datalist.listOrder .MainDataContent .transportContent label {
 	font-weight:600;
 	padding-right:5px;
+}
+body .mainListFilter .mainFilterFrom, body .mainListFilter .mainFilterTo {
+	border-radius: 10px;
+    display: flex;
+    border: 1px solid #ced4da;
+    flex-direction: row;
+    padding: 10px 20px;
+}
+body .mainListFilter .mainFilterTo {
+	margin-right:10px;
+	padding-left:30px;
+}
+body .mainListFilter .mainFilterFrom .ui-selectonemenu, body .mainListFilter .mainFilterTo .ui-selectonemenu{
+	border:0;
+}
+body .mainListFilter {
+	display:flex;
+	flex-direction: row;
+}
+body .mainListFilter .FilterMidler {
+	width:8px;
+	position:relative;
+}
+  body .mainListFilter .ui-selectonemenu.ui-state-focus:not(.ui-state-error) {
+    border-color: none !important;
+    outline: 0 none;
+    box-shadow: none !important; }
+body .mainListFilter .ui-selectonemenu .ui-selectonemenu-label {
+	padding-right:30px;
+}
+body .mainListFilter .FilterMidler:before, body .mainListFilter .FilterMidler:after {
+    z-index: 1000;
+    content: "";
+    width: 8px;
+    background: #fff;
+    height: 3px;
+    display: block;
+    position: absolute;
+}
+body .mainListFilter .FilterMidler:before{
+    top: 9px;
+}
+body .mainListFilter .FilterMidler:after{
+    bottom: 9px;
+}
+body .mainListFilter .FilterMidler i{
+    border: 1px solid #ced4da;
+    width: 40px;
+    height: 38px;
+    border-radius: 30px;
+    position: relative;
+    color: #6c757d;
+    background: #fff;
+    display: flex;
+    z-index: 50;
+    left: -16px;
+    top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+body .mainListFilter .mainFilterFrom .RgnFrom, body .mainListFilter .mainFilterTo .RgnTo{
+	border-left:1px solid #ced4da;
+}
+body .mainListFilter .mainFilterFrom > i, body .mainListFilter .mainFilterTo > i {
+	font-size: 20px;
+    color: #495057;
+    position: relative;
+    top: 6px;
+    left: -7px;
+}
+body .mainListFilter .MainFilterBtn{
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	margin:0 10px;
+}
+body .mainListFilter .MainFilterBtn .ui-button {
+	padding:9px 20px;
+	border-radius:10px;
+}
+body .mainListContent .ui-datagrid .ui-datagrid-content {
+	border:0;
+}
+body .mainListContent .transportList{
+	display:flex;
+	flex-direction: column;
+	border:1px solid #e8eef5;
+	border-radius: 6px;
+	width: min-content;
+} 
+body .mainListContent table {
+	width:auto;
+}
+body .mainListContent table td {
+	vertical-align: top;
+	padding:0 20px 10px 0;
 }
