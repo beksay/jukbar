@@ -6,9 +6,11 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.ConversationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -33,8 +35,8 @@ import org.primefaces.event.data.PageEvent;
  *
  */
 
-@ManagedBean
-@ViewScoped
+@Named
+@ConversationScoped
 public class TransportList extends BaseController implements Serializable {
 	
 	private static final long serialVersionUID = -6100072166946495229L;
