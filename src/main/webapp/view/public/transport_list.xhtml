@@ -36,28 +36,19 @@
 							</div>
 					</h:panelGroup>
 				</div>
-				<div class="mainListContent">
-				   <p:dataGrid var="entity" value="#{transportList.model}" paginator="true" rows="8" rowIndexVar="index" lazy="true" emptyMessage="#{msgs.noRecordsFound}"  id="table"
-						columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
-						 layout="grid" sortOrder="DESCENDING" rowsPerPageTemplate="12,24,36,48,64" paginatorPosition="bottom" pageLinks="12"
-						currentPageReportTemplate="#{msgs.showPaymentNumbers}" selectionMode="single"
-						paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} {RowsPerPageDropdown}"
-						selection="#{transportList.transport}" first="#{transportList.first}" >  
-						<p:panel styleClass="contentBlockInner">
-							<h:outputText value="#{entity.marka} - #{entity.tsYear}"/>
-				            <div class="InnerBlock">
-				                <h:commandLink styleClass="innerDetailIMG" action="#{transportAction.preview(entity)}">
-				    		        <h:graphicImage library="images" name="bus.png" width="200" />
-				                </h:commandLink>
-				                <div class="innerDetail">
-				                    <i class="fas fa-map-marker-alt"></i>
-					                <h:outputText value="#{entity.oblast.name}"/>
-					                <h:outputText value="#{entity.region.name}"/>
-				                </div>
-				            </div>
-		                </p:panel>
-			        </p:dataGrid>
-				</div>
+				<p:repeat var="entity" value="#{transportAction.allTransports}" id="table" lazy="true">
+				   <h:outputText value="#{entity.marka} - #{entity.tsYear}"/>
+				   <div class="InnerBlock">
+		                <h:commandLink styleClass="innerDetailIMG" action="#{transportAction.preview(entity)}">
+		    		        <h:graphicImage library="images" name="bus.png" width="200" />
+		                </h:commandLink>
+		                <div class="innerDetail">
+		                    <i class="fas fa-map-marker-alt"></i>
+			                <h:outputText value="#{entity.oblast.name}"/>
+			                <h:outputText value="#{entity.region.name}"/>
+		                </div>
+		            </div>
+				</p:repeat>
 			</h:form>
 		  </div>
 		</div>
