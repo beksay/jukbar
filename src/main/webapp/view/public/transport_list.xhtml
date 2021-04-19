@@ -36,19 +36,38 @@
 							</div>
 					</h:panelGroup>
 				</div>
-				<p:repeat var="entity" value="#{transportAction.allTransports}" id="table" lazy="true">
-				   <h:outputText value="#{entity.marka} - #{entity.tsYear}"/>
-				   <div class="InnerBlock">
-		                <h:commandLink styleClass="innerDetailIMG" action="#{transportAction.preview(entity)}">
-		    		        <h:graphicImage library="images" name="bus.png" width="200" />
-		                </h:commandLink>
-		                <div class="innerDetail">
-		                    <i class="fas fa-map-marker-alt"></i>
-			                <h:outputText value="#{entity.oblast.name}"/>
-			                <h:outputText value="#{entity.region.name}"/>
-		                </div>
-		            </div>
-				</p:repeat>
+				<div class="MainTransList row">
+					<p:repeat var="entity" value="#{transportAction.allTransports}" id="table" lazy="true">
+						<div class="col-auto">
+							<div class="translistBlock">						
+								<div class="ImgBlock">
+					                <h:commandLink styleClass="innerDetailIMG" action="#{transportAction.preview(entity)}">
+					    		        <h:graphicImage library="images" name="bus.png" width="200" />
+					                </h:commandLink>								
+								</div>
+								<div class="TrnsName">
+						   			<h:outputText value="#{entity.marka} - #{entity.tsYear}"/>
+						   			<span>some sub-text</span>				
+								</div>
+								<div class="transBtm">
+					                <div class="innerDetail">
+					                	<p>
+					                		<span>Mileage:</span>
+					                		<span>12 321 km/h</span>
+					                	</p>
+					                	<p>
+					                		<span>Power:</span>
+					                		<span>34 332 HP</span>
+					                	</p>
+					                    <i class="fas fa-map-marker-alt"></i>
+						                <h:outputText value="#{entity.oblast.name} "/>
+						                <h:outputText value="#{entity.region.name} "/>
+					                </div>							
+								</div>
+							</div>
+						</div>
+					</p:repeat>
+				</div>
 			</h:form>
 		  </div>
 		</div>

@@ -6608,3 +6608,58 @@ body .mainListContent table td {
 	vertical-align: top;
 	padding:0 20px 10px 0;
 }
+body .MainTransList .translistBlock{
+	min-width:229px;
+	max-width: 230px;
+}
+body .MainTransList .ImgBlock a {
+	display:block;
+	width:100%;
+	height:130px;
+}
+body .MainTransList .ImgBlock a img {
+	width:100%;
+	object-fit:cover;
+}
+body .MainTransList .translistBlock {
+	border:1px solid #e8eef5;
+	height:100%;
+}
+body .MainTransList .translistBlock .TrnsName {
+	font-size:16px;
+	font-weight:600;
+	padding:10px 15px;
+	line-height:16px;
+	border-bottom:1px solid #e8eef5;
+}
+body .MainTransList .translistBlock .TrnsName span {
+	font-size:12px;
+	display:block;
+	font-weight:300;
+	color:#b2bac7;
+}
+body .MainTransList .translistBlock .transBtm{
+background: #f5fafe;
+background: -moz-linear-gradient(top, #f5fafe 0%, #ffffff 100%);
+background: -webkit-linear-gradient(top, #f5fafe 0%,#ffffff 100%);
+background: linear-gradient(to bottom, #f5fafe 0%,#ffffff 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5fafe', endColorstr='#ffffff',GradientType=0 );
+}
+body .MainTransList .translistBlock .transBtm .innerDetail {
+	padding:10px;
+}
+body .MainTransList .translistBlock .transBtm .innerDetail p {
+	margin-bottom:5px;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+body .MainTransList .translistBlock .transBtm .innerDetail p span {
+	font-size:13x;
+	color:#000;
+}
+body .MainTransList .translistBlock .transBtm .innerDetail p span:nth-child(1) {
+	color:#6584a5;
+	font-weight:500;
+	
+}
