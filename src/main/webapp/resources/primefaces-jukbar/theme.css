@@ -768,7 +768,7 @@ body .ui-paginator {
     width: 20px;
     font-size:20px;
     position:relative;
-    top:-5px;
+    top:-7px;
     margin: 0 0.125em;
     border: 1px solid transparent;
     vertical-align: top;
@@ -6522,6 +6522,9 @@ body .mainListFilter .mainFilterTo {
 }
 body .mainListFilter .mainFilterFrom .ui-selectonemenu, body .mainListFilter .mainFilterTo .ui-selectonemenu{
 	border:0;
+}
+body .mainListFilter .mainFilterFrom .ui-selectonemenu .ui-icon, body .mainListFilter .mainFilterTo .ui-selectonemenu .ui-icon {
+	font-size:10px;
 }
 body .mainListFilter {
 	display:flex;
