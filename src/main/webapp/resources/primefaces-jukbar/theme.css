@@ -6612,6 +6612,10 @@ body .MainTransList .translistBlock{
 	min-width:229px;
 	max-width: 230px;
 }
+body .MainTransList .ImgBlock, body .MainTransList .ImgBlock a, body .MainTransList .ImgBlock a img {
+	border-top-left-radius:3px;
+	border-top-right-radius:3px;
+} 
 body .MainTransList .ImgBlock a {
 	display:block;
 	width:100%;
@@ -6621,9 +6625,16 @@ body .MainTransList .ImgBlock a img {
 	width:100%;
 	object-fit:cover;
 }
+body .MainTransList .col-auto {
+	padding-bottom:20px;
+}
 body .MainTransList .translistBlock {
 	border:1px solid #e8eef5;
 	height:100%;
+	border-radius:3px;
+	-webkit-box-shadow:0px 5px 14px 0px rgb(193 202 212 / 50%);
+	-moz-box-shadow:0px 5px 14px 0px rgb(193 202 212 / 50%);
+	box-shadow:0px 5px 14px 0px rgb(193 202 212 / 50%);
 }
 body .MainTransList .translistBlock .TrnsName {
 	font-size:16px;
@@ -6638,6 +6649,10 @@ body .MainTransList .translistBlock .TrnsName span {
 	font-weight:300;
 	color:#b2bac7;
 }
+body .MainTransList .translistBlock .transBtm, body .MainTransList .translistBlock .transBtm .innerDetail {
+	border-bottom-left-radius:3px;
+	border-bottom-right-radius:3px;	
+} 
 body .MainTransList .translistBlock .transBtm{
 background: #f5fafe;
 background: -moz-linear-gradient(top, #f5fafe 0%, #ffffff 100%);
@@ -6646,7 +6661,8 @@ background: linear-gradient(to bottom, #f5fafe 0%,#ffffff 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5fafe', endColorstr='#ffffff',GradientType=0 );
 }
 body .MainTransList .translistBlock .transBtm .innerDetail {
-	padding:10px;
+	padding:10px 16px;
+	min-height:97px;
 }
 body .MainTransList .translistBlock .transBtm .innerDetail p {
 	margin-bottom:5px;
@@ -6654,12 +6670,24 @@ body .MainTransList .translistBlock .transBtm .innerDetail p {
 	flex-direction: row;
 	justify-content: space-between;
 }
+body .MainTransList .translistBlock .transBtm .innerDetail p span i {
+	margin-right:6px;
+}
 body .MainTransList .translistBlock .transBtm .innerDetail p span {
-	font-size:13x;
+	font-size:13px;
 	color:#000;
+	line-height:15px;
 }
 body .MainTransList .translistBlock .transBtm .innerDetail p span:nth-child(1) {
 	color:#6584a5;
 	font-weight:500;
-	
+}
+body .MainTransList .translistBlock .transBtm .innerDetail p span:nth-child(2) {
+	font-size:12px;
+}
+body .MainTransList .translistBlock .transBtm .TransBtns {
+	padding:0 16px 16px;
+}
+body .MainTransList .translistBlock .transBtm .TransBtns .outlined-button{
+	width:100%;
 }

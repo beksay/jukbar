@@ -36,7 +36,7 @@
 							</div>
 					</h:panelGroup>
 				</div>
-				<div class="MainTransList row">
+				<div class="MainTransList row d-flex justify-content-around">
 					<p:repeat var="entity" value="#{transportAction.allTransports}" id="table" lazy="true">
 						<div class="col-auto">
 							<div class="translistBlock">						
@@ -59,10 +59,13 @@
 					                		<span>Power:</span>
 					                		<span>34 332 HP</span>
 					                	</p>
-					                    <i class="fas fa-map-marker-alt"></i>
-						                <h:outputText value="#{entity.oblast.name} "/>
-						                <h:outputText value="#{entity.region.name} "/>
-					                </div>							
+					                	<p>
+					                		<span><i class="fas fa-map-marker-alt"></i> <h:outputText value="#{entity.oblast.name} "/> <h:outputText value="#{entity.region.name} "/></span>
+					                	</p>
+					                </div>
+					                <div class="TransBtns">
+										<p:commandButton ajax="false" id="rentBttn" styleClass="outlined-button" value="#{msgs.clear}"  />
+					                </div>
 								</div>
 							</div>
 						</div>
