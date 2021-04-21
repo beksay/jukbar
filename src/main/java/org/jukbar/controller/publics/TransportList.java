@@ -63,7 +63,7 @@ public class TransportList extends BaseController implements Serializable {
 	
 	public void filterData() {
 		List<FilterExample> filters = new ArrayList<>();
-		filters.add(new FilterExample("status", TransportStatus.COMPLETED, InequalityConstants.EQUAL));
+		//filters.add(new FilterExample("status", TransportStatus.COMPLETED, InequalityConstants.EQUAL));
 		if (searchString != null && searchString.length()>0) {
 			filters.add(new FilterExample("marka", '%' + searchString.toLowerCase() + '%', InequalityConstants.LIKE));
 		}

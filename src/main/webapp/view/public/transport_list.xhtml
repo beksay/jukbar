@@ -37,39 +37,43 @@
 					</h:panelGroup>
 				</div>
 				<div class="MainTransList row d-flex justify-content-around">
-					<p:repeat var="entity" value="#{transportAction.allTransports}" id="table" lazy="true">
-						<div class="col-auto">
-							<div class="translistBlock">						
-								<div class="ImgBlock">
-					                <h:commandLink styleClass="innerDetailIMG" action="#{transportAction.preview(entity)}">
-					    		        <h:graphicImage library="images" name="bus.png" width="200" />
-					                </h:commandLink>								
+					<p:dataGrid var="entity" value="#{transportList.model}" layout="grid" columns="4"
+	                    rows="12" paginator="true" id="table" lazy="true" paginatorPosition="bottom"
+	                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	                    rowsPerPageTemplate="6,12,16">
+	                       <div class="col-auto">
+								<div class="translistBlock">						
+									<div class="ImgBlock">
+						                <h:commandLink styleClass="innerDetailIMG" actionListener="#{transportAction.preview(entity)}">
+						    		        <h:graphicImage library="images" name="bus.png" width="200" />
+						                </h:commandLink>								
+									</div>
+									<div class="TrnsName">
+							   			<h:outputText value="#{entity.marka} - #{entity.tsYear}"/>
+							   			<span>#{entity.user.person.firstName}</span>				
+									</div>
+									<div class="transBtm">
+						                <div class="innerDetail">
+						                	<p>
+						                		<span>#{msgs.capacity}:</span>
+						                		<span>#{entity.capacity}</span>
+						                	</p>
+						                	<p>
+						                		<span>#{msgs.phone}:</span>
+						                		<span>#{entity.user.person.phone}</span>
+						                	</p>
+						                	<p>
+						                		<span><i class="fas fa-map-marker-alt"></i> <h:outputText value="#{entity.oblast.name} "/> <h:outputText value="#{entity.region.name} "/></span>
+						                	</p>
+						                </div>
+						                <div class="TransBtns">
+											<p:commandButton ajax="false" action="#{transportAction.preview(entity)}" 
+											      styleClass="outlined-button" value="#{msgs.details}"/>
+	 					                </div>
+									</div>
 								</div>
-								<div class="TrnsName">
-						   			<h:outputText value="#{entity.marka} - #{entity.tsYear}"/>
-						   			<span>#{entity.user.person.firstName}</span>				
-								</div>
-								<div class="transBtm">
-					                <div class="innerDetail">
-					                	<p>
-					                		<span>#{msgs.capacity}:</span>
-					                		<span>#{entity.capacity}</span>
-					                	</p>
-					                	<p>
-					                		<span>#{msgs.phone}:</span>
-					                		<span>#{entity.user.person.phone}</span>
-					                	</p>
-					                	<p>
-					                		<span><i class="fas fa-map-marker-alt"></i> <h:outputText value="#{entity.oblast.name} "/> <h:outputText value="#{entity.region.name} "/></span>
-					                	</p>
-					                </div>
-					                <div class="TransBtns">
-										<p:commandButton ajax="false" action="#{transportAction.preview(entity)}" id="rentBttn" styleClass="outlined-button" value="#{msgs.details}"/>
- 					                </div>
-								</div>
-							</div>
-						</div>
-					</p:repeat>
+						 </div>
+	        		</p:dataGrid>
 				</div>
 			</h:form>
 		  </div>
