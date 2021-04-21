@@ -37,7 +37,7 @@
 					</h:panelGroup>
 				</div>
 				<div class="MainTransList row d-flex justify-content-around">
-					<p:repeat var="entity" value="#{transportList.model}" id="table" lazy="true">
+					<p:repeat var="entity" value="#{transportAction.allTransports}" id="table" lazy="true">
 						<div class="col-auto">
 							<div class="translistBlock">						
 								<div class="ImgBlock">
@@ -47,7 +47,7 @@
 								</div>
 								<div class="TrnsName">
 						   			<h:outputText value="#{entity.marka} - #{entity.tsYear}"/>
-						   			<span>some sub-text</span>				
+						   			<span>#{entity.user.person.firstName}</span>				
 								</div>
 								<div class="transBtm">
 					                <div class="innerDetail">
@@ -65,7 +65,7 @@
 					                </div>
 					                <div class="TransBtns">
 										<p:commandButton ajax="false" action="#{transportAction.preview(entity)}" id="rentBttn" styleClass="outlined-button" value="#{msgs.details}"/>
-					                </div>
+ 					                </div>
 								</div>
 							</div>
 						</div>
