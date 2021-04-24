@@ -768,7 +768,7 @@ body .ui-paginator {
     width: 20px;
     font-size:20px;
     position:relative;
-    top:-7px;
+    top:-4px;
     margin: 0 0.125em;
     border: 1px solid transparent;
     vertical-align: top;
@@ -866,7 +866,8 @@ body .ui-paginator {
     color: #6c757d; }
   body .ui-paginator .ui-paginator-pages {
     padding: 0;
-    display: inline-block; }
+    display: inline-block; 
+    margin-top:3px;}
     body .ui-paginator .ui-paginator-pages .ui-paginator-page {
       padding: 0;
       border: 1px solid transparent;
@@ -1280,10 +1281,10 @@ body .ui-datagrid .ui-datagrid-header {
 body .ui-datagrid .ui-datagrid-footer {
   border-top: 0 none; }
 body .ui-datagrid .ui-datagrid-content {
-  border: 1px solid #dee2e6;
+  border: 0;
   background: #ffffff;
   color: #495057;
-  padding: 1rem; }
+  padding: 0; }
 body .ui-datagrid .ui-paginator {
   padding: 1rem; }
   body .ui-datagrid .ui-paginator.ui-paginator-top {
@@ -6686,8 +6687,62 @@ body .MainTransList .translistBlock .transBtm .innerDetail p span:nth-child(2) {
 	font-size:12px;
 }
 body .MainTransList .translistBlock .transBtm .TransBtns {
-	padding:0 16px 16px;
+	padding:0 16px 0;
 }
 body .MainTransList .translistBlock .transBtm .TransBtns .outlined-button{
 	width:100%;
+}
+body .loginContainer {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+body .loginContainer .BlockTitle {
+	font-size:22px;
+	font-weight:600;
+	margin-bottom:20px;
+}
+body .loginContainer .ContentBlock {
+	display:flex;
+	flex-direction: row;
+	padding:0;
+}
+body .loginContainer .ContentBlock .LoginBlock {
+	width:330px;
+	padding:50px 40px;
+}
+body .loginContainer .ContentBlock .LoginBlock .inputForm{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom:15px;
+}
+body .loginContainer .ContentBlock .LoginBlock .inputForm input{
+	width:100%;
+}
+body .container {
+	height:100%;
+}
+body .loginContainer .ContentBlock .LoginSide {
+	flex:1;
+	width:560px;
+	background:#D1EBFF url("../javax.faces.resource/login-b.png.xhtml?ln=images") right center no-repeat;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 4px;
+	display: flex;
+    align-items: center;
+}
+body .loginContainer .ContentBlock .LoginSide .LoginSideText{
+	flex:0.5;
+	padding-left:26px;
+}
+body .loginContainer .ContentBlock .LoginSide .LoginSideText h3 {
+	font-weight:600;
+}
+body .loginContainer .ContentBlock .LoginSide .LoginSideText p {
+	text-align: justify;
+    line-height: 16px;	
 }

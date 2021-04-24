@@ -6,41 +6,42 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/templates/layouts/public.xhtml" id="bodyBlock">
     <ui:define name="content">
-		<div class="row">
-			<div class="col-4">
-			</div>
-			<div class="col-4">
+		<div class="container">
+			<div class="loginContainer">
 				<div class="ContentBlock">
-					<div class="logo-block">
-						<h:link outcome="/home.xhtml">
+				    <div class="LoginBlock">
+						<div class="logo-block">
 							<label class="BlockTitle">Вход в аккаунт</label>
-						</h:link>
-				    </div>
-				    <div class="BlockFilter">
+					    </div>
 					  <h:form>
 					    <div class="inputForm">
-							<h:inputText value="#{userController.email}" style="position:relative;" id="email" required="true" requiredMessage="#{msgs.email} - #{msgs.isReq}"/>				
+							<p:inputText value="#{userController.email}" style="position:relative;" id="email" required="true" requiredMessage="#{msgs.email} - #{msgs.isReq}"/>				
 							<p:watermark value="#{msgs.email}" for="email"/>
-							<p:message for="email" />
 					    </div>
 					    <div class="inputForm">
-							<h:inputSecret value="#{userController.password}" style="position:relative;" id="password" required="true" requiredMessage="#{msgs.password} - #{msgs.isReq}"/>
+							<p:password value="#{userController.password}" style="position:relative;" id="password" required="true" requiredMessage="#{msgs.password} - #{msgs.isReq}"/>
 							<p:watermark value="#{msgs.password}" for="password"/>
-							<p:message for="password" />
+						
 					    </div>
 					    <div class="inputForm">
-					       <p:commandButton value="#{msgs.login}" action="#{userController.login()}" ajax="false"/>
-					       <p:commandButton value="#{msgs.register}" ajax="false" action="#{registrationAction.register()}" immediate="true"/>
+					       <p:commandButton value="#{msgs.login}" styleClass="success-button" action="#{userController.login()}" ajax="false"/>
+					       <p:commandButton value="#{msgs.register}" ajax="false" styleClass="outlined-button" action="#{registrationAction.register()}" immediate="true"/>
 					    </div>
 					    <div class="inputForm">
 					       <a  href="#{userController.forgot()}">#{msgs.forgotPassword}</a>
 					    </div>
-					    <p:growl id="growl" showDetail="true" sticky="true" /> 
+					    <p:growl id="growl" showDetail="true" sticky="true" />
+						<p:message for="email" />
+						<p:message for="password" />
 					  </h:form>
 				    </div>
+					<div class="LoginSide">
+						<div class="LoginSideText">
+							<h3>Best solution for Logistics Solutions</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-4">
 			</div>
 		</div>		
 	</ui:define>		

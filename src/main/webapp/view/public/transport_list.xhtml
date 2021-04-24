@@ -12,14 +12,14 @@
 				<div class="mainListFilter">
 					 <h:panelGroup styleClass="row filter" layout="block"
 							id="filterPanel">
-							<h:panelGroup id="oblastFrom" layout="block" class="col">
+							<h:panelGroup id="oblastFrom" layout="block" class="col-auto">
 								<p:selectOneMenu id="oblast" value="#{transportList.oblast}" converter="#{oblastConverter}">
 									<f:selectItem itemLabel="#{msgs.selectAddress}" />
 									<f:selectItems value="#{transportList.oblastList}" var="oblast" itemLabel="#{oblast.name}" itemValue="#{oblast}" />
 									<p:ajax listener="#{transportList.filterData()}" event="change" update="region table regionFrom" />
 								</p:selectOneMenu>
 							</h:panelGroup> 
-							<h:panelGroup id="regionFrom" layout="block" class="col">
+							<h:panelGroup id="regionFrom" layout="block" class="col-auto" rendered="#{transportList.oblast.city!=true and transportList.oblast.id!=null}">
 								<p:selectOneMenu id="region" value="#{transportList.region}" rendered="#{transportList.oblast.city!=true and transportList.oblast.id!=null}" converter="#{regionConverter}">
 									<f:selectItem itemLabel="#{msgs.regionFrom}" />
 									<f:selectItems value="#{transportList.regionList}" var="region" itemLabel="#{region.name}" itemValue="#{region}" />
